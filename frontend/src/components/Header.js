@@ -106,6 +106,9 @@ const working = (
 							<Link to="/practices" className="nav-link">Our Practices</Link>
 						</li>
 						<li className="nav-item">
+							<Link to="/about" className="nav-link">Become An Instructor</Link>
+						</li>
+						<li className="nav-item">
 							<Link to="/about" className="nav-link">Contact Us</Link>
 						</li>
 					</ul>
