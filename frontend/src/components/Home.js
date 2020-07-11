@@ -8,6 +8,16 @@ componentDidMount() {
   window.scrollTo(0, 0)
 }
 
+left(){
+    $('.carosel-control-left').blur();
+  $('.carosel-control-left').parent().find('.carosel-item').first().insertAfter($('.carosel-control-right').parent().find('.carosel-item').last());
+};
+
+
+right(){
+  $('.carosel-control-left').blur();
+$('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($('.carosel-control-right').parent().find('.carosel-item').first());
+};
 
 
 
@@ -151,17 +161,16 @@ componentDidMount() {
 				<br/><br/><br/>
 
 
-				<div className="section3">
-					<div className="cus_container2">
-						<div className="row" data-aos="flip-down" data-aos-duration="1200">
-							<div className="col-sm-3 p-5">
-								<div className="card shadow">
-									<div className="card-image">								
-										<i className="fa fa-user fa-3x"></i></div>
-									<div className="card-body text-center">
-										<h6>Rating</h6>
-										<p>I loved the courses offered</p>
-										<div className="stars">
+                <div className="section3 container">
+                    <div class="carosel" id="carosel1">
+                      <button class="carosel-control carosel-control-left glyphicon glyphicon-chevron-left" onClick={this.left}></button>
+                      <div class="carosel-inner">
+                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                            <div className="card testi shadow">
+								<div className="p-5">
+
+								        <p className="inverted">1Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
+                                        <div className="stars">
 											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
@@ -169,67 +178,149 @@ componentDidMount() {
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 
 										</div>
-									</div>
 								</div>
 							</div>
-							<div className="col-sm-3 p-5">
-								<div className="card shadow">
-									<div className="card-image">
-										<i className="fa fa-user fa-3x"></i>
-									</div>
-									<div className="card-body text-center">
-										<h6>Rating</h6>
-										<p>I loved the courses offered</p>
-										<div className="stars">
+							<div className="name text-center place">
+							    <h5 className="name-font">Name</h5>
+							    <p className="place-font">PPPPlace</p>
+
+							</div>
+
+                        </div>
+                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                            <div className="card testi shadow">
+								<div className="p-5">
+
+								        <p className="inverted">2Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
+                                        <div className="stars">
+											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
-											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
-											
+
 										</div>
-									</div>
 								</div>
 							</div>
-							<div className="col-sm-3 p-5">
-								<div className="card shadow">
-									<div className="card-image">
-										<i className="fa fa-user fa-3x"></i>
-									</div>
-									<div className="card-body text-center">
-										<h6>Rating</h6>
-										<p>I loved the courses offered</p>
-										<div className="stars">
+							<div className="name text-center place">
+							    <h5 className="name-font">Name</h5>
+							    <p className="place-font">PPPPlace</p>
+
+							</div>
+
+                        </div>
+                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                            <div className="card testi shadow">
+								<div className="p-5">
+
+								        <p className="inverted">3Can see the chnage by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
+                                        <div className="stars">
+											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
-											
+
 										</div>
-									</div>
 								</div>
 							</div>
-							<div className="col-sm-3 p-5">
-								<div className="card shadow">
-									<div className="card-image">
-										<i className="fa fa-user fa-3x"></i>
-									</div>
-									<div className="card-body text-center">
-										<h6>Rating</h6>
-										<p>I loved the courses offered</p>
-										<div className="stars">
+							<div className="name text-center place">
+							    <h5 className="name-font">Name</h5>
+							    <p className="place-font">PPPPlace</p>
+
+							</div>
+
+                        </div>
+                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                            <div className="card testi shadow">
+								<div className="p-5">
+
+								        <p className="inverted">4Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
+                                        <div className="stars">
+											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
-											
+
 										</div>
-									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
+							<div className="name text-center place">
+							    <h5 className="name-font">Name</h5>
+							    <p className="place-font">PPPPlace</p>
+
+							</div>
+
+                        </div>
+                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                            <div className="card testi shadow">
+								<div className="p-5">
+
+								        <p className="inverted">5A bit different by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
+                                        <div className="stars">
+											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+
+										</div>
+								</div>
+							</div>
+							<div className="name text-center place">
+							    <h5 className="name-font">Name</h5>
+							    <p className="place-font">PPPPlace</p>
+
+							</div>
+                        </div>
+                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                            <div className="card testi shadow">
+								<div className="p-5">
+
+								        <p className="inverted">6Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
+                                        <div className="stars">
+											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+
+										</div>
+								</div>
+							</div>
+							<div className="name text-center place">
+							    <h5 className="name-font">Name</h5>
+							    <p className="place-font">PPPPlace</p>
+
+							</div>
+
+                        </div>
+                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                            <div className="card testi shadow">
+								<div className="p-5">
+
+								        <p className="inverted">7Little change, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
+                                        <div className="stars">
+											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+
+										</div>
+								</div>
+							</div>
+							<div className="name text-center place">
+							    <h5 className="name-font">Name</h5>
+							    <p className="place-font">PPPPlace</p>
+							</div>
+
+                        </div>
+                      </div>
+                      <button class="carosel-control carosel-control-right glyphicon glyphicon-chevron-right" onClick={this.right}></button>
+                    </div>
+                </div>
 
 
 				<br/><br/><br/>
