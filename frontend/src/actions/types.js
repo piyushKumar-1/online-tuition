@@ -5,11 +5,17 @@ export const USER_LOADED = "USER_LOADED";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const RESET_SUCCESS = "RESET_SUCCESS";
+export const SET_DEFAULT = "SET_DEFAULT";
+export const CHANGED_SUCCESS = "CHANGED_SUCCESS";
+export const CHECK_SUCCESS = "CHECK_SUCCESS";
 
 
 
-
+export const RESET_ERROR = "RESET_ERROR";
+export const CHANGED_ERROR = "CHANGED_ERROR";
 export const AUTH_ERROR = "AUTH_ERROR";
+export const CHECK_ERROR = "CHECK_ERROR";
 
 
 

@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
-import '../styles/Header.css'
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import '../styles/Header.css';
 
 export class Home extends Component {
 
 
 componentDidMount() {
+
+ document.title = "Home Page | Learnerz Corner"
   window.scrollTo(0, 0)
 }
 
@@ -23,7 +26,11 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
 	render() {
 		return (
+
+
 			<div>
+		            <div className="bg-image">
+
 							<div className="cus_container mt content">
 								<div className="m-auto wid" data-aos="fade-down" data-aos-duration="600">
 									<p className="tag-line">Online learning Platform for B.E/B.Tech Engineering Students to study from experts and peer instructors.</p><br/><br/>
@@ -32,19 +39,10 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 										<br/>
 											<a className="btn expert btn-outline-white">
 												<div className="card-title">
-													<h5 style={{color: "black"}} className="sty">Attend Classes Anywhere at your confortable time</h5>
+													<h5 style={{color: "black"}} id="msg" className="sty"></h5>
 												</div>
 											</a><br/><br/>
-											<a className="btn expert btn-outline-white">
-												<div className="card-title">
-													<h5 style={{color: "black"}} className="sty">Home Work And Assignment Help</h5>
-												</div>
-											</a><br/><br/>
-											<a className="btn expert btn-outline-white">
-												<div className="card-title">
-													<h5 style={{color: "black"}} className="sty">Project Guidance</h5>
-												</div>
-											</a>
+											<Link to="/register" className="btn btn-start btn-dark">Get Started</Link>
 										</div>
 										<div className="col-sm-4">
 											<div className="img-fluid scene">
@@ -64,6 +62,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 								    </div>
 								</div>
 							</div>
+						</div>
 					<br/><br/>
 				<section className="m-auto bg-bitblue">
 					<div className="m-auto container" style={{display:"table"}}>
@@ -113,7 +112,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<div className="steps-icon">1</div>
 											<div className="step-icon">1</div>
 											<div className="steps-explanation">
-												<h4>Create Account</h4>
+												<h5 className="step-h4">Create Account</h5>
 												<p>Some explainatery text that we can change accordinlgly</p>
 											</div>
 										</li>
@@ -122,7 +121,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<div className="steps-icon">2</div>
 											<div className="step-icon">2</div>
 											<div className="steps-explanation">
-												<h4>Enquiry Of Course</h4>
+												<h5 className="step-h4">Enquiry Of Course</h5>
 											</div>
 										</li>
 
@@ -130,27 +129,27 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<div className="steps-icon">3</div>
 											<div className="step-icon">3</div>
 											<div className="steps-explanation">
-												<h4>Indentification of Faculty</h4>
+												<h5 className="step-h4">Indentification of Faculty</h5>
 											</div>
 										</li>
 										<li>
 											<div className="steps-icon">4</div>
 											<div className="step-icon">4</div>
 											<div className="steps-explanation">
-												<h4>Free demo Session</h4>
+												<h5 className="step-h4">Free demo Session</h5>
 											</div>
 										</li>
 										<li>
 											<div className="steps-icon">5</div>
 											<div className="step-icon">5</div>
 											<div className="steps-explanation">
-												<h4>Payment of fees</h4>
+												<h5 className="step-h4">Payment of fees</h5>
 											</div>
 										</li>
 									</ul>
 								</div>
 								<div className="col-md-6 m-auto hidic text-center">
-									<img className="img-fluid" src={"https://freesvg.org/img/student_graduate_by_Juhele.png"} width="280" />
+									<img className="img-fluid" src="/static/frontend/read.svg" width="280" />
 								</div>
 							</div>
 						</div>
@@ -163,12 +162,12 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
                 <div className="section3 container">
                     <div class="carosel" id="carosel1">
-                      <button class="carosel-control carosel-control-left glyphicon glyphicon-chevron-left" onClick={this.left}></button>
+                      <button class="carosel-control carosel-control-left glyphicon glyphicon-chevron-left" onClick={this.left}><i className="fa fa-arrow-left"></i></button>
                       <div class="carosel-inner">
                         <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
-
+                                    <div className="ani">
 								        <p className="inverted">1Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
                                         <div className="stars">
 											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
@@ -176,8 +175,8 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
-
-										</div>
+                                        </div>
+									</div>
 								</div>
 							</div>
 							<div className="name text-center place">
@@ -190,7 +189,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
                         <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
-
+                                    <div className="ani">
 								        <p className="inverted">2Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
                                         <div className="stars">
 											<img src={"https://freesvg.org/img/1296082035.png"} width="25" className="float-left" />
@@ -198,8 +197,8 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
-
-										</div>
+                                        </div>
+									</div>
 								</div>
 							</div>
 							<div className="name text-center place">
@@ -212,6 +211,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
                         <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
+                                    <div className="ani">
 
 								        <p className="inverted">3Can see the chnage by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
                                         <div className="stars">
@@ -220,8 +220,8 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
-
 										</div>
+									</div>
 								</div>
 							</div>
 							<div className="name text-center place">
@@ -234,6 +234,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
                         <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
+                                    <div className="ani">
 
 								        <p className="inverted">4Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
                                         <div className="stars">
@@ -242,6 +243,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+										</div>
 
 										</div>
 								</div>
@@ -256,6 +258,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
                         <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
+                                    <div className="ani">
 
 								        <p className="inverted">5A bit different by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
                                         <div className="stars">
@@ -264,6 +267,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+										</div>
 
 										</div>
 								</div>
@@ -277,6 +281,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
                         <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
+                                    <div className="ani">
 
 								        <p className="inverted">6Text to be written by the sers, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
                                         <div className="stars">
@@ -285,6 +290,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+										</div>
 
 										</div>
 								</div>
@@ -299,6 +305,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
                         <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
+                                    <div className="ani">
 
 								        <p className="inverted">7Little change, important and nice feedbacks about the servie and all that stuff would be displayed ere, check the font and anything lse that you want to change in this card. this text is randomly written and can be changed to whatever you specify.</p>
                                         <div className="stars">
@@ -307,6 +314,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
 											<img src="https://freesvg.org/img/1296082035.png" width="25" className="float-left" />
+										</div>
 
 										</div>
 								</div>
@@ -318,7 +326,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
                         </div>
                       </div>
-                      <button class="carosel-control carosel-control-right glyphicon glyphicon-chevron-right" onClick={this.right}></button>
+                      <button class="carosel-control carosel-control-right glyphicon glyphicon-chevron-right" onClick={this.right}><i className="fa fa-arrow-right"></i></button>
                     </div>
                 </div>
 

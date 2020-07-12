@@ -1,7 +1,9 @@
 @media (min-width: 800px){
 	.ws{
 		width:50%;
+		min-height:450px;
+
+		margin-top:130px !important;
+		margin-bottom:100px !important;
 	}
 }
-
-

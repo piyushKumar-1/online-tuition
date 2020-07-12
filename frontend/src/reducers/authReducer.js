@@ -1,4 +1,4 @@
-import {USER_LOADED, USER_LOADING, LOGIN_SUCCESS, REGISTER_SUCCESS, LOGOUT_SUCCESS, AUTH_ERROR} from '../actions/types.js';
+import { USER_LOADED, USER_LOADING, LOGIN_SUCCESS, REGISTER_SUCCESS, LOGOUT_SUCCESS, AUTH_ERROR, RESET_SUCCESS } from '../actions/types.js';
 
 
 const initialState = {
@@ -7,6 +7,9 @@ const initialState = {
 	isLoading: false,
 	user: null
 }
+
+
+
 
 
 export default function(state = initialState, action){

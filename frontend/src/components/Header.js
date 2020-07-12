@@ -12,11 +12,12 @@ export class Header extends Component {
 		auth: PropTypes.object.isRequired,
 		logoutUser: PropTypes.func.isRequired,
 	};
+
 	render() {
 		
 		const { isAuthenticated, user } = this.props.auth;
 		const authLinks = (
-				<button onClick={this.props.logoutUser} className="btn logbtn btn-ouline-dark"><i className="fa fa-sign-out black"></i>&nbsp;Logout</button>
+                    <button onClick={this.props.logoutUser} className="btn logbtn btn-ouline-dark"><i className="fa fa-sign-out black"></i>&nbsp;Logout</button>
 					
 			)
 
@@ -29,7 +30,7 @@ export class Header extends Component {
                     <div>
 					    <div className="modal fade m-auto" id="loginModal" role="dialog">
 					        <div className="modal-dialog">
-					            <div className="modal-content">
+					            <div className="modal-content m-auto">
 				                    <button type="button" className="close mt-2 mr-3 text-right" data-dismiss="modal">&times;</button>
 					                <div className="model-body">
 					                  <Login />

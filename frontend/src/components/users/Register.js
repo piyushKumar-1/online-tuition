@@ -14,6 +14,8 @@ export class Register extends Component {
     is_parent: false,
     education:'',
     occupation:'',
+    disabled: true,
+    misMatch:false,
   };
 
   static propTypes = {
@@ -50,9 +52,26 @@ export class Register extends Component {
   };
 
   onChange = (e) => {
-   this.setState({ [e.target.name]: e.target.value });
-console.log(e.target.value, e.target.name)
-}
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+
+
+  onPass2Change = (e) => {
+    this.setState({ [e.target.name]: e.target.value }, () =>{
+        if(this.state.password!=this.state.password2){
+          this.setState({ misMatch: true, disabled: true });
+        } else {
+          this.setState({ misMatch: false });
+          if(this.state.password.length>=4 && this.state.email.length>=4 && this.state.password2.length>=4){
+              this.setState({ disabled: false, misMatch: false });
+          } else {
+            this.setState({ disabled: true });
+          }
+        }
+    });
+  }
+
   onTypeChange = (e) => {
     this.setState({ [e.target.name]: e.target.value})
     if(e.target.value == 'true'){
@@ -126,7 +145,7 @@ console.log(e.target.value, e.target.name)
                 type="password"
                 className="form-control"
                 name="password"
-                onChange={this.onChange}
+                onChange={this.onPass2Change}
                 value={password}
               />
             </div>
@@ -136,13 +155,15 @@ console.log(e.target.value, e.target.name)
                 type="password"
                 className="form-control"
                 name="password2"
-                onChange={this.onChange}
+                onChange={this.onPass2Change}
                 value={password2}
               />
+              {this.state.misMatch ? <span style={{color: "red"}}>Password Didn't match</span> : ""}
+
             </div>
 
             <div className="form-group">
-              <button type="submit" id="ssbtn" className="btn btn-primary">
+              <button type="submit" id="ssbtn" disabled={this.state.disabled} className="btn btn-primary">
                 Register
               </button>
             </div>

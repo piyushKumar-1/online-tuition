@@ -11,4 +11,5 @@ urlpatterns = [
     path('home/', views.index ),
     path('contact/', views.index ),
     path('practices/', views.index ),
+    path('reset/confirmation/<str:k>/<str:j>', views.index2),
 ]

@@ -12,6 +12,7 @@ import store from '../store.js';
 import PrivateRoute from './common/PrivateRoute.js';
 import Queries from './queries/Query.js';
 import RegisterComp from './users/RegisterComp.js'
+import ResetPassword from './users/ResetPassowrd.js'
 import LoginComp from './users/LoginComp.js'
 import { loadUser } from '../actions/authAction.js';
 import '../styles/users.css'
@@ -36,6 +37,7 @@ export class App extends React.Component {
                             <Route exact path="/practices" component={Practice} />
                             <Route exact path="/login" component={LoginComp} />
                             <Route exact path="/register" component={RegisterComp} />
+                            <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
                         </Switch>
                     </Router>
                     <Footer />
