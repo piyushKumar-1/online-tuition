@@ -3,14 +3,15 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, password, first_name, last_name, is_parent, education, occupation, **extra_fields):
+    def create_user(self, email, password, first_name, last_name, is_parent, **extra_fields):
         if not email:
             raise ValueError(_('The Email must be set'))
         email = self.normalize_email(email)
-        user = self.model(email=email, first_name=first_name, last_name=last_name, is_parent=is_parent, education=education, occupation=occupation, **extra_fields)
+        user = self.model(email=email, first_name=first_name, last_name=last_name, is_parent=is_parent, **extra_fields)
         user.set_password(password)
         user.save()
         return user
+
 
 
     def create_teacher(self, email, password, **extra_fields):

@@ -33,7 +33,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
 							<div className="cus_container mt content">
 								<div className="m-auto wid" data-aos="fade-down" data-aos-duration="600">
-									<p className="tag-line">Online learning Platform for B.E/B.Tech Engineering Students to study from experts and peer instructors.</p><br/><br/>
+									<p className="tag-line">Online learning Platform for B.E/B.Tech Engineering Students to study From Expert Faculty and Peer Instructors.</p><br/><br/>
 									<div className="row laga">											
 										<div className="col-sm-8">
 										<br/>

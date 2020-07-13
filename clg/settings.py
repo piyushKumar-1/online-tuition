@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+os.environ['SENDGRID_API_KEY'] = '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'
 
 
 # Quick-start development settings - unsuitable for production
@@ -132,10 +133,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('HOST_EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('HOST_EMAIL_PASSWORD')
+EMAIL_USE_TLS = True

@@ -53,21 +53,24 @@ export const login = (email, password) => (dispatch) => {
         payload: res.data,
       });
     }).catch(err => {
-	console.log(err)
+	    console.log(err)
 		window.alert("Login Failed");
 	})
 }
 
 
-export const register = ({email, password, first_name, last_name, is_parent, education, occupation }) => dispatch => {
+export const register = ({email, password, first_name, last_name, is_parent, education, occupation, course, department, year } ) => dispatch => {
 
 	const config = {
 		headers: {
 			'Content-type': 'application/json'
 		}
 	}
-	const body = JSON.stringify({email, password, first_name, last_name, is_parent, education, occupation})
-
+	console.log({email, password, first_name, last_name, is_parent, education, occupation, course, department, year }, 'yhi gand hai');
+	let resp = {email, password, first_name, last_name, is_parent, education:{course:course,department:department,year:year}, occupation:{occupation:occupation}}
+	console.log(resp, 'yhi gand hai');
+	const body = JSON.stringify(resp);
+	console.log(body)
 	axios.post('/api/auth/register', body, config)
 	.then(res => {
 		dispatch({
@@ -75,7 +78,8 @@ export const register = ({email, password, first_name, last_name, is_parent, edu
 			payload: res.data
 		});
 	}).catch(err => {
-		window.alert("Registration Failed");
+	console.log(err, err.response);
+		window.alert(err.response.data.email[0]);
 	})
 }
 

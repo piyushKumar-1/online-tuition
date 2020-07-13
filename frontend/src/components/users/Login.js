@@ -161,7 +161,7 @@ export class Login extends Component {
     return (
 
 
-      <div> 
+      <div>
         { this.state.reset ? resetBody : loginBody }
       </div>
     );

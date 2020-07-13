@@ -47,7 +47,7 @@ for (var i = 0; i < all.length; i++) {
 <script src="{% static "frontend/main.js" %}"></script>
 <script>
 		var i = 0;
-		var txt = ['Attend Classes Anywhere at your confortable time', 'Home Work And Assignment Help', 'Project Guidance']
+		var txt = ['Attend Classes Anywhere Anytime', 'Home Work And Assignment Help', 'Project Guidance']
 		var speed = 30;
 		var j = txt.length;
 		var k = 0;
@@ -55,7 +55,6 @@ for (var i = 0; i < all.length; i++) {
 		function clear(){
 			if (j <= txt[k].length && j>=0) {
 		    document.getElementById("msg").innerHTML = txt[k].slice(0,j);
-		    console.log(j)
 		    setTimeout(clear, speed);
 			j--;
 			    if(j==-1){

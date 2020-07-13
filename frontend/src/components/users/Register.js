@@ -11,9 +11,11 @@ export class Register extends Component {
     email: '',
     password: '',
     password2: '',
-    is_parent: false,
-    education:'',
+    is_parent: "false",
     occupation:'',
+    course: '',
+    department: '',
+    year: null,
     disabled: true,
     misMatch:false,
   };
@@ -25,9 +27,9 @@ export class Register extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { first_name, last_name, email, password, password2, is_parent, education, occupation } = this.state;
+    const { first_name, last_name, email, password, password2, is_parent, occupation, year, course, department } = this.state;
     if (password !== password2) {
-      
+
     } else {
       const newUser = {
         first_name,
@@ -35,14 +37,15 @@ export class Register extends Component {
         password,
         email,
         is_parent,
-        education,
         occupation,
+        course,
+        department,
+        year,
       };
       this.props.register(newUser);
     }
 
     var k = document.getElementsByClassName('modal-open')[0];
-    console.log(k);
     k.classList.remove('modal-open');
     k.style.padding = '0';
     k.style.overflowX = 'hidden';
@@ -52,30 +55,51 @@ export class Register extends Component {
   };
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    if(e.target.name=='course'){
+        this.setState({  year: null, department: '' })
+    }
+    this.setState({ [e.target.name]: e.target.value }, () => this.validate());
+
   }
 
+
+    validate = () => {
+         if(this.state.password!=this.state.password2){
+              this.setState({ misMatch: true, disabled: true });
+            } else {
+              this.setState({ misMatch: false });
+              if(this.state.password.length>=4 && this.state.email.length>=4 && this.state.password2.length>=4){
+                  this.setState({ disabled: false, misMatch: false });
+              } else {
+                this.setState({ disabled: true });
+
+              }
+
+            }
+         if(this.state.is_parent=='true' && this.state.occupation==''){
+          this.setState({ disabled: true });
+        } else if((this.state.course=='Other' || this.state.course=='Programming') && this.state.department==''){
+
+          this.setState({ disabled: true });
+        } else if(this.state.course=='Engineering' && (this.state.department=='' || this.state.year==null) ){
+
+          this.setState({ disabled: true });
+        } else if(this.state.course=='' && this.state.occupation==''){
+          this.setState({ disabled: true });
+        }
+
+    }
 
 
   onPass2Change = (e) => {
-    this.setState({ [e.target.name]: e.target.value }, () =>{
-        if(this.state.password!=this.state.password2){
-          this.setState({ misMatch: true, disabled: true });
-        } else {
-          this.setState({ misMatch: false });
-          if(this.state.password.length>=4 && this.state.email.length>=4 && this.state.password2.length>=4){
-              this.setState({ disabled: false, misMatch: false });
-          } else {
-            this.setState({ disabled: true });
-          }
-        }
-    });
+    this.setState({ [e.target.name]: e.target.value }, () => this.validate());
   }
+
 
   onTypeChange = (e) => {
     this.setState({ [e.target.name]: e.target.value})
     if(e.target.value == 'true'){
-        this.setState({ education: '' })
+        this.setState({ course: '', year: null, department: '' })
     } else {
         this.setState({ occupation: '' })
     }
@@ -85,7 +109,98 @@ export class Register extends Component {
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
-    const { first_name, last_name, email, password, password2, is_parent, education, occupation } = this.state;
+    const { first_name, last_name, email, password, password2, is_parent, occupation,year, department, course } = this.state;
+    const engineeringForm = (
+        <div>
+            <div className="form-group">
+              <label>Department</label>
+              <select className="form-control" name="department" onChange={this.onChange}
+                value={department}>
+                <option >Choose Department</option>
+                <option value="Aerospace">Aerospace</option>
+                <option value="Auto">Auto</option>
+                <option value="Biotech">Biotech</option>
+                <option value="Civil">Civil</option>
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="ECE">ECE</option>
+                <option value="EL">EL</option>
+                <option value="IT">IT</option>
+                <option value="Mechanical">Mechanical</option>
+              </select>
+            </div>
+            <div className="form-group">
+                  <label>Year</label>
+                  <select className="form-control" name="year" onChange={this.onChange}
+                    value={year}>
+                    <option >Choose Current Year</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+            </div>
+        </div>
+    )
+    const programmingForm = (
+        <div className="form-group">
+          <label>Language</label>
+          <select className="form-control" name="department" onChange={this.onChange}
+                value={department}>
+            <option >Choose Department</option>
+            <option value="C/C++">C/C++</option>
+            <option value="Java">Java</option>
+            <option value="Python">Python</option>
+            <option value="Web_Technologies">Web Technologies</option>
+          </select>
+        </div>
+    )
+
+    const otherForm = (
+        <div>
+            <div className="form-group">
+                <label>Type Your Course</label>
+                <input
+                type="text"
+                className="form-control"
+                name="department"
+                onChange={this.onChange}
+                value={department}
+                />
+            </div>
+        </div>
+    )
+
+    const k = () => { if(course=="Engineering") { return engineeringForm } else if(course=="Programming") { return programmingForm } else if(course=='Other'){ return otherForm }else {return ''}}
+
+    const educationForm = (
+        <div>
+            <div className="form-group">
+              <label>Course</label>
+              <select class="form-control" onChange={this.onChange} name="course" value={course}>
+                <option>Choose Course</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Programming">Programming</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            { k() }
+        </div>
+    )
+    const occupationForm = (
+        <div>
+            <div className="form-group">
+                <label>Occupatiom</label>
+                <input
+                type="text"
+                className="form-control"
+                name="occupation"
+                onChange={this.onChange}
+                value={occupation}
+                />
+            </div>
+        </div>
+    )
     return (
 
       <div className="m-auto">
@@ -119,16 +234,14 @@ export class Register extends Component {
               </div>
             </div>
 
-            <div className="form-group">
-              <label>{ this.state.is_parent=='true' ? "Occupation" : "Education" }</label>
-              <input
-                type="text"
-                className="form-control"
-                name={ this.state.is_parent=='true' ? "occupation" : "education" }
-                onChange={this.onChange}
-                value={ this.state.is_parent=='true' ? occupation : education }
-              />
-            </div>
+
+
+            { this.state.is_parent=='true' ? occupationForm : educationForm }
+
+
+
+
+
             <div className="form-group">
               <label>Email</label>
               <input

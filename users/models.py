@@ -8,8 +8,6 @@ from .managers import CustomUserManager
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
-    education = models.CharField(max_length=100, default='', blank=True)
-    occupation = models.CharField(max_length=100, default='', blank=True)
     is_parent = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -18,3 +16,13 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+class Occupation(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    occupation = models.CharField(max_length=100, blank=True)
+
+class Education(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    course = models.CharField(max_length=25, blank=True)
+    year = models.IntegerField(blank=True, null=True)
+    department = models.CharField(max_length=50, blank=True)

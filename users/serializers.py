@@ -8,16 +8,28 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import Util
-from .models import CustomUser
+from .models import CustomUser, Education, Occupation
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'first_name','last_name', 'email', 'occupation', 'education')
+        fields = ('id', 'first_name','last_name', 'email')
 
+class EducationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Education
+        fields = ('course', 'year', 'department')
+
+
+class OccupationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Occupation
+        fields = ('occupation',)
 
 
 class RegisterationSerializer(serializers.ModelSerializer):
+    education = EducationSerializer()
+    occupation = OccupationSerializer()
     class Meta:
         model = CustomUser
         fields = ('id', 'first_name', 'last_name', 'email', 'password', 'is_parent', 'education', 'occupation')
@@ -28,7 +40,19 @@ class RegisterationSerializer(serializers.ModelSerializer):
         print(validated_data)
         email = validated_data.pop('email')
         password = validated_data.pop('password')
-        user = CustomUser.objects.create_user(email, password, **validated_data)
+        occupation = validated_data.pop('occupation')
+        education = validated_data.pop('education')
+        try:
+            user = CustomUser.objects.create_user(email, password, **validated_data)
+        except:
+            raise serializers.ValidationError({'error': "User Already Exist"})
+
+        if validated_data['is_parent']:
+            print("occupation")
+            Occupation.objects.create(user=user, **occupation)
+        else:
+            print("education")
+            Education.objects.create(user=user, **education)
 
         return user
 
@@ -65,8 +89,8 @@ class ResetPasswordSerializerEmailRequest(serializers.Serializer):
             token = PasswordResetTokenGenerator().make_token(user)
             absurl = 'http://127.0.0.1:8000/reset/confirmation/'+uid64+"/"+token
             email_body = 'Hello, '+user.first_name+'\n Use link below to change the password\n'+absurl
-            data = {'email_body': email_body, 'to_email': (user.email,), 'email_subject': 'Reset your password'}
-            Util.send_mail(data)
+            data = {'email_body': email_body, 'to_email': user.email, 'email_subject': 'Reset your password'}
+            Util.sendMail(data)
             return data
         print("kkk")
         raise serializers.ValidationError("User Doesn't Exist")
