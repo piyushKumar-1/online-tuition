@@ -13,7 +13,7 @@ from .models import CustomUser, Education, Occupation
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'first_name','last_name', 'email')
+        fields = ('id', 'first_name','last_name', 'email', 'is_superuser')
 
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -87,7 +87,7 @@ class ResetPasswordSerializerEmailRequest(serializers.Serializer):
             user = CustomUser.objects.get(email=email)
             uid64 = urlsafe_base64_encode(smart_bytes(user.id))
             token = PasswordResetTokenGenerator().make_token(user)
-            absurl = 'http://127.0.0.1:8000/reset/confirmation/'+uid64+"/"+token
+            absurl = self.context['request'].META['HTTP_HOST']+'/reset/confirmation/'+uid64+"/"+token
             email_body = 'Hello, '+user.first_name+'\n Use link below to change the password\n'+absurl
             data = {'email_body': email_body, 'to_email': user.email, 'email_subject': 'Reset your password'}
             Util.sendMail(data)

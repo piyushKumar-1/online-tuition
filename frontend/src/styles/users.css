@@ -7,3 +7,12 @@
 		margin-bottom:100px !important;
 	}
 }
+
+.btn-showpass{
+	transition: all .2s;
+	width: max-content;
+}
+
+.btn-showpass:hover{
+	transform: scale(1.08);
+}

@@ -6,6 +6,7 @@ import Home from './Home.js';
 import Footer from './Footer.js';
 import AboutUs from './common/AboutUs.js';
 import Practice from './common/Practice.js';
+import Courses from './common/Courses.js';
 import { Provider, useSelector } from 'react-redux';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store.js';
@@ -34,6 +35,9 @@ export class App extends React.Component {
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route exact path="/about" component={AboutUs} />
+                            <Route exact path="/join" component={AboutUs} />
+                            <Route exact path="/contact" component={AboutUs} />
+                            <Route exact path="/courses" component={Courses} />
                             <Route exact path="/practices" component={Practice} />
                             <Route exact path="/login" component={LoginComp} />
                             <Route exact path="/register" component={RegisterComp} />

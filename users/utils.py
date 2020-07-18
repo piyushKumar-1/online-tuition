@@ -1,9 +1,24 @@
-from django.core.mail import send_mail
-
-
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 
 class Util:
     @staticmethod
     def sendMail(data):
-        send_mail(data['email_subject'], data['email_body'],'pkkapoor98@gmail.com', [data['to_email']], fail_silently=False)
+
+        message = Mail(
+            from_email='pkkapoor98@gmail.com',
+            to_emails=[data['to_email']],
+            subject=data['email_subject'],
+            plain_text_content=data['email_body'])
+        try:
+            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            response = sg.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+        except Exception as e:
+            print(e)
+
+

@@ -9,7 +9,8 @@ export const RESET_SUCCESS = "RESET_SUCCESS";
 export const SET_DEFAULT = "SET_DEFAULT";
 export const CHANGED_SUCCESS = "CHANGED_SUCCESS";
 export const CHECK_SUCCESS = "CHECK_SUCCESS";
-
+export const GOT_COURSES = "GOT_COURSES";
+export const GOT_SUB_COURSES = "GOT_SUB_COURSES";
 
 
 export const RESET_ERROR = "RESET_ERROR";

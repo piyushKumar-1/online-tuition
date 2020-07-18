@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html><head>
+    <title>Iconfinder • Editor</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="robots" content="noindex">
+
+    <link rel="apple-touch-icon" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.iconfinder.com/static/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.iconfinder.com/static/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://cdn.iconfinder.com/static/img/favicons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://cdn.iconfinder.com/static/img/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.iconfinder.com/static/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="https://cdn.iconfinder.com/static/img/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="https://cdn.iconfinder.com/static/img/favicons/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="Iconfinder%20%E2%80%A2%20Editor_files/editor.css" type="text/css">
+    <link href="Iconfinder%20%E2%80%A2%20Editor_files/css.css" rel="stylesheet">
+
+    <script type="text/javascript" async="" src="Iconfinder%20%E2%80%A2%20Editor_files/ak03zhw0.js"></script><script async="" src="Iconfinder%20%E2%80%A2%20Editor_files/analytics.js"></script><script type="text/javascript" src="Iconfinder%20%E2%80%A2%20Editor_files/editor.js"></script>
+    <script src="Iconfinder%20%E2%80%A2%20Editor_files/raven.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        Raven.config('https://a0dedd67500e4308a26686cd26651177@sentry.io/209748').install({
+          whitelistUrls: [/iconfinder\.com/]
+        });
+    </script>
+</head>
+<body>
+    <div id="svg_editor">
+
+        <input id="zoom" size="3" value="126" type="hidden" readonly="readonly" autocomplete="off">
+
+        <div id="rulers">
+            <div id="ruler_corner"></div>
+            <div id="ruler_x">
+                <div id="ruler_x_cursor"></div>
+                <div style="width: 3390px;">
+                    <canvas height="15" width="3390"></canvas>
+                </div>
+            </div>
+            <div id="ruler_y">
+                <div id="ruler_y_cursor"></div>
+                <div style="height: 1624px;">
+                    <canvas width="15" height="1624"></canvas>
+                </div>
+            </div>
+        </div>        <!-- #rulers -->
+
+        <div id="workarea" style="overflow: hidden; line-height: 812px;" class="select">
+            <div id="svgcanvas" style="position: relative; width: 1695px; height: 812px;">
+
+            <svg width="1695" height="812" id="svgroot" xlinkns="http://www.w3.org/1999/xlink" style="display: block;"><svg id="canvasBackground" width="681.7632976896" height="681.7632976896" x="506.6183511552" y="65.1183511552" overflow="visible" style="pointer-events:none"><defs id="placeholder_defs"><pattern id="checkerPattern" patternUnits="userSpaceOnUse" x="0" y="0" width="20" height="20" viewBox="0 0 10 10"><rect x="0" y="0" width="10" height="10" fill="#fff"></rect><rect x="0" y="0" width="5" height="5" fill="#eee"></rect><rect x="5" y="5" width="5" height="5" fill="#eee"></rect></pattern><pattern id="gridpattern" patternUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><image x="0" y="0" width="100" height="100"></image></pattern></defs><rect width="100%" height="100%" x="0" y="0" stroke="#000" fill="url(#checkerPattern)" style="pointer-events:none"></rect></svg><svg height="681.7632976896" viewBox="0 0 512 512" width="681.7632976896" xlink="http://www.w3.org/1999/xlink" id="svgcontent" overflow="hidden" x="506.6183511552" y="65.1183511552"><defs></defs><g style="pointer-events:none"><title style="pointer-events:inherit">background</title><rect x="-1" y="-1" width="582" height="402" id="canvas_background" fill="none" style="pointer-events:inherit"></rect></g><g style="pointer-events:all"><title style="pointer-events:inherit">Layer 1</title><path d="M61.35,431.07999C50.091,410.13399 50.091,410.13399 37.904,403.24399C34.963,401.58199 31.484,399.61299 27.107,396.98199C23.588,412.50599 21.594,428.60299 21.319,445.11299L69.634,445.11299C67.749,442.52699 65.795,439.32999 63.661,435.37499L61.35,431.07999z" id="svg_2" fill-opacity="1" fill="#1fc41f"></path><path d="M111.698,393.55701C121.228,387.37401 122.901,386.60001 127.793,384.61401C129.934,383.74601 132.865,382.55501 137.857,380.25401C140.357,379.12601 154.838,370.44601 157.479,368.25901C162.632,358.38001 162.655,358.01501 162.967,353.11601C163.105,350.95401 163.294,347.99101 163.886,343.38201C166.809,320.65301 159.678,318.46201 142.452,313.16901C139.539,312.27401 136.528,311.34901 133.284,310.23001C129.573,308.94101 126.055,308.58701 122.653,308.24501C113.691,307.34401 104.424,306.41001 102.066,287.18201C101.24,280.54001 100.402,276.35001 99.704,273.71601C75.291,295.62701 55.476,322.55501 41.866,352.85001L41.866,264.14401C46.372,262.49901 49.604,258.17401 49.604,253.09601C49.604,246.64201 44.338,241.39101 37.866,241.39101C31.396,241.39101 26.133,246.64201 26.133,253.09601C26.133,258.17401 29.363,262.49801 33.866,264.14301L33.866,372.38301C33.866,372.58201 33.897,372.77401 33.925,372.96501C32.144,378.18001 30.531,383.47301 29.11,388.84201C34.419,392.08401 38.489,394.38501 41.843,396.28101C56.043,404.31001 56.508,405.17401 68.398,427.29401L70.704,431.58101C74.522,438.66101 77.569,442.90401 80.434,445.11501L92.008,445.11501C93.439,444.38301 94.992,443.43001 96.661,442.24201C96.711,441.05701 96.579,438.85901 96.47,437.02301C95.793,425.72101 94.534,404.686 111.698,393.55701z" id="svg_3" fill-opacity="1" fill="#1a5baf"></path><path d="M219.254,208.315C220.465,208.127 221.68,207.951 222.896,207.782C223.521,207.695 224.146,207.611 224.772,207.529C225.821,207.391 226.871,207.255 227.923,207.131C228.84,207.022 229.759,206.925 230.678,206.827C231.509,206.739 232.338,206.642 233.171,206.561C234.872,206.396 236.577,206.253 238.284,206.123C238.933,206.074 239.584,206.035 240.235,205.991C241.449,205.909 242.664,205.833 243.881,205.768C244.556,205.732 245.233,205.701 245.909,205.67C247.171,205.614 248.435,205.568 249.7,205.531C250.289,205.514 250.878,205.493 251.468,205.48C253.31,205.439 255.153,205.413 257,205.413C258.949,205.413 260.893,205.439 262.835,205.484C263.445,205.498 264.052,205.526 264.66,205.545C265.995,205.586 267.329,205.629 268.66,205.691C269.379,205.725 270.096,205.771 270.814,205.81C272.029,205.877 273.245,205.947 274.458,206.033C275.232,206.087 276.005,206.152 276.778,206.213C277.919,206.304 279.058,206.399 280.196,206.506C281.032,206.584 281.866,206.671 282.7,206.757C283.746,206.866 284.793,206.981 285.836,207.103C286.762,207.211 287.686,207.326 288.607,207.444C289.513,207.561 290.418,207.684 291.322,207.811C292.385,207.959 293.445,208.113 294.503,208.275C295.188,208.38 295.871,208.492 296.554,208.604C297.834,208.812 299.113,209.025 300.387,209.252C300.701,209.309 301.015,209.369 301.328,209.427C315.471,212.011 329.281,215.831 342.632,220.832C342.507,199.025 332.059,178.785 314.444,165.904C306.371,176.512 295.369,184.252 282.982,188.357C282.5,188.518 282.019,188.684 281.532,188.834C281.001,188.996 280.464,189.141 279.928,189.29C279.309,189.463 278.689,189.632 278.062,189.787C277.573,189.908 277.083,190.018 276.589,190.128C275.902,190.281 275.212,190.423 274.518,190.554C274.055,190.641 273.592,190.726 273.127,190.803C272.385,190.927 271.639,191.032 270.889,191.13C270.455,191.187 270.022,191.248 269.586,191.296C268.764,191.387 267.934,191.453 267.104,191.513C266.733,191.54 266.365,191.577 265.993,191.597C264.793,191.663 263.586,191.702 262.369,191.702S259.944,191.662 258.745,191.597C258.373,191.576 258.005,191.539 257.635,191.513C256.803,191.453 255.974,191.387 255.151,191.296C254.715,191.248 254.283,191.187 253.85,191.13C253.1,191.032 252.352,190.926 251.61,190.803C251.146,190.726 250.683,190.641 250.221,190.554C249.526,190.423 248.835,190.281 248.147,190.128C247.655,190.019 247.165,189.908 246.677,189.788C246.049,189.633 245.427,189.463 244.806,189.289C244.271,189.141 243.736,188.996 243.206,188.834C242.716,188.684 242.233,188.516 241.748,188.355C229.364,184.25 218.364,176.511 210.292,165.905C193.704,178.034 183.472,196.699 182.235,217.054C194.038,213.266 206.161,210.381 218.521,208.432C218.765,208.394 219.009,208.354 219.254,208.315z" id="svg_4" stroke-dasharray="none" fill-opacity="1" fill="#ea9341"></path><path d="M237.30099,177.935C237.38999,177.978 237.47899,178.025 237.56899,178.068C238.23299,178.387 238.90799,178.687 239.58699,178.981C239.90299,179.118 240.21999,179.252 240.53799,179.383C241.12399,179.625 241.71399,179.86 242.30899,180.083C242.78199,180.259 243.25899,180.422 243.73699,180.585C244.22499,180.753 244.71099,180.927 245.20499,181.083C246.17199,181.385 247.14799,181.666 248.13299,181.916C248.42599,181.991 248.72599,182.051 249.02099,182.122C249.78799,182.305 250.55699,182.478 251.33399,182.63C251.69899,182.701 252.06799,182.763 252.43699,182.827C253.15999,182.953 253.88599,183.068 254.61599,183.166C254.99199,183.217 255.36799,183.267 255.74599,183.31C256.51099,183.398 257.28099,183.467 258.05199,183.525C258.38699,183.55 258.71899,183.582 259.05399,183.602C260.15499,183.665 261.25999,183.705 262.36999,183.705S264.58599,183.665 265.68599,183.602C266.02199,183.582 266.35399,183.55 266.68799,183.525C267.45899,183.467 268.22799,183.399 268.99399,183.31C269.37199,183.267 269.74799,183.217 270.12499,183.166C270.85399,183.067 271.57999,182.953 272.30299,182.827C272.67199,182.763 273.04099,182.701 273.40699,182.629C274.18199,182.478 274.95099,182.305 275.71799,182.122C276.01399,182.051 276.31399,181.991 276.60899,181.916C277.59299,181.665 278.56799,181.385 279.53599,181.083C280.03099,180.928 280.51699,180.753 281.00699,180.584C281.48399,180.421 281.95899,180.258 282.43199,180.083C283.02799,179.86 283.61799,179.625 284.20299,179.383C284.52099,179.253 284.83799,179.118 285.15299,178.982C285.83199,178.688 286.50699,178.387 287.17299,178.067C287.26199,178.025 287.34799,177.98 287.43599,177.937C306.57599,168.615 319.79699,148.971 319.79699,126.293C319.79699,94.639 294.036,68.887 262.372,68.887C230.70699,68.887 204.947,94.639 204.947,126.293C204.94299,148.96899 218.16299,168.612 237.30099,177.935z" id="svg_5" stroke-dasharray="none" fill-opacity="1" fill="#f7cfaa"></path><path d="M480.228,373.46399C480.326,373.11699 480.395,372.75799 480.395,372.38099L480.395,264.14099C484.898,262.49599 488.127,258.17199 488.127,253.09399C488.127,246.63999 482.864,241.38899 476.395,241.38899C469.913,241.38899 464.638,246.63999 464.638,253.09399C464.638,258.17499 467.878,262.50099 472.395,264.14499L472.395,353.46599C460.259,326.23199 443.114,301.70299 422.121,281.07099C418.667,283.51899 412.939,287.38599 405.517,291.71499C403.639,292.84799 398.541,300.43199 397.597,303.48299C395.465,310.40699 391.94,314.63499 387.122,316.04899C377.962,318.73699 367.67,310.04999 360.156,303.70599C358.092,301.96299 355.306,299.61099 354.177,299.04699C334.862,298.78299 331.001,301.81499 319.691,310.66099C317.146,312.64999 314.263,314.90599 310.795,317.44399C308.616,319.03999 307.4,321.86899 307.182,325.85099C306.623,336.00899 312.702,349.61299 316.914,353.47499C323.256,359.24899 327.316,363.30599 330.282,366.26899C337.779,373.75699 337.779,373.75699 354.396,379.16299C356.126,379.72599 358.029,380.34399 360.125,381.03099C371.049,384.62699 375.066,385.01099 377.725,385.26499C382.455,385.71799 384.581,386.23199 397.766,393.98599C407.376,399.63099 410.219,405.13799 412.727,409.99899C414.237,412.92399 415.54,415.44999 418.283,418.15899C420.649,420.49399 423.185,423.44299 425.871,426.56399C432.511,434.28399 440.773,443.88999 447.413,444.65099C456.619,445.68499 457.844,443.65299 458.586,438.40099C459.451,432.29799 481.133,407.21399 487.58,400.18899C485.647,391.07501 483.181,382.15799 480.228,373.46399z" id="svg_6" fill-opacity="1" fill="#287bc9"></path><path d="M489.45001,409.979C481.37701,419.233 467.78201,436.058 466.48201,439.691C466.17001,441.809 465.66201,443.594 465.00301,445.114L492.66601,445.114C492.46701,433.16599 491.37201,421.43399 489.45001,409.979z" id="svg_7" fill-opacity="1" fill="#1bd151"></path><path d="M273.505,431.98199C265.787,416.67499 265.859,412.37899 266.688,405.51099C267.07,402.34299 267.502,398.75099 266.708,392.02799C265.96,389.04899 253.733,380.26899 247.997,380.12099C247.415,382.54299 248.018,387.09999 248.652,391.89499C250.247,403.957 252.432,420.47599 243.692,438.99999C242.912,440.67099 242.129,442.78299 241.416,445.11199L291.93501,445.11199C283.76001,442.08499 276.461,437.845 273.505,431.98199z" id="svg_8" fill-opacity="1" fill="#2a7cc9"></path><path d="M419.80499,431.78101C417.22999,428.78701 414.79699,425.95901 412.66199,423.85101C409.01399,420.24801 407.20999,416.75201 405.61799,413.66701C403.31599,409.20701 401.32799,405.35501 393.71299,400.88301C381.42399,393.65601 380.20899,393.54001 376.96299,393.22901C373.94899,392.94101 369.39699,392.50401 357.62899,388.63101C355.54299,387.94701 353.64899,387.33101 351.92199,386.77101C334.17399,380.99801 333.48199,380.77201 324.62899,371.92901C321.71899,369.02201 317.73299,365.04001 311.51799,359.38101C305.26399,353.64801 298.52499,337.56701 299.19399,325.411C299.54599,319.013 301.92299,314.025 306.06899,310.989C309.43599,308.524 312.26599,306.311 314.76299,304.358C326.74599,294.987 332.19999,290.704 354.69399,291.051C357.61099,291.084 360.51199,293.533 365.31899,297.592C370.74899,302.176 379.83499,309.851 384.86999,308.371C387.45999,307.611 389.06299,304.009 389.95399,301.121C391.15399,297.241 397.25799,287.238 401.50599,284.791C407.81399,281.113 412.82299,277.799 416.19099,275.457C409.47999,269.301 402.40699,263.535 395.01799,258.179L395.01799,160.07501C399.52399,158.45701 402.75599,154.20301 402.75599,149.20801C402.75599,142.84501 397.48999,137.66801 391.01799,137.66801C384.53899,137.66801 379.26599,142.84501 379.26599,149.20801C379.26599,154.20501 382.50399,158.46001 387.01799,160.07701L387.01799,252.62701C354.41499,230.97701 316.152,217.20701 274.95099,214.09001C274.93999,214.08901 274.92999,214.08801 274.91999,214.08801C273.12699,213.95301 271.32799,213.84301 269.52499,213.74901C269.31399,213.73801 269.10499,213.72201 268.89399,213.71101C267.24799,213.62901 265.59299,213.57201 263.93799,213.52401C263.59699,213.51401 263.25799,213.49601 262.91699,213.48801C260.94999,213.43901 258.97899,213.41401 256.99999,213.41401C255.12899,213.41401 253.26399,213.44101 251.40299,213.48401C250.88199,213.49601 250.36199,213.51701 249.84199,213.53201C248.45899,213.57401 247.07799,213.62301 245.70099,213.68801C245.17899,213.71301 244.65799,213.74101 244.13599,213.76901C242.66899,213.84901 241.20399,213.93901 239.74399,214.04501C239.37799,214.07101 239.01299,214.09701 238.64799,214.12501C198.66799,217.21801 161.464,230.34101 129.52799,250.95701L129.52799,160.39C134.03099,158.749 137.26099,154.437 137.26099,149.374C137.26099,142.92 131.99799,137.67 125.52799,137.67C119.05499,137.67 113.78999,142.92 113.78999,149.374C113.78999,154.438 117.02199,158.75 121.52799,160.391L121.52799,256.354C116.28199,260.052 111.18799,263.951 106.26699,268.053C107.74799,271.821 108.94399,277.668 110.00399,286.2C111.58499,299.089 115.05899,299.438 123.45299,300.283C127.13399,300.654 131.30699,301.074 135.89899,302.668C139.00699,303.74 141.95299,304.647 144.80099,305.522C162.00899,310.809 175.60199,314.986 171.81899,344.401C171.25899,348.756 171.07999,351.571 170.94899,353.626C170.54899,359.902 170.30399,360.976 164.31399,372.45C162.48099,375.962 141.37599,387.442 141.17599,387.532C136.04499,389.899 133.01299,391.129 130.80099,392.027C126.49299,393.776 125.33499,394.245 116.04999,400.269C102.79799,408.862 103.83499,426.19 104.45399,436.543C104.68299,440.362 104.84699,443.109 104.28699,445.113L133.94099,445.113C135.63699,443.644 138.26599,442.418 142.26999,442.708C142.33699,442.713 142.38799,442.715 142.43799,442.715C144.16199,442.715 146.48999,440.007 148.74099,437.388C152.68299,432.802 157.58899,427.095 165.66799,427.095C177.68199,427.095 185.78799,433.47 188.88099,445.11399L233.08999,445.11399C234.07199,441.50999 235.23199,438.20699 236.44699,435.60299C244.18999,419.192 242.18299,404.022 240.71799,392.94499C239.79199,385.94599 239.06099,380.41799 240.89299,376.21399C241.43699,374.97599 243.19499,372.11999 247.84899,372.11999C256.54199,372.11999 273.74899,383.27899 274.65099,391.10099C275.55699,398.76199 275.04299,403.03599 274.62899,406.46999C274.00299,411.65999 273.65799,414.52099 280.64799,428.38099C284.52499,436.06899 305.10299,441.79899 322.58199,443.86999C324.27499,444.07399 326.00999,444.49999 327.75399,445.11299L432.34298,445.11299C427.92899,441.22198 423.73599,436.353 419.80499,431.78101z" id="svg_9" stroke-dasharray="none" fill-opacity="1" fill="#28c928"></path><path d="M165.752,435.095C161.261,435.095 158.127,438.741 154.808,442.603C154.082,443.447 153.351,444.297 152.599,445.114L180.557,445.114C178.162,438.30399 173.369,435.095 165.752,435.095z" id="svg_10" fill-opacity="1" fill="#1f2dc4"></path></g></svg><g id="selectorParentGroup" transform="translate(506.6183511552,65.1183511552)"><rect id="selectorRubberBand" fill="none" stroke="#666" stroke-dasharray="3,2" display="none" style="pointer-events:none"></rect><g id="selectorGroup0" transform="" display="none"><path id="selectedBox0" fill="none" stroke="#4F80FF" shape-rendering="crispEdges" style="pointer-events:none" d="M202.19608749677892,578.3589899228264 L241.42410234654767,578.3589899228264 241.42410234654767,593.6999957202953 202.19608749677892,593.6999957202953z"></path><g display="none"><circle id="selectorGrip_rotate_nw" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(https://cdn.iconfinder.com/editor/images/rotate.png) 12 12, auto;" cx="198.19608749677892" cy="574.3589899228264"></circle><circle id="selectorGrip_rotate_ne" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(https://cdn.iconfinder.com/editor/images/rotate.png) 12 12, auto;" cx="245.42410234654767" cy="574.3589899228264"></circle><circle id="selectorGrip_rotate_se" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(https://cdn.iconfinder.com/editor/images/rotate.png) 12 12, auto;" cx="245.42410234654767" cy="597.6999957202953"></circle><circle id="selectorGrip_rotate_sw" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(https://cdn.iconfinder.com/editor/images/rotate.png) 12 12, auto;" cx="198.19608749677892" cy="597.6999957202953"></circle><rect id="selectorGrip_resize_nw" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:nw-resize" pointer-events="all" x="198" y="574"></rect><rect id="selectorGrip_resize_n" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:n-resize" pointer-events="all" x="218" y="574"></rect><rect id="selectorGrip_resize_ne" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:ne-resize" pointer-events="all" x="237" y="574"></rect><rect id="selectorGrip_resize_e" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:e-resize" pointer-events="all" x="237" y="582"></rect><rect id="selectorGrip_resize_se" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:se-resize" pointer-events="all" x="237" y="590"></rect><rect id="selectorGrip_resize_s" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:s-resize" pointer-events="all" x="218" y="590"></rect><rect id="selectorGrip_resize_sw" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:sw-resize" pointer-events="all" x="198" y="590"></rect><rect id="selectorGrip_resize_w" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:w-resize" pointer-events="all" x="198" y="582"></rect></g></g><g id="pathpointgrip_container"><rect id="pathpointgrip_1" display="inline" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="546.9878853437258" y="561.8868446818848"></rect><line id="ctrlLine_1c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="555.5704831627781" y1="570.959475150385" x2="558.9992894398418" y2="574.9461766297266" display="inline"></line><circle id="ctrlpointgrip_1c1" display="inline" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="555.5704831627781" cy="570.959475150385"></circle><line id="ctrlLine_1c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="552.3307980359367" y1="567.1937942847217" x2="549.4878853437258" y2="564.3868446818848" display="inline"></line><circle id="ctrlpointgrip_1c2" display="inline" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="552.3307980359367" cy="567.1937942847217"></circle><path id="segline_1" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M0,0 0,0"></path><rect id="pathpointgrip_2" display="inline" width="5" height="5" fill="#fff" stroke="#4F80FF" shape-rendering="crispEdges" stroke-width="1" cursor="move" style="pointer-events:all" xlink:title="Drag node to move it. Double-click node to change segment type" x="537.6083052723886" y="548.3261592672904"></rect><line id="ctrlLine_2c1" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="544.6303081939043" y1="559.5892060143533" x2="549.4878853437258" y2="564.3868446818848" display="inline"></line><circle id="ctrlpointgrip_2c1" display="inline" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="544.6303081939043" cy="559.5892060143533"></circle><line id="ctrlLine_2c2" stroke="#4F80FF" stroke-width="1" style="pointer-events:none" x1="542.2281770050155" y1="554.9340380715058" x2="540.1083052723886" y2="550.8261592672904" display="inline"></line><circle id="ctrlpointgrip_2c2" display="inline" r="3" fill="#4F80FF" stroke="#4F80FF" stroke-opacity="0" stroke-width="3" cursor="move" style="pointer-events:all" xlink:title="Drag control point to adjust curve properties" cx="542.2281770050155" cy="554.9340380715058"></circle><path id="segline_2" display="none" fill="none" stroke="#0ff" stroke-opacity="1" shape-rendering="crispEdges" stroke-width="2" style="pointer-events:none" d="M0,0 0,0"></path></g></g></svg></div>
+        </div>        <!-- #workarea -->
+
+        <div id="menu_bar" class="">
+            <div class="menu">
+                <a href="https://www.iconfinder.com/icons/3990109" id="logo">
+                    <img src="Iconfinder%20%E2%80%A2%20Editor_files/logo.svg" alt="Iconfinder">
+                </a>
+            </div>
+
+            <div class="menu open">
+                <div class="menu_title">File</div>
+                <div class="menu_list" id="file_menu">
+                    <div id="tool_clear" class="menu_item">New Document</div>
+                    <div id="tool_open" class="menu_item" style=""><input type="file"><div id="fileinputs"></div>Open SVG...</div>
+                </div>
+            </div>
+
+            <div class="menu">
+                <div class="menu_title">Edit</div>
+                <div class="menu_list" id="edit_menu">
+                    <div class="menu_item" id="tool_undo">Undo <span class="shortcut">Ctrl+Z</span></div>
+                    <div class="menu_item disabled" id="tool_redo">Redo <span class="shortcut">Ctrl+Y</span></div>
+                    <div class="separator"></div>
+                    <div class="menu_item action_selected" id="tool_cut">Cut <span class="shortcut">Ctrl+X</span></div>
+                    <div class="menu_item action_selected" id="tool_copy">Copy <span class="shortcut">Ctrl+C</span></div>
+                    <div class="menu_item action_selected" id="tool_paste">Paste <span class="shortcut">Ctrl+V</span></div>
+                    <div class="menu_item action_selected" id="tool_clone">Duplicate <span class="shortcut">Ctrl+D</span></div>
+                    <div class="menu_item action_selected" id="tool_delete">Delete <span>⌫</span></div>
+                </div>
+            </div>
+
+            <div class="menu" id="export_menu">
+                <div class="menu_title"><i class="icon icon_download"></i> Download icon</div>
+                <div class="menu_list">
+                    <div class="menu_item" id="tool_save" style="">SVG (Vector) <span class="shortcut" style="">Ctrl+S</span></div>
+                    <div class="separator"></div>
+                    <div class="menu_item tool_export" data-size="16">PNG - 16x16</div>
+                    <div class="menu_item tool_export" data-size="20">PNG - 20x20</div>
+                    <div class="menu_item tool_export" data-size="24">PNG - 24x24</div>
+                    <div class="menu_item tool_export" data-size="32">PNG - 32x32</div>
+                    <div class="menu_item tool_export" data-size="48">PNG - 48x48</div>
+                    <div class="menu_item tool_export" data-size="64">PNG - 64x64</div>
+                    <div class="menu_item tool_export" data-size="128">PNG - 128x128</div>
+                    <div class="menu_item tool_export" data-size="256">PNG - 256x256</div>
+                    <div class="menu_item tool_export" data-size="512">PNG - 512x512</div>
+                </div>
+            </div>
+
+            <div class="menu">
+                <div class="menu_title">Object</div>
+                <div class="menu_list" id="object_menu">
+                    <div class="menu_item action_selected" id="tool_move_top">Bring to Front <span class="shortcut">Ctrl+⇧↑</span></div>
+                    <div class="menu_item action_selected" id="tool_move_up">Bring Forward <span class="shortcut">Ctrl+↑</span></div>
+                    <div class="menu_item action_selected" id="tool_move_down">Send Backward <span class="shortcut">Ctrl+↓</span></div>
+                    <div class="menu_item action_selected" id="tool_move_bottom">Send to Back <span class="shortcut">Ctrl+⇧↓</span></div>
+                    <div class="separator"></div>
+                    <div class="menu_item action_multi_selected disabled" id="tool_group">Group Elements <span class="shortcut">Ctrl+G</span></div>
+                    <div class="menu_item action_group_selected disabled" id="tool_ungroup">Ungroup Elements <span class="shortcut">Ctrl+⇧G</span></div>
+                    <div class="separator"></div>
+                    <div class="menu_item action_path_convert_selected disabled" id="tool_topath">Convert to Path</div>
+                    <div class="menu_item action_path_selected" id="tool_reorient">Reorient path</div>
+                </div>
+            </div>
+
+            <div class="menu">
+                <div class="menu_title">Zoom</div>
+                <div class="menu_list" id="zoom_menu">
+                    <div class="menu_item">10%</div>
+                    <div class="menu_item">25%</div>
+                    <div class="menu_item">50%</div>
+                    <div class="menu_item">75%</div>
+                    <div class="menu_item">100%</div>
+                    <div class="menu_item">150%</div>
+                    <div class="menu_item">200%</div>
+                    <div class="menu_item">300%</div>
+                    <div class="menu_item">400%</div>
+                    <div class="menu_item">600%</div>
+                    <div class="menu_item">800%</div>
+                    <div class="menu_item">1600%</div>
+                    <div class="separator"></div>
+                    <div class="menu_item selected" id="zoom_fit">Zoom to fit</div>
+                </div>
+            </div>
+
+            <div class="menu">
+                <div class="menu_title">Help</div>
+                <div class="menu_list" id="help_menu">
+                    <div class="menu_item"><a href="http://support.iconfinder.com/en/collections/65614-icon-editor" target="_blank">How to use the editor</a></div>
+                    <div class="menu_item"><a href="http://support.iconfinder.com/purchasing-and-downloading/what-icon-format-should-i-use" target="_blank">What format should I use</a></div>
+                    <div class="menu_item"><a href="http://support.iconfinder.com/icon-editor/how-to-change-the-color-of-icons-using-icon-editor" target="_blank">How to change the color of icons</a></div>
+                    <div class="menu_item"><a href="http://support.iconfinder.com/icon-editor/working-with-fill-and-stroke-color" target="_blank">Working with fill and stroke color</a></div>
+                </div>
+            </div>
+        </div>        <!-- #menu_bar -->
+
+        <div id="tools_top" class="tools_panel">
+            <div id="canvas_panel" class="context_panel" style="display: none;">
+                <h4 class="clearfix">Canvas</h4>
+
+                <label data-title="Change canvas width" class="draginput">
+                    <input size="3" id="canvas_width" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="28.571428571428573" data-domain="70" data-cursor="false" value="512">
+                    <span class="icon_label">Width</span>
+                </label>
+
+                <label data-title="Change canvas height" class="draginput">
+                    <input id="canvas_height" size="3" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="28.571428571428573" data-domain="70" data-cursor="false" value="512">
+                    <span class="icon_label">Height</span>
+                </label>
+
+                <label data-title="Change canvas color" class="draginput">
+                    <span>Color</span>
+                    <div id="color_canvas_tools">
+                        <div class="color_tool active" id="tool_canvas">
+                            <div class="color_block">
+                                <div id="canvas_bg"></div>
+                                <div id="canvas_color"><svg xmlns="http://www.w3.org/2000/svg" width="60.5"><rect width="100%" height="100%" fill="none" opacity="1"></rect>            <defs><linearGradient id="gradbox_"></linearGradient></defs></svg></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <div class="draginput">
+                    <span>Sizes</span>
+                    <select id="resolution" autocomplete="off">
+                        <option id="selectedPredefined" selected="selected">Custom</option>
+                        <option>640x480</option>
+                        <option>800x600</option>
+                        <option>1024x768</option>
+                        <option>1280x960</option>
+                        <option>1600x1200</option>
+                        <option id="fitToContent" value="content">Fit to Content</option>
+                    </select>
+                    <div class="caret"></div>
+                    <label id="resolution_label">Custom</label>
+                </div>
+
+            </div>
+
+            <div id="rect_panel" class="context_panel" style="display: none;">
+                <h4 class="clearfix">Rectangle</h4>
+                <label class="draginput">
+                    <input id="rect_x" class="attr_changer" data-title="Change X coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>X</span>
+                </label>
+                <label class="draginput">
+                    <input id="rect_y" class="attr_changer" data-title="Change Y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Y</span>
+                </label>
+                <label id="rect_width_tool attr_changer" data-title="Change rectangle width" class="draginput">
+                    <input id="rect_width" class="attr_changer" size="3" data-attr="width" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span class="icon_label">Width</span>
+                </label>
+                <label id="rect_height_tool" data-title="Change rectangle height" class="draginput">
+                    <input id="rect_height" class="attr_changer" size="3" data-attr="height" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span class="icon_label">Height</span>
+                </label>
+            </div>
+
+            <div id="path_panel" class="context_panel clearfix" style="display: block;">
+                <h4 class="clearfix">Path</h4>
+                <label class="draginput">
+                    <input id="path_x" class="attr_changer" data-title="Change ellipse's cx coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false" value="104">
+                    <span>X</span>
+                </label>
+                <label class="draginput">
+                    <input id="path_y" class="attr_changer" data-title="Change ellipse's cy coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false" value="138">
+                    <span>Y</span>
+                </label>
+            </div>
+
+            <div id="image_panel" class="context_panel clearfix" style="display: none;">
+                <h4>Image</h4>
+                <label class="draginput">
+                    <input id="image_x" class="attr_changer" data-title="Change X coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>X</span>
+                </label>
+                <label class="draginput">
+                    <input id="image_y" class="attr_changer" data-title="Change Y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Y</span>
+                </label>
+                <label class="draginput">
+                    <input id="image_width" class="attr_changer" data-title="Change image width" size="3" data-attr="width" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span class="icon_label">Width</span>
+                </label>
+                <label class="draginput">
+                    <input id="image_height" class="attr_changer" data-title="Change image height" size="3" data-attr="height" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span class="icon_label">Height</span>
+                </label>
+            </div>
+
+            <div id="circle_panel" class="context_panel" style="display: none;">
+                <h4>Circle</h4>
+                <label id="tool_circle_cx" class="draginput">
+                    <span>Center X</span>
+                    <input id="circle_cx" class="attr_changer" title="Change circle's cx coordinate" size="3" data-attr="cx" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                </label>
+                <label id="tool_circle_cy" class="draginput">
+                    <span>Center Y</span>
+                    <input id="circle_cy" class="attr_changer" title="Change circle's cy coordinate" size="3" data-attr="cy" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                </label>
+                <label id="tool_circle_r" class="draginput">
+                    <span>Radius</span>
+                    <input id="circle_r" class="attr_changer" title="Change circle's radius" size="3" data-attr="r" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                </label>
+            </div>
+
+            <div id="ellipse_panel" class="context_panel clearfix" style="display: none;">
+                <h4>Ellipse</h4>
+                <label id="tool_ellipse_cx" class="draginput">
+                    <input id="ellipse_cx" class="attr_changer" data-title="Change ellipse's cx coordinate" size="3" data-attr="cx" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>X</span>
+                </label>
+                <label id="tool_ellipse_cy" class="draginput">
+                    <input id="ellipse_cy" class="attr_changer" data-title="Change ellipse's cy coordinate" size="3" data-attr="cy" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Y</span>
+                </label>
+                <label id="tool_ellipse_rx" class="draginput">
+                    <input id="ellipse_rx" class="attr_changer" data-title="Change ellipse's x radius" size="3" data-attr="rx" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Radius X</span>
+                </label>
+                <label id="tool_ellipse_ry" class="draginput">
+                    <input id="ellipse_ry" class="attr_changer" data-title="Change ellipse's y radius" size="3" data-attr="ry" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Radius Y</span>
+                </label>
+            </div>
+
+            <div id="line_panel" class="context_panel clearfix" style="display: none;">
+                <h4>Line</h4>
+                <label id="tool_line_x1" class="draginput">
+                    <input id="line_x1" class="attr_changer" data-title="Change line's starting x coordinate" size="3" data-attr="x1" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Start X</span>
+                </label>
+                <label id="tool_line_y1" class="draginput">
+                    <input id="line_y1" class="attr_changer" data-title="Change line's starting y coordinate" size="3" data-attr="y1" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Start Y</span>
+                </label>
+                <label id="tool_line_x2" class="draginput">
+                    <input id="line_x2" class="attr_changer" data-title="Change line's ending x coordinate" size="3" data-attr="x2" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>End X</span>
+                </label>
+                <label id="tool_line_y2" class="draginput">
+                    <input id="line_y2" class="attr_changer" data-title="Change line's ending y coordinate" size="3" data-attr="y2" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>End Y</span>
+                </label>
+            </div>
+
+            <div id="text_panel" class="context_panel" style="display: none;">
+                <h4>Text</h4>
+                <label class="draginput">
+                    <input id="text_x" class="attr_changer" data-title="Change text x coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>X</span>
+                </label>
+                <label class="draginput">
+                    <input id="text_y" class="attr_changer" data-title="Change text y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Y</span>
+                </label>
+
+                <div class="toolset draginput select twocol" id="tool_font_family">
+                    <!-- Font family -->
+                    <span>Font</span>
+                    <div id="preview_font" style="font-family: Helvetica, Arial, sans-serif;">Helvetica</div>
+                    <div class="caret"></div>
+                    <input id="font_family" data-title="Change Font Family" size="12" type="hidden" autocomplete="off">
+                    <select id="font_family_dropdown" autocomplete="off">
+                        <option value="Arvo, sans-serif">Arvo</option>
+                        <option value="'Courier New', Courier, monospace">Courier</option>
+                        <option value="Euphoria, sans-serif">Euphoria</option>
+                        <option value="Georgia, Times, 'Times New Roman', serif">Georgia</option>
+                        <option value="Helvetica, Arial, sans-serif" selected="selected">Helvetica</option>
+                        <option value="Junction, sans-serif">Junction</option>
+                        <option value="'League Gothic', sans-serif">League Gothic</option>
+                        <option value="Oswald, sans-serif">Oswald</option>
+                        <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif">Palatino</option>
+                        <option value="'Trebuchet MS', Gadget, sans-serif">Trebuchet</option>
+                        <option value="'Shadows Into Light', serif">Shadows Into Light</option>
+                        <option value="'Simonetta', serif">Simonetta</option>
+                        <option value="'Times New Roman', Times, serif">Times</option>
+                    </select>
+                    <div class="tool_button loaded" id="tool_bold" data-title="Bold Text [B]">B</div>
+                    <div class="tool_button loaded" id="tool_italic" data-title="Italic Text [I]">i</div>
+                </div>
+
+                <label id="tool_font_size" data-title="Change Font Size" class="draginput">
+                    <input id="font_size" size="3" value="0" autocomplete="off" readonly="readonly" data-scale="3.557142857142857" data-domain="70" data-cursor="true">
+                    <span id="font_sizeLabel" class="icon_label">Font Size</span>
+                <div class="draginput_cursor" style="top: 70px;"></div></label>
+                <!-- Not visible, but still used -->
+                <input id="text" type="text" size="35" autocomplete="off">
+            </div>
+
+            <!-- formerly gsvg_panel -->
+            <div id="container_panel" class="context_panel clearfix" style="display: none;">
+            </div>
+
+            <div id="use_panel" class="context_panel clearfix" style="display: none;">
+                <div class="tool_button clearfix loaded" id="tool_unlink_use" data-title="Break link to reference element (make unique)">Break link reference</div>
+            </div>
+
+            <div id="g_panel" class="context_panel clearfix" style="display: none;">
+                <h4>Group</h4>
+                <label class="draginput">
+                    <input id="g_x" class="attr_changer" data-title="Change groups's x coordinate" size="3" data-attr="x" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false" value="0">
+                    <span>X</span>
+                </label>
+                <label class="draginput">
+                    <input id="g_y" class="attr_changer" data-title="Change groups's y coordinate" size="3" data-attr="y" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false" value="0">
+                    <span>Y</span>
+                </label>
+            </div>
+
+            <div id="path_node_panel" class="context_panel clearfix" style="display: none;">
+                <h4>Edit Path</h4>
+
+                <label id="tool_node_x" class="draginput">
+                    <input id="path_node_x" class="attr_changer" data-title="Change node's x coordinate" size="3" data-attr="x" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>X</span>
+                </label>
+                <label id="tool_node_y" class="draginput">
+                    <input id="path_node_y" class="attr_changer" data-title="Change node's y coordinate" size="3" data-attr="y" autocomplete="off" readonly="readonly" data-scale="2.857142857142857" data-domain="70" data-cursor="false">
+                    <span>Y</span>
+                </label>
+
+                <div id="segment_type" class="draginput label">
+                    <span>Segment Type</span>
+                    <select id="seg_type" data-title="Change Segment type" autocomplete="off">
+                        <option id="straight_segments" selected="selected" value="4">Straight</option>
+                        <option id="curve_segments" value="6">Curve</option>
+                    </select>
+                    <div class="caret"></div>
+                    <label id="seg_type_label">Straight</label>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="tool_button loaded" id="tool_node_clone" title="Adds a node">Add Node</div>
+                <div class="tool_button loaded" id="tool_node_delete" title="Delete Node">Delete Node</div>
+                <div class="tool_button loaded" id="tool_openclose_path" title="Open/close sub-path">Open Path</div>
+            </div>
+
+            <!-- Buttons when a single element is selected -->
+            <div id="selected_panel" class="context_panel" style="display: block;">
+                <label id="tool_angle" data-title="Change rotation angle" class="draginput">
+                    <input id="angle" class="attr_changer" size="2" value="0" data-attr="transform" data-min="-180" data-max="180" type="text" autocomplete="off" readonly="readonly" data-scale="5.142857142857143" data-domain="70" data-cursor="false">
+                    <span class="icon_label">Rotation</span>
+                    <div id="tool_angle_indicator">
+                        <div id="tool_angle_indicator_cursor"></div>
+                    </div>
+                </label>
+
+                <label class="toolset draginput" id="tool_opacity" data-title="Change selected item opacity">
+                    <input id="group_opacity" class="attr_changer" data-attr="opacity" data-multiplier="0.01" size="3" value="100" step="5" min="0" max="100" autocomplete="off" readonly="readonly" data-scale="1.4285714285714284" data-domain="70" data-cursor="true">
+                    <span id="group_opacityLabel" class="icon_label">Opacity</span>
+                <div class="draginput_cursor" style="top: -1.42109e-14px;"></div></label>
+
+                <div class="toolset" id="tool_blur" data-title="Change gaussian blur value">
+                    <label class="draginput">
+                        <input id="blur" size="2" value="0" step=".1" min="0" max="10" autocomplete="off" readonly="readonly" data-scale="0.14285714285714288" data-domain="70" data-cursor="true">
+                        <span class="icon_label">Blur</span>
+                    <div class="draginput_cursor" style="top: 70px;"></div></label>
+                </div>
+
+                <label id="cornerRadiusLabel" data-title="Change Rectangle Corner Radius" class="draginput" style="display: none;">
+                    <input id="rect_rx" size="3" value="0" data-attr="rx" class="attr_changer" type="text" pattern="[0-9]*" autocomplete="off" readonly="readonly" data-scale="1.4285714285714286" data-domain="70" data-cursor="true">
+                    <span class="icon_label">Roundness</span>
+                <div class="draginput_cursor" style="top: 70px;"></div></label>
+
+                <div class="clearfix"></div>
+                <div id="align_tools">
+                    <h4>Align</h4>
+                    <div class="toolset align_buttons" id="tool_position">
+                        <label>
+                            <div class="col last clear" id="position_opts">
+                                <div class="draginput_cell" id="tool_posleft" title="Align Left"><i class="icon icon_align_left"></i></div>
+                                <div class="draginput_cell" id="tool_poscenter" title="Align Center"><i class="icon icon_align_center"></i></div>
+                                <div class="draginput_cell" id="tool_posright" title="Align Right"><i class="icon icon_align_right"></i></div>
+                                <div class="draginput_cell" id="tool_postop" title="Align Top"><i class="icon icon_align_top"></i></div>
+                                <div class="draginput_cell" id="tool_posmiddle" title="Align Middle"><i class="icon icon_align_middle"></i></div>
+                                <div class="draginput_cell" id="tool_posbottom" title="Align Bottom"><i class="icon icon_align_bottom"></i></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons when multiple elements are selected -->
+            <div id="multiselected_panel" class="context_panel clearfix" style="display: none;">
+                <h4 class="hidable">Multiple Elements</h4>
+
+                <div class="toolset align_buttons" style="position: relative">
+                    <label id="tool_align_relative" style="margin-top: 10px;">
+                        <select id="align_relative_to" title="Align relative to ..." autocomplete="off">
+                            <option id="selected_objects" value="selected" selected="selected">Align to objects</option>
+                            <option id="page" value="page">Align to page</option>
+                        </select>
+                    </label>
+                    <h4>.</h4>
+                    <div class="col last clear">
+                        <div class="draginput_cell" id="tool_alignleft" title="Align Left"><i class="icon icon_align_left"></i></div>
+                        <div class="draginput_cell" id="tool_aligncenter" title="Align Center"><i class="icon icon_align_center"></i></div>
+                        <div class="draginput_cell" id="tool_alignright" title="Align Right"><i class="icon icon_align_right"></i></div>
+                        <div class="draginput_cell" id="tool_aligntop" title="Align Top"><i class="icon icon_align_top"></i></div>
+                        <div class="draginput_cell" id="tool_alignmiddle" title="Align Middle"><i class="icon icon_align_middle"></i></div>
+                        <div class="draginput_cell" id="tool_alignbottom" title="Align Bottom"><i class="icon icon_align_bottom"></i></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+
+            <div id="stroke_panel" class="context_panel clearfix" style="display: block;">
+                <div class="clearfix"></div>
+                <h4>Stroke</h4>
+                <div class="toolset" data-title="Change stroke">
+                    <label class="draginput">
+                        <input id="stroke_width" size="2" value="0" data-attr="stroke-width" min="0" max="99" step="1" autocomplete="off" readonly="readonly" data-scale="1.4142857142857144" data-domain="70" data-cursor="true">
+                        <span class="icon_label">Stroke Width</span>
+                    <div class="draginput_cursor" style="top: 70px;"></div></label>
+                </div>
+                <div class="stroke_tool draginput">
+                    <span>Stroke Dash</span>
+                    <select id="stroke_style" data-title="Change stroke dash style" autocomplete="off">
+                        <option value="none" selected="selected">—</option>
+                        <option value="2,2">···</option>
+                        <option value="5,5">- -</option>
+                        <option value="5,2,2,2">-·-</option>
+                        <option value="5,2,2,2,2,2">-··-</option>
+                    </select>
+                    <div class="caret"></div>
+                    <label id="stroke_style_label">—</label>
+                </div>
+
+                <label style="display: none;">
+                    <span class="icon_label">Stroke Join</span>
+                </label>
+
+                <label style="display: none;">
+                    <span class="icon_label">Stroke Cap</span>
+                </label>
+            </div>
+
+        </div>        <!-- #tools_top -->
+
+
+        <div id="cur_context_panel">
+        </div>        <!-- #cur_context_panel -->
+
+
+        <div id="tools_left" class="tools_panel">
+            <div class="loaded tool_button_current" id="tool_select" title="Select Tool  (V)"><i class="icon icon_select"></i></div>
+            <div class="tool_button loaded" id="tool_fhpath" title="Pencil Tool  (Q)"><i class="icon icon_pencil"></i></div>
+            <div class="tool_button loaded" id="tool_line" title="Line Tool  (L)"><i class="icon icon_pen"></i></div>
+            <div class="tool_button loaded" id="tool_rect" title="Square/Rect Tool  (R)"><i class="icon icon_rect"></i></div>
+            <div class="tool_button loaded" id="tool_ellipse" title="Ellipse/Circle Tool  (C)"><i class="icon icon_ellipse"></i></div>
+            <div class="tool_button loaded" id="tool_path" title="Path Tool  (P)"><i class="icon icon_path"></i></div>
+            <div class="tool_button loaded" id="tool_text" title="Text Tool  (T)"><i class="icon icon_text"></i></div>
+            <div class="tool_button loaded" id="tool_zoom" title="Zoom Tool  (Z)"><i class="icon icon_zoom"></i></div>
+
+            <div id="color_tools">
+                <div id="tool_switch" title="Switch stroke and fill colors  (x)"></div>
+                <div class="color_tool active" id="tool_fill">
+                    <label class="icon_label" title="Change fill color"></label>
+                    <div class="color_block">
+                        <div id="fill_bg"></div>
+                        <div id="fill_color" class="color_block"><svg xmlns="http://www.w3.org/2000/svg" width="100%"><rect width="100%" height="100%" fill="#1f2dc4" opacity="1"></rect>            <defs><linearGradient id="gradbox_"></linearGradient></defs></svg></div>
+                    </div>
+                </div>
+
+                <div class="color_tool" id="tool_stroke">
+                    <label class="icon_label" title="Change stroke color"></label>
+                    <div class="color_block">
+                        <div id="stroke_bg"></div>
+                        <div id="stroke_color" class="color_block" title="Change stroke color"><svg xmlns="http://www.w3.org/2000/svg" width="100%"><rect width="100%" height="100%" fill="none" opacity="1"></rect>            <defs><linearGradient id="gradbox_"></linearGradient></defs></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>        <!-- #tools_left -->
+
+        <div id="tools_bottom" class="tools_panel">
+        </div>        <!-- #tools_bottom -->
+
+        <div id="color_picker" class="ui-draggable ui-draggable-handle jGraduate_Picker" style="left: 50px; bottom: 50px; display: none;"><ul class="jGraduate_tabs"><li class="jGraduate_tab_color jGraduate_tab_current" data-type="col">Solid Color</li><li class="jGraduate_tab_lingrad" data-type="lg">Linear Gradient</li><li class="jGraduate_tab_radgrad" data-type="rg">Radial Gradient</li></ul><div class="jGraduate_colPick jPicker Container" style="display: block;"><table class="jPicker" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="9"><h2 class="Title">Pick a Fill Paint and Opacity</h2><div class="Map" style="background-color: rgb(0, 21, 255);"><span class="Map1" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/Maps.png&quot;); top: 0px; visibility: visible;">&nbsp;</span><span class="Map2" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/Maps.png&quot;); top: 260px; visibility: visible;">&nbsp;</span><span class="Map3" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/map-opacity.png&quot;); visibility: hidden;">&nbsp;</span><img src="Iconfinder%20%E2%80%A2%20Editor_files/mappoint.webp" class="Arrow" style="left: 208px; top: 51px;"></div></td><td rowspan="9"><div class="Bar" style="background-color: transparent;"><span class="Map1" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/Bars.png&quot;); top: 0px; visibility: visible;">&nbsp;</span><span class="Map2" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/Bars.png&quot;); top: 260px; visibility: visible;">&nbsp;</span><span class="Map3" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/Bars.png&quot;); top: 260px; visibility: visible;">&nbsp;</span><span class="Map4" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/Bars.png&quot;); top: 260px; visibility: visible;">&nbsp;</span><span class="Map5" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/bar-opacity.png&quot;); visibility: hidden;">&nbsp;</span><span class="Map6" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/AlphaBar.png&quot;); top: 260px; visibility: visible;">&nbsp;</span><img src="Iconfinder%20%E2%80%A2%20Editor_files/rangearrows.gif" class="Arrow" style="left: 0px; top: 85px;"></div></td><td colspan="2" class="Preview"><div class="prev_div">new<div class="color_preview" style="background-image: url(&quot;https://cdn.iconfinder.com/editor/lib/jgraduate/images/preview-opacity.png&quot;);"><span class="Active" title="New Color - Press “OK” To Commit" style="background-color: rgb(31, 45, 196); visibility: visible;">&nbsp;</span><span class="Current" title="Click To Revert To Original Color" style="background-color: rgb(31, 45, 196); visibility: visible;">&nbsp;</span></div></div>current</td><td rowspan="9" class="Button"><input type="button" class="Ok" value="OK" title="Commit To This Color Selection"><input type="button" class="Cancel" value="Cancel" title="Cancel And Revert To Original Color"><div class="Grid"><span class="QuickColor" title="#ffaaaaff" style="background-color:#ffaaaa;">&nbsp;</span><span class="QuickColor" title="#ff5656ff" style="background-color:#ff5656;">&nbsp;</span><span class="QuickColor" title="#ff0000ff" style="background-color:#ff0000;">&nbsp;</span><span class="QuickColor" title="#bf0000ff" style="background-color:#bf0000;">&nbsp;</span><span class="QuickColor" title="#7f0000ff" style="background-color:#7f0000;">&nbsp;</span><span class="QuickColor" title="#ffffffff" style="background-color:#ffffff;">&nbsp;</span><span class="QuickColor" title="#ffd4aaff" style="background-color:#ffd4aa;">&nbsp;</span><span class="QuickColor" title="#ffaa56ff" style="background-color:#ffaa56;">&nbsp;</span><span class="QuickColor" title="#ff7f00ff" style="background-color:#ff7f00;">&nbsp;</span><span class="QuickColor" title="#bf5f00ff" style="background-color:#bf5f00;">&nbsp;</span><span class="QuickColor" title="#7f3f00ff" style="background-color:#7f3f00;">&nbsp;</span><span class="QuickColor" title="#e5e5e5ff" style="background-color:#e5e5e5;">&nbsp;</span><span class="QuickColor" title="#ffffaaff" style="background-color:#ffffaa;">&nbsp;</span><span class="QuickColor" title="#ffff56ff" style="background-color:#ffff56;">&nbsp;</span><span class="QuickColor" title="#ffff00ff" style="background-color:#ffff00;">&nbsp;</span><span class="QuickColor" title="#bfbf00ff" style="background-color:#bfbf00;">&nbsp;</span><span class="QuickColor" title="#7f7f00ff" style="background-color:#7f7f00;">&nbsp;</span><span class="QuickColor" title="#ccccccff" style="background-color:#cccccc;">&nbsp;</span><span class="QuickColor" title="#d4ffaaff" style="background-color:#d4ffaa;">&nbsp;</span><span class="QuickColor" title="#aaff56ff" style="background-color:#aaff56;">&nbsp;</span><span class="QuickColor" title="#7fff00ff" style="background-color:#7fff00;">&nbsp;</span><span class="QuickColor" title="#5fbf00ff" style="background-color:#5fbf00;">&nbsp;</span><span class="QuickColor" title="#3f7f00ff" style="background-color:#3f7f00;">&nbsp;</span><span class="QuickColor" title="#b2b2b2ff" style="background-color:#b2b2b2;">&nbsp;</span><span class="QuickColor" title="#aaffaaff" style="background-color:#aaffaa;">&nbsp;</span><span class="QuickColor" title="#56ff56ff" style="background-color:#56ff56;">&nbsp;</span><span class="QuickColor" title="#00ff00ff" style="background-color:#00ff00;">&nbsp;</span><span class="QuickColor" title="#00bf00ff" style="background-color:#00bf00;">&nbsp;</span><span class="QuickColor" title="#007f00ff" style="background-color:#007f00;">&nbsp;</span><span class="QuickColor" title="#999999ff" style="background-color:#999999;">&nbsp;</span><span class="QuickColor" title="#aaffd4ff" style="background-color:#aaffd4;">&nbsp;</span><span class="QuickColor" title="#56ffaaff" style="background-color:#56ffaa;">&nbsp;</span><span class="QuickColor" title="#00ff7fff" style="background-color:#00ff7f;">&nbsp;</span><span class="QuickColor" title="#00bf5fff" style="background-color:#00bf5f;">&nbsp;</span><span class="QuickColor" title="#007f3fff" style="background-color:#007f3f;">&nbsp;</span><span class="QuickColor" title="#7f7f7fff" style="background-color:#7f7f7f;">&nbsp;</span><span class="QuickColor" title="#aaffffff" style="background-color:#aaffff;">&nbsp;</span><span class="QuickColor" title="#56ffffff" style="background-color:#56ffff;">&nbsp;</span><span class="QuickColor" title="#00ffffff" style="background-color:#00ffff;">&nbsp;</span><span class="QuickColor" title="#00bfbfff" style="background-color:#00bfbf;">&nbsp;</span><span class="QuickColor" title="#007f7fff" style="background-color:#007f7f;">&nbsp;</span><span class="QuickColor" title="#666666ff" style="background-color:#666666;">&nbsp;</span><span class="QuickColor" title="#aad4ffff" style="background-color:#aad4ff;">&nbsp;</span><span class="QuickColor" title="#56aaffff" style="background-color:#56aaff;">&nbsp;</span><span class="QuickColor" title="#007fffff" style="background-color:#007fff;">&nbsp;</span><span class="QuickColor" title="#005fbfff" style="background-color:#005fbf;">&nbsp;</span><span class="QuickColor" title="#003f7fff" style="background-color:#003f7f;">&nbsp;</span><span class="QuickColor" title="#4c4c4cff" style="background-color:#4c4c4c;">&nbsp;</span><span class="QuickColor" title="#aaaaffff" style="background-color:#aaaaff;">&nbsp;</span><span class="QuickColor" title="#5656ffff" style="background-color:#5656ff;">&nbsp;</span><span class="QuickColor" title="#0000ffff" style="background-color:#0000ff;">&nbsp;</span><span class="QuickColor" title="#0000bfff" style="background-color:#0000bf;">&nbsp;</span><span class="QuickColor" title="#00007fff" style="background-color:#00007f;">&nbsp;</span><span class="QuickColor" title="#333333ff" style="background-color:#333333;">&nbsp;</span><span class="QuickColor" title="#d4aaffff" style="background-color:#d4aaff;">&nbsp;</span><span class="QuickColor" title="#aa56ffff" style="background-color:#aa56ff;">&nbsp;</span><span class="QuickColor" title="#7f00ffff" style="background-color:#7f00ff;">&nbsp;</span><span class="QuickColor" title="#5f00bfff" style="background-color:#5f00bf;">&nbsp;</span><span class="QuickColor" title="#3f007fff" style="background-color:#3f007f;">&nbsp;</span><span class="QuickColor" title="#191919ff" style="background-color:#191919;">&nbsp;</span><span class="QuickColor" title="#ffaaffff" style="background-color:#ffaaff;">&nbsp;</span><span class="QuickColor" title="#ff56ffff" style="background-color:#ff56ff;">&nbsp;</span><span class="QuickColor" title="#ff00ffff" style="background-color:#ff00ff;">&nbsp;</span><span class="QuickColor" title="#bf00bfff" style="background-color:#bf00bf;">&nbsp;</span><span class="QuickColor" title="#7f007fff" style="background-color:#7f007f;">&nbsp;</span><span class="QuickColor" title="#000000ff" style="background-color:#000000;">&nbsp;</span><span class="QuickColor" title="#ffaad4ff" style="background-color:#ffaad4;">&nbsp;</span><span class="QuickColor" title="#ff56aaff" style="background-color:#ff56aa;">&nbsp;</span><span class="QuickColor" title="#ff007fff" style="background-color:#ff007f;">&nbsp;</span><span class="QuickColor" title="#bf005fff" style="background-color:#bf005f;">&nbsp;</span><span class="QuickColor" title="#7f003fff" style="background-color:#7f003f;">&nbsp;</span><span class="QuickColor" style="background-color:;background-image:url(https://cdn.iconfinder.com/editor/lib/jgraduate/images/NoColor.png)">&nbsp;</span></div></td></tr><tr class="Hue"><td class="Radio"><label title="Set To “Hue” Color Mode"><input type="radio" value="h" checked="checked">H:</label></td><td class="Text"><input type="text" maxlength="3" value="235" title="Enter A “Hue” Value (0-360°)">&nbsp;º</td></tr><tr class="Saturation"><td class="Radio"><label title="Set To “Saturation” Color Mode"><input type="radio" value="s">S:</label></td><td class="Text"><input type="text" maxlength="3" value="84" title="Enter A “Saturation” Value (0-100%)">&nbsp;%</td></tr><tr class="Value"><td class="Radio"><label title="Set To “Value” Color Mode"><input type="radio" value="v">V:</label></td><td class="Text"><input type="text" maxlength="3" value="77" title="Enter A “Value” Value (0-100%)">&nbsp;%<br><br></td></tr><tr class="Red"><td class="Radio"><label title="Set To “Red” Color Mode"><input type="radio" value="r">R:</label></td><td class="Text"><input type="text" maxlength="3" value="31" title="Enter A “Red” Value (0-255)"></td></tr><tr class="Green"><td class="Radio"><label title="Set To “Green” Color Mode"><input type="radio" value="g">G:</label></td><td class="Text"><input type="text" maxlength="3" value="45" title="Enter A “Green” Value (0-255)"></td></tr><tr class="Blue"><td class="Radio"><label title="Set To “Blue” Color Mode"><input type="radio" value="b">B:</label></td><td class="Text"><input type="text" maxlength="3" value="196" title="Enter A “Blue” Value (0-255)"></td></tr><tr class="Alpha"><td class="Radio"><label title="Set To “Alpha” Color Mode"><input type="radio" value="a">A:</label></td><td class="Text"><input type="text" maxlength="3" value="100" title="Enter A “Alpha” Value (0-100)">&nbsp;%</td></tr><tr class="Hex"><td colspan="2" class="Text"><label title="Enter A “Hex” Color Value (#000000-#ffffff)">#:<input type="text" maxlength="6" class="Hex" value="1f2dc4"></label><input type="text" maxlength="2" class="AHex" value="ff" title="Enter A “Alpha” Value (#00-#ff)"></td></tr></tbody></table></div><div class="jGraduate_gradPick" style="display: none;"><div id="color_picker_jGraduate_Swatch" class="jGraduate_Swatch"><h2 class="jGraduate_Title">Pick a Fill Paint and Opacity</h2><div id="color_picker_jGraduate_GradContainer" class="jGraduate_GradContainer"><svg id="color_picker_jgraduate_svg" width="256" height="256" xmlns="http://www.w3.org/2000/svg"><radialGradient id="color_picker_rg_jgraduate_grad"></radialGradient><linearGradient id="color_picker_lg_jgraduate_grad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#000" stop-opacity="1" offset="0"></stop><stop stop-color="#ffffff" stop-opacity="1" offset="1"></stop></linearGradient><rect id="color_picker_jgraduate_rect" x="0" y="0" width="256" height="256" fill="url(#color_picker_jgraduate_grad)" fill-opacity="1"></rect></svg><div class="grad_coord jGraduate_lg_field" title="Begin Stop" style="top: 0px; left: 0px;">1</div><div class="grad_coord jGraduate_lg_field" title="End stop" style="top: 0px; left: 256px;">2</div><div class="grad_coord jGraduate_rg_field" title="Center stop" style="top: 128px; left: 128px;">C</div><div class="grad_coord jGraduate_rg_field" title="Focus point" style="top: 128px; left: 128px; display: none;" id="color_picker_jGraduate_focusCoord">F</div></div><div id="color_picker_jGraduate_StopSlider" class="jGraduate_StopSlider"><svg width="100%" height="45"><pattern width="16" height="16" patternUnits="userSpaceOnUse" id="jGraduate_trans"><image width="16" height="16" xlink:href="https://cdn.iconfinder.com/editor/lib/jgraduate/images/map-opacity.png"></image></pattern><g><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="url(#jGraduate_trans)" transform="translate(10, 26)"></path><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="#000" fill-opacity="1" transform="translate(10, 26)" stroke="#000" stroke-width="1.5"></path><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="url(#jGraduate_trans)" transform="translate(266, 26)"></path><path d="M-6.2,0.9c3.6-4,6.7-4.3,6.7-12.4c-0.2,7.9,3.1,8.8,6.5,12.4c3.5,3.8,2.9,9.6,0,12.3c-3.1,2.8-10.4,2.7-13.2,0C-9.6,9.9-9.4,4.4-6.2,0.9z" fill="#ffffff" fill-opacity="1" transform="translate(266, 26)" stroke="#000" stroke-width="1.5"></path></g><line x1="10" y1="15" x2="266" y2="15" stroke-width="2" stroke="#000"></line></svg></div></div><div class="jGraduate_Form jGraduate_Points jGraduate_lg_field"><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">Begin Point</label><div class="jGraduate_Form_Section"><label>x:</label><input type="text" id="color_picker_jGraduate_x1" size="3" title="Enter starting x value between 0.0 and 1.0" value="0"><label> y:</label><input type="text" id="color_picker_jGraduate_y1" size="3" title="Enter starting y value between 0.0 and 1.0" value="0"></div></div><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">End Point</label><div class="jGraduate_Form_Section"><label>x:</label><input type="text" id="color_picker_jGraduate_x2" size="3" title="Enter ending x value between 0.0 and 1.0" value="1"><label> y:</label><input type="text" id="color_picker_jGraduate_y2" size="3" title="Enter ending y value between 0.0 and 1.0" value="0"></div></div></div><div class="jGraduate_Form jGraduate_Points jGraduate_rg_field"><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">Center Point</label><div class="jGraduate_Form_Section"><label>x:</label><input type="text" id="color_picker_jGraduate_cx" size="3" title="Enter x value between 0.0 and 1.0" value="0.5"><label> y:</label><input type="text" id="color_picker_jGraduate_cy" size="3" title="Enter y value between 0.0 and 1.0" value="0.5"></div></div><div class="jGraduate_StopSection"><label class="jGraduate_Form_Heading">Focal Point</label><div class="jGraduate_Form_Section"><label>Match center: <input type="checkbox" checked="checked" id="color_picker_jGraduate_match_ctr"></label><br><label>x:</label><input type="text" id="color_picker_jGraduate_fx" size="3" title="Enter x value between 0.0 and 1.0" value="0.5"><label> y:</label><input type="text" id="color_picker_jGraduate_fy" size="3" title="Enter y value between 0.0 and 1.0" value="0.5"></div></div></div><div class="jGraduate_StopSection jGraduate_SpreadMethod"><label class="jGraduate_Form_Heading">Spread method</label><div class="jGraduate_Form_Section"><select class="jGraduate_spreadMethod"><option value="pad" selected="selected">Pad</option><option value="reflect">Reflect</option><option value="repeat">Repeat</option></select></div></div><div class="jGraduate_Form"><div class="jGraduate_Slider jGraduate_RadiusField jGraduate_rg_field"><label class="prelabel">Radius:</label><div id="color_picker_jGraduate_Radius" class="jGraduate_SliderBar jGraduate_Radius" title="Click to set radius" style="width: 145px;"><img id="color_picker_jGraduate_RadiusArrows" class="jGraduate_RadiusArrows" src="Iconfinder%20%E2%80%A2%20Editor_files/rangearrows2.webp" style="margin-left: 49.9447px;"></div><label><input type="text" id="color_picker_jGraduate_RadiusInput" size="3" value="50">%</label></div><div class="jGraduate_Slider jGraduate_EllipField jGraduate_rg_field"><label class="prelabel">Ellip:</label><div id="color_picker_jGraduate_Ellip" class="jGraduate_SliderBar jGraduate_Ellip" title="Click to set Ellip" style="width: 145px;"><img id="color_picker_jGraduate_EllipArrows" class="jGraduate_EllipArrows" src="Iconfinder%20%E2%80%A2%20Editor_files/rangearrows2.webp" style="margin-left: 67.5px;"></div><label><input type="text" id="color_picker_jGraduate_EllipInput" size="3" value="0">%</label></div><div class="jGraduate_Slider jGraduate_AngleField jGraduate_rg_field"><label class="prelabel">Angle:</label><div id="color_picker_jGraduate_Angle" class="jGraduate_SliderBar jGraduate_Angle" title="Click to set Angle" style="width: 145px;"><img id="color_picker_jGraduate_AngleArrows" class="jGraduate_AngleArrows" src="Iconfinder%20%E2%80%A2%20Editor_files/rangearrows2.webp" style="margin-left: 67.5px;"></div><label><input type="text" id="color_picker_jGraduate_AngleInput" size="3" value="0">º&nbsp;</label></div><div class="jGraduate_Slider jGraduate_OpacField"><label class="prelabel">Opac:</label><div id="color_picker_jGraduate_Opac" class="jGraduate_SliderBar jGraduate_Opac" title="Click to set Opac" style="width: 145px;"><img id="color_picker_jGraduate_OpacArrows" class="jGraduate_OpacArrows" src="Iconfinder%20%E2%80%A2%20Editor_files/rangearrows2.webp" style="margin-left: 140px;"></div><label><input type="text" id="color_picker_jGraduate_OpacInput" size="3" value="100">%</label></div></div><div class="jGraduate_OkCancel"><input type="button" id="color_picker_jGraduate_Ok" class="jGraduate_Ok" value="OK"><input type="button" id="color_picker_jGraduate_Cancel" class="jGraduate_Cancel" value="Cancel"></div></div><div class="jGraduate_LightBox" style="display: none;"></div><div id="color_picker_jGraduate_stopPicker" class="jGraduate_stopPicker" style="display: none;"></div></div>
+
+    </div>        <!-- #svg_editor -->
+
+    <div id="svg_source_editor">
+        <div id="svg_source_overlay"></div>
+        <div id="svg_source_container">
+            <div id="save_output_btns">
+                <p id="copy_save_note">Copy the contents of this box into a text editor, then save the file with a .svg extension.</p>
+                <button id="copy_save_done">Done</button>
+            </div>
+            <form>
+                <textarea id="svg_source_textarea" spellcheck="false"></textarea>
+            </form>
+            <div id="tool_source_back" class="toolbar_button">
+                <button id="tool_source_cancel" class="cancel">Cancel</button>
+                <button id="tool_source_save" class="ok">Apply Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="base_unit_container">
+        <select id="base_unit" autocomplete="off">
+            <option value="px" selected="selected">Pixels</option>
+            <option value="cm">Centimeters</option>
+            <option value="mm">Millimeters</option>
+            <option value="in">Inches</option>
+            <option value="pt">Points</option>
+            <option value="pc">Picas</option>
+            <option value="em">Ems</option>
+            <option value="ex">Exs</option>
+        </select>
+    </div>
+
+    <div id="dialog_box" style="display: none;">
+        <div id="dialog_box_overlay"></div>
+        <div id="dialog_container" class="ui-draggable ui-draggable-handle">
+            <div id="dialog_content"><p><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.0" width="32px" height="32px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M59.6 0h8v40h-8V0z" fill="#000000" fill-opacity="1"></path><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(30 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(60 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(90 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(120 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#b2b2b2" fill-opacity="0.3" transform="rotate(150 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#999999" fill-opacity="0.4" transform="rotate(180 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#7f7f7f" fill-opacity="0.5" transform="rotate(210 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#666666" fill-opacity="0.6" transform="rotate(240 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#4c4c4c" fill-opacity="0.7" transform="rotate(270 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#333333" fill-opacity="0.8" transform="rotate(300 64 64)"></path><path d="M59.6 0h8v40h-8V0z" fill="#191919" fill-opacity="0.9" transform="rotate(330 64 64)"></path><animateTransform attributeName="transform" type="rotate" values="0 64 64;30 64 64;60 64 64;90 64 64;120 64 64;150 64 64;180 64 64;210 64 64;240 64 64;270 64 64;300 64 64;330 64 64" calcMode="discrete" dur="720ms" repeatCount="indefinite"></animateTransform></g></svg></p><p>Parsing data...</p></div>
+            <div id="dialog_buttons"><input type="button" value="OK" style="display: none;"><input type="button" value="Cancel"></div>
+        </div>
+    </div>
+
+    <ul id="cmenu_canvas" class="contextMenu" style="display: none;">
+        <li class=""><a href="#cut">Cut <span class="shortcut">Ctrl+X;</span></a></li>
+        <li class=""><a href="#copy">Copy<span class="shortcut">Ctrl+C</span></a></li>
+        <li class="disabled"><a href="#paste">Paste<span class="shortcut">Ctrl+V</span></a></li>
+        <li class="separator"><a href="#delete">Delete<span class="shortcut">⌫</span></a></li>
+        <li class="separator disabled"><a href="#group">Group<span class="shortcut">Ctrl+G</span></a></li>
+        <li class="disabled"><a href="#ungroup">Ungroup<span class="shortcut">Ctrl+⇧G</span></a></li>
+        <li class="separator"><a href="#move_front">Bring to Front<span class="shortcut">Ctrl+⇧↑</span></a></li>
+        <li class=""><a href="#move_up">Bring Forward<span class="shortcut">Ctrl+↑</span></a></li>
+        <li class=""><a href="#move_down">Send Backward<span class="shortcut">Ctrl+↓</span></a></li>
+        <li class=""><a href="#move_back">Send to Back<span class="shortcut">Ctrl+⇧↓</span></a></li>
+    </ul>
+
+    <form action="https://api.iconfinder.com/v2/convert" method="post" id="export_form">
+        <input type="hidden" name="image" value="" autocomplete="off">
+        <input type="hidden" name="size" value="" autocomplete="off">
+        <input type="hidden" name="filename" value="" autocomplete="off">
+    </form>
+
+    <script>
+        window.intercomSettings = {
+            app_id: "ak03zhw0",
+            "export": "Download button"
+        };
+
+        var attachIntercom = function() {
+            var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/ak03zhw0';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}
+        };
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-634584-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+<canvas style="display: none;"></canvas><div id="rate_us">
+            <div class="uvpn_wrap">
+                <div class="uvpn_logo-ext">
+                    <div class="uvpn_logo-wrap">
+                        <img src="Iconfinder%20%E2%80%A2%20Editor_files/128.png">
+                    </div>
+                </div>
+                <div class="uvpn_title">
+                    Don’t Forget to Rate Us
+                </div>
+                <div class="uvpn_desc">
+                    If you enjoy with our product, give us 5 stars. It helps so much!
+                </div>
+                <a target="_blank" href="https://addons.mozilla.org/ru/firefox/addon/uvpn-unlimited-vpn/reviews/" id="rate_btn_rateus" class="uvpn_rate-btn uvpn_btn">
+                    Rate Us
+                </a>
+                <div id="close_btn_rateus" class="uvpn_later-btn uvpn_btn">
+                    Not Now
+                </div>
+            </div>
+        </div><div id="free_vpn_container">
+            <div class="free-vpn_wrap">
+                <div class="free-vpn_rate-popup">
+                    <div class="free-vpn_close-btn">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path fill="#afafaf" d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+                                        C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+                                        C514.019,27.23,514.019,14.135,505.943,6.058z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path fill="#afafaf" d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+                                        c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="free-vpn_logo"></div>
+                    <div class="free-vpn_title">Free VPN</div>
+                    <div class="free-vpn_text">
+                        Enjoyed our app? Give us 5 stars!
+                    </div>
+                    <div class="free-vpn_stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 46.354 46.354" style="enable-background:new 0 0 46.354 46.354;" xml:space="preserve"><g><g>
+                            <path d="M21.57,2.049c0.303-0.612,0.927-1,1.609-1c0.682,0,1.307,0.388,1.609,1l5.771,11.695c0.261,0.529,0.767,0.896,1.352,0.981   L44.817,16.6c0.677,0.098,1.237,0.572,1.448,1.221c0.211,0.649,0.035,1.363-0.454,1.839l-9.338,9.104   c-0.423,0.412-0.616,1.006-0.517,1.588l2.204,12.855c0.114,0.674-0.161,1.354-0.715,1.756c-0.553,0.4-1.284,0.453-1.89,0.137   l-11.544-6.07c-0.522-0.275-1.147-0.275-1.67,0l-11.544,6.069c-0.604,0.317-1.337,0.265-1.89-0.136   c-0.553-0.401-0.829-1.082-0.714-1.756l2.204-12.855c0.1-0.582-0.094-1.176-0.517-1.588L0.542,19.66   c-0.489-0.477-0.665-1.19-0.454-1.839c0.211-0.649,0.772-1.123,1.449-1.221l12.908-1.875c0.584-0.085,1.09-0.452,1.351-0.982   L21.57,2.049z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFD325"></path>
+                        </g></g> </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 46.354 46.354" style="enable-background:new 0 0 46.354 46.354;" xml:space="preserve"><g><g>
+                            <path d="M21.57,2.049c0.303-0.612,0.927-1,1.609-1c0.682,0,1.307,0.388,1.609,1l5.771,11.695c0.261,0.529,0.767,0.896,1.352,0.981   L44.817,16.6c0.677,0.098,1.237,0.572,1.448,1.221c0.211,0.649,0.035,1.363-0.454,1.839l-9.338,9.104   c-0.423,0.412-0.616,1.006-0.517,1.588l2.204,12.855c0.114,0.674-0.161,1.354-0.715,1.756c-0.553,0.4-1.284,0.453-1.89,0.137   l-11.544-6.07c-0.522-0.275-1.147-0.275-1.67,0l-11.544,6.069c-0.604,0.317-1.337,0.265-1.89-0.136   c-0.553-0.401-0.829-1.082-0.714-1.756l2.204-12.855c0.1-0.582-0.094-1.176-0.517-1.588L0.542,19.66   c-0.489-0.477-0.665-1.19-0.454-1.839c0.211-0.649,0.772-1.123,1.449-1.221l12.908-1.875c0.584-0.085,1.09-0.452,1.351-0.982   L21.57,2.049z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFD325"></path>
+                        </g></g> </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 46.354 46.354" style="enable-background:new 0 0 46.354 46.354;" xml:space="preserve"><g><g>
+                            <path d="M21.57,2.049c0.303-0.612,0.927-1,1.609-1c0.682,0,1.307,0.388,1.609,1l5.771,11.695c0.261,0.529,0.767,0.896,1.352,0.981   L44.817,16.6c0.677,0.098,1.237,0.572,1.448,1.221c0.211,0.649,0.035,1.363-0.454,1.839l-9.338,9.104   c-0.423,0.412-0.616,1.006-0.517,1.588l2.204,12.855c0.114,0.674-0.161,1.354-0.715,1.756c-0.553,0.4-1.284,0.453-1.89,0.137   l-11.544-6.07c-0.522-0.275-1.147-0.275-1.67,0l-11.544,6.069c-0.604,0.317-1.337,0.265-1.89-0.136   c-0.553-0.401-0.829-1.082-0.714-1.756l2.204-12.855c0.1-0.582-0.094-1.176-0.517-1.588L0.542,19.66   c-0.489-0.477-0.665-1.19-0.454-1.839c0.211-0.649,0.772-1.123,1.449-1.221l12.908-1.875c0.584-0.085,1.09-0.452,1.351-0.982   L21.57,2.049z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFD325"></path>
+                        </g></g> </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 46.354 46.354" style="enable-background:new 0 0 46.354 46.354;" xml:space="preserve"><g><g>
+                            <path d="M21.57,2.049c0.303-0.612,0.927-1,1.609-1c0.682,0,1.307,0.388,1.609,1l5.771,11.695c0.261,0.529,0.767,0.896,1.352,0.981   L44.817,16.6c0.677,0.098,1.237,0.572,1.448,1.221c0.211,0.649,0.035,1.363-0.454,1.839l-9.338,9.104   c-0.423,0.412-0.616,1.006-0.517,1.588l2.204,12.855c0.114,0.674-0.161,1.354-0.715,1.756c-0.553,0.4-1.284,0.453-1.89,0.137   l-11.544-6.07c-0.522-0.275-1.147-0.275-1.67,0l-11.544,6.069c-0.604,0.317-1.337,0.265-1.89-0.136   c-0.553-0.401-0.829-1.082-0.714-1.756l2.204-12.855c0.1-0.582-0.094-1.176-0.517-1.588L0.542,19.66   c-0.489-0.477-0.665-1.19-0.454-1.839c0.211-0.649,0.772-1.123,1.449-1.221l12.908-1.875c0.584-0.085,1.09-0.452,1.351-0.982   L21.57,2.049z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFD325"></path>
+                        </g></g> </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 46.354 46.354" style="enable-background:new 0 0 46.354 46.354;" xml:space="preserve"><g><g>
+                            <path d="M21.57,2.049c0.303-0.612,0.927-1,1.609-1c0.682,0,1.307,0.388,1.609,1l5.771,11.695c0.261,0.529,0.767,0.896,1.352,0.981   L44.817,16.6c0.677,0.098,1.237,0.572,1.448,1.221c0.211,0.649,0.035,1.363-0.454,1.839l-9.338,9.104   c-0.423,0.412-0.616,1.006-0.517,1.588l2.204,12.855c0.114,0.674-0.161,1.354-0.715,1.756c-0.553,0.4-1.284,0.453-1.89,0.137   l-11.544-6.07c-0.522-0.275-1.147-0.275-1.67,0l-11.544,6.069c-0.604,0.317-1.337,0.265-1.89-0.136   c-0.553-0.401-0.829-1.082-0.714-1.756l2.204-12.855c0.1-0.582-0.094-1.176-0.517-1.588L0.542,19.66   c-0.489-0.477-0.665-1.19-0.454-1.839c0.211-0.649,0.772-1.123,1.449-1.221l12.908-1.875c0.584-0.085,1.09-0.452,1.351-0.982   L21.57,2.049z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFD325"></path>
+                        </g></g> </svg>
+                    </div>
+                    <a class="free-vpn_rate-btn" target="_blank" href="https://addons.mozilla.org/ru/firefox/addon/free-vpn-firefox/reviews/">Rate VPN</a>
+                </div>
+            </div>
+        </div><iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom"></iframe><div class="intercom-lightweight-app" aria-live="polite"><style id="intercom-lightweight-app-style">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #339266;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 40px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(62, 72, 84) 0%,
+      rgb(19, 22, 25) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style></div></body></html>

@@ -18,6 +18,7 @@ export class Register extends Component {
     year: null,
     disabled: true,
     misMatch:false,
+    passerr: '',
   };
 
   static propTypes = {
@@ -62,16 +63,32 @@ export class Register extends Component {
 
   }
 
-
+showPass() {
+  var x = document.getElementById("pass");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+} 
     validate = () => {
-         if(this.state.password!=this.state.password2){
-              this.setState({ misMatch: true, disabled: true });
+         if(this.state.password!=this.state.password2 && this.state.password.length){
+              this.setState({ misMatch: true, disabled: true , passerr: "Password Didn't match" });
             } else {
               this.setState({ misMatch: false });
               if(this.state.password.length>=4 && this.state.email.length>=4 && this.state.password2.length>=4){
-                  this.setState({ disabled: false, misMatch: false });
+                this.setState({ disabled: false, misMatch: false });
+              } 
+              if(this.state.password.length>8){
+                this.setState({ disabled: true, misMatch: true , passerr: "Password Should be less than 8 in size"});
+              }
+              if(this.state.password == this.state.password.toUpperCase()){
+                this.setState({ disabled: true, misMatch: true , passerr: "Password Should have atleast one lowercase letter(a-z)"});
+              }
+              if(this.state.password == this.state.password.toLowerCase()){
+                this.setState({ disabled: true, misMatch: true , passerr: "Password Should have atleast one uppercase letter(A-Z)"});
               } else {
-                this.setState({ disabled: true });
+                this.setState({ disabled: false });
 
               }
 
@@ -228,8 +245,9 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <div onChange={this.onTypeChange}>
+              <div onChange={this.onTypeChange} className="pt-3 pb-3">
                 <input type="radio" value={false} defaultChecked name="is_parent"/> Student
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" value={true} name="is_parent"/> Parent
               </div>
             </div>
@@ -255,12 +273,14 @@ export class Register extends Component {
             <div className="form-group">
               <label>Password</label>
               <input
+                id="pass"
                 type="password"
                 className="form-control"
                 name="password"
                 onChange={this.onPass2Change}
                 value={password}
               />
+              <div className="btn-showpass btn" onClick={this.showPass}><small>Show Password</small></div>
             </div>
             <div className="form-group">
               <label>Confirm Password</label>
@@ -271,7 +291,7 @@ export class Register extends Component {
                 onChange={this.onPass2Change}
                 value={password2}
               />
-              {this.state.misMatch ? <span style={{color: "red"}}>Password Didn't match</span> : ""}
+              {this.state.misMatch ? <span style={{color: "red"}}>{ this.state.passerr }</span> : ""}
 
             </div>
 

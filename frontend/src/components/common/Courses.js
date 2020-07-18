@@ -1,0 +1,105 @@
+import React from 'react'
+import '../../styles/common.css'
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getCourses, getSubCourses } from '../../actions/commonActions.js';
+import ReactHtmlParser from 'react-html-parser';
+
+
+
+export class Courses extends React.Component {
+	componentDidMount() {
+		this.props.getCourses();
+		this.props.getSubCourses();
+    	document.getElementById('courses').classList.add('active');
+		document.title = "Courses Offered | Learnerz Corner"
+		window.scrollTo(0, 0)
+	}
+	componentWillUnmount(){
+		document.getElementById('courses').classList.remove('active');
+	   
+	}
+
+	static propTypes = {
+	    courses: PropTypes.array,
+	    subCourses: PropTypes.array,
+		values: PropTypes.object.isRequired,
+		getSubCourses: PropTypes.func.isRequired,
+		getCourses: PropTypes.func.isRequired,
+	}
+
+	checkhshouldi(){
+        return (this.props.values.isCLoading && this.props.values.isSCLoading);
+    }
+
+	makeCourses = () => {
+        const { courses, subCourses } = this.props;
+        console.log(courses[0], subCourses)
+        let j = 0;
+        var ele = [];
+
+
+        var str = '';
+
+        for(i=0;i<courses.length;i++){
+        	var k =(<><h3 className="heading">{courses[i]['course_name']}</h3><br/><br/></>
+        		)
+
+		    var course = [];
+        	for(j=0;j<subCourses.length;j++){
+        		if(courses[i]['id']==subCourses[j]['course_id']){
+        			var jk = (
+        				<div className="col-sm-5 m-2 card">
+        					<div className="row">
+        						<div className="col-sm-10">
+		        					<Link to={ "/courses/" + courses[i].id + "/" + subCourses[j].id } className='a p-4 float-left mtlbkiw black'>{subCourses[j].sub_course_name}</Link>
+		        				</div>
+        						<div className="col-sm-2 m-auto">
+		        					<img className="img-fluid pr-2 img-spin float-right" width="100%" src={"/static/frontend/"+subCourses[j].id+".svg"} />
+        						</div>
+        					</div>
+        				</div>
+        			)
+        			course.push(jk)
+        		}
+        	}
+
+        	var content = React.createElement("div", {className:'row jc'},  course)
+
+        	var final = (<div className="p-3">{k}{content}</div>)
+
+        	ele.push(final)
+        }
+        return ele;
+	}
+
+
+	render() {
+		return (
+			<div>
+				<div className="bg-white p-5">
+					<div className="container">
+						<div className="row">
+							<div className="p-5">
+								<div className="text-center">
+									<h2 className="heading">Courses</h2>
+								</div>
+							</div>
+						</div>
+						{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
+					</div>
+				</div>	
+			</div>
+		)
+	}
+}
+
+
+const mapStateToProps= state => ({
+	courses : state.common.courses,
+	subCourses : state.common.subCourses,
+	values: state.common,
+})
+
+export default connect(mapStateToProps, { getCourses, getSubCourses })(Courses)

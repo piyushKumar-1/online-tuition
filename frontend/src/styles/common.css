@@ -1,0 +1,51 @@
+.heading{
+	font-family: 'Grenze Gotisch', cursive;
+}
+
+
+.black{
+	color:black !important;
+}
+
+.jc{
+	justify-content: center;
+}
+
+.jc .card{
+	border-radius: 0px !important;
+	box-shadow: 5px 5px 5px 1px gray;
+	clear: both;
+	display: block;
+	transition: all ease-in-out .3s;
+}
+
+.jc .card:hover{
+	transform: scale(1.05);
+}
+
+
+.jc .card:hover .img-spin{
+	transform: scale(1.05);
+	animation-name: spin;
+	animation-iteration-count: infinite;
+	animation-duration: 1.2s;
+}
+
+@keyframes spin{
+	100% { transform: rotate(360deg); }
+}
+
+.jc .a{
+	text-decoration: none;
+	transition: .3s;
+}
+
+.jc .a:hover{
+	text-decoration: none;
+	transform: scale(1.1);
+}
+
+.mtlbkiw{
+	width: max-content;
+}
+
