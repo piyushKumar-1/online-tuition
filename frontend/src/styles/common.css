@@ -19,12 +19,12 @@
 	transition: all ease-in-out .3s;
 }
 
-.jc .card:hover{
+.jc .box:hover{
 	transform: scale(1.05);
 }
 
 
-.jc .card:hover .img-spin{
+.jc .box:hover .img-spin{
 	transform: scale(1.05);
 	animation-name: spin;
 	animation-iteration-count: infinite;
@@ -49,3 +49,56 @@
 	width: max-content;
 }
 
+
+.cen{
+	position: relative;
+	
+}
+
+
+.overlay{
+    background:rgba(0,0,0,0.5);
+    position:absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: white;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+.main {
+  display: block;  
+  width: 100%;
+}
+
+
+
+
+.box{
+	transition: all .3s;
+}
+
+
+.box:hover > .overlay {
+    opacity: 1;
+}
+
+
+.w-max{
+	width: max-content;
+}
+
+
+
+
+
+@media(max-width: 767px){
+	.jic{
+		padding-bottom: 15px;
+		justify-content: center;
+		display: flex;
+	}
+}

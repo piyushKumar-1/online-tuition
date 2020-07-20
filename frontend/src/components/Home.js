@@ -187,7 +187,7 @@ Expert Faculty and Peer Instructors</p><br/><br/><br/><br/>
 								</div>
 								<div className="col-lg-4 shadow">
 									<div className="second pt-5 pr-5 pl-5 pb-3">
-										<h3 className="tt f-600">Home Learning</h3>
+										<h3 className="tt f-600">CONDUCIVE LEARNING</h3>
 										<p>Experience a positive learning environment by having focussed learning goals, customized content delivery model, active engagement and assessment.</p>
 									</div>
 									<div className="icon-text">
@@ -196,7 +196,7 @@ Expert Faculty and Peer Instructors</p><br/><br/><br/><br/>
 								</div>
 								<div className="col-lg-4 shadow">
 									<div className="third pt-5 pr-5 pl-5 pb-3">
-										<h3 className="tt f-600">one to one interactive session</h3>
+										<h3 className="tt f-600">1-to-1 Interactive session</h3>
 										<p>Micro monitoring for doubt clarification, subject revision in order to improve the performance in examination and to increase the knowledge level in the subject. </p>
 									</div>
 									<div className="icon-text">

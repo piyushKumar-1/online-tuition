@@ -10,6 +10,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 export class Courses extends React.Component {
 	componentDidMount() {
+		console.log(window.location.href, window.location.href.match(/login+/))
 		this.props.getCourses();
 		this.props.getSubCourses();
     	document.getElementById('courses').classList.add('active');
@@ -41,7 +42,7 @@ export class Courses extends React.Component {
 
 
         var str = '';
-
+        var i=0;
         for(i=0;i<courses.length;i++){
         	var k =(<><h3 className="heading">{courses[i]['course_name']}</h3><br/><br/></>
         		)
@@ -50,16 +51,25 @@ export class Courses extends React.Component {
         	for(j=0;j<subCourses.length;j++){
         		if(courses[i]['id']==subCourses[j]['course_id']){
         			var jk = (
-        				<div className="col-sm-5 m-2 card">
-        					<div className="row">
-        						<div className="col-sm-10">
-		        					<Link to={ "/courses/" + courses[i].id + "/" + subCourses[j].id } className='a p-4 float-left mtlbkiw black'>{subCourses[j].sub_course_name}</Link>
-		        				</div>
-        						<div className="col-sm-2 m-auto">
-		        					<img className="img-fluid pr-2 img-spin float-right" width="100%" src={"/static/frontend/"+subCourses[j].id+".svg"} />
+        				<>
+    					<div className="col-sm-6 mt-3">
+							<div className="box">
+	    						<div className="main card">
+        							<div className="row">
+		        						<div className="col-md-8">
+				        					<h4 className='a p-4 float-left mtlbkiw black'>{subCourses[j].sub_course_name}</h4>
+				        				</div>
+		        						<div className="col-md-4 jic m-auto">
+				        					<img className="pr-2 img-spin float-right" height="50" src={"/static/frontend/"+subCourses[j].id+".svg"} />
+		        						</div>
+        							</div>
         						</div>
+        						<div className="overlay m-auto text-center p-4">
+									<Link to={ "/courses/" + courses[i].id + "/" + subCourses[j].id } className="btn w-50 cen m-auto btn-light">Enquire</Link>
+								</div>
         					</div>
         				</div>
+						</>
         			)
         			course.push(jk)
         		}

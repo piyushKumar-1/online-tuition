@@ -291,7 +291,7 @@ showPass() {
                 onChange={this.onPass2Change}
                 value={password2}
               />
-              {this.state.misMatch ? <span style={{color: "red"}}>{ this.state.passerr }</span> : ""}
+              {this.state.misMatch ? <small className="help" style={{color: "red"}}>{ this.state.passerr }</small> : ""}
 
             </div>
 

@@ -14,7 +14,6 @@ class RegisterationAPI(generics.GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        print(request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         return Response({
@@ -56,7 +55,6 @@ class ResetPasswordAPI(generics.GenericAPIView):
      def post(self, request):
          data = {'data': request.data, 'request': request}
          serializer = self.get_serializer(data = request.data)
-         print(serializer.is_valid())
          if not serializer.is_valid():
              return Response({'error': 'Email Not Registered Try again.....'},status=status.HTTP_401_UNAUTHORIZED)
          return Response({'success':"We have sent you a link to reset the password "},status=status.HTTP_200_OK)

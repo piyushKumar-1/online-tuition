@@ -7,6 +7,7 @@ import Footer from './Footer.js';
 import AboutUs from './common/AboutUs.js';
 import Practice from './common/Practice.js';
 import Courses from './common/Courses.js';
+import Enquire from './common/Enquire.js';
 import { Provider, useSelector } from 'react-redux';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store.js';
@@ -38,6 +39,7 @@ export class App extends React.Component {
                             <Route exact path="/join" component={AboutUs} />
                             <Route exact path="/contact" component={AboutUs} />
                             <Route exact path="/courses" component={Courses} />
+                            <Route path="/courses/:courseId/:subCourseId" render={props => <Enquire  {...this.props} {...props}/>}/>
                             <Route exact path="/practices" component={Practice} />
                             <Route exact path="/login" component={LoginComp} />
                             <Route exact path="/register" component={RegisterComp} />

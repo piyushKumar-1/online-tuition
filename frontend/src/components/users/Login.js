@@ -112,7 +112,7 @@ export class Login extends Component {
                           </div>
                           <div className="result">
                         <div className="kalo p-5 mt-2">
-                          { this.props.isSent ? <div dangerouslySetInnerHTML={{__html: k}} /> : <h3>Sending&nbsp;&nbsp;&nbsp;<i class="fas fa-spinner fa-spin"></i></h3> }
+                          { this.props.isSent ? <div dangerouslySetInnerHTML={{__html: k}} /> : <h3>Sending&nbsp;&nbsp;&nbsp;<i className="fas fa-spinner fa-spin"></i></h3> }
                           </div>
                           </div>
                         </div>

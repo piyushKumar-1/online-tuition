@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'frontend',
     'users',
     'knox',
-    'courses'
+    'courses',
+    'enquiry'
 ]
 
 REST_FRAMEWORK = {
