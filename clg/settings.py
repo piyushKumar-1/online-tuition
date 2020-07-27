@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'users',
     'knox',
     'courses',
-    'enquiry'
+    'enquiry',
+    'teacher'
 ]
 
 REST_FRAMEWORK = {
@@ -134,6 +135,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 

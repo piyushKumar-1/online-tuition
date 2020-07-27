@@ -8,6 +8,7 @@ import AboutUs from './common/AboutUs.js';
 import Practice from './common/Practice.js';
 import Courses from './common/Courses.js';
 import Enquire from './common/Enquire.js';
+import BecomeTeacher from './common/BecomeTeacher.js';
 import { Provider, useSelector } from 'react-redux';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store.js';
@@ -36,7 +37,7 @@ export class App extends React.Component {
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route exact path="/about" component={AboutUs} />
-                            <Route exact path="/join" component={AboutUs} />
+                            <Route exact path="/join" component={BecomeTeacher} />
                             <Route exact path="/contact" component={AboutUs} />
                             <Route exact path="/courses" component={Courses} />
                             <Route path="/courses/:courseId/:subCourseId" render={props => <Enquire  {...this.props} {...props}/>}/>

@@ -19,5 +19,3 @@ class EnquiryCreateSerializer(serializers.ModelSerializer):
 		print(data)
 		Enquiry.objects.create(**data)
 		return Enquiry
-
-

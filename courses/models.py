@@ -17,3 +17,9 @@ class SubCourses(models.Model):
     	return self.sub_course_name
 
 
+class Subjects(models.Model):
+	sub_course = models.ForeignKey(SubCourses, on_delete=models.CASCADE)
+	subject_name = models.CharField(max_length=100)
+
+	def __str__(self):
+		return self.subject_name

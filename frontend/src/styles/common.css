@@ -2,6 +2,13 @@
 	font-family: 'Grenze Gotisch', cursive;
 }
 
+.mt-20{
+	margin-top: 20%;
+}
+
+.mb-20{
+	margin-bottom: 20%;
+}
 
 .black{
 	color:black !important;

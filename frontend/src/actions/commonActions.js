@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_COURSES, GOT_SUB_COURSES, ENQ_POST_SUCCESS } from './types.js';
+import { GOT_COURSES, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from './types.js';
 
 
 
@@ -30,21 +30,52 @@ export const getSubCourses = () => dispatch => {
 }
 
 
-export const enqPost = ({ name, email, password, phone, std, country, department, year, service, subject, subject_code, language, instruct, time_suit, day_suit, upload }) => dispatch => {
+export const getSubjects = () => dispatch => {
+    axios
+        .get('/api/get/subjects')
+        .then(res => {
+            dispatch({
+                type: GOT_SUBJECTS,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+export const enqPost = (FD) => dispatch => {
 
     const config = {
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'multipart/form-data'
         }
     }
-    const body = JSON.stringify({ name, email, password, phone, std, country, department, year, service, subject, subject_code, language, instruct, time_suit, day_suit, upload })
-
-
+    console.log(FD)
     axios
-        .post('/api/post/enquiry', body, config)
+        .post('/api/post/enquiry', FD, config)
         .then(res => {
             dispatch({
                 type: ENQ_POST_SUCCESS,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+export const jobPost = (FD) => dispatch => {
+
+    const config = {
+        headers: {
+            'Content-type': 'multipart/form-data'
+        }
+    }
+    console.log(FD)
+    axios
+        .post('/api/post/join', FD, config)
+        .then(res => {
+            dispatch({
+                type: JOB_POST_SUCCESS,
                 payload: res.data
             })
         })

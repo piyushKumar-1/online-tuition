@@ -11,6 +11,29 @@
 	overflow: hidden;
 }
 
+.f-600{
+	font-weight: 600 !important;
+}
+
+.h-300px{
+	height: 300px;
+	background-color: white;
+}
+
+.ab{
+	width: max-content;
+	margin: 0px;
+	float: left;
+	font-size: 45px;
+}
+
+
+.wid-max{
+	width: max-content;
+	padding:100px;
+	margin: auto;
+}
+
 @keyframes logo{
 	0% {margin-left:0; margin-top:0;}
 	25% {margin-left:10; margin-top:10;}
@@ -29,6 +52,45 @@ ul{
 
 .back{
 	background-color: #0f3b66 !important;
-	border-radius: 30px;
+	border-radius: 150px;
 	padding: 10px;
+}
+
+
+@media(max-width: 800px){
+
+
+	.wid-max{
+		width: max-content;
+		padding-top: 100px !important;
+		padding:80px;
+		margin: auto;
+	}
+
+	.ab{
+		
+		font-size: 35px;
+	}
+
+}
+
+
+
+
+@media(max-width: 560px){
+
+
+	.wid-max{
+		width: max-content;
+		padding-top: 100px !important;
+		padding:30px;
+		margin: auto;
+	}
+
+	.ab{
+		width: 100%;
+		font-weight: 600;
+		font-size: 25px;
+	}
+
 }

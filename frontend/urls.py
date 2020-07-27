@@ -7,7 +7,7 @@ urlpatterns = [
     path('login/', views.index ),
     path('register/', views.index ),
     path('about/', views.index ),
-    path('career/', views.index ),
+    path('join/', views.index ),
     path('home/', views.index ),
     path('contact/', views.index ),
     path('practices/', views.index ),

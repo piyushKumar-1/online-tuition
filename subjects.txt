@@ -1,0 +1,101 @@
+Aero Engineering Thermodynamics
+Aerodynamics
+Aeroelasticity
+Aerospace Structural Mechanics
+Air Breathing Propulsion
+Avionics
+Engineering Mechanics
+Finite Element Methods
+Flight  Dynamics
+Flight Mechanics
+Flight Systems and Instrumentation
+Fluid Mechanics and Machinery
+Introduction to Aerospace Engineering
+Mechanics of Machines
+Propulsion
+Space Mechanics
+Space Propulsion
+Space Science
+Spacecraft Dynamics
+Automotive Engines
+Automotive Transmission
+Design of Vehicle Components
+Dynamics of Ground Vehicles
+Engineering Mechanics
+Fluid Mechanics for Automotive Applications
+Material  Science
+Mechanics of Solids
+Thermodynamics and Thermal Engineering
+Biochemistry
+Bioinformatics
+Bioprocess Engineering 
+Genetics
+Immunology
+Microbiology
+Molecular Biology 
+Plant and Animal Biotechnology
+Process Biotechnology
+Recombinant DNA Technology
+Environmental Engineering
+Geomatics Engineering
+Geotechnical Engineering
+Structural Engineering
+Transportation Engineering
+Water Resources Engineering
+Algorithms
+Compiler Design
+Computer Networks
+Computer Organization and Architecture
+Database
+Digital Logic
+Operating System
+Programming and Data Structures
+Theory of Computation
+Analog Circuits
+Communications
+Control Systems
+Digital Circuits
+Electromagnetics
+Electronic Devices
+Networks, Signals and Systems
+Analog and Digital Electronics
+Control Systems
+Electric Circuits
+Electrical and Electronic Measurements
+Electrical Machines
+Electromagnetic Fields
+Power Electronics
+Electrical Machines
+Signals and Systems
+Thermodynamics and Fluid Mechanics
+Digital System Design
+Instrument Transducers
+Electrical and Electronic Measurements
+Discrete Time Signal Processing
+Control System Analysis and Design
+Power Electronics, Drives and Control
+Compiler Engineering
+Computer Architecture
+Computer Networks
+Cryptography and Security
+Database Management Systems
+Design and Analysis of Algorithms
+Digital Logic and Design
+Distributed and Cloud Computing
+Engineering Graphics
+Information Technology Essentials
+Operating Systems
+Programming and Data Structures
+Software Engineering
+Applied Thermodynamics 
+Engineering Materials and Metallurgy 
+Engineering Mechanics
+Engineering Thermodynamics
+Finite Element Analysis
+Fluid Mechanics and Machinery
+Heat and Mass transfer
+Hydraulics and Pneumatics
+Mechanics of Materials
+Mechatronics
+Theory of Machines
+Thermal Engineering
