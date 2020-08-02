@@ -73,11 +73,12 @@ export class Header extends Component {
 	render() {
 
 
-
 		const { isAuthenticated, user } = this.props.auth;
 		const authLinks = (
-                    <button onClick={this.props.logoutUser} className="btn logbtn btn-ouline-dark"><i className="fa fa-sign-out black"></i>&nbsp;Logout</button>
-
+			<Fragment>
+	            <button onClick={this.props.logoutUser} className="btn logbtn btn-ouline-dark"><i className="fa fa-sign-out black"></i>&nbsp;Logout</button>
+				<Link to='/student/dashboard' className="btn logbtn btn-ouline-dark"><i className="fa fa-user-circle black"></i>&nbsp;Dashboard</Link>
+			</Fragment>
 			)
 
 		const modal = (
@@ -134,28 +135,44 @@ const working = (
 				 } else { return(modal); }
 			}
 
-		return (
-			<Fragment>
+			const authNavLinks = (
+				<>
+					<Link to="/" className="navbar-brand"><img className="logo" src={"/static/frontend/logo.png"} alt="Learnerz Corner" width="180"/></Link>
 
+					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+					</button>
+					<div className="collapse navbar-collapse" id="navbarNav">
+						<ul className="nav navbar-nav ml-auto">
+							<li className="nav-item" id="home">
+								<Link to="/" className="nav-link">Home</Link>
+							</li>
+							<li className="nav-item" id="about">
+								<Link to="/about" className="nav-link">About Us</Link>
+							</li>
+							<li className="nav-item" id="courses">
+								<Link to="/courses" className="nav-link">Courses and Programmes</Link>
+							</li>
 
-
-				<div className="navbar navbar-light bg-light">
-					<div className="cus_container">
-						<div className="right ml-auto">
-
-							{ isAuthenticated ? authLinks: guestLinks() }
-						</div>
+							<li className="nav-item" id="practices">
+								<Link to="/practices" className="nav-link">Our Practices</Link>
+							</li>
+							<li className="nav-item" id="contact">
+								<Link to="/contact" className="nav-link">Contact Us</Link>
+							</li>
+						</ul>
 					</div>
-				</div>
-				<nav className="navbar shadow navbar-expand-lg sticky-top navbar-dark bg-navy high-z">
-					<div className="cus_container">
+				</>
+			)
 
-							<Link to="/" className="navbar-brand"><img className="logo" src={"/static/frontend/logo.png"} alt="Learnerz Corner" width="180"/></Link>
+			const guestNavLinks = (
+				<>
+					<Link to="/" className="navbar-brand"><img className="logo" src={"/static/frontend/logo.png"} alt="Learnerz Corner" width="180"/></Link>
 
-						<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span className="navbar-toggler-icon"></span>
-						</button>
-						<div className="collapse navbar-collapse" id="navbarNav">
+					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+					</button>
+					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="nav navbar-nav ml-auto">
 							<li className="nav-item" id="home">
 								<Link to="/" className="nav-link">Home</Link>
@@ -177,7 +194,30 @@ const working = (
 								<Link to="/contact" className="nav-link">Contact Us</Link>
 							</li>
 						</ul>
+					</div>
+				</>
+			)
+
+		return (
+			<Fragment>
+
+				{ this.props.auth.isAuthenticated ? <Redirect to="/student/dashboard"/> : '' }
+
+				<div className="navbar navbar-light bg-light">
+					<div className="cus_container">
+						<div className="right ml-auto">
+
+							{ isAuthenticated ? authLinks: guestLinks() }
 						</div>
+					</div>
+				</div>
+				<nav className="navbar shadow navbar-expand-lg sticky-top navbar-dark bg-navy high-z">
+					<div className="cus_container">
+
+
+							{ isAuthenticated ? authNavLinks: guestNavLinks }
+
+							
 					</div>
 				</nav>
 

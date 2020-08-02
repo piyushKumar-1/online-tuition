@@ -130,9 +130,16 @@ font-space: 10px;
 }
 
 .btn-start{
+    background-color: #0f3b66 !important;
+    color: white;
+    font-weight: 600;
     font-size: 22px;
     animation-name: getStarted;
     animation-duration: 2s;
+}
+
+.btn-start:hover{
+  background-color: rgb(52, 189, 40) !important;
 }
 
 .reset{
@@ -203,7 +210,7 @@ text-shadow: 0px 4px 4px #282828;
   width: 200px;
   height: 260px;
   border: none;
-  margin: 40px 0;
+  margin: 90px 0;
   perspective: 600px;
 }
 
@@ -230,7 +237,7 @@ text-shadow: 0px 4px 4px #282828;
   width: 160%;
   margin-right: 0vw;
   margin-left: -30%;
-  margin-top:-30px;
+  margin-top:-70px;
   top: 70px;
 
 }
@@ -248,7 +255,7 @@ text-shadow: 0px 4px 4px #282828;
 
 .mt{
   padding-top: 0px;
-  height: 799px;
+  height: 589px;
   max-height: 300%;
 }
 
@@ -383,14 +390,6 @@ display: flex;
 }
 
 
-.col-md-6 .card{
-	border: none;
-	background: black;
-	color: yellow;
-	border-right: 25px;
-
-}
-
 
 .col-md-6 .card a{
 	text-decoration: none;
@@ -460,6 +459,11 @@ display: flex;
 
 .high-z{
   z-index: 1040;
+}
+
+.tag-line2{
+  font-family: 'Special Elite', sans-serif;
+  font-size: 25px;
 }
 
 @media (max-width: 1000px){
@@ -654,7 +658,7 @@ padding: 8px;
 
 .first{
   height: 100%;
-  background: rgb(76, 232, 63) none repeat scroll 0 0;
+  background: rgb(52, 189, 40) none repeat scroll 0 0;
   width: 100%;
 }
 
@@ -666,7 +670,7 @@ padding: 8px;
 
 .third{
  height: 100%;
-  background: rgb(76, 232, 63) none repeat scroll 0 0;
+  background: rgb(52, 189, 40) none repeat scroll 0 0;
   width: 100%;
 }
 
@@ -700,6 +704,12 @@ padding: 8px;
 
 
 .bg-image{
+    
+    min-height: 90%;
+
+}
+
+.bg-image-save{
     background: #fff url(https://images.pexels.com/photos/3758105/pexels-photo-3758105.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1500) no-repeat center;
     background-color: rgb(255, 255, 255);
     background-position-y: center;

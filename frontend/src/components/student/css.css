@@ -1,0 +1,102 @@
+.sidebar {
+  position: sticky;
+  left: 0;
+  top:80px;
+  overflow: hidden;
+  width: max-content;
+  display: block;
+  background-color: "#23232e";
+  transition: width 600ms ease;
+}
+
+.sidebar a{
+  text-decoration: none;
+  color: #002147;
+}
+
+.sidebar a:hover{
+  text-decoration: none;
+}
+
+.sidebar li{
+  max-width: 60px;
+  transition: all .3s;
+  overflow: hidden;
+}
+
+.sidebar li:hover{
+  width:max-content;
+  max-width: 100%;
+  overflow: hidden;
+
+}
+.sidebar ul{
+  width:max-content;
+  margin: 0px;
+  padding-left: 0;
+  font-size: 16px; 
+}
+
+
+.sidebar li{ 
+  list-style: none;
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding: 19px;
+} 
+
+#crc{
+  background-image: url('/static/frontend/online-learning.svg');
+  background-position-x: 10px;
+  background-size: 40px;
+}
+
+#tt{
+  background-image: url('/static/frontend/microsoft-excel.svg');
+  background-position-x: 5px;
+  background-size: 50px;
+}
+
+
+#uplod{
+  background-image: url('/static/frontend/files-and-folders.svg');
+  background-position-x: 10px;
+  background-size: 40px;
+}
+
+#fedbk{
+  background-image: url('/static/frontend/quality.svg');
+  background-position-x: 10px;
+  background-size: 40px;
+}
+
+#lgout{
+  background-image: url('/static/frontend/logout.svg');
+  background-position-x: 13px;
+  background-size: 36px;
+}
+
+
+.border{
+  border-right: 3px #13ae13 solid !important;
+}
+
+.side-item{
+  margin-left: 50px;
+  width: max-content;
+  transition: all .3s;
+  transform: rotateY(-45deg);
+  perspective: 1000;
+}
+
+.side-item h4{
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+
+.sidebar li:hover .side-item{
+  transform: rotateY(0deg);
+}
+
+

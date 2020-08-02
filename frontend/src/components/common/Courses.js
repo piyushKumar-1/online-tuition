@@ -16,10 +16,23 @@ export class Courses extends React.Component {
     	document.getElementById('courses').classList.add('active');
 		document.title = "Courses Offered | Learnerz Corner"
 		window.scrollTo(0, 0)
+		const txt = "COURSES | "
+		var i = 0;
+		var speed = 30;
+	  	function typeWriterAb() {
+		  if (i < txt.length) {
+		    document.getElementById("msgCr").innerHTML += txt.charAt(i);
+		    i++;
+		    setTimeout(typeWriterAb, speed);
+		  	if(i==txt.length){
+			    j=txt.length;
+		  	}
+		  }
+		}
+		typeWriterAb();
 	}
 	componentWillUnmount(){
-		document.getElementById('courses').classList.remove('active');
-	   
+		document.getElementById('courses').classList.remove('active');	   
 	}
 
 	static propTypes = {
@@ -88,15 +101,15 @@ export class Courses extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="bg-white p-5">
+				<div className="w-100 h-300px">
+					<div className="text-center wid-max">
+						<h3 id="msgCr" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
+						<h3 className="ab" data-aos="fade-in" data-aos-delay="800" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
+					</div>
+				</div>
+
+				<div className="p-5" data-aos="slide-up" data-aos-once="true" data-aos-delay="1400">
 					<div className="container">
-						<div className="row">
-							<div className="p-5">
-								<div className="text-center">
-									<h2 className="heading">Courses</h2>
-								</div>
-							</div>
-						</div>
 						{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
 					</div>
 				</div>	

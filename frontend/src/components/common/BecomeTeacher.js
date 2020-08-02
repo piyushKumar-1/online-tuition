@@ -70,7 +70,11 @@ export class BecomeTeacher extends React.Component {
 	}
 
 	componentWillUnmount(){
-		document.getElementById('join').classList.remove('active');
+		try{
+			document.getElementById('join').classList.remove('active');
+		} catch(err){
+			console.log("")
+		}
 	}
 	onChange = (e) => {
     	this.setState({ [e.target.name]: e.target.value });
@@ -151,7 +155,7 @@ export class BecomeTeacher extends React.Component {
     	const {  name, email, phone, qualification, department, sub0, sub1, sub2, sub3, experience, upload } = this.state;
 		return (
 
-			<div className="container">
+			<div className="container"  data-aos="fade-up" data-aos-duration="600" >
 
 			{ this.props.values.joinMsg['success']
 

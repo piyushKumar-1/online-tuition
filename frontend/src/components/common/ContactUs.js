@@ -5,15 +5,15 @@ import '../../styles/bubble.css'
 
 export default class AboutUs extends React.Component {
 componentDidMount() {
- document.getElementById('about').classList.add('active');
- document.title = "About Us | Learnerz Corner"
+ document.getElementById('contact').classList.add('active');
+ document.title = "Contact Us | Learnerz Corner"
   window.scrollTo(0, 0)
-  const txt = "ABOUT US | "
+  const txt = "CONTACT US | "
   var i = 0;
   var speed = 30;
   	function typeWriterAb() {
 	  if (i < txt.length) {
-	    document.getElementById("msgAb").innerHTML += txt.charAt(i);
+	    document.getElementById("msgCn").innerHTML += txt.charAt(i);
 	    i++;
 	    setTimeout(typeWriterAb, speed);
 	  	if(i==txt.length){
@@ -25,7 +25,7 @@ componentDidMount() {
 }
 
 componentWillUnmount(){
-	document.getElementById('about').classList.remove('active');
+	document.getElementById('contact').classList.remove('active');
    
 }
 	render() {
@@ -38,7 +38,7 @@ componentWillUnmount(){
 				<div id="background-wrap">
 					<div className="w-100 h-300px">
 						<div className="text-center wid-max">
-							<h3 id="msgAb" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
+							<h3 id="msgCn" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
 							<h3 className="ab" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 						</div>
 					</div>

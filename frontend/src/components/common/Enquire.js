@@ -51,37 +51,45 @@ export class Enquire extends React.Component {
         const { courses, subCourses } = this.props;
 
         let j = 0;
+        let k = 0;
         var ele = [];
 
         console.log(this.props.match.params.subCourseId)
         var str = '';
-        	var k =(<><h3 className="">Enquiery About {courses[this.props.match.params.courseId-1]['course_name']} Course: </h3><br/><br/></>
-        		)
-
-		    var course = [];
-			var jk = (
-				<>
-				<div className="col-sm-6 mt-3">
-					<div className="box">
-						<div className="card">
-							<div className="row">
-        						<div className="col-md-8">
-		        					<h4 className='a p-4 float-left mtlbkiw black'>{subCourses[this.props.match.params.subCourseId-1].sub_course_name}</h4>
-		        				</div>
-        						<div className="col-md-4 jic m-auto">
-		        					<img className="pr-2 img-spin float-right" height="50" src={"/static/frontend/"+subCourses[this.props.match.params.subCourseId-1].id+".svg"} />
-        						</div>
+    	for(k=0;k<courses.length;k++){
+    		console.log(courses[k]['id'], this.props.match.params.courseId )
+        	if(courses[k]['id']==this.props.match.params.courseId){
+        		var kk =(<><h3 className="">Enquiery About {courses[k]['course_name']} Course: </h3><br/><br/></>)
+        	}
+        }
+	    var course = [];
+	    for(k=0;k<subCourses.length;k++){
+        	if(subCourses[k]['id']==this.props.match.params.subCourseId){
+				var jk = (
+					<>
+					<div className="col-sm-6 mt-3">
+						<div className="box">
+							<div className="card">
+								<div className="row">
+	        						<div className="col-md-8">
+			        					<h4 className='a p-4 float-left mtlbkiw black'>{subCourses[k].sub_course_name}</h4>
+			        				</div>
+	        						<div className="col-md-4 jic m-auto">
+			        					<img className="pr-2 img-spin float-right" height="50" src={"/static/frontend/"+subCourses[k].id+".svg"} />
+	        						</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				</>
-			)
-			course.push(jk)
-        	var content = React.createElement("div", {className:'row jc'},  course)
-        	var final = (<div className="p-3">{k}{content}</div>)
+					</>
+				)
+			}
+		}
+		course.push(jk)
+    	var content = React.createElement("div", {className:'row jc'},  course)
+    	var final = (<div className="p-3">{kk}{content}</div>)
 
-        	ele.push(final)
+    	ele.push(final)
         
         return ele;
 	}

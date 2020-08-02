@@ -54,45 +54,12 @@ componentWillUnmount(){
 
 
 componentDidMount() {
-		var i = 0;
-		var txt = ['Attend Classes Anywhere Anytime', 'Home Work And Assignment Help', 'Project Guidance']
-		var speed = 30;
-		var j = txt.length;
-		var k = 0;
-		document.getElementById('home').classList.add('active');
-   
-		function clear(){
-			if (j <= txt[k].length && j>=0) {
-		    document.getElementById("msg").innerHTML = txt[k].slice(0,j);
-		    setTimeout(clear, speed);
-			j--;
-			    if(j==-1){
-			    	i=0;
-			    	k+=1;
-			    	if(k==txt.length){
-			    		k=0;
-			    	}
-		    		setTimeout(typeWriter, 800);
-			    }
-			}
-		}
-		function typeWriter() {
-		  if (i < txt[k].length) {
-		    document.getElementById("msg").innerHTML += txt[k].charAt(i);
-		    i++;
-		    setTimeout(typeWriter, speed);
-		  	if(i==txt[k].length){
-			    j=txt[k].length;
-		  		setTimeout(clear, 1500);
-		  	}
-		  }
-		}
-		typeWriter();
- document.title = "Home Page | Learnerz Corner"
-  window.scrollTo(0, 0)
-  window.addEventListener('scroll', this.listenToScroll)
-  
+	document.getElementById('home').classList.add('active');
+    document.title = "Home Page | Learnerz Corner"
+    window.scrollTo(0, 0)
+    window.addEventListener('scroll', this.listenToScroll)
 }
+
 
 listenToScroll = () => {
   const winScroll =
@@ -135,22 +102,39 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 		return (
 
 
-			<div>
+			<div className="shadow">
 			   <div className="bg-image">
 
 							<div className="cus_container mt content">
-								<div className="m-auto wid" data-aos="fade-down" data-aos-duration="600">
-									<p className="tag-line sticky-top shadow">Online Platform for Engineering Students to Learn From
-Expert Faculty and Peer Instructors</p><br/><br/><br/><br/>
+								<div className="mr-auto ml-auto mt-auto mb-0 wid" data-aos="fade-down" data-aos-duration="600">
+									
+									<p className="tag-line2">Online Platform for Engineering Students to Learn From Expert Faculty and Peer Instructors</p>
+									
 									<div className="row laga">											
 										<div className="col-sm-8">
 										<br/>
+										<div className="p-2">
 											<a className="btn expert btn-outline-white">
-												<div className="card-title">
-													<h5 style={{color: "black"}} id="msg" className="sty"></h5>
+												<div className="card-title" data-aos="fade" data-aos-once="true" data-aos-delay="600" data-aos-duration="600">
+													<h5 style={{color: "black"}} className="sty">Attend Classes Anywhere Anytime</h5>
 												</div>
-											</a><br/><br/><br/><br/>
-											<Link to="/register" className="btn btn-start btn-dark">Get Started</Link>
+											</a>
+										</div>
+										<div className="p-2">
+											<a className="btn expert btn-outline-white">
+												<div className="card-title" data-aos="fade" data-aos-once="true" data-aos-delay="1200" data-aos-duration="600">
+													<h5 style={{color: "black"}} className="sty">Home Work And Assignment Help</h5>
+												</div>
+											</a>
+										</div>
+										<div className="p-2">
+											<a className="btn expert btn-outline-white">
+												<div className="card-title" data-aos="fade" data-aos-once="true" data-aos-delay="1800" data-aos-duration="600">
+													<h5 style={{color: "black"}} className="sty">Project Guidance</h5>
+												</div>
+											</a>
+										</div><br/><br/>
+											<Link to="/register" className="btn btn-start">Get Started</Link>
 										</div>
 										<div className="col-sm-4">
 											<div className="img-fluid scene">

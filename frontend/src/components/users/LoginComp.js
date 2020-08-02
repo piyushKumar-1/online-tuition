@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import Login from './Login.js';
 import '../../styles/users.css';
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 export class LoginComp extends Component {
 	render() {
 		return (
 			<div className="m-auto ws">
+				{ this.props.isAuthenticated ? <Redirect to="/student/dashboard"/> : '' }
 				<Login />
 				<div className="p-5">
                     <p>
@@ -19,4 +21,10 @@ export class LoginComp extends Component {
 	}
 }
 
-export default LoginComp
+
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps )(LoginComp);

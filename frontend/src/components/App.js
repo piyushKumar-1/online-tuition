@@ -1,14 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Header from './Header.js';
 import Home from './Home.js';
 import Footer from './Footer.js';
 import AboutUs from './common/AboutUs.js';
 import Practice from './common/Practice.js';
 import Courses from './common/Courses.js';
+import ContactUs from './common/ContactUs.js';
 import Enquire from './common/Enquire.js';
 import BecomeTeacher from './common/BecomeTeacher.js';
+import Dashboard from './student/Dashboard.js';
 import { Provider, useSelector } from 'react-redux';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store.js';
@@ -24,6 +26,7 @@ import '../styles/users.css'
 
 
 export class App extends React.Component {
+
     componentDidMount(){
         store.dispatch(loadUser());
     }
@@ -38,12 +41,13 @@ export class App extends React.Component {
                             <Route exact path="/" component={Home} />
                             <Route exact path="/about" component={AboutUs} />
                             <Route exact path="/join" component={BecomeTeacher} />
-                            <Route exact path="/contact" component={AboutUs} />
+                            <Route exact path="/contact" component={ContactUs} />
                             <Route exact path="/courses" component={Courses} />
                             <Route path="/courses/:courseId/:subCourseId" render={props => <Enquire  {...this.props} {...props}/>}/>
                             <Route exact path="/practices" component={Practice} />
                             <Route exact path="/login" component={LoginComp} />
                             <Route exact path="/register" component={RegisterComp} />
+                            <PrivateRoute exact path="/student/dashboard" component={Dashboard} />
                             <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
                         </Switch>
                     </Router>
@@ -54,6 +58,6 @@ export class App extends React.Component {
 	}
 }
 
-export default App
+export default withRouter(App)
 const container = document.getElementById("app");
 ReactDOM.render(<App />, container);

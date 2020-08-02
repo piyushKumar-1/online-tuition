@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -28,12 +28,17 @@ export class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.login(this.state.email, this.state.password);
-    var k = document.getElementsByClassName('modal-open')[0];
-    console.log(k);
-    k.classList.remove('modal-open');
-    k.style.padding = '0';
-    k.style.overflowX = 'hidden';
-    document.getElementsByClassName('modal-backdrop')[0].parentNode.removeChild(document.getElementsByClassName('modal-backdrop')[0]);
+    try{
+      var k = document.getElementsByClassName('modal-open')[0];
+      console.log(k);
+      k.classList.remove('modal-open');
+      k.style.padding = '0';
+      k.style.overflowX = 'hidden';
+      document.getElementsByClassName('modal-backdrop')[0].parentNode.removeChild(document.getElementsByClassName('modal-backdrop')[0]);
+    } catch(error) {
+      console.log("")
+    }
+
   };
 
 
@@ -81,7 +86,6 @@ export class Login extends Component {
     }
     const k = this.props.message;
     const { email, password } = this.state;
-
     const resetBody = (
 
 
@@ -163,6 +167,7 @@ export class Login extends Component {
 
       <div>
         { this.state.reset ? resetBody : loginBody }
+
       </div>
     );
   }
@@ -174,4 +179,4 @@ const mapStateToProps = (state) => ({
   message: state.reset.message,
 });
 
-export default connect(mapStateToProps, { login, resetPass, setDefaultReset })(Login);
+export default connect(mapStateToProps, { login, resetPass, setDefaultReset })(withRouter(Login));

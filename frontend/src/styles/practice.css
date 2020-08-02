@@ -1,0 +1,38 @@
+.prac{
+	background: #0f3b66 !important;width: 100%;color: white;
+}
+
+.b{
+	min-height: 330px;
+}
+
+.p-prac{
+	font-size:20px;
+}
+
+
+@media(max-width: 900px){
+	.p-prac{
+		font-size:16px !important;
+	}
+}
+
+@media(max-width: 667px){
+	.p-prac{
+		padding: 10px;
+	}
+	.b{
+		min-height: 100px;
+	}
+	.sti{
+		position: sticky;
+		top:0;
+	}
+
+}
+
+
+.sti{
+	position: sticky;
+	top:0;
+}
