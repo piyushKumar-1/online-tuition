@@ -13,6 +13,7 @@ urlpatterns = [
     path('practices/', views.index ),
     path('courses/', views.index ),
     path('student/dashboard', views.index ),
+    path('student/timetable', views.index ),
     path('courses/<str:k>/<str:j>', views.index2 ),
     path('reset/confirmation/<str:k>/<str:j>', views.index2),
 ]

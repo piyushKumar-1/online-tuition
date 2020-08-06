@@ -13,6 +13,21 @@ export default class Dashboard extends React.Component {
 		return (
 			<div>
 			<Sidebar /> 
+
+			<div className="container">
+				<div className="calender">
+					<div className="row">
+						<div className="col-md-4 p-0">
+
+						</div>
+						<div className="col-md-8 p-0">
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 			<br/><br/> 
 			<br/><br/> 
 			<br/><br/> 

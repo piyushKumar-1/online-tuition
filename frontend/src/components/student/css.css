@@ -51,6 +51,12 @@
   background-size: 40px;
 }
 
+#pay{
+  background-image: url('/static/frontend/money.svg');
+  background-position-x: 10px;
+  background-size: 40px;
+}
+
 #tt{
   background-image: url('/static/frontend/microsoft-excel.svg');
   background-position-x: 5px;
@@ -100,3 +106,86 @@
 }
 
 
+.align{
+  position: relative;
+  top:-300px;
+}
+
+
+.day-highlight {
+  background-color: #85b5ff !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+
+.calender{
+  width: 90%;
+  margin: auto;
+}
+
+
+@media(max-width: 540px){
+  .align{
+    position: unset;
+    top:unset;
+  }
+  .sidebar {
+    position: fixed;
+    top:unset;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    width: 100%;
+    background: #f8f9fa !important;
+    z-index: 10;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+  }
+  .mar-t{
+    margin-top: 50px;
+  }
+
+  .sidebar a{
+    float: left;
+    width: 16.667%;
+  }
+
+  .sidebar ul{
+    width: 100%;
+  }
+
+  #crc{
+    background-position-x: 50%;
+  }
+  #tt{
+    background-position-x: 50%;
+  }
+  #uplod{
+    background-position-x: 50%;
+  }
+  #fedbk{
+    background-position-x: 50%;
+  }
+  #lgout{
+    background-position-x: 50%;
+  }
+
+  .side-item{
+    display: none;
+  }
+
+  .sidebar li{ 
+    padding: 30px;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+    min-width: 100%;
+  }
+  .sidebar li:hover{
+    width:100%;
+  }
+  .border{
+    border:none !important;
+  }
+
+}

@@ -17,6 +17,9 @@ export const GOT_SUBJECTS = 'GOT_SUBJECTS';
 export const JOB_POST_SUCCESS = 'JOB_POST_SUCCESS';
 
 
+export const GOT_EVENTS = "GOT_EVENTS";
+export const GOT_ENR_COURSES = "GOT_ENR_COURSES";
+
 export const RESET_ERROR = "RESET_ERROR";
 export const CHANGED_ERROR = "CHANGED_ERROR";
 export const AUTH_ERROR = "AUTH_ERROR";
