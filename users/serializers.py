@@ -9,6 +9,10 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import Util
 from .models import CustomUser, Education, Occupation
+from student.models import CoursesEnrolled
+from courses.models import Courses, SubCourses
+
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -51,9 +55,9 @@ class RegisterationSerializer(serializers.ModelSerializer):
             print("occupation")
             Occupation.objects.create(user=user, **occupation)
         else:
-            print("education")
+            print("education", education['course'], education['department'])
+            CoursesEnrolled.objects.create(student=user, course_enrolled=Courses.objects.get(id=education['course']), department=SubCourses.objects.get(id=education['department']))
             Education.objects.create(user=user, **education)
-
         return user
 
 

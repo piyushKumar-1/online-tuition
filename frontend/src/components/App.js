@@ -50,6 +50,7 @@ export class App extends React.Component {
                             <Route exact path="/register" component={RegisterComp} />
                             <PrivateRoute exact path="/student/timetable" component={TimeTable} />
                             <PrivateRoute exact path="/student/dashboard" component={Dashboard} />
+                            <PrivateRoute exact path="/student/courses" component={Dashboard} />
                             <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
                         </Switch>
                     </Router>

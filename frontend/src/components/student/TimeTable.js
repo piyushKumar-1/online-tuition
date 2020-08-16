@@ -35,7 +35,6 @@ export class TimeTable extends React.Component {
 				<Sidebar /> 
 
 				<div className="container align">
-					<ProgressBar key="1" bgcolor="green" completed="60" />
 					<div className="calender">
 						<div className="row">
 							<div className="col-md-8">

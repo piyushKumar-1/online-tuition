@@ -7,6 +7,7 @@
   display: block;
   background-color: "#23232e";
   transition: width 600ms ease;
+  z-index: 2;
 }
 
 .sidebar a{
@@ -46,38 +47,43 @@
 } 
 
 #crc{
-  background-image: url('/static/frontend/online-learning.svg');
+  background:white url('/static/frontend/online-learning.svg') no-repeat;
+  background-position: center;
   background-position-x: 10px;
   background-size: 40px;
 }
 
 #pay{
-  background-image: url('/static/frontend/money.svg');
+  background:white url('/static/frontend/money.svg') no-repeat;
+  background-position: center;
   background-position-x: 10px;
   background-size: 40px;
 }
 
 #tt{
-  background-image: url('/static/frontend/microsoft-excel.svg');
+  background:white url('/static/frontend/microsoft-excel.svg') no-repeat;
+  background-position: center;
   background-position-x: 5px;
   background-size: 50px;
 }
 
 
 #uplod{
-  background-image: url('/static/frontend/files-and-folders.svg');
+  background:white url('/static/frontend/files-and-folders.svg') no-repeat;
   background-position-x: 10px;
   background-size: 40px;
 }
 
 #fedbk{
-  background-image: url('/static/frontend/quality.svg');
-  background-position-x: 10px;
+  background: white url('/static/frontend/quality.svg') no-repeat;
+  background-position: center;
   background-size: 40px;
+  background-position-x: 10px;
 }
 
 #lgout{
-  background-image: url('/static/frontend/logout.svg');
+  background: white url('/static/frontend/logout.svg') no-repeat;
+  background-position: center;
   background-position-x: 13px;
   background-size: 36px;
 }
@@ -124,6 +130,20 @@
   margin: auto;
 }
 
+
+
+.top-300{
+  position: relative;
+  top: -360px;
+}
+
+.mr-7{
+  padding-right: 6rem;
+}
+
+.ml-7{
+  padding-left: 6rem;
+}
 
 @media(max-width: 540px){
   .align{
@@ -186,6 +206,19 @@
   }
   .border{
     border:none !important;
+  }
+
+
+  .top-300{
+    top: 80px;
+  }
+
+  .mr-7{
+    padding-right: 2rem;
+  }
+
+  .ml-7{
+    padding-left: 2rem;
   }
 
 }

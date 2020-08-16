@@ -1,13 +1,16 @@
 from rest_framework import serializers
-from .models import BecomeTeacher
+from .models import Events, CoursesEnrolled
 
 
 
 
-class BecomeTeacherSerializer(serializers.ModelSerializer):
+class EventsSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = BecomeTeacher
+		model = Events
 		fields = "__all__"
-	def create(self, data):
-		BecomeTeacher.objects.create(**data)
-		return BecomeTeacher
+
+
+class CoursesEnrolledSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = CoursesEnrolled
+		fields = "__all__"

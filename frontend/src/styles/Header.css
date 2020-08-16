@@ -463,7 +463,10 @@ display: flex;
 
 .tag-line2{
   font-family: 'Special Elite', sans-serif;
-  font-size: 25px;
+  color: white;
+  font-size: 36px;
+  font-weight: 800;
+
 }
 
 @media (max-width: 1000px){
@@ -704,9 +707,9 @@ padding: 8px;
 
 
 .bg-image{
-    
-    min-height: 90%;
-
+  min-height: 90%;
+  background: white url('/static/frontend/bck.jpg');
+  background-blend-mode: multiply;
 }
 
 .bg-image-save{

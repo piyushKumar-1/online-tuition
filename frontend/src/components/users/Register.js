@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../../actions/authAction.js';
+import { getCourses, getSubCourses, getSubjects, jobPost } from '../../actions/commonActions.js';
+
 
 export class Register extends Component {
   state = {
@@ -25,6 +27,37 @@ export class Register extends Component {
     register: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
   };
+checkhshouldi(){
+        var kl = this.props.values.isCLoading && this.props.values.isSCLoading && this.props.values.isSLoading
+        console.log(kl)
+        return kl;
+    }
+  componentDidMount() {  
+    this.props.getSubjects();
+        this.props.getCourses();
+    this.props.getSubCourses();
+    window.scrollTo(0, 0)
+  }
+
+  department_option(x){
+      const { subCourses } = this.props;
+      var ele = []
+        for(var i=0;i<subCourses.length;i++){
+          if(subCourses[i].course_id==x){
+          ele.push(<option value={subCourses[i].id}>{subCourses[i].sub_course_name}</option>)
+          }
+        }
+        return ele;
+    }
+
+    course_option(){
+      const { courses } = this.props;
+      var ele = []
+        for(var i=0;i<courses.length;i++){
+          ele.push(<option value={courses[i].id}>{courses[i].course_name}</option>)
+        }
+        return ele;
+    }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -134,16 +167,7 @@ showPass() {
               <select className="form-control" name="department" onChange={this.onChange}
                 value={department}>
                 <option >Choose Department</option>
-                <option value="Aerospace">Aerospace</option>
-                <option value="Auto">Auto</option>
-                <option value="Biotech">Biotech</option>
-                <option value="Civil">Civil</option>
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="ECE">ECE</option>
-                <option value="EL">EL</option>
-                <option value="IT">IT</option>
-                <option value="Mechanical">Mechanical</option>
+                { this.checkhshouldi() ? this.department_option(1) : ''}
               </select>
             </div>
             <div className="form-group">
@@ -165,10 +189,7 @@ showPass() {
           <select className="form-control" name="department" onChange={this.onChange}
                 value={department}>
             <option >Choose Department</option>
-            <option value="C/C++">C/C++</option>
-            <option value="Java">Java</option>
-            <option value="Python">Python</option>
-            <option value="Web_Technologies">Web Technologies</option>
+              { this.checkhshouldi() ? this.department_option(2) : ''}
           </select>
         </div>
     )
@@ -188,7 +209,7 @@ showPass() {
         </div>
     )
 
-    const k = () => { if(course=="Engineering") { return engineeringForm } else if(course=="Programming") { return programmingForm } else if(course=='Other'){ return otherForm }else {return ''}}
+    const k = () => { if(course==1) { return engineeringForm } else if(course==2) { return programmingForm } else if(course=='Other'){ return otherForm }else {return ''}}
 
     const educationForm = (
         <div>
@@ -196,9 +217,8 @@ showPass() {
               <label>Course</label>
               <select class="form-control" onChange={this.onChange} name="course" value={course}>
                 <option>Choose Course</option>
-                <option value="Engineering">Engineering</option>
-                <option value="Programming">Programming</option>
-                <option value="Other">Other</option>
+                { this.checkhshouldi() ? this.course_option() : ''}
+                <option value="other" >Other</option>
               </select>
             </div>
             { k() }
@@ -309,6 +329,11 @@ showPass() {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+
+  courses : state.common.courses,
+  subCourses : state.common.subCourses,
+  subjects : state.common.subjects,
+  values: state.common,
 });
 
-export default connect(mapStateToProps, { register })(Register);
+export default connect(mapStateToProps, { register, getCourses, getSubjects, getSubCourses })(Register);

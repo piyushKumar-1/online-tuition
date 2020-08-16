@@ -8,7 +8,6 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import smart_bytes, force_str, DjangoUnicodeDecodeError, smart_str
 from .models import CustomUser
 
-
 class RegisterationAPI(generics.GenericAPIView):
     serializer_class = RegisterationSerializer
 

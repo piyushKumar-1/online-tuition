@@ -3,13 +3,14 @@ import { Link, Redirect } from 'react-router-dom';
 import './css.css'	
 
 
+
 export default class Sidebar extends React.Component {
 
 
 
 	render() {
 		return (
-			<side className="sidebar" >
+			<div className="sidebar" >
 				<ul>
 					<Link to="/student/courses">
 						<li className="border" id="crc">
@@ -54,7 +55,7 @@ export default class Sidebar extends React.Component {
 						</li>
 					</Link>
 				</ul>
-			</side>
+			</div>
   
 		);
 	}

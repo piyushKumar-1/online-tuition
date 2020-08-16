@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'knox',
     'courses',
     'enquiry',
-    'teacher'
+    'teacher',
+    'student'
 ]
 
 REST_FRAMEWORK = {
