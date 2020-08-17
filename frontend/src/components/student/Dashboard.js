@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
 					</div>)
 		}
 
-		return [ele[0],ele[0],ele[0],ele[0]]
+		return ele
 	}
 
 	render() {
@@ -52,9 +52,11 @@ class Dashboard extends React.Component {
 						<div className="row">
 							{this.make()}
 							<div className="col-md-4 p-3">
-								<div className="mt-auto mb-auto text-center p-4">
-									<h2 className="m-auto card-title"><i className="fa fa-plus-circle"></i> Add Course</h2>
-								</div>
+								<Link className="td-none" to="/student/add-course">
+									<div className="shadow mr-auto ml-auto bor-round text-center p-4">
+										<h2 className="m-auto card-title"><i className="fa fa-plus-circle"></i> Add Course</h2>
+									</div>
+								</Link>
 							</div>
 						</div>
 					</div>

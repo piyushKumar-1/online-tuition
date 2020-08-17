@@ -16,6 +16,10 @@ body{
   float: right;
 }
 
+.dis-sm{
+  display: none;
+}
+
 .dropbtn {
 }
 
@@ -645,6 +649,10 @@ padding: 8px;
     min-height:78px;
     max-width:140%;
     margin-left:-10%;
+  }
+  .dis-sm{
+    display: block;
+    color: white;
   }
 }
 

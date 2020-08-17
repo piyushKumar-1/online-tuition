@@ -16,3 +16,8 @@
 .btn-showpass:hover{
 	transform: scale(1.08);
 }
+
+.selected{
+	background: rgba(50, 145, 8, 0.5) !important;
+	opacity: 1;
+}

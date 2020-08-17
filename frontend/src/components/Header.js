@@ -18,6 +18,9 @@ export class Header extends Component {
 		logoutUser: PropTypes.func.isRequired,
 
 	};
+
+	componentWillMount(){
+	}
     /*	 FOR MAKING THE DROPDOWN FOR COURSES LIST DYNAMICALLY
 	    makeCourses = () => {
             const { courses, subCourses } = this.props;
@@ -67,9 +70,6 @@ export class Header extends Component {
 */
 
 
-
-
-
 	render() {
 
 
@@ -80,7 +80,6 @@ export class Header extends Component {
 				<Link to='/student/dashboard' className="btn logbtn btn-ouline-dark"><i className="fa fa-user-circle black"></i>&nbsp;Dashboard</Link>
 			</Fragment>
 			)
-
 		const modal = (
 		    <Fragment>
 
@@ -213,9 +212,8 @@ const working = (
 				</div>
 				<nav className="navbar shadow navbar-expand-lg sticky-top navbar-dark bg-navy high-z">
 					<div className="cus_container">
-
-
-							{ isAuthenticated ? authNavLinks: guestNavLinks }
+						<button id="back" onClick={() => window.history.back()} className="dis-sm btn"><i className="fa fa-arrow-left"></i></button>
+						{ isAuthenticated ? authNavLinks: guestNavLinks }
 
 							
 					</div>

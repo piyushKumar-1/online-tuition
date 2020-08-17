@@ -19,10 +19,15 @@ class CoursesEnrolledViewAPI(generics.GenericAPIView):
     queryset = CoursesEnrolled.objects.all()
 
     def post(self, request, *args, **kwargs):
-    	serializer = self.get_serializer(data=request.data)
-    	serializer.is_valid(raise_exception=True)
-    	serializer.save()
-    	return Response({'success':'Created Successfully'})
+        print(request.data)
+        department = SubCourses.objects.get(id=int(request.data['id'])+1)
+        course = department.course
+        try:
+            CoursesEnrolled.objects.create(student=self.request.user, course_enrolled=course, department=department)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)   
+        return Response({'success':'Created Successfully'})
+        
     def get(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = CoursesEnrolled.objects.all().filter(student=self.request.user), many=True)
         serializer.is_valid()

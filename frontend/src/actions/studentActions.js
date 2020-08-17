@@ -17,7 +17,7 @@ export const getEvents = () => (dispatch, getState) => {
     }
 
     axios
-        .get('/api/auth/student/events')
+        .get('/api/auth/student/events', config)
         .then(res => {
             dispatch({
                 type: GOT_EVENTS,
@@ -54,5 +54,35 @@ export const getEnrCourses = () => (dispatch, getState) => {
         })
         .catch(err => console.log(err));
 }
+
+
+
+
+export const addCourse = (id) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    let data = {'id': id}
+    axios
+        .post('/api/auth/student/courses',data, config)
+        .then(res => {
+            dispatch({
+                type: ADDED_COURSE,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
 
 
