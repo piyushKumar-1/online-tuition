@@ -3,7 +3,7 @@ import '../styles/Header.css'
 import Login from './users/Login.js'
 import Register from './users/Register.js'
 import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux';	
 import PropTypes from 'prop-types';
 import { logoutUser } from '../actions/authAction.js';
 import { getCourses, getSubCourses } from '../actions/commonActions.js';
@@ -74,12 +74,26 @@ export class Header extends Component {
 
 
 		const { isAuthenticated, user } = this.props.auth;
-		const authLinks = (
-			<Fragment>
-	            <button onClick={this.props.logoutUser} className="btn logbtn btn-ouline-dark"><i className="fa fa-sign-out black"></i>&nbsp;Logout</button>
-				<Link to='/student/dashboard' className="btn logbtn btn-ouline-dark"><i className="fa fa-user-circle black"></i>&nbsp;Dashboard</Link>
-			</Fragment>
+		const teacherL = (
+				<Fragment>
+		            <button onClick={this.props.logoutUser} className="btn logbtn btn-ouline-dark"><i className="fa fa-sign-out black"></i>&nbsp;Logout</button>
+					<Link to='/teacher/dashboard' className="btn logbtn btn-ouline-dark"><i className="fa fa-user-circle black"></i>&nbsp;Dashboard</Link>
+				</Fragment>
 			)
+		const studentL =(
+				<Fragment>
+		            <button onClick={this.props.logoutUser} className="btn logbtn btn-ouline-dark"><i className="fa fa-sign-out black"></i>&nbsp;Logout</button>
+					<Link to='/student/dashboard' className="btn logbtn btn-ouline-dark"><i className="fa fa-user-circle black"></i>&nbsp;Dashboard</Link>
+				</Fragment>
+		)
+		const authLinks = () => { 
+			if(user.teacher!=null){
+				return (teacherL)
+			} else {
+				return (studentL)
+			}
+			
+		}
 		const modal = (
 		    <Fragment>
 
@@ -142,7 +156,7 @@ const working = (
 					<span className="navbar-toggler-icon"></span>
 					</button>
 					<div className="collapse navbar-collapse" id="navbarNav">
-						<ul className="nav navbar-nav ml-auto">
+						<ul className="nav navbar-nav ml-auto" id="getAll">
 							<li className="nav-item" id="home">
 								<Link to="/" className="nav-link">Home</Link>
 							</li>
@@ -172,7 +186,7 @@ const working = (
 					<span className="navbar-toggler-icon"></span>
 					</button>
 					<div className="collapse navbar-collapse" id="navbarNav">
-						<ul className="nav navbar-nav ml-auto">
+						<ul className="nav navbar-nav ml-auto" id="getAll">
 							<li className="nav-item" id="home">
 								<Link to="/" className="nav-link">Home</Link>
 							</li>
@@ -200,13 +214,11 @@ const working = (
 		return (
 			<Fragment>
 
-				{ this.props.auth.isAuthenticated ? <Redirect to="/student/dashboard"/> : '' }
-
 				<div className="navbar navbar-light bg-light">
 					<div className="cus_container">
 						<div className="right ml-auto">
 
-							{ isAuthenticated ? authLinks: guestLinks() }
+							{ isAuthenticated ? authLinks() : guestLinks() }
 						</div>
 					</div>
 				</div>

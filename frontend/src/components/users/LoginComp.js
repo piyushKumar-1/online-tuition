@@ -9,7 +9,7 @@ export class LoginComp extends Component {
 	render() {
 		return (
 			<div className="m-auto ws">
-				{ this.props.isAuthenticated ? <Redirect to="/student/dashboard"/> : '' }
+				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 				<Login />
 				<div className="p-5">
                     <p>
@@ -25,6 +25,7 @@ export class LoginComp extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps )(LoginComp);

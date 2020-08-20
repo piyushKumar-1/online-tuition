@@ -1,5 +1,7 @@
 import React from 'react'
 import '../../styles/practice.css'
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 export class Practice extends React.Component {
@@ -9,7 +11,7 @@ componentDidMount() {
   window.scrollTo(0, 0)
   const txt = "OUR PRACTICES | "
 	var i = 0;
-	var speed = 30;
+	var speed = 25;
 		function typeWriterAb() {
 	  if (i < txt.length) {
 	    document.getElementById("msgPr").innerHTML += txt.charAt(i);
@@ -30,13 +32,15 @@ componentWillUnmount(){
 	render() {
 		return (
 			<>
+				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
+
 				<div className="w-100 h-300px">
 					<div className="text-center wid-max">
 						<h3 id="msgPr" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
 						<h3 className="ab" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 					</div>
 				</div>
-				<div data-aos="slide-up" data-aos-once="true" data-aos-delay="1200">
+				<div data-aos="slide-up" data-aos-once="true" data-aos-delay="600">
 					<div className="row ">
 						<div className="pr-5 m-auto col-md-5 sti col-sm-6 p-5">
 							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
@@ -219,4 +223,11 @@ componentWillUnmount(){
 	}
 }
 
-export default Practice
+
+const mapStateToProps= state => ({
+	isAuthenticated: state.auth.isAuthenticated,
+ 	user: state.auth.user
+})
+
+
+export default connect(mapStateToProps)(Practice)

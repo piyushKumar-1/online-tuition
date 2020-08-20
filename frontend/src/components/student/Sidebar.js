@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './css.css'	
+import { logoutUser } from '../../actions/authAction.js';
+import { connect } from 'react-redux';
 
 
-
-export default class Sidebar extends React.Component {
+class Sidebar extends React.Component {
 
 
 
@@ -47,16 +48,23 @@ export default class Sidebar extends React.Component {
 							</div>
 						</li>
 					</Link>
-					<Link to="/logout">
+					<div onClick={() => {this.props.logoutUser()}}>
 						<li className="border" id="lgout">
 							<div className="side-item">
 								<h4>Logout</h4>
 							</div>
 						</li>
-					</Link>
+					</div>
 				</ul>
 			</div>
   
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+});
+
+export default connect(mapStateToProps, { logoutUser })(Sidebar)

@@ -33,7 +33,7 @@ class ScrollButton extends React.Component {
   render () {
       return <div title='Back to top' className='scroll' 
                onClick={ () => { this.scrollToTop(); }}>
-                <small className='arrow-up glyphicon-chevron-up'>Move to Top <i class="fa fa-long-arrow-right" aria-hidden="true"></i></small>
+                <small className='arrow-up glyphicon-chevron-up'>Move to Top <i className="fa fa-long-arrow-right" aria-hidden="true"></i></small>
               </div>;
    }
 }
@@ -101,9 +101,11 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
 		return (
 
-
+			
 			<div className="shadow">
 			   <div className="bg-image">
+			   { this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
+        
 
 							<div className="cus_container mt content">
 								<div className="mr-auto ml-auto mt-auto mb-0 wid" data-aos="fade-down" data-aos-duration="600">
@@ -269,10 +271,10 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
 
                 <div className="section3 container">
-                    <div class="carosel" id="carosel1">
-                      <button class="carosel-control carosel-control-left glyphicon glyphicon-chevron-left" onClick={this.left}><i className="fa fa-arrow-left"></i></button>
-                      <div class="carosel-inner">
-                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                    <div className="carosel" id="carosel1">
+                      <button className="carosel-control carosel-control-left glyphicon glyphicon-chevron-left" onClick={this.left}><i className="fa fa-arrow-left"></i></button>
+                      <div className="carosel-inner">
+                        <div className="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
                                     <div className="ani">
@@ -294,7 +296,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 							</div>
 
                         </div>
-                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                        <div className="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
                                     <div className="ani">
@@ -316,7 +318,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 							</div>
 
                         </div>
-                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                        <div className="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
                                     <div className="ani">
@@ -339,7 +341,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 							</div>
 
                         </div>
-                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                        <div className="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
                                     <div className="ani">
@@ -363,7 +365,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 							</div>
 
                         </div>
-                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                        <div className="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
                                     <div className="ani">
@@ -386,7 +388,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
 							</div>
                         </div>
-                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                        <div className="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
                                     <div className="ani">
@@ -410,7 +412,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 							</div>
 
                         </div>
-                        <div class="carosel-item" data-aos="flip-up" data-aos-duration="1100">
+                        <div className="carosel-item" data-aos="flip-up" data-aos-duration="1100">
                             <div className="card testi shadow">
 								<div className="p-5">
                                     <div className="ani">
@@ -434,7 +436,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 
                         </div>
                       </div>
-                      <button class="carosel-control carosel-control-right glyphicon glyphicon-chevron-right" onClick={this.right}><i className="fa fa-arrow-right"></i></button>
+                      <button className="carosel-control carosel-control-right glyphicon glyphicon-chevron-right" onClick={this.right}><i className="fa fa-arrow-right"></i></button>
                     </div>
                 </div>
 
@@ -448,7 +450,12 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 }
 
 
-export default Home
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+});
+
+export default connect(mapStateToProps )(Home);
 
 
 

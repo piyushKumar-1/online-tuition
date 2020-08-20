@@ -4,6 +4,7 @@ export class Footer extends Component {
 	render() {
 		return (
 			<footer>
+			
 				<div className="navbar navbar-dark bg-navy2">
 					<div className="cus_container p-5">
 						<div className="row">

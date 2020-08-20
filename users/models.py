@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
-
+from teacher.models import BecomeTeacher
 from .managers import CustomUserManager
 
 
@@ -9,11 +9,12 @@ class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
     is_parent = models.BooleanField(default=False)
+    teacher = models.ForeignKey(BecomeTeacher, null=True ,default=None, on_delete=models.SET_NULL)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
-
+    
     def __str__(self):
         return self.email
 

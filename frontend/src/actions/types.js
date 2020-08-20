@@ -13,6 +13,8 @@ export const GOT_COURSES = "GOT_COURSES";
 export const GOT_SUB_COURSES = "GOT_SUB_COURSES";
 export const ENQ_POST_SUCCESS = "ENQ_POST_SUCCESS";
 export const GOT_SUBJECTS = 'GOT_SUBJECTS';
+export const ADDED_COURSE = 'ADDED_COURSE';
+export const ADDED_MYCOURSE = 'ADDED_MYCOURSE';
 
 export const JOB_POST_SUCCESS = 'JOB_POST_SUCCESS';
 

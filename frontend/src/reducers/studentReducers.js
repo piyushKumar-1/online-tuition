@@ -1,4 +1,4 @@
-import { GOT_EVENTS, GOT_ENR_COURSES } from '../actions/types.js';
+import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE } from '../actions/types.js';
 
 
 const initialState = {
@@ -6,6 +6,7 @@ const initialState = {
 	isEvLoading: true,
 	couresEnrolled: null,
 	isCrsEnLoading: true,
+	chlaJa:false,
 }
 
 
@@ -27,6 +28,16 @@ export default function(state = initialState, action){
 		        isCrsEnLoading: false,
 		        couresEnrolled: action.payload,
 		    }
+		case ADDED_COURSE:
+			return {
+			    ...state,
+				chlaJa: true,
+			}
+		case ADDED_MYCOURSE:
+			return {
+			    ...state,
+				info: action.payload,
+			}
 		default:
 			return state;
 	}

@@ -24,5 +24,11 @@ urlpatterns = [
     path('student/courses', views.index ),
     path('student/timetable', views.index ),
     path('student/add-course', views.index ),
+    path('student/courses/<str:k>', views.index3),
+
+    #routes for TEACHER
+    path('teacher/dashboard', views.index ),
+    path('teacher/courses', views.index ),
+    path('teacher/timetable', views.index ),
 
 ]

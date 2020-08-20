@@ -116,10 +116,10 @@ export class ResetPassword extends Component {
 
     const loading = () => {
         if(this.props.reset.isSent){
-            return <div className="m-auto w-maxc p-5"><h3>{this.props.reset.message}&nbsp;&nbsp;&nbsp;<i class='fa fa-check-circle green'></i></h3></div>
+            return <div className="m-auto w-maxc p-5"><h3>{this.props.reset.message}&nbsp;&nbsp;&nbsp;<i className='fa fa-check-circle green'></i></h3></div>
         }
         if(this.props.reset.chkerr){
-            return <div className="m-auto w-maxc p-5"><h3>Token Supplied is invalid Try again with a new one...&nbsp;&nbsp;&nbsp;<i class='fa fa-times-circle red'></i></h3></div>
+            return <div className="m-auto w-maxc p-5"><h3>Token Supplied is invalid Try again with a new one...&nbsp;&nbsp;&nbsp;<i className='fa fa-times-circle red'></i></h3></div>
         } else if(this.props.reset.chk){
             return passwordChangeBody
         }

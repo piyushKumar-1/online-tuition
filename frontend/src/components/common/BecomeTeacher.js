@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/common.css'
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCourses, getSubCourses, getSubjects, jobPost } from '../../actions/commonActions.js';
@@ -127,7 +128,7 @@ export class BecomeTeacher extends React.Component {
 
 
 	    let form_data = new FormData();
-	    form_data.append('file', upload, upload.name);
+	    form_data.append('resume', upload, upload.name);
 	    form_data.append('name', name);
 	    form_data.append('email', email);
 	    form_data.append('ph_no', phone);
@@ -155,7 +156,10 @@ export class BecomeTeacher extends React.Component {
     	const {  name, email, phone, qualification, department, sub0, sub1, sub2, sub3, experience, upload } = this.state;
 		return (
 
+
+
 			<div className="container"  data-aos="fade-up" data-aos-duration="600" >
+				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 
 			{ this.props.values.joinMsg['success']
 
@@ -326,6 +330,8 @@ const mapStateToProps= state => ({
 	subCourses : state.common.subCourses,
 	subjects : state.common.subjects,
 	values: state.common,
+	isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 })
 
 

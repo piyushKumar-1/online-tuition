@@ -13,12 +13,13 @@ export class Courses extends React.Component {
 		console.log(window.location.href, window.location.href.match(/login+/))
 		this.props.getCourses();
 		this.props.getSubCourses();
+		
     	document.getElementById('courses').classList.add('active');
 		document.title = "Courses Offered | Learnerz Corner"
 		window.scrollTo(0, 0)
 		const txt = "COURSES | "
 		var i = 0;
-		var speed = 30;
+		var speed = 25;
 	  	function typeWriterAb() {
 		  if (i < txt.length) {
 		    document.getElementById("msgCr").innerHTML += txt.charAt(i);
@@ -108,7 +109,7 @@ export class Courses extends React.Component {
 					</div>
 				</div>
 
-				<div className="p-5" data-aos="slide-up" data-aos-once="true" data-aos-delay="1400">
+				<div className="p-5" data-aos="slide-up" data-aos-once="true" data-aos-delay="600">
 					<div className="container">
 						{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
 					</div>

@@ -215,7 +215,7 @@ showPass() {
         <div>
             <div className="form-group">
               <label>Course</label>
-              <select class="form-control" onChange={this.onChange} name="course" value={course}>
+              <select className="form-control" onChange={this.onChange} name="course" value={course}>
                 <option>Choose Course</option>
                 { this.checkhshouldi() ? this.course_option() : ''}
                 <option value="other" >Other</option>

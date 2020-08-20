@@ -9,5 +9,7 @@ class BecomeTeacherSerializer(serializers.ModelSerializer):
 		model = BecomeTeacher
 		fields = "__all__"
 	def create(self, data):
+		print(data)
 		BecomeTeacher.objects.create(**data)
 		return BecomeTeacher
+

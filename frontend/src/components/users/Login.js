@@ -81,9 +81,6 @@ export class Login extends Component {
       });
   } 
   render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
-    }
     const k = this.props.message;
     const { email, password } = this.state;
     const resetBody = (
@@ -163,11 +160,8 @@ export class Login extends Component {
      )
 
     return (
-
-
       <div>
         { this.state.reset ? resetBody : loginBody }
-
       </div>
     );
   }
@@ -175,6 +169,7 @@ export class Login extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
   isSent: state.reset.isSent,
   message: state.reset.message,
 });

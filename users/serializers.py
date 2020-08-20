@@ -17,7 +17,7 @@ from courses.models import Courses, SubCourses
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'first_name','last_name', 'email', 'is_superuser')
+        fields = ('id', 'first_name','last_name', 'email', 'is_superuser', 'teacher')
 
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:

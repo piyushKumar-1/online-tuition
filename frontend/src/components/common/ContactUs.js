@@ -1,27 +1,16 @@
 import React from 'react';
 import '../../styles/about.css'
 import '../../styles/bubble.css'
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
-export default class AboutUs extends React.Component {
+class AboutUs extends React.Component {
 componentDidMount() {
- document.getElementById('contact').classList.add('active');
- document.title = "Contact Us | Learnerz Corner"
-  window.scrollTo(0, 0)
-  const txt = "CONTACT US | "
-  var i = 0;
-  var speed = 30;
-  	function typeWriterAb() {
-	  if (i < txt.length) {
-	    document.getElementById("msgCn").innerHTML += txt.charAt(i);
-	    i++;
-	    setTimeout(typeWriterAb, speed);
-	  	if(i==txt.length){
-		    j=txt.length;
-	  	}
-	  }
-	}
-	typeWriterAb();
+	
+ 	document.getElementById('contact').classList.add('active');
+ 	document.title = "Contact Us | Learnerz Corner"
+  	window.scrollTo(0, 0)
 }
 
 componentWillUnmount(){
@@ -33,25 +22,11 @@ componentWillUnmount(){
 
 			<>
 
+				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 
 
-				<div id="background-wrap">
-					<div className="w-100 h-300px">
-						<div className="text-center wid-max">
-							<h3 id="msgCn" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
-							<h3 className="ab" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
-						</div>
-					</div>
-				    <div class="bubble x1"></div>
-				    <div class="bubble x2"></div>
-				    <div class="bubble x3"></div>
-				    <div class="bubble x4"></div>
-				    <div class="bubble x5"></div>
-				    <div class="bubble x6"></div>
-				    <div class="bubble x7"></div>
-				    <div class="bubble x8"></div>
-				    <div class="bubble x9"></div>
-				    <div class="bubble x10"></div>
+				<div id="background-wrap" data-aos="fade-in" data-aos-once="true">
+					<img src="static/frontend/contactUs.jpg" />			
 				</div>
 
 
@@ -60,7 +35,7 @@ componentWillUnmount(){
 
 				
 			<br/><br/>
-				<div className="container" data-aos="slide-up" data-aos-once="true" data-aos-delay="1500">
+				<div className="container" data-aos="slide-up" data-aos-once="true" data-aos-delay="300">
 					<div className="row">
 						<div className="col-sm-8">
 							<div className="title">
@@ -126,3 +101,13 @@ their views to have a better working model which benefits both the company and c
 		);
 	}
 }
+
+
+
+const mapStateToProps= state => ({
+	isAuthenticated: state.auth.isAuthenticated,
+ 	user: state.auth.user
+})
+
+
+export default connect(mapStateToProps)(AboutUs)

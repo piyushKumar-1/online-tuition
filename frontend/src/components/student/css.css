@@ -25,6 +25,14 @@
   overflow: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.main{
+  overflow: hidden;
+}
+
 .sidebar li:hover{
   width:max-content;
   max-width: 100%;
@@ -51,6 +59,11 @@
   background-position: center;
   background-position-x: 10px;
   background-size: 40px;
+}
+
+.td-none{
+  text-decoration: none !important;
+  color: black;
 }
 
 .bor-round{
@@ -97,7 +110,16 @@
   background-position: center;
   background-position-x: 10px;
   background-size: 40px;
-}
+}         
+
+
+#profile{
+  background:white url('/static/frontend/user.svg') no-repeat;
+  background-position: center;
+  background-position-x: 10px;
+  background-size: 40px;
+}         
+
 
 
 
@@ -162,6 +184,11 @@
 .top-300{
   position: relative;
   top: -360px;
+}
+
+.top-230{
+  position: relative;
+  top: -250px;
 }
 
 .mr-7{
@@ -237,6 +264,9 @@
 
 
   .top-300{
+    top: 80px;
+  }
+  .top-230{
     top: 80px;
   }
 
