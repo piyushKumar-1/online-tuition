@@ -45,8 +45,9 @@ export const getEnrCourses = () => (dispatch, getState) => {
     }
 
     axios
-        .get('/api/auth/student/courses', config)
+        .get('/api/auth/teacher/courses', config)
         .then(res => {
+        console.log(res);
             dispatch({
                 type: GOT_ENR_COURSES,
                 payload: res.data
@@ -110,7 +111,6 @@ export const myCourse = (EnrCourseId) => (dispatch, getState) => {
             })
         })
         .catch(err => console.log(err));
-    window.location="/student/courses"
 }
 
 

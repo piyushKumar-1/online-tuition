@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import '../student/css.css'
 import { connect } from 'react-redux';
 import TSidebar from './TSidebar.js';
-import { getEvents, getEnrCourses } from '../../actions/studentActions.js'
+import { getEvents, getEnrCourses } from '../../actions/teacherActions.js'
 import ProgressBar from "../common/ProgressBar.js"
 
 
@@ -30,7 +30,9 @@ class TDashboard extends React.Component {
 						<div className="bg-white p-4 shadow">
 							<h4>{enrCourses[i].course_enrolled}</h4>
 							<h2 className="card-title">{enrCourses[i].department}</h2>
-							<small className="card-title">Enrolled At: {enrCourses[i].enrolled_date}</small>
+							<small className="card-title">Enrolled At: {enrCourses[i].enrolled_date}</small><br/>
+							<small className="card-title">Student Name: {enrCourses[i].student_name}</small><br/>
+							<small className="card-title">Student Email: {enrCourses[i].student_email}</small>
 							<ProgressBar key="1" bgcolor="green" completed={enrCourses[i].completed}/>
 						</div>
 					</div>)

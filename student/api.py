@@ -27,9 +27,15 @@ class CoursesEnrolledViewAPI(generics.GenericAPIView):
             subIds = None 
         course = department.course
         try:
-            k = CoursesEnrolled.objects.create(student=self.request.user, course_enrolled=course, department=department, subject_ids=subIds)
+            try:
+                k = CoursesEnrolled.objects.get(student=self.request.user, department=department)
+            except:
+                k = CoursesEnrolled.objects.create(student=self.request.user, course_enrolled=course, department=department, subject_ids=subIds)
             for i in subIds:
-                SubjectEnrolled.objects.create(enrollment=k, enrolled_sub=Subjects.objects.get(id=i))
+                try:
+                    SubjectEnrolled.objects.get(enrollment=k, enrolled_sub=Subjects.objects.get(id=i))
+                except:
+                    SubjectEnrolled.objects.create(enrollment=k, enrolled_sub=Subjects.objects.get(id=i))
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)   
         return Response({'success':'Created Successfully'})
@@ -74,7 +80,6 @@ class MyCoursesAPI(generics.GenericAPIView):
                 i['uploads'] = None
 
         return Response(serializer2.data)
-
 
 
 

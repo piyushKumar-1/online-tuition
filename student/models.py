@@ -25,8 +25,8 @@ class CoursesEnrolled(models.Model):
 	course_enrolled = models.ForeignKey(Courses, on_delete=models.CASCADE)
 	department = models.ForeignKey(SubCourses, on_delete=models.CASCADE)
 	enrolled_date = models.DateTimeField(default=timezone.now)
-	completed = models.IntegerField(default=0)
-	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE, null=True, blank=True, default=True)
+	completed = models.IntegerField(default	=0)
+	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE, null=True, blank=True, default=None)
 	subject_ids = models.CharField(max_length=200, null=True, blank=True, default=None)
 
 class SubjectEnrolled(models.Model):

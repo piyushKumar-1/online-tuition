@@ -6,6 +6,8 @@ const initialState = {
 	isEvLoading: true,
 	couresEnrolled: null,
 	isCrsEnLoading: true,
+    isSubEnLoading: true,
+    info:null,
 	chlaJa:false,
 }
 
@@ -36,6 +38,7 @@ export default function(state = initialState, action){
 		case ADDED_MYCOURSE:
 			return {
 			    ...state,
+			    isSubEnLoading: false,
 				info: action.payload,
 			}
 		default:

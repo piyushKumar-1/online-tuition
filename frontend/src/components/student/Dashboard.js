@@ -59,7 +59,7 @@ class Dashboard extends React.Component {
 				:
 				
 					<div className="container-fluid mr-7 ml-7 top-300">
-						<div className="row" style={{height:"100%"}}>
+						<div className="row">
 							{this.make()}
 							<div className="col-md-4 p-3">
 								<Link className="td-none" to="/student/add-course">
@@ -71,54 +71,7 @@ class Dashboard extends React.Component {
 						</div>
 					</div>
 			}
-
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
+    		<br/><br/>
 			<br/><br/> 
 			<br/><br/> 
 			<br/><br/> 

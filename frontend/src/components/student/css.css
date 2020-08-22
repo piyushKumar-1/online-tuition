@@ -81,14 +81,17 @@ html {
 }
 
 @keyframes bounce{
-  0%{ margin-top:0px; }
-  25% { margin-top: 10px; }
-  50% { margin-top: 0px; }
-  75% { margin-top: 10px; }
-  100%{ margin-top:0px; }
+  0%{ transform:translateY(0px); }
+  25%{ transform:translateY(10px); }
+  50%{ transform:translateY(0px); }
+  75%{ transform:translateY(10px); }
+  100%{ transform:translateY(0px); }
 
 }
 
+.hov-ani:hover {
+    transform: scale(1.04);
+}
 
 #pay{
   background:white url('/static/frontend/money.svg') no-repeat;
