@@ -50,7 +50,7 @@ export default function(state = initialState, action){
                 isSent: true
             }
         case SET_DEFAULT:
-        return {
+            return {
                 ...state,
                 message: null,
                 isSent: null

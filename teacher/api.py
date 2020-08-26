@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.parsers import FormParser,MultiPartParser
@@ -5,7 +6,8 @@ from .serializers import BecomeTeacherSerializer
 from users.models import CustomUser
 from student.serializers import UploadSerializer, SubjectSerializer, CoursesEnrolledSerializer
 from student.models import SubjectEnrolled, UploadedMaterial, CoursesEnrolled, Courses, SubCourses
-
+from courses.serializers import SubjectListSerializer
+from courses.models import Subjects
 
 
 
@@ -30,11 +32,16 @@ class UploadSubjectMaterial(generics.GenericAPIView):
 
 	def post(self, request):
 		print(request.data)
-		serializer = self.get_serializer(data = request.data)
-		serializer.is_valid()
-		serializer.save()
+		forthis = SubjectEnrolled.objects.get(enrollment_id=request.data['CourseEnrolledId'], enrolled_sub=request.data['subjectID'])
+		data = {}
+		data['student_enrolled_subject'] = forthis
+		data['uploaded_material'] = request.data['file']
+		print(data)
+		UploadedMaterial.objects.create(**data)
+		return Response({'success':'Created Successfully'})
 
-class DashboardSerializer(generics.GenericAPIView):
+
+class DashboardAPI(generics.GenericAPIView):
 	serializer_class = CoursesEnrolledSerializer
 	permission_classes = [
 		permissions.IsAuthenticated
@@ -50,5 +57,37 @@ class DashboardSerializer(generics.GenericAPIView):
 			data['student_email'] = student.email
 		return Response(serializer1.data)
 
-class CoursesIndiSerializer(generics.GenericAPIView):
-	pass
+class CoursesIndiAPI(generics.GenericAPIView):
+	serializer_class = UploadSerializer
+	permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+	
+
+	def get(self, request, enrCourseId):
+		subs = SubjectEnrolled.objects.all().filter(enrollment_id=enrCourseId)
+		li = []
+		for i in subs:
+			try:
+				li.append(UploadedMaterial.objects.get(student_enrolled_subject=i))
+			except:
+				pass
+		serializers =  self.get_serializer(data=li, many=True)
+		serializers.is_valid()
+		serializer2 = SubjectListSerializer(data=[Subjects.objects.get(id=i.enrolled_sub_id) for i in subs], many=True)
+		serializer2.is_valid()
+		for i in serializer2.data:
+			print(i['id'])
+			k = UploadedMaterial.objects.all().filter(student_enrolled_subject = SubjectEnrolled.objects.get(enrolled_sub_id=i['id'], enrollment_id=enrCourseId).id)
+			if(len(k)>0):
+				serializers1 = self.get_serializer(data=k, many=True)
+				serializers1.is_valid()
+				i['uploads'] = serializers1.data
+			else:
+				i['uploads'] = None
+		return Response(serializer2.data)
+
+	def post(self, request):
+		print(request.data)
+
+

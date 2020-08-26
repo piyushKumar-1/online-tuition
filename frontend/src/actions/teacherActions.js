@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE } from './types.js';
+import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -59,34 +59,6 @@ export const getEnrCourses = () => (dispatch, getState) => {
 
 
 
-export const addCourse = (CourseId, subId) => (dispatch, getState) => {
-
-    const token = getState().auth.token;
-
-
-    const config = {
-        headers: {
-            'Content-type': 'application/json'
-        }
-    }
-
-    if (token) {
-        config.headers['Authorization'] = `Token ${token}`;
-    }
-    let data = {'CourseId': CourseId, 'subId': subId}
-    axios
-        .post('/api/auth/student/courses',data, config)
-        .then(res => {
-            dispatch({
-                type: ADDED_COURSE,
-                payload: res.data
-            })
-        })
-        .catch(err => console.log(err));
-    window.location="/student/courses"
-}
-
-
 export const myCourse = (EnrCourseId) => (dispatch, getState) => {
 
     const token = getState().auth.token;
@@ -101,9 +73,8 @@ export const myCourse = (EnrCourseId) => (dispatch, getState) => {
     if (token) {
         config.headers['Authorization'] = `Token ${token}`;
     }
-    let data = {'EnrCourseId': EnrCourseId}
     axios
-        .post('/api/auth/student/mycourses',data, config)
+        .get(`/api/auth/teacher/mycourses/${EnrCourseId}`, config)
         .then(res => {
             dispatch({
                 type: ADDED_MYCOURSE,
@@ -114,4 +85,35 @@ export const myCourse = (EnrCourseId) => (dispatch, getState) => {
 }
 
 
+export const resetUpload = () => dispatch =>{
+    dispatch({
+        type: SET_UPLOAD_DEFAULT,
+    })
+}
+
+
+export const uploadMaterial = (FD) => dispatch => {
+    dispatch({
+        type: SET_DEFAULT_COURSES,
+    })
+
+    const config = {
+        headers: {
+            'Content-type': 'multipart/form-data'
+        }
+    }
+    console.log(FD)
+    axios
+        .post('/api/auth/teacher/upload', FD, config)
+        .then(res => {
+            dispatch({
+                type: MATERIAL_UPLOAD_SUCCESS,
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: MATERIAL_UPLOAD_FAIL,
+            })
+        });
+}
 

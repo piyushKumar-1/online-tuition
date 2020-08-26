@@ -48,7 +48,7 @@ class Sidebar extends React.Component {
 							</div>
 						</li>
 					</Link>
-					<div onClick={() => {this.props.logoutUser()}}>
+					<div onClick={() => {this.props.logoutUser()}} className="lg">
 						<li className="border" id="lgout">
 							<div className="side-item">
 								<h4>Logout</h4>

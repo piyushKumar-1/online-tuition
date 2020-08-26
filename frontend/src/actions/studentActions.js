@@ -88,6 +88,8 @@ export const addCourse = (CourseId, subId) => (dispatch, getState) => {
 
 export const myCourse = (EnrCourseId) => (dispatch, getState) => {
 
+
+
     const token = getState().auth.token;
 
 
@@ -109,8 +111,6 @@ export const myCourse = (EnrCourseId) => (dispatch, getState) => {
                 payload: res.data
             })
         })
-        .catch(err => console.log(err));
-    window.location="/student/courses"
 }
 
 

@@ -7,35 +7,32 @@ import { connect } from 'react-redux';
 
 
 class TSidebar extends React.Component {
-
-
-
 	render() {
 		return (
-			<div className="sidebar" >
+			<div className="sidebar">
 				<ul>
-					<Link to="/student/courses">
+					<Link className="te" to="/teacher/courses">
 						<li className="border" id="crc">
 							<div className="side-item">
 								<h4>Courses</h4>
 							</div>
 						</li>
 					</Link>
-					<Link to="/student/timetable">
+					<Link className="te" to="/teacher/timetable">
 						<li className="border" id="tt">
 							<div className="side-item">
 								<h4>Time Table</h4>
 							</div>
 						</li>
 					</Link>
-					<Link to="/student/upload">
+					<Link className="te" to="/teacher/upload">
 						<li className="border" id="profile">
 							<div className="side-item">
 								<h4>Profile</h4>
 							</div>
 						</li>
 					</Link>
-					<div onClick={() => {this.props.logoutUser()}}>
+					<div className="te" onClick={() => {this.props.logoutUser()}} className="lg">
 						<li className="border" id="lgout">
 							<div className="side-item">
 								<h4>Logout</h4>
@@ -44,7 +41,6 @@ class TSidebar extends React.Component {
 					</div>
 				</ul>
 			</div>
-  
 		);
 	}
 }

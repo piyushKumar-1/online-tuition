@@ -32,7 +32,21 @@ html {
 .main{
   overflow: hidden;
 }
-
+.upform{
+  background-color: #0f3b66;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px black;
+}
+.subxy{
+  font-weight: 600;
+  background: #fb3838;
+  color: white;
+  width: max-content;
+  padding: 7px;
+  border: none;
+  border-radius: 14px;
+}
 .sidebar li:hover{
   width:max-content;
   max-width: 100%;
@@ -60,6 +74,28 @@ html {
   background-position-x: 10px;
   background-size: 40px;
 }
+
+.scrollxy{
+    overflow-y: scroll;
+    max-height: 90vh;
+    padding-top:10px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+
+  }
+
+.scrollxy::-webkit-scrollbar{
+      background:transparent !important;
+      width: 0px;
+      display: none;
+    }
+.scrollxy::-webkit-scrollbar-track-piece {
+      background:rgba(255,0,0,0.1) !important; 
+    }
+.scrollxy::-webkit-scrollbar-thumb-proportional:vertical {
+      background:rgba(255,0,0,0.1) !important; 
+    }
 
 .td-none{
   text-decoration: none !important;
@@ -122,7 +158,6 @@ html {
   background-position-x: 10px;
   background-size: 40px;
 }         
-
 
 
 
@@ -202,11 +237,30 @@ html {
   padding-left: 6rem;
 }
 
+.blink{
+
+  animation: infinite;
+  animation-name: blink;
+  animation-duration: .8s;
+}
+@keyframes blink{
+  0% { transform: scale(0.9); }
+  25% { transform: scale(1); }
+  75% { transform: scale(1.05); }
+  100% { transform: scale(0.9); }
+  color:white;
+}
+
 @media(max-width: 540px){
   .align{
     position: unset;
     top:unset;
   }
+
+.lg{
+  width: 16.667%;
+  float:left;
+}
   .sidebar {
     position: fixed;
     top:unset;
@@ -215,13 +269,14 @@ html {
     display: flex;
     width: 100%;
     background: #f8f9fa !important;
-    z-index: 10;
+    z-index: 103;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
   }
   .mar-t{
     margin-top: 50px;
   }
 
+  
   .sidebar a{
     float: left;
     width: 16.667%;
@@ -245,6 +300,10 @@ html {
   }
   #lgout{
     background-position-x: 50%;
+  }
+
+  .te{
+    width: 27.667% !important;
   }
 
   .side-item{

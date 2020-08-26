@@ -1,4 +1,4 @@
-import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE } from '../actions/types.js';
+import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES } from '../actions/types.js';
 
 
 const initialState = {
@@ -40,6 +40,11 @@ export default function(state = initialState, action){
 			    ...state,
 			    isSubEnLoading: false,
 				info: action.payload,
+			}
+		case SET_DEFAULT_COURSES:
+			return {
+				...state,
+				isSubEnLoading: true,
 			}
 		default:
 			return state;

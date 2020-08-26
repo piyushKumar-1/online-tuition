@@ -163,10 +163,6 @@ const working = (
 							<li className="nav-item" id="about">
 								<Link to="/about" className="nav-link">About Us</Link>
 							</li>
-							<li className="nav-item" id="courses">
-								<Link to="/courses" className="nav-link">Courses and Programmes</Link>
-							</li>
-
 							<li className="nav-item" id="practices">
 								<Link to="/practices" className="nav-link">Our Practices</Link>
 							</li>

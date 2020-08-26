@@ -58,7 +58,8 @@ class MyCoursesAPI(generics.GenericAPIView):
     ]
 
     def post(self, request):
-        subs = SubjectEnrolled.objects.all().filter(enrollment_id=request.data['EnrCourseId'])
+        enrCourseId = request.data['EnrCourseId']
+        subs = SubjectEnrolled.objects.all().filter(enrollment_id=enrCourseId)
         li = []
         for i in subs:
             try:
@@ -69,18 +70,17 @@ class MyCoursesAPI(generics.GenericAPIView):
         serializers.is_valid()
         serializer2 = SubjectListSerializer(data=[Subjects.objects.get(id=i.enrolled_sub_id) for i in subs], many=True)
         serializer2.is_valid()
-        print(serializer2.data, serializers.data)
         for i in serializer2.data:
-            k = UploadedMaterial.objects.all().filter(student_enrolled_subject_id=i['id'])
+            print(i['id'])
+            k = UploadedMaterial.objects.all().filter(student_enrolled_subject = SubjectEnrolled.objects.get(enrolled_sub_id=i['id'], enrollment_id=enrCourseId).id)
             if(len(k)>0):
                 serializers1 = self.get_serializer(data=k, many=True)
                 serializers1.is_valid()
-                i['uploads'] = serializers1
+                i['uploads'] = serializers1.data
             else:
                 i['uploads'] = None
-
         return Response(serializer2.data)
-
+        
 
 
 

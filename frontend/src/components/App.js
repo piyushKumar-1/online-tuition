@@ -15,6 +15,7 @@ import TimeTable from './student/TimeTable.js';
 import AddCourse from './student/AddCourse.js';
 import MyCourse from './student/MyCourse.js';
 import TDashboard from './teacher/TDashboard.js';
+import TMyCourse from './teacher/TMyCourse.js';
 import { Provider, useSelector } from 'react-redux';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store.js';
@@ -58,6 +59,8 @@ export class App extends React.Component {
                             <PrivateRoute exact path="/student/add-course" component={AddCourse} />
                             <PrivateRoute exact path={'/student/courses/:myCourseId'} component={MyCourse} />
                             <TeacherRoute exact path="/teacher/dashboard" component={TDashboard}/>
+                            <TeacherRoute exact path="/teacher/courses" component={TDashboard}/>
+                            <PrivateRoute exact path={'/teacher/courses/:myCourseId'} component={TMyCourse} />
                             <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
                         </Switch>
                     </Router>

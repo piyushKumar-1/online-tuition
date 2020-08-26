@@ -85,8 +85,8 @@ class AddCourse extends React.Component {
 		       						<div className="col-md-12">
 			        					<h4 className='a p-4 float-left black'>{subjects[i].subject_name}</h4>
 			        				</div>
-	        						<div onClick={this.makeSelectedSub} className="overlay m-auto text-center p-4" id={i}>
-									</div>
+	        						<ScrollLink to="post" smooth={true} duration={500} delay={6000} offset={-600} onClick={this.makeSelectedSub} className="overlay m-auto text-center p-4" id={i}>
+									</ScrollLink>
 	    						</div>
 	    					</div>
     					</div>
@@ -96,8 +96,11 @@ class AddCourse extends React.Component {
 	    	}
 	    	
     	}
+    	if(sub.length==0){
+    		sub.push(<h3>No Subjects For selected Course</h3>)
+    	}
     	var content = React.createElement("div", {className:'row p-2 pb-4 sub'},  sub)
-	    	var final = (<div className="p-3 shadow" id="selSub">{head}{content}<button className="btn btn-primary" onClick={this.postIt}>Add</button></div>)
+	    	var final = (<div className="p-3 shadow" id="selSub">{head}{content}<button id="post" className="btn btn-primary blink" onClick={this.postIt}>Add</button></div>)
         	ele.push(final)
 
     	return ele;
@@ -136,7 +139,7 @@ class AddCourse extends React.Component {
 				        					<img className="pr-2 img-spin float-right" height="50" src={"/static/frontend/"+subCourses[j].id+".svg"} />
 		        						</div>
         							</div>
-	        						<ScrollLink to="selSub" activeClass="active" smooth={true} offset={-80}  onClick={this.makeSelected} className="overlay m-auto text-center p-4" id={j}>
+	        						<ScrollLink to="selSub" activeClass="active" smooth={true} offset={-80} duration={100} onClick={this.makeSelected} className="overlay m-auto text-center p-4" id={j}>
 									</ScrollLink>
 
         						</div>

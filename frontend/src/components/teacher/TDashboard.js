@@ -29,7 +29,9 @@ class TDashboard extends React.Component {
 			ele.push(<div className="col-md-4 p-3">
 						<div className="bg-white p-4 shadow">
 							<h4>{enrCourses[i].course_enrolled}</h4>
-							<h2 className="card-title">{enrCourses[i].department}</h2>
+							<Link to={"/teacher/courses/"+enrCourses[i].id}>
+								<h2 className="card-title">{enrCourses[i].department}</h2>
+							</Link>
 							<small className="card-title">Enrolled At: {enrCourses[i].enrolled_date}</small><br/>
 							<small className="card-title">Student Name: {enrCourses[i].student_name}</small><br/>
 							<small className="card-title">Student Email: {enrCourses[i].student_email}</small>
