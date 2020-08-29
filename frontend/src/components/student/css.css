@@ -10,6 +10,91 @@
   z-index: 2;
 }
 
+.col-sm4{
+  width: 30% !important;
+}
+
+.col-sm8{
+  width: 70% !important;
+}
+
+.form-chat{
+  width: 100%;
+display: flex;
+padding: 0px;
+margin: auto; 
+}
+
+.from-other{
+  max-width: 100%;
+  margin-left: auto;
+  width: max-content;
+  padding: 10px;
+  background: #66aed9;
+  border-radius: 15px;
+  box-shadow: .1px .1px 3px #66aed9;
+  transform: rotate(180deg);
+
+}
+.from-me{
+  max-width: 100%;
+  width: max-content;
+  padding: 10px;
+  background: #98ddc3;
+  border-radius: 15px;
+  box-shadow: .1px .1px 3px #98ddc3;
+  transform: rotate(180deg);
+}
+
+.contact-border{
+  border:.5px solid #dfdfdf;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: white;
+  border-bottom: 50px solid #dfdfdf;
+}
+
+.contact-head{
+  height: max-content;
+  background-color: #159d44;
+  padding: 10px;
+  color: white;
+  display: block ruby;
+}
+
+.contact-head h4{
+  font-weight: 600;
+}
+
+.contact-input{
+  bottom: 12px;
+  position: absolute;
+  left: 63px;
+}
+.contact-input input{
+  border:none;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #f7f7f7;
+}
+.contact-input input:hover{
+  border:0.01px solid #17a2b8;
+}
+
+.contact-body{
+  overflow-y: scroll;
+  height: 100%;
+  padding: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+}
+
+
+.contact-body-in{
+  transform: rotate(180deg);
+}
+
 .sidebar a{
   text-decoration: none;
   color: #002147;
@@ -77,7 +162,7 @@ html {
 
 .scrollxy{
     overflow-y: scroll;
-    max-height: 90vh;
+    max-height: 74vh;
     padding-top:10px;
 
   -ms-overflow-style: none;

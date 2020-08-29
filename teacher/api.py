@@ -2,10 +2,11 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.parsers import FormParser,MultiPartParser
+from .models import BecomeTeacher
 from .serializers import BecomeTeacherSerializer
 from users.models import CustomUser
-from student.serializers import UploadSerializer, SubjectSerializer, CoursesEnrolledSerializer
-from student.models import SubjectEnrolled, UploadedMaterial, CoursesEnrolled, Courses, SubCourses
+from student.serializers import UploadSerializer, SubjectSerializer, CoursesEnrolledSerializer, ChatSerializer
+from student.models import SubjectEnrolled, UploadedMaterial, CoursesEnrolled, Courses, SubCourses, ChatModel
 from courses.serializers import SubjectListSerializer
 from courses.models import Subjects
 
@@ -91,3 +92,47 @@ class CoursesIndiAPI(generics.GenericAPIView):
 		print(request.data)
 
 
+
+class TeacherChatAPI(generics.GenericAPIView):
+	serializer_class = ChatSerializer
+	permission_classes = [
+	permissions.IsAuthenticated,
+	]
+
+	def get(self, request, student_id):
+		print(request.user, request.user.teacher_id)
+		teacher = BecomeTeacher.objects.get(id=self.request.user.teacher_id)
+		print(self.request.user.teacher_id, student_id)
+
+		serializer = self.get_serializer(data=ChatModel.objects.all().filter(teacher_id=self.request.user.teacher_id, student_id=student_id), many=True)
+		serializer.is_valid()
+		dataL = []
+		for data in serializer.data:
+			print(data)
+			if not data["msg_side"]:
+				dataL.append(data)
+			elif data["msg_side"] and not data["approval"]:
+				continue
+			else:
+				dataL.append(data)
+		print(dataL)
+		return Response(reversed(dataL))
+	def post(self, request):
+
+		print(request.data)
+		teacher = BecomeTeacher.objects.get(id=self.request.user.teacher_id)
+		print(teacher)
+		ChatModel.objects.create(msg=request.data['msg'], student_id=request.data['student_id'], teacher=teacher, msg_side=False)
+		serializer = self.get_serializer(data=ChatModel.objects.all().filter(teacher_id=self.request.user.teacher_id, student_id=student_id), many=True)
+		serializer.is_valid()
+		dataL = []
+		for data in serializer.data:
+			print(data)
+			if not data["msg_side"]:
+				dataL.append(data)
+			elif data["msg_side"] and not data["approval"]:
+				continue
+			else:
+				dataL.append(data)
+		print(dataL)
+		return Response(reversed(dataL))

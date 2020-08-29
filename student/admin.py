@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Events, CoursesEnrolled
+from .models import Events, CoursesEnrolled, ChatModel
 
 
 class CourseEnrolledAdmin(admin.ModelAdmin):
@@ -7,9 +7,16 @@ class CourseEnrolledAdmin(admin.ModelAdmin):
 
     ordering = ('course_enrolled','student','department', 'teacher')
 
+class ChatAdmin(admin.ModelAdmin):
+    list_display = ('student', 'teacher', 'msg', 'msg_side', 'msg_time', 'approval')
+
+    ordering = ('approval', 'msg_time')
+
 
 
 admin.site.register(Events)
+admin.site.register(ChatModel, ChatAdmin)
 admin.site.register(CoursesEnrolled, CourseEnrolledAdmin)
+
 
 # Register your models here.

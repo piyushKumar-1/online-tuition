@@ -6,9 +6,9 @@ from django.forms.models import model_to_dict
 from django.core import serializers
 from users.serializers import UserSerializer, CustomUser
 from courses.serializers import SubjectListSerializer
-from .serializers import EventsSerializer, CoursesEnrolledSerializer, UploadSerializer
-from .models import CoursesEnrolled, Events, Courses, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial
-
+from .serializers import EventsSerializer, CoursesEnrolledSerializer, UploadSerializer, ChatSerializer
+from .models import CoursesEnrolled, Events, Courses, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial, ChatModel
+from teacher.models import BecomeTeacher
 from re import sub
 
 
@@ -122,3 +122,42 @@ class EventsAPI(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({'success':'Created Successfully'})
+
+
+class StudentChatAPI(generics.GenericAPIView):
+    serializer_class = ChatSerializer
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+
+    def get(self, request, teacher_id):
+        serializer = self.get_serializer(data=ChatModel.objects.all().filter(teacher_id=teacher_id, student_id=self.request.user), many=True)
+        serializer.is_valid()
+        dataL = []
+        for data in serializer.data:
+            print(data)
+            if data["msg_side"]:
+                dataL.append(data)
+            elif not data["msg_side"] and not data["approval"]:
+                continue
+            else:
+                dataL.append(data)
+        print(dataL)
+        return Response(reversed(dataL))
+    def post(self, request):
+
+        print(request.data)
+        ChatModel.objects.create(msg=request.data['msg'], student=self.request.user, teacher=BecomeTeacher.objects.get(id=request.data['teacher_id']))
+        serializer = self.get_serializer(data=ChatModel.objects.filter(teacher_id=request.data['teacher_id'], student=self.request.user), many=True)
+        serializer.is_valid()
+        dataL = []
+        for data in serializer.data:
+            print(data)
+            if data["msg_side"]:
+                dataL.append(data)
+            elif not data["msg_side"] and not data["approval"]:
+                continue
+            else:
+                dataL.append(data)
+        print(dataL)
+        return Response(reversed(dataL))

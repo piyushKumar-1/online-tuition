@@ -1,4 +1,4 @@
-import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES } from '../actions/types.js';
+import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES, GOT_CHAT, POST_CHAT } from '../actions/types.js';
 
 
 const initialState = {
@@ -9,6 +9,8 @@ const initialState = {
     isSubEnLoading: true,
     info:null,
 	chlaJa:false,
+	chat: [],
+	isChatLoading: true,
 }
 
 
@@ -46,6 +48,13 @@ export default function(state = initialState, action){
 				...state,
 				isSubEnLoading: true,
 			}
+		case GOT_CHAT:
+        case POST_CHAT:
+        	return {
+        		...state,
+        		isChatLoading:false,
+        		chat: action.payload
+        	}
 		default:
 			return state;
 	}

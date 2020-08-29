@@ -1,0 +1,138 @@
+id,seller,product_name,price,description,key_specifications,img,cat_id,sub_cat_id,quantity
+1,admin,Brinjal,57,1 Packet,quality product by admin,/home/piyush/IMG-20191016-WA0072.jpg,1,1,10
+2,admin,Beans,40.5,1 Packet,quality product by admin,Beans.png,1,1,0
+3,admin,Couliflower,55.5,1 Packet,quality product by admin,Couliflower.png,1,1,100
+4,admin,Cardamom,43.5,1 Packet,quality product by admin,Cardamom.png,1,2,100
+5,admin,Basil,69,1 Packet,quality product by admin,Basil.png,1,2,100
+6,admin,Allspice,55.5,1 Packet,quality product by admin,Allspice.png,1,2,100
+7,admin,Cloves,55.5,1 Packet,quality product by admin,Cloves.png,1,2,100
+8,admin,Cilantro,69,1 Packet,quality product by admin,Cilantro.png,1,2,100
+9,admin,Garlic,64.5,1 Packet,quality product by admin,Garlic.png,1,2,100
+10,admin,Ginger,34.5,1 Packet,quality product by admin,Ginger.png,1,2,100
+11,admin,Apple,46.5,1 Packet,quality product by admin,Apple.png,1,3,100
+12,admin,Banana,66,1 Packet,quality product by admin,Banana.png,1,3,100
+13,admin,Coconut,43.5,1 Packet,quality product by admin,Coconut.png,1,3,100
+14,admin,Mango,40.5,1 Packet,quality product by admin,Mango.png,1,3,96
+15,admin,Blueberry,73.5,1 Packet,quality product by admin,Blueberry.png,1,3,100
+16,admin,Broccoli Romanesco,55.5,1 Packet,quality product by admin,Broccoli Romanesco.png,1,4,100
+17,admin,Mexican Sour Gherkin,30,1 Packet,quality product by admin,Mexican Sour Gherkin.png,1,4,100
+18,admin,Daikon,48,1 Packet,quality product by admin,Daikon.png,1,4,100
+19,admin,Kalettes Collection,67.5,1 Packet,quality product by admin,Kalettes Collection.png,1,4,100
+20,admin,Organic Turnip,61.5,1 Packet,quality product by admin,Organic Turnip.png,1,5,100
+21,admin,Organic Mango,51,1 Packet,quality product by admin,Organic Mango.png,1,5,99
+22,admin,Organic Mashroom,48,1 Packet,quality product by admin,Organic Mashroom.png,1,5,100
+23,admin,All-Purpose Flour,36,1 Packet,quality product by admin,All-Purpose Flour.png,2,6,99
+24,admin,Cake Flour,48,1 Packet,quality product by admin,Cake Flour.png,2,6,100
+25,admin,Pastry Flour,51,1 Packet,quality product by admin,Pastry Flour.png,2,6,100
+26,admin,Rice-flour,61.5,1 Packet,quality product by admin,Rice-flour.png,2,7,100
+27,admin,Rice,67.5,1 Packet,quality product by admin,Rice.png,2,7,100
+28,admin,Dry Beans,60,1 Packet,quality product by admin,Dry Beans.png,2,8,100
+29,admin,Dry Broad Beans,64.5,1 Packet,quality product by admin,Dry Broad Beans.png,2,8,100
+30,admin,Dry Peas,75,1 Packet,quality product by admin,Dry Peas.png,2,8,100
+31,admin,Chickpeas,30,1 Packet,quality product by admin,Chickpeas.png,2,8,100
+32,admin,Cow Peas,64.5,1 Packet,quality product by admin,Cow Peas.png,2,8,100
+33,admin,Salt,37.5,1 Packet,quality product by admin,Salt.png,2,9,100
+34,admin,Sugar,42,1 Packet,quality product by admin,Sugar.png,2,9,100
+35,admin,Jaggery,49.5,1 Packet,quality product by admin,Jaggery.png,2,9,100
+36,admin,Edible Oil,55.5,1 Packet,quality product by admin,Edible Oil.png,2,10,100
+37,admin,Sunflower Refined Oil,63,1 Packet,quality product by admin,Sunflower Refined Oil.png,2,10,100
+38,admin,Soyabean Refined Oil,58.5,1 Packet,quality product by admin,Soyabean Refined Oil.png,2,10,100
+39,admin,Angelica,31.5,1 Packet,quality product by admin,Angelica.png,2,11,100
+40,admin,Anise,45,1 Packet,quality product by admin,Anise.png,2,11,100
+41,admin,Asafoetida,40.5,1 Packet,quality product by admin,Asafoetida.png,2,11,100
+42,admin,Bergamot,36,1 Packet,quality product by admin,Bergamot.png,2,11,100
+43,admin,Almonds,34.5,1 Packet,quality product by admin,Almonds.png,2,12,100
+44,admin,Apricot,67.5,1 Packet,quality product by admin,Apricot.png,2,12,100
+45,admin,Cashew,64.5,1 Packet,quality product by admin,Cashew.png,2,12,100
+46,admin,Cow's Milk,70.5,1 Packet,quality product by admin,Cow's Milk.png,3,13,98
+47,admin,Organic Milk,57,1 Packet,quality product by admin,Organic Milk.png,3,13,100
+48,admin,Fat Free Milk,54,1 Packet,quality product by admin,Fat Free Milk.png,3,13,98
+49,admin,Salted Butter,30,1 Packet,Cow's Milk Butter,Salted_Butter_aXYJ3gt.png,3,14,96
+50,admin,Unsalted Butter,63,1 Packet,quality product by admin,Unsalted Butter.png,3,14,100
+51,admin,Whipped Butter,66,1 Packet,quality product by admin,Whipped Butter.png,3,14,100
+52,admin,Curd,75,1 Packet,quality product by admin,Curd.png,3,15,100
+53,admin,Tofu,48,1 Packet,quality product by admin,Tofu.png,3,16,100
+54,admin,Powdered Milk,37.5,1 Packet,quality product by admin,Powdered Milk.png,3,17,100
+55,admin,Cheddar,75,1 Packet,quality product by admin,Cheddar.png,3,18,100
+56,admin,Assam Tea,60,1 Packet,quality product by admin,Assam Tea.png,4,22,99
+57,admin,Born Vita,46.5,1 Packet,quality product by admin,Born Vita.png,4,23,100
+58,admin,Protien Shakes Powder,75,1 Packet,quality product by admin,Protien Shakes Powder.png,4,23,100
+59,admin,Espresso,69,1 Packet,quality product by admin,Espresso.png,4,24,100
+60,admin,Bread,48,1 Packet,quality product by admin,Bread.png,5,27,100
+61,admin,Cereal,75,1 Packet,quality product by admin,Cereal.png,5,27,100
+62,admin,Corn Flakes,37.5,1 Packet,quality product by admin,Corn Flakes.png,5,27,100
+63,admin,Buiscuit,67.5,1 Packet,quality product by admin,Buiscuit.png,5,28,100
+64,admin,Cookies,37.5,1 Packet,quality product by admin,Cookies.png,5,28,100
+65,admin,Sauce,69,1 Packet,quality product by admin,Sauce.png,5,29,100
+66,admin,Ketchup,33,1 Packet,quality product by admin,Ketchup.png,5,29,100
+67,admin,Frozen Fries,73.5,1 Packet,quality product by admin,Frozen Fries.png,5,30,100
+68,admin,Ice cream,46.5,1 Packet,quality product by admin,Ice-cream.png,5,30,100
+69,admin,Sausages,36,1 Packet,quality product by admin,Sausages.png,5,30,100
+70,admin,Nachos,67.5,1 Packet,quality product by admin,Nachos.png,5,31,100
+71,admin,Sandwich,40.5,1 Packet,quality product by admin,Sandwich.png,5,31,100
+72,admin,Chocolate,75,1 Packet,quality product by admin,Chocolate.png,5,32,100
+73,admin,Candies,37.5,1 Packet,quality product by admin,Candies.png,5,32,100
+74,admin,Mixed Pickle,34.5,1 Packet,quality product by admin,Mixed Pickle.png,5,33,100
+75,admin,Mango Pickle,60,1 Packet,quality product by admin,Mango Pickle.png,5,33,2
+76,admin,Sanitary Napkins,64.5,1 Packet,quality product by admin,Sanitary Napkins.png,6,34,100
+77,admin,Tampons,60,1 Packet,quality product by admin,Tampons.png,6,34,100
+78,admin,Pantyliners,67.5,1 Packet,quality product by admin,Pantyliners.png,6,34,100
+79,admin,Tooth brush,58.5,1 Packet,quality product by admin,Tooth brush.png,6,35,100
+80,admin,Soap,66,1 Packet,quality product by admin,Soap.png,6,36,100
+81,admin,Hand Wash,45,1 Packet,quality product by admin,Hand Wash.png,6,36,100
+82,admin,Hair Oil,49.5,1 Packet,quality product by admin,Hair Oil.png,6,37,100
+83,admin,Hair Shampoo,40.5,1 Packet,quality product by admin,Hair Shampoo.png,6,37,100
+84,admin,Hair Conditioner,45,1 Packet,quality product by admin,Hair Conditioner.png,6,37,100
+85,admin,Shaving Cream,30,1 Packet,quality product by admin,Shaving Cream.png,6,38,100
+86,admin,Sunscreen,66,1 Packet,quality product by admin,Sunscreen.png,6,39,100
+87,admin,Cleanser,60,1 Packet,quality product by admin,Cleanser.png,6,39,100
+88,admin,Serum,72,1 Packet,quality product by admin,Serum.png,6,39,100
+89,admin,BB cream,48,1 Packet,quality product by admin,BB cream.png,6,40,100
+90,admin,Nail Polish Remover,46.5,1 Packet,quality product by admin,Nail Polish Remover.png,6,40,100
+91,admin,Men's Deo,67.5,1 Packet,quality product by admin,Men's Deo.png,6,41,100
+92,admin,Women's Deo,55.5,1 Packet,quality product by admin,Women's Deo.png,6,41,100
+93,admin,Exotic Perfume,66,1 Packet,quality product by admin,Exotic Perfume.png,6,41,100
+94,admin,Rose Perfume,48,1 Packet,quality product by admin,Rose Perfume.png,6,41,100
+95,admin,Detergent,43.5,1 Packet,quality product by admin,Detergent.png,7,42,100
+96,admin,Dishwash Liquid,72,1 Packet,quality product by admin,Dishwash Liquid.png,7,42,100
+97,admin,Dishwash Bar,58.5,1 Packet,quality product by admin,Dishwash Bar.png,7,42,100
+98,admin,Colin Cleaner,51,1 Packet,quality product by admin,Colin Cleaner.png,7,43,100
+99,admin,Garbase Bag,45,1 Packet,quality product by admin,Garbase Bag.png,7,44,100
+100,admin,Disposable Plates,75,1 Packet,quality product by admin,Disposable Plates.png,7,44,100
+101,admin,Disposable Cups,70.5,1 Packet,quality product by admin,Disposable Cups.png,7,44,100
+102,admin,Room Freshener,43.5,1 Packet,quality product by admin,Room Freshener.png,7,45,100
+103,admin,Mop,60,1 Packet,quality product by admin,Mop.png,7,46,100
+104,admin,Brush,54,1 Packet,quality product by admin,Brush.png,7,46,100
+105,admin,Scrub,57,1 Packet,quality product by admin,Scrub.png,7,46,100
+106,admin,Dustbin,48,1 Packet,quality product by admin,Dustbin.png,7,47,100
+107,admin,Bathroom Ware,54,1 Packet,quality product by admin,Bathroom Ware.png,7,47,100
+108,admin,Party Poppers,30,1 Packet,quality product by admin,Party Poppers.png,7,48,100
+109,admin,Lights,57,1 Packet,quality product by admin,Lights.png,7,48,100
+110,admin,Car Shampoo,34.5,1 Packet,quality product by admin,Car Shampoo.png,7,49,100
+111,admin,Shoe Polish Black,55.5,1 Packet,quality product by admin,Shoe Polish Black.png,7,49,100
+112,admin,Shoe Polish Brown,61.5,1 Packet,quality product by admin,Shoe Polish Brown.png,7,49,100
+113,admin,Notebook,58.5,1 Packet,quality product by admin,Notebook.png,7,50,100
+114,admin,Register,63,1 Packet,quality product by admin,Register.png,7,50,100
+115,admin,Brown Eggs,75,1 Packet,quality product by admin,Brown Eggs.png,8,51,100
+116,admin,Organic Eggs,75,1 Packet,quality product by admin,Organic Eggs.png,8,51,100
+117,admin,White eggs,57,1 Packet,quality product by admin,White eggs.png,8,51,100
+118,admin,Chicken Meat,36,1 Packet,quality product by admin,Chicken Meat.png,8,52,100
+119,admin,Goat Meat,60,1 Packet,quality product by admin,Goat Meat.png,8,52,100
+120,admin,Sausage,43.5,1 Packet,quality product by admin,Sausage.png,8,53,100
+121,admin,Bacon,75,1 Packet,quality product by admin,Bacon.png,8,53,100
+122,admin,Fish,61.5,1 Packet,quality product by admin,Fish.png,8,54,100
+123,admin,Wild-Caugh Fish,46.5,1 Packet,quality product by admin,Wild-Caugh Fish.png,8,54,100
+124,admin,Prawns,51,1 Packet,quality product by admin,Prawns.png,8,54,100
+125,admin,Lamb Meat,40.5,1 Packet,quality product by admin,Lamb Meat.png,8,55,100
+126,admin,Olive Oil,54,1 Packet,quality product by admin,Olive Oil.png,8,56,100
+127,admin,Hanged Curd,70.5,1 Packet,quality product by admin,Hanged Curd.png,8,56,100
+128,admin,Yeast,33,1 Packet,quality product by admin,Yeast.png,8,56,100
+129,admin,Pork,39,1 Packet,quality product by admin,Pork.png,8,57,100
+130,admin,Beef,39,1 Packet,quality product by admin,Beef.png,8,57,100
+131,admin,Venison,63,1 Packet,quality product by admin,Venison.png,8,57,100
+132,admin,Vineger,52.5,1 Packet,quality product by admin,Vineger.png,9,58,100
+133,admin,Black Vineger,51,1 Packet,quality product by admin,Black Vineger.png,9,58,100
+134,admin,Baking Powder,58.5,1 Packet,quality product by admin,Baking Powder.png,9,59,100
+135,admin,Knives,57,1 Packet,quality product by admin,Knives.png,9,59,100
+136,admin,Pancake Mix,61.5,1 Packet,quality product by admin,Pancake Mix.png,9,60,100
+137,admin,Idli Mix,61.5,1 Packet,quality product by admin,Idli Mix.png,9,60,100

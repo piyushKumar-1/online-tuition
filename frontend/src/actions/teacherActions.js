@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES } from './types.js';
+import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES, T_GOT_CHAT, T_POST_CHAT } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -117,3 +117,58 @@ export const uploadMaterial = (FD) => dispatch => {
         });
 }
 
+
+
+
+
+export const getChat = (student_id) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .get(`/api/auth/teacher/chat/${student_id}`, config)
+        .then(res => {
+            dispatch({
+                type: T_GOT_CHAT,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+export const postChat = (student_id, msg) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    let data = {'msg':msg, 'student_id':student_id}
+    axios
+        .post(`/api/auth/teacher/chat`, data, config)
+        .then(res => {
+            dispatch({
+                type: T_POST_CHAT,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}

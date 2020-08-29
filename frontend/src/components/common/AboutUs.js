@@ -21,8 +21,6 @@ componentWillUnmount(){
 
 			<>
 
-				<!-- { this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
-				-->
 
 				<div id="background-wrap" data-aos="fade-in" data-aos-once="true">
 					<img src="static/frontend/aboutUs.jpg" />			

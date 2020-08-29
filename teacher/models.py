@@ -17,3 +17,6 @@ class BecomeTeacher(models.Model):
 		return self.name +', '+ self.email +', '+ self.qualification
 
 
+
+
+

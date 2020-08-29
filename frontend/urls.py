@@ -30,7 +30,7 @@ urlpatterns = [
     path('teacher/dashboard', views.index ),
     path('teacher/courses', views.index ),
     path('teacher/timetable', views.index ),
-    path('TEACHER/courses/<str:k>', views.index3),
+    path('teacher/courses/<str:k>', views.index3),
 
 
 ]

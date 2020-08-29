@@ -1,10 +1,13 @@
-import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT } from '../actions/types.js';
+import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, T_GOT_CHAT, T_POST_CHAT } from '../actions/types.js';
 
 
 const initialState = {
 	uploaded:false,
 	message: null,
-	fail:false
+	fail:false,
+	chat: [],
+	isChatLoading: true,
+
 }
 
 
@@ -34,6 +37,13 @@ export default function(state = initialState, action){
                 fail: false,
                 uploaded: false
             }
+        case T_GOT_CHAT:
+        case T_POST_CHAT:
+        	return {
+        		...state,
+        		isChatLoading:false,
+        		chat: action.payload
+        	}
 		default:
 			return state;
 	}

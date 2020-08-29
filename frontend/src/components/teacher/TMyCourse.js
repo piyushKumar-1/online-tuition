@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import '../student/css.css'
 
 import Sidebar from './TSidebar.js';
-import { myCourse, resetUpload, uploadMaterial, getEvents, getEnrCourses  } from '../../actions/teacherActions.js'
+import { myCourse, resetUpload, uploadMaterial, getEvents, getEnrCourses, getChat, postChat  } from '../../actions/teacherActions.js'
 import ProgressBar from "../common/ProgressBar.js"
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 
@@ -18,20 +18,95 @@ class TMyCourse extends React.Component {
 	}
 	custructor(){
 	    this.makeSelected = this.makeSelected.bind(this);
+	    this.chatSubmit = this.chatSubmit.bind(this);
 	}
 	state = {
 	    selected: null,
 	    file: null,
 	    form:false,
 	    fi: false,
-	    fi_help: '',
+	    fi_help: '',	
 	    index: null,
+	    chat_text: null,
+	    student_id:null,
+	    no_more: true
+
 	}
-	onChange(e){
+
+
+	getChat = () =>{
+		if(this.state.no_more){
+			const enrolled = this.props.student.couresEnrolled;
+			const { myCourseId } = this.props.match.params;
+			var student_id;
+			console.log(enrolled, myCourseId)
+			if(enrolled){
+				for(let i=0;i<enrolled.length;i++){
+					if(enrolled[i].id==myCourseId){
+						student_id = enrolled[i].student;
+						console.log(student_id)
+
+					}
+				}
+			}
+			this.props.getChat(student_id);
+			this.state.student_id=student_id;
+			this.setState({
+				no_more: false
+			});
+		}
+		return this.makeChat()
+	}
+
+	makeChat =() => {
+		const chat = this.props.uploads.chat;
+		const ele = [];
+		var app_req;
+		for(let i=0;i<chat.length;i++){
+			if(!chat[i].msg_side){
+				if(!chat[i].approval){
+					app_req = {
+						backgroundColor: "#e1e1e1",
+						boxShadow: ".1px .1px 3px #e1e1e1"
+					}
+					ele.push(<small style={{transform:"rotate(180deg)", display:"block", width:"max-content", maxWidth:"100%" }}>Needs Approval</small>)
+				} else {
+					app_req = {
+						backgroundColor: "#98ddc3",
+						boxShadow: ".1px .1px 3px #98ddc3"
+					}
+				}
+				ele.push(
+					<h6 className="from-me" style={app_req}>{chat[i].msg}</h6>
+				)
+			} else {
+				ele.push(
+					<h6 className="from-other">{chat[i].msg}</h6>
+				)
+			}
+		}
+		return ele;
+	}
+
+	chatSubmit =(e) => {
+		e.preventDefault();
+		const { chat_text, student_id } = this.state;
+		console.log(chat_text, student_id )
+		this.props.postChat(student_id, chat_text);
 		this.setState({
-			[e.target.name]: e.target.value 
+			chat_text: ''
 		});
 	}
+
+
+	onChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	}
+
+
+
 	onFileUpload = (e) => {
     	console.log(e.target.files)
     	if(e.target.files[0].size/1024/1024<=1){
@@ -70,7 +145,7 @@ class TMyCourse extends React.Component {
                         sel.innerHTML+="<div style='padding:5px; display:grid; width:100%; border-bottom:1px solid black'><h3 style='float:left'>"+filename+"</h3><div class='p-1'><a target='_blank' class='btn btn-dark' style='width:45%; margin:10px; float:right' href=/api/auth/teacher/download/"+filepath+">Download</a><a target='_blank' class='btn btn-primary' style='float:right; width:45%; margin:10px; ' href=/api/auth/teacher/delete/"+filepath+">Delete</a></div></div>";
                     }
                 }
-            }
+            }	
         }
         
 
@@ -173,6 +248,34 @@ class TMyCourse extends React.Component {
 						<div className="row row-no-gutters">
 						    <div className="col-md-6">
 							    {this.make()}
+							    <div className="p-1">
+							    	<div className="contact-border">
+							    		<div className="contact-head">
+							    			<h4>Teacher</h4>
+							    			<small>(Chat Window)</small>
+							    		</div>
+							    		<div className="contact-body" id="chat">
+							    			<div className="contact-body-in">
+							    			<br/>
+							    			<br/>
+							    			<br/>
+							    			{ this.props.student.isCrsEnLoading? <div className="m-auto"><i className="fa fa-spinner fa-spin"></i></div>: this.getChat() }
+											</div>
+							    		</div>
+							    		<div className="contact-input w-75">
+							    			<div className="row">
+								    			<form className="form-chat" onSubmit={this.chatSubmit}>
+									    			<div className="col-sm8 col-md-10">
+										    			<input placeholder="Enter Message For Student" className="w-100" type="text" name="chat_text" value={this.state.chat_text} onChange={this.onChange}/>
+									    			</div>
+									    			<div className="col-sm4 col-md-2 m-auto">
+										    			<button className="btn m-auto btn-danger"><i className="fa fa-paper-plane"></i></button>
+													</div>
+								    			</form>
+								    		</div>
+							    		</div>
+							    	</div>
+							    </div>
 							</div>
 							<div className="bg-white col-md-6 scrollxy">
   							{ this.state.form ?<h4 className="subxy">{this.props.student.info[this.state.index].subject_name}</h4>: ''}
@@ -233,4 +336,4 @@ const mapStateToProps= state => ({
 
 
 
-export default connect(mapStateToProps, { myCourse, resetUpload, uploadMaterial, getEvents, getEnrCourses })(TMyCourse);
+export default connect(mapStateToProps, { myCourse, resetUpload, uploadMaterial, getEvents, getEnrCourses, getChat, postChat })(TMyCourse);

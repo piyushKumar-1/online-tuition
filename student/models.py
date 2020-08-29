@@ -39,3 +39,16 @@ class UploadedMaterial(models.Model):
 	student_enrolled_subject = models.ForeignKey(SubjectEnrolled, on_delete=models.SET_NULL, null=True, default=True)
 	uploaded_material = models.FileField(upload_to="teacher/material_for_students", null=True, default=None)
 	upload_date = models.DateTimeField(default=timezone.now)
+
+
+
+
+class ChatModel(models.Model):
+	student = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.SET_DEFAULT, null=True, default=None)
+	msg = models.CharField(max_length=2000)
+	msg_time = models.DateTimeField(auto_now_add=True)
+	approval = models.BooleanField(default=False)
+	msg_side = models.BooleanField(default=True) #true for student and false for teacher
+
+	
