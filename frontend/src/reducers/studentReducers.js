@@ -1,4 +1,4 @@
-import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES, GOT_CHAT, POST_CHAT } from '../actions/types.js';
+import { GOT_EVENTS, GOT_ENR_COURSES,ADDED_EVENTS, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES, GOT_CHAT, POST_CHAT } from '../actions/types.js';
 
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
 
 export default function(state = initialState, action){
 	switch(action.type){
-		
+		case ADDED_EVENTS:
 		case GOT_EVENTS:
 			return {
 				...state,

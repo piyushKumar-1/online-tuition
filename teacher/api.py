@@ -5,11 +5,34 @@ from rest_framework.parsers import FormParser,MultiPartParser
 from .models import BecomeTeacher
 from .serializers import BecomeTeacherSerializer
 from users.models import CustomUser
-from student.serializers import UploadSerializer, SubjectSerializer, CoursesEnrolledSerializer, ChatSerializer
-from student.models import SubjectEnrolled, UploadedMaterial, CoursesEnrolled, Courses, SubCourses, ChatModel
+from student.serializers import UploadSerializer, SubjectSerializer, CoursesEnrolledSerializer, ChatSerializer, EventsSerializer
+from student.models import SubjectEnrolled, UploadedMaterial, CoursesEnrolled, Courses, SubCourses, ChatModel, Events
 from courses.serializers import SubjectListSerializer
 from courses.models import Subjects
 
+
+class EventAPI(generics.GenericAPIView):
+	serializer_class = EventsSerializer
+	permission_classes = [
+		permissions.IsAuthenticated
+	]
+	def get(self, request):
+		print(Events.objects.all().filter(teacher_id = self.request.user.teacher_id))
+		ret = self.get_serializer(data=Events.objects.filter(teacher_id = self.request.user.teacher_id), many=True)
+		ret.is_valid()
+		print(ret.data)
+
+		return Response(ret.data)
+
+	def post(self, request):
+		request.data['teacher'] = BecomeTeacher.objects.get(id=self.request.user.teacher_id)
+		request.data['student'] = CustomUser.objects.get(id=request.data['student_id'])
+		print(request.data)
+		Events.objects.create(**request.data)
+		ret = self.get_serializer(data=Events.objects.filter(teacher = self.request.user.teacher_id), many=True)
+		ret.is_valid()
+		print(ret.data)
+		return Response(ret.data)
 
 
 
@@ -123,7 +146,7 @@ class TeacherChatAPI(generics.GenericAPIView):
 		teacher = BecomeTeacher.objects.get(id=self.request.user.teacher_id)
 		print(teacher)
 		ChatModel.objects.create(msg=request.data['msg'], student_id=request.data['student_id'], teacher=teacher, msg_side=False)
-		serializer = self.get_serializer(data=ChatModel.objects.all().filter(teacher_id=self.request.user.teacher_id, student_id=student_id), many=True)
+		serializer = self.get_serializer(data=ChatModel.objects.all().filter(teacher_id=self.request.user.teacher_id, student_id=request.data['student_id']), many=True)
 		serializer.is_valid()
 		dataL = []
 		for data in serializer.data:

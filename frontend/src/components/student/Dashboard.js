@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import './css.css'
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar.js';
-import { getEvents, getEnrCourses } from '../../actions/studentActions.js'
+import { getEvents, getEnrCourses, delCourse } from '../../actions/studentActions.js'
 import ProgressBar from "../common/ProgressBar.js"
 
 
@@ -21,6 +21,10 @@ class Dashboard extends React.Component {
 		}
 	}
 
+	delCourse(e){
+		this.props.delCourse(e.target.id)
+	}
+
 
 	make(){
 		const { enrCourses } = this.props;
@@ -30,6 +34,7 @@ class Dashboard extends React.Component {
 					<div className="col-md-4 p-3">
 						<div className="bg-white p-4 shadow">
 							<h4>{enrCourses[i].course_enrolled}</h4>
+							<div onClick={(e) => this.delCourse(e)} className="btn"><i className="fa fa-times-circle del-course" id={enrCourses[i].id}/></div>
 							<Link to={"/student/courses/"+enrCourses[i].id}>
 								<h2 className="card-title">{enrCourses[i].department}</h2>
 							</Link>
@@ -92,4 +97,4 @@ const mapStateToProps= state => ({
 
 
 
-export default connect(mapStateToProps, { getEnrCourses, getEvents })(Dashboard);
+export default connect(mapStateToProps, { getEnrCourses, getEvents, delCourse })(Dashboard);

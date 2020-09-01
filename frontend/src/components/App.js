@@ -16,6 +16,7 @@ import AddCourse from './student/AddCourse.js';
 import MyCourse from './student/MyCourse.js';
 import TDashboard from './teacher/TDashboard.js';
 import TMyCourse from './teacher/TMyCourse.js';
+import TTimeTable from './teacher/TTimeTable.js';
 import { Provider, useSelector } from 'react-redux';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store.js';
@@ -58,6 +59,7 @@ export class App extends React.Component {
                             <PrivateRoute exact path="/student/courses" component={Dashboard} />
                             <PrivateRoute exact path="/student/add-course" component={AddCourse} />
                             <PrivateRoute exact path={'/student/courses/:myCourseId'} component={MyCourse} />
+                            <PrivateRoute exact path="/teacher/timetable" component={TTimeTable} />
                             <TeacherRoute exact path="/teacher/dashboard" component={TDashboard}/>
                             <TeacherRoute exact path="/teacher/courses" component={TDashboard}/>
                             <PrivateRoute exact path={'/teacher/courses/:myCourseId'} component={TMyCourse} />

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES, T_GOT_CHAT, T_POST_CHAT } from './types.js';
+import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES, T_GOT_CHAT, T_POST_CHAT } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -17,10 +17,39 @@ export const getEvents = () => (dispatch, getState) => {
     }
 
     axios
-        .get('/api/auth/student/events', config)
+        .get('/api/auth/teacher/events', config)
         .then(res => {
             dispatch({
                 type: GOT_EVENTS,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+export const postEvents = (event_time, date, student_id, url, topic) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+
+    let data = {'event_time':event_time, 'event_date':date, 'student_id':student_id, 'live_link':url, 'topic': topic}
+    axios
+        .post(`/api/auth/teacher/events`, data, config)
+        .then(res => {
+            dispatch({
+                type: ADDED_EVENTS,
                 payload: res.data
             })
         })

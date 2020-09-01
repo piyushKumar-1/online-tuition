@@ -1,8 +1,10 @@
 from rest_framework import generics, status, permissions
 from rest_framework.authtoken.models import Token
+from django.http import Http404
 from knox.models import AuthToken
 from rest_framework.response import Response
 from django.forms.models import model_to_dict
+from rest_framework.views import APIView
 from django.core import serializers
 from users.serializers import UserSerializer, CustomUser
 from courses.serializers import SubjectListSerializer
@@ -57,6 +59,12 @@ class MyCoursesAPI(generics.GenericAPIView):
         permissions.IsAuthenticated,
     ]
 
+    def get_object(self, pk):
+        try:
+            return CoursesEnrolled.objects.get(id=pk)
+        except:
+            raise Http404 
+
     def post(self, request):
         enrCourseId = request.data['EnrCourseId']
         subs = SubjectEnrolled.objects.all().filter(enrollment_id=enrCourseId)
@@ -80,6 +88,12 @@ class MyCoursesAPI(generics.GenericAPIView):
             else:
                 i['uploads'] = None
         return Response(serializer2.data)
+    def delete(self, request, enr_id):
+        k = self.get_object(enr_id)
+        print(k)
+        k.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
         
 
 
@@ -96,25 +110,19 @@ class CoursesEnrolledIndividualAPI(generics.GenericAPIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+
 class EventsAPI(generics.GenericAPIView):
     serializer_class = EventsSerializer
-    queryset = Events.objects.all()
-
-
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
     def get(self, request):
-        serializer = self.get_serializer(data = Events.objects.all(), many=True)
-        serializer.is_valid()
-        for data in serializer.data:
-            teacher = CustomUser.objects.get(id=data['teacher'])
-            data['course'] = Courses.objects.get(id=data['course']).course_name
-            data['department'] = SubCourses.objects.get(id=data['department']).sub_course_name
-            try:
-                data['subject'] = Subjects.objects.get(id=data['subject']).subject_name
-            except:
-                pass
-            data['teacher'] = {'id':teacher.id, 'name': teacher.first_name+" "+teacher.last_name, 'email': teacher.email}
-        return Response(serializer.data)
+        print(Events.objects.all().filter(student = self.request.user))
+        ret = self.get_serializer(data=Events.objects.all().filter(student = self.request.user), many=True)
+        ret.is_valid()
+        print(ret.data)
 
+        return Response(ret.data)
 
 
     def post(self, request):

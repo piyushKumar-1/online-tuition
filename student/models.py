@@ -10,10 +10,8 @@ from teacher.models import BecomeTeacher
 
 
 class Events(models.Model):
+	topic = models.CharField(max_length=400)
 	student = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-	course = models.ForeignKey(Courses, on_delete=models.CASCADE)
-	department = models.ForeignKey(SubCourses, on_delete=models.CASCADE)
-	subject = models.ForeignKey(Subjects, on_delete=models.CASCADE, null=True, blank=True, default=True)
 	event_time = models.TimeField()
 	event_date = models.DateField()
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE)

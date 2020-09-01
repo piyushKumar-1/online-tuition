@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from "@fullcalendar/interaction"; 
 import Sidebar from './Sidebar.js';
 import { connect } from 'react-redux';
-import { getEvents, getEnrCourses } from '../../actions/studentActions.js'
+import { getEvents, postEvents, getEnrCourses } from '../../actions/studentActions.js'
 import './css.css'
 import ProgressBar from "../common/ProgressBar.js"
 
@@ -13,8 +13,8 @@ import ProgressBar from "../common/ProgressBar.js"
 export class TimeTable extends React.Component {
 	
 	componentDidMount(){
-		getEvents();
-		getEnrCourses();
+		this.props.getEvents();
+		this.props.getEnrCourses();
 	}
 
 
@@ -28,7 +28,18 @@ export class TimeTable extends React.Component {
   		arg.dayEl.classList.add("day-highlight");
 	    alert(arg.dateStr)
 	}
-
+	makeEvent = (e) => {
+		var ele = []
+		const { events } = this.props;
+		for(let i=0;i<events.length;i++){
+			var k = {}
+			k['title'] = events[i].topic
+			k['date'] = events[i].event_date	
+			ele.push(k)
+		}
+		console.log(ele)
+		return ele
+	}
 	render() {
 		return (
 			<div>
@@ -42,10 +53,9 @@ export class TimeTable extends React.Component {
 									<FullCalendar
 										plugins={[ dayGridPlugin, interactionPlugin ]}
 										weekends={false}
-										events={[
-										    { title: 'event 1', date: '2020-08-21' },
-										    { title: 'event 2', date: '2020-08-07' }
-										]}
+										events={
+											this.props.student.isEvLoading ?"": this.makeEvent()
+										}
 										dateClick={this.handleDateClick}
 								    />
 								</div>
@@ -64,7 +74,8 @@ export class TimeTable extends React.Component {
 
 const mapStateToProps= state => ({
 	enrCourses: state.student.couresEnrolled,
-	events: state.student.events
+	events: state.student.events,
+	student: state.student
 })
 
 

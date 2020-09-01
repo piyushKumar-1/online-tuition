@@ -10,6 +10,14 @@
   z-index: 2;
 }
 
+.del-course{
+  right: 25px;
+  position: absolute;
+  top: 25px;
+  color: #66aed9;
+  font-size: 20px;
+}
+
 .col-sm4{
   width: 30% !important;
 }

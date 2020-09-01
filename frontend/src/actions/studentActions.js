@@ -114,6 +114,38 @@ export const myCourse = (EnrCourseId) => (dispatch, getState) => {
 }
 
 
+export const delCourse = (EnrCourseId) => (dispatch, getState) => {
+
+
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .delete(`/api/auth/student/mycourses/${EnrCourseId}`, config)
+        .then(()=>{
+            axios
+                .get('/api/auth/student/courses', config)
+                .then(res => {
+                    dispatch({
+                        type: GOT_ENR_COURSES,
+                        payload: res.data
+                    })
+                })
+                .catch(err => console.log(err))
+            })
+}
+
+
 
 
 export const getChat = (teacher_id) => (dispatch, getState) => {
