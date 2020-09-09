@@ -13,3 +13,9 @@ class BecomeTeacherSerializer(serializers.ModelSerializer):
 		BecomeTeacher.objects.create(**data)
 		return BecomeTeacher
 
+
+
+class TeacherProfileSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = BecomeTeacher
+		fields = ('name', 'email', 'ph_no','experience','qualification')

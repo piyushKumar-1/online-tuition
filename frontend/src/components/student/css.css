@@ -44,6 +44,19 @@ margin: auto;
   transform: rotate(180deg);
 
 }
+
+.uploaded-link{
+  width:45%; margin:10px; float:right
+}
+
+.uploadedSyll{
+  padding:5px; 
+  display:grid;
+  width:100%; 
+  border-bottom:1px solid black;
+}
+
+
 .from-me{
   max-width: 100%;
   width: max-content;
@@ -137,6 +150,7 @@ html {
   color: white;
   width: max-content;
   padding: 7px;
+  max-width:100%;
   border: none;
   border-radius: 14px;
 }
@@ -396,7 +410,7 @@ html {
   }
 
   .te{
-    width: 27.667% !important;
+    width: 20% !important;
   }
 
   .side-item{

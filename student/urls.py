@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .api import CoursesEnrolledViewAPI, EventsAPI, MyCoursesAPI, StudentChatAPI
+from .api import CoursesEnrolledViewAPI, EventsAPI, MyCoursesAPI, StudentChatAPI, StudentFilesAPI
 
 
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('api/auth/student/mycourses/<int:enr_id>', MyCoursesAPI.as_view(), name='delete-courses-enrolled'),
     path('api/auth/student/chat', StudentChatAPI.as_view(), name="student-chat"),
     path('api/auth/student/chat/<int:teacher_id>', StudentChatAPI.as_view(), name="student-chat"),
+    path('api/auth/student/upload', StudentFilesAPI.as_view(), name="student-upload"),
 ]

@@ -3,12 +3,12 @@ from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.parsers import FormParser,MultiPartParser
 from .models import BecomeTeacher
-from .serializers import BecomeTeacherSerializer
+from .serializers import BecomeTeacherSerializer, TeacherProfileSerializer
 from users.models import CustomUser
-from student.serializers import UploadSerializer, SubjectSerializer, CoursesEnrolledSerializer, ChatSerializer, EventsSerializer
-from student.models import SubjectEnrolled, UploadedMaterial, CoursesEnrolled, Courses, SubCourses, ChatModel, Events
+from student.serializers import UploadSerializer,StudentUploadSerializer, SubjectSerializer, CoursesEnrolledSerializer, ChatSerializer, EventsSerializer
+from student.models import SubjectEnrolled, UploadedMaterial, CoursesEnrolled, Courses, SubCourses, ChatModel, Events, StudentUpload
 from courses.serializers import SubjectListSerializer
-from courses.models import Subjects
+from courses.models import Subjects, SubCourses
 
 
 class EventAPI(generics.GenericAPIView):
@@ -41,6 +41,7 @@ class CreateTeacherView(generics.CreateAPIView):
     serializer_class = BecomeTeacherSerializer
     parser_classes = (MultiPartParser,FormParser,)
 
+
     def post(self, request, *args, **kwargs):
     	print(request.data)
     	serializer = self.get_serializer(data=request.data)
@@ -63,6 +64,9 @@ class UploadSubjectMaterial(generics.GenericAPIView):
 		print(data)
 		UploadedMaterial.objects.create(**data)
 		return Response({'success':'Created Successfully'})
+	def delete(self, request, id):
+		UploadedMaterial.objects.get(id=id).delete()
+		return Response({'msg':"success"})
 
 
 class DashboardAPI(generics.GenericAPIView):
@@ -159,3 +163,35 @@ class TeacherChatAPI(generics.GenericAPIView):
 				dataL.append(data)
 		print(dataL)
 		return Response(reversed(dataL))
+
+
+class MyProfileAPI(generics.GenericAPIView):
+	serializer_class = TeacherProfileSerializer
+	permission_classes = [
+		permissions.IsAuthenticated
+	]
+
+	def get(self, request):
+		serializer = self.get_serializer(data=BecomeTeacher.objects.all().filter(id=request.user.teacher_id), many=True)
+		serializer.is_valid()
+		return Response(serializer.data)
+
+
+
+class StudentFilesAPI(generics.GenericAPIView):
+    serializer_class = StudentUploadSerializer
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    def get(self, request):
+        data = self.get_serializer(data=StudentUpload.objects.all().filter(teacher_id=request.user.teacher_id), many=True)
+        data.is_valid()
+        for i in data.data:
+	        k = i['syllabus'].split("/")
+	        print("/".join(k[3:]))
+	        i['syllabus'] = "/".join(k[3:])
+	        k = CustomUser.objects.get(id=i['student'])
+	        i['student'] = k.first_name+" "+k.last_name+", "+k.email
+	        i['department'] = CoursesEnrolled.objects.get(id=i['department']).department.sub_course_name
+
+        return Response(data.data)

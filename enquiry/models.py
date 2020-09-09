@@ -1,7 +1,17 @@
 from django.db import models
+from teacher.models import BecomeTeacher
 
 
 
+
+
+
+
+class TeacherMessage(models.Model):
+	message = models.CharField(max_length=200)
+	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE)
+	def __str__(self):
+		return self.message
 
 
 class Enquiry(models.Model):

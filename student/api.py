@@ -1,6 +1,7 @@
 from rest_framework import generics, status, permissions
 from rest_framework.authtoken.models import Token
 from django.http import Http404
+from rest_framework.parsers import FormParser,MultiPartParser
 from knox.models import AuthToken
 from rest_framework.response import Response
 from django.forms.models import model_to_dict
@@ -8,8 +9,8 @@ from rest_framework.views import APIView
 from django.core import serializers
 from users.serializers import UserSerializer, CustomUser
 from courses.serializers import SubjectListSerializer
-from .serializers import EventsSerializer, CoursesEnrolledSerializer, UploadSerializer, ChatSerializer
-from .models import CoursesEnrolled, Events, Courses, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial, ChatModel
+from .serializers import EventsSerializer, CoursesEnrolledSerializer, UploadSerializer, ChatSerializer, StudentUploadSerializer
+from .models import CoursesEnrolled, Events, Courses, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial, ChatModel, StudentUpload
 from teacher.models import BecomeTeacher
 from re import sub
 
@@ -26,13 +27,21 @@ class CoursesEnrolledViewAPI(generics.GenericAPIView):
         department = SubCourses.objects.get(id=int(request.data['CourseId'])+1)
         subIds = [int(i)+1 for i in request.data['subId']]
         if(len(subIds)==0): 
-            subIds = None 
+            subIds = None
         course = department.course
         try:
             try:
                 k = CoursesEnrolled.objects.get(student=self.request.user, department=department)
             except:
                 k = CoursesEnrolled.objects.create(student=self.request.user, course_enrolled=course, department=department, subject_ids=subIds)
+            
+            if(subIds==None): 
+                if not len(Subjects.objects.filter(sub_course_id=int(request.data['CourseId'])+1)):
+                    try:
+                        SubjectEnrolled.objects.get(enrollment=k, enrolled_sub=Subjects.objects.get(id=104))
+                    except:
+                        SubjectEnrolled.objects.create(enrollment=k, enrolled_sub=Subjects.objects.get(id=104))
+    
             for i in subIds:
                 try:
                     SubjectEnrolled.objects.get(enrollment=k, enrolled_sub=Subjects.objects.get(id=i))
@@ -169,3 +178,25 @@ class StudentChatAPI(generics.GenericAPIView):
                 dataL.append(data)
         print(dataL)
         return Response(reversed(dataL))
+
+
+class StudentFilesAPI(generics.GenericAPIView):
+    serializer_class = StudentUploadSerializer
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    parser_classes = (MultiPartParser, FormParser,)
+    
+    def post(self, request):
+        print(request.data)
+        request.data['student'] = request.user.id
+        serializer = self.get_serializer(data = request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        data = self.get_serializer(data=StudentUpload.objects.filter(student=request.user), many=True)
+        data.is_valid()
+        return Response(data.data)
+    def get(self, request):
+        data = self.get_serializer(data=StudentUpload.objects.filter(student=request.user), many=True)
+        data.is_valid()
+        return Response(data.data)

@@ -1,8 +1,10 @@
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.parsers import FormParser,MultiPartParser
-from .models import Enquiry
+from .models import Enquiry, TeacherMessage
+from teacher.models import BecomeTeacher
+from users.models import CustomUser
 from .serializers import EnquirySerializer, EnquiryCreateSerializer
 
 def get_client_ip(request):
@@ -44,3 +46,14 @@ class GetEnquieryView(generics.GenericAPIView):
 			return Response({
 				'enquiry':None
 				})
+
+
+class PostTeacherMessage(generics.GenericAPIView):
+	permission_classes = [
+		permissions.IsAuthenticated
+	]
+	def post(Self, request):
+		TeacherMessage.objects.create(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), message=request.data['message'])
+		return Response({
+				'sent':"Sent"
+			})

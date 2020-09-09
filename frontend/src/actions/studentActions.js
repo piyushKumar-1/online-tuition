@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, GOT_CHAT, POST_CHAT } from './types.js';
+import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -199,3 +199,65 @@ export const postChat = (teacher_id, msg) => (dispatch, getState) => {
         })
         .catch(err => console.log(err));
 }
+
+
+
+
+
+export const postSyllabus = (FD) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'multipart/form-data'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .post('/api/auth/student/upload', FD, config)
+        .then(res => {
+            dispatch({
+                type: SYLLABUS_UPLOAD,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+
+export const getSyllabus = (FD) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .get('/api/auth/student/upload', config)
+        .then(res => {
+            dispatch({
+                type: SYLLABUS_UPLOAD,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+
+

@@ -189,7 +189,7 @@ class MyCourse extends React.Component {
 							    	</div>
 							    </div>
 							</div>
-							<div className="bg-white scrollxy col-md-6">
+							<div className="bg-white scrollxy col-md-6 mb-5">
 								{ this.state.form ?<h4 className="subxy">{this.props.student.info[this.state.index].subject_name}</h4>: ''}
 
 								<div id="show-selected-area">

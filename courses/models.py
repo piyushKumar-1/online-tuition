@@ -18,7 +18,7 @@ class SubCourses(models.Model):
 
 
 class Subjects(models.Model):
-	sub_course = models.ForeignKey(SubCourses, on_delete=models.CASCADE)
+	sub_course = models.ForeignKey(SubCourses, on_delete=models.CASCADE, default=None, null=True)
 	subject_name = models.CharField(max_length=100)
 
 	def __str__(self):

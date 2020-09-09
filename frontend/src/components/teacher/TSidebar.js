@@ -25,7 +25,14 @@ class TSidebar extends React.Component {
 							</div>
 						</li>
 					</Link>
-					<Link className="te" to="/teacher/upload">
+					<Link className="te" to="/teacher/uploads">
+						<li className="border" id="uplod">
+							<div className="side-item">
+								<h4>Student Uploads</h4>
+							</div>
+						</li>
+					</Link>
+					<Link className="te" to="/teacher/profile">
 						<li className="border" id="profile">
 							<div className="side-item">
 								<h4>Profile</h4>

@@ -10,7 +10,7 @@ class CourseEnrolledAdmin(admin.ModelAdmin):
 class ChatAdmin(admin.ModelAdmin):
     list_display = ('student', 'teacher', 'msg', 'msg_side', 'msg_time', 'approval')
 
-    ordering = ('approval', 'msg_time')
+    ordering = ('student', 'approval', 'msg_time')
 
 
 

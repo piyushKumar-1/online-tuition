@@ -1,4 +1,4 @@
-import { GOT_EVENTS, GOT_ENR_COURSES,ADDED_EVENTS, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES, GOT_CHAT, POST_CHAT } from '../actions/types.js';
+import { GOT_EVENTS, GOT_ENR_COURSES,ADDED_EVENTS, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from '../actions/types.js';
 
 
 const initialState = {
@@ -11,6 +11,8 @@ const initialState = {
 	chlaJa:false,
 	chat: [],
 	isChatLoading: true,
+	isSylabusLoading:true,
+	syllabus:[],
 }
 
 
@@ -19,6 +21,12 @@ const initialState = {
 
 export default function(state = initialState, action){
 	switch(action.type){
+		case SYLLABUS_UPLOAD:
+			return {
+				...state,
+				isSylabusLoading: false,
+				syllabus: action.payload,
+			}
 		case ADDED_EVENTS:
 		case GOT_EVENTS:
 			return {

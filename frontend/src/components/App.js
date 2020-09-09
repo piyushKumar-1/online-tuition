@@ -14,9 +14,13 @@ import Dashboard from './student/Dashboard.js';
 import TimeTable from './student/TimeTable.js';
 import AddCourse from './student/AddCourse.js';
 import MyCourse from './student/MyCourse.js';
+import UploadSyllabus from './student/UploadSyllabus.js';
 import TDashboard from './teacher/TDashboard.js';
 import TMyCourse from './teacher/TMyCourse.js';
+import TUploads from './teacher/TUploads.js';
 import TTimeTable from './teacher/TTimeTable.js';
+import TProfile from './teacher/TProfile.js';
+import TDelete from './teacher/TDelete.js';
 import { Provider, useSelector } from 'react-redux';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store.js';
@@ -57,11 +61,15 @@ export class App extends React.Component {
                             <PrivateRoute exact path="/student/timetable" component={TimeTable} />
                             <PrivateRoute exact path="/student/dashboard" component={Dashboard} />
                             <PrivateRoute exact path="/student/courses" component={Dashboard} />
+                            <PrivateRoute exact path="/student/upload" component={UploadSyllabus} />
                             <PrivateRoute exact path="/student/add-course" component={AddCourse} />
                             <PrivateRoute exact path={'/student/courses/:myCourseId'} component={MyCourse} />
                             <PrivateRoute exact path="/teacher/timetable" component={TTimeTable} />
                             <TeacherRoute exact path="/teacher/dashboard" component={TDashboard}/>
                             <TeacherRoute exact path="/teacher/courses" component={TDashboard}/>
+                            <TeacherRoute exact path="/teacher/uploads" component={TUploads}/>
+                            <TeacherRoute exact path="/teacher/profile" component={TProfile}/>
+                            <TeacherRoute exact path="/teacher/delete/:id/:cur_id" component={TDelete}/>
                             <PrivateRoute exact path={'/teacher/courses/:myCourseId'} component={TMyCourse} />
                             <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
                         </Switch>

@@ -21,6 +21,11 @@ export class Register extends Component {
     disabled: true,
     misMatch:false,
     passerr: '',
+    bor: {
+      border: "3px solid black",
+      borderRadius: "20px",
+      background: "white"
+    }
   };
 
   static propTypes = {
@@ -159,6 +164,7 @@ showPass() {
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
+    
     const { first_name, last_name, email, password, password2, is_parent, occupation,year, department, course } = this.state;
     const engineeringForm = (
         <div>
@@ -240,8 +246,8 @@ showPass() {
     )
     return (
 
-      <div className="m-auto">
-        <div className="p-5 mt-2">
+      <div className="m-auto p-1">
+        <div className="p-5 mt-2"  style={this.state.bor}>
           <h2 className="text-center">Register</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">

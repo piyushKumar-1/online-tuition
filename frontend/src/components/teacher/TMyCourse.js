@@ -117,7 +117,11 @@ class TMyCourse extends React.Component {
 			this.setState({fi_help:[<p style={{color:"red"}}>File size should be less than 1 MB</p>], 'fi':false})
 		}
     }
+    delete(){
+    	console.log("Delete kardey")
+    }
     makeSelected = (e) => {
+		const { myCourseId } = this.props.match.params;
 
         const { info } = this.props;
         var filepath;
@@ -142,7 +146,11 @@ class TMyCourse extends React.Component {
 				        filename = filename[filename.length-1]
 				        var date = new Date(info[i].uploads[j].upload_date)
 				        sel.innerHTML+="<small>"+date+"</small>"
-                        sel.innerHTML+="<div style='padding:5px; display:grid; width:100%; border-bottom:1px solid black'><h3 style='float:left'>"+filename+"</h3><div class='p-1'><a target='_blank' class='btn btn-dark' style='width:45%; margin:10px; float:right' href=/api/auth/teacher/download/"+filepath+">Download</a><a target='_blank' class='btn btn-primary' style='float:right; width:45%; margin:10px; ' href=/api/auth/teacher/delete/"+filepath+">Delete</a></div></div>";
+                        sel.innerHTML+="<div style='padding:5px; display:grid; width:100%; border-bottom:1px solid black'>"+
+                        "<h3 style='float:left'>"+filename+"</h3><div class='p-1'>"+
+                        "<a target='_blank' class='btn btn-dark' style='width:45%; margin:10px; float:right' href=/api/auth/teacher/download/"+filepath+">Download</a>" +
+                        "<a class='btn btn-primary' style='float:right; width:45%; margin:10px;color:white' href=/teacher/delete/"+info[i].uploads[j].id+"/"+myCourseId+">Delete</a></div></div>";
+                        
                     }
                 }
             }	

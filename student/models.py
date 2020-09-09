@@ -29,7 +29,7 @@ class CoursesEnrolled(models.Model):
 
 class SubjectEnrolled(models.Model):
 	enrollment = models.ForeignKey(CoursesEnrolled, on_delete=models.CASCADE)
-	enrolled_sub = models.ForeignKey(Subjects, on_delete=models.SET_NULL, null=True, default=True, blank=True)
+	enrolled_sub = models.ForeignKey(Subjects, on_delete=models.SET_NULL, null=True, default="Check Uploads", blank=True)
 	sub_enrolled_date = models.DateTimeField(default=timezone.now)
 
 
@@ -50,3 +50,10 @@ class ChatModel(models.Model):
 	msg_side = models.BooleanField(default=True) #true for student and false for teacher
 
 	
+class StudentUpload(models.Model):
+	department = models.ForeignKey(CoursesEnrolled, on_delete=models.CASCADE)
+	student = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.SET_DEFAULT, default=None, null=True)
+	syllabus = models.FileField(upload_to="student/syllabus_assignemnts")
+	text = models.CharField(max_length=200, default=None, null=True)
+

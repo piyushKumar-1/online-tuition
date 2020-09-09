@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES, T_GOT_CHAT, T_POST_CHAT } from './types.js';
+import { TSYLLABUS_UPLOAD, PROFILE, GOT_ENR_COURSES, GOT_EVENTS, ADDED_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES, T_GOT_CHAT, T_POST_CHAT } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -201,3 +201,109 @@ export const postChat = (student_id, msg) => (dispatch, getState) => {
         })
         .catch(err => console.log(err));
 }
+
+
+
+
+export const postAdmin = (msg) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    let data = {'message':msg}
+    axios
+        .post(`/api/auth/admin/message`, data, config)
+        .then(res => {
+            window.alert(res.data)
+        })
+        .catch(err => console.log(err));
+}
+
+
+export const myProfile = () => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .get(`/api/auth/teacher/profile`, config)
+        .then(res => {
+            dispatch({
+                type: PROFILE,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+
+export const getSyllabus = (FD) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .get('/api/auth/teacher/suploads', config)
+        .then(res => {
+            dispatch({
+                type: TSYLLABUS_UPLOAD,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+export const del = (up_id, cur_id) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .delete(`/api/auth/teacher/delete/${up_id}`, config)
+        .then(()=>{
+                window.location=`/teacher/courses/${cur_id}`
+            })
+        .catch(err => console.log(err))
+}
+
+
+

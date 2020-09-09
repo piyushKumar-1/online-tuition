@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import '../student/css.css'
 import { connect } from 'react-redux';
 import TSidebar from './TSidebar.js';
-import { getEvents, getEnrCourses } from '../../actions/teacherActions.js'
+import { getEvents, getEnrCourses, postAdmin } from '../../actions/teacherActions.js'
 import ProgressBar from "../common/ProgressBar.js"
 
 
@@ -21,6 +21,31 @@ class TDashboard extends React.Component {
 		}
 	}
 
+	state = {
+		message:'',
+		bor: {
+			background: "#ff8590",
+			borderRadius: "26px",
+			border: "7px white solid",
+			color: "white"
+		}
+	}
+
+	onAdminSubmit = (e) => {
+		e.preventDefault();
+		const { message } = this.state;
+		this.props.postAdmin(message);
+		this.setState({
+			message:'' 
+		})
+
+	}
+
+	onChange = (e) => {
+		this.setState({
+			[e.target.name]:e.target.value 
+		});
+	}
 
 	make(){
 		const { enrCourses } = this.props;
@@ -58,62 +83,36 @@ class TDashboard extends React.Component {
 				
 				:
 				
-					<div className="container-fluid mr-7 ml-7 top-230">
+					<div className="container-fluid mr-7 ml-7 mb-5 top-230">
 						<div className="row">
 							{this.make()}
 						</div>
 					</div>
 			}
+			<div className="row">
+				<div className="col-sm-8"></div>
+				<div className="col-sm-4">
+					<div className="p-5">
+						<div className="p-5" style={this.state.bor}>
+				            <h2 className="text-center">Contact Admin</h2>
+				        	<form onSubmit={this.onAdminSubmit}>
+				            	<div className="form-group">
+					                <label>Message</label>
+					                <input
+						                type="text"
+						                className="form-control"
+						                name="message"
+						                onChange={this.onChange}
+						                value={this.state.message}
+					                />
+				                </div>
+				                <button type="submit" className="btn btn-primary">Send</button>
+				            </form>
+				        </div>
+					</div>
+				</div>
+			</div>
 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
-			<br/><br/> 
 			<br/><br/> 
 			<br/><br/> 
 			</div>
@@ -132,4 +131,4 @@ const mapStateToProps= state => ({
 
 
 
-export default connect(mapStateToProps, { getEnrCourses, getEvents })(TDashboard);
+export default connect(mapStateToProps, { getEnrCourses, getEvents, postAdmin })(TDashboard);

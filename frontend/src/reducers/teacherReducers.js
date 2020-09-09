@@ -1,4 +1,4 @@
-import { GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, T_GOT_CHAT, T_POST_CHAT } from '../actions/types.js';
+import { TSYLLABUS_UPLOAD, PROFILE, GOT_EVENTS, GOT_ENR_COURSES, ADDED_MYCOURSE, ADDED_COURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, T_GOT_CHAT, T_POST_CHAT } from '../actions/types.js';
 
 
 const initialState = {
@@ -7,6 +7,10 @@ const initialState = {
 	fail:false,
 	chat: [],
 	isChatLoading: true,
+	profile: null,
+	isProfileLoading:true,
+	isStuUpLoading:true,
+	stuUploads:null,
 
 }
 
@@ -16,6 +20,18 @@ const initialState = {
 
 export default function(state = initialState, action){
 	switch(action.type){
+		case TSYLLABUS_UPLOAD:
+			return {
+				...state,
+				isStuUpLoading: false,
+				stuUploads:action.payload
+			}
+		case PROFILE:
+			return {
+				...state,
+				isProfileLoading: false,
+				profile: action.payload
+			}
 		case MATERIAL_UPLOAD_SUCCESS:
 		 	return {
 		 		...state,
