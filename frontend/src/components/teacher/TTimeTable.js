@@ -109,10 +109,28 @@ export class TTimeTable extends React.Component {
 		});
 	}
 	makeForm = () => {
-		const { couresEnrolled } = this.props;
+		var { couresEnrolled } = this.props;
+		var unique = [];
+        for(let i=0; i < couresEnrolled.length; i++){
+                unique.push(couresEnrolled[i].student);
+        }
+		
+        var uniqueArray = [];
+        for(let i=0; i < unique.length; i++){
+        	console.log(uniqueArray.indexOf(unique[i]), unique[i])
+            if(uniqueArray.indexOf(unique[i]) === -1) {
+                uniqueArray.push(unique[i]);
+            }
+        }
 		let ls = []
-	    for(let i=0;i<couresEnrolled.length;i++){
-	    	ls.push(<option value={couresEnrolled[i].student}>{couresEnrolled[i].student_name}</option>)
+	    
+	    for(let j=0;j<uniqueArray.length;j++){
+	    	for(let i=0;i<couresEnrolled.length;i++){
+	    		if(uniqueArray[j]===couresEnrolled[i].student){
+			    	ls.push(<option value={couresEnrolled[i].student}>{couresEnrolled[i].student_name}</option>)
+			    	break			
+	    		}
+	    	}
 	    }
 	    return ls
 	}

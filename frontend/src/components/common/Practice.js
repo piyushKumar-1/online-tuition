@@ -40,11 +40,11 @@ componentWillUnmount(){
 						<h3 className="ab" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 					</div>
 				</div>
-				<div data-aos="slide-up" data-aos-once="true" data-aos-delay="600">
+				<div className="container-fluid" data-aos="slide-up" data-aos-once="true" data-aos-delay="300">
 					<div className="row ">
-						<div className="pr-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Interactive Teaching</h3></div>
@@ -63,9 +63,9 @@ componentWillUnmount(){
 								</div>
 							</section>
 						</div>
-						<div className="pl-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto ">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Adaptive Speed of Delivery</h3></div>
@@ -86,9 +86,9 @@ componentWillUnmount(){
 						</div>
 					</div>
 					<div className="row ">
-						<div className="pr-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Student Engagement</h3></div>
@@ -107,9 +107,9 @@ componentWillUnmount(){
 								</div>
 							</section>
 						</div>
-						<div className="pl-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto ">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Collaborative Study</h3></div>
@@ -130,9 +130,9 @@ componentWillUnmount(){
 						</div>
 					</div>
 					<div className="row ">
-						<div className="pr-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Usage of online Teaching Tools</h3></div>
@@ -151,9 +151,9 @@ componentWillUnmount(){
 								</div>
 							</section>
 						</div>
-						<div className="pl-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto ">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Feedback</h3></div>
@@ -174,9 +174,9 @@ componentWillUnmount(){
 						</div>
 					</div>
 					<div className="row ">
-						<div className="pr-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Performance Monitoring</h3></div>
@@ -195,9 +195,9 @@ componentWillUnmount(){
 								</div>
 							</section>
 						</div>
-						<div className="pl-5 m-auto col-md-5 sti col-sm-6 p-5">
-							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="1200">
-								<div className="card container b mt-5 mb-5">
+						<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
+								<div className=" b mt-5 mb-5">
 									<div className="row w-100 mr-auto ml-auto ">
 										<div className="col-sm-12 prac text-center">
 											<div className="rounded"><div className="p-3"><h3 className="">Guest talk by Experts</h3></div>

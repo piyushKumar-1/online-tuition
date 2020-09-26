@@ -14,6 +14,7 @@ urlpatterns = [
     path('contact/', views.index ),
     path('practices/', views.index ),
     path('courses/', views.index ),
+    path('privacy-policy/', views.index ),
     path('courses/<str:k>/<str:j>', views.index2 ),
 
     #route to get to the FORGOT PASSWORD FRONTEND
@@ -24,7 +25,9 @@ urlpatterns = [
     path('student/courses', views.index ),
     path('student/timetable', views.index ),
     path('student/add-course', views.index ),
+    path('student/feedback', views.index ),
     path('student/upload', views.index ),
+    path('student/pay', views.index ),
     path('student/courses/<str:k>', views.index3),
 
     #routes for TEACHER

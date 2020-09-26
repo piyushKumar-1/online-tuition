@@ -305,5 +305,3 @@ export const del = (up_id, cur_id) => (dispatch, getState) => {
         .catch(err => console.log(err))
 }
 
-
-

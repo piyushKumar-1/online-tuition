@@ -9,8 +9,8 @@ from rest_framework.views import APIView
 from django.core import serializers
 from users.serializers import UserSerializer, CustomUser
 from courses.serializers import SubjectListSerializer
-from .serializers import EventsSerializer, CoursesEnrolledSerializer, UploadSerializer, ChatSerializer, StudentUploadSerializer
-from .models import CoursesEnrolled, Events, Courses, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial, ChatModel, StudentUpload
+from .serializers import EventsSerializer, FeedbackSerializer, CoursesEnrolledSerializer, UploadSerializer, ChatSerializer, StudentUploadSerializer
+from .models import CoursesEnrolled, Events, Courses, Feedback, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial, ChatModel, StudentUpload
 from teacher.models import BecomeTeacher
 from re import sub
 
@@ -200,3 +200,22 @@ class StudentFilesAPI(generics.GenericAPIView):
         data = self.get_serializer(data=StudentUpload.objects.filter(student=request.user), many=True)
         data.is_valid()
         return Response(data.data)
+
+
+
+class FeedbackAPI(generics.GenericAPIView):
+    serializer_class = FeedbackSerializer
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid()
+        serializer.save()
+        serializer = self.get_serializer(data=Feedback.objects.filter(course_enrolled=request.data['course_enrolled']), many=True)
+        serializer.is_valid()
+        return Response(reversed(serializer.data))
+    def get(self, request, c_id):
+        serializer = self.get_serializer(data=Feedback.objects.filter(course_enrolled=c_id), many=True)
+        serializer.is_valid()
+        return Response(reversed(serializer.data))

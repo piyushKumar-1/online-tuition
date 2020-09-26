@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Events, CoursesEnrolled, SubjectEnrolled, UploadedMaterial, ChatModel, StudentUpload
+from .models import Events, CoursesEnrolled, Feedback, SubjectEnrolled, UploadedMaterial, ChatModel, StudentUpload
 
 
 
@@ -38,4 +38,9 @@ class ChatSerializer(serializers.ModelSerializer):
 class StudentUploadSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = StudentUpload
+		fields = "__all__"
+
+class FeedbackSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Feedback
 		fields = "__all__"

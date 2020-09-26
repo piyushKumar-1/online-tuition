@@ -67,6 +67,19 @@ margin: auto;
   transform: rotate(180deg);
 }
 
+.from-admin{
+  max-width: 100%;
+  width: max-content;
+  padding: 10px;
+  background: black;
+  color: white;
+  margin: auto;
+  font-weight: 600;
+  border-radius: 15px;
+  box-shadow: .1px .1px 3px black;
+  transform: rotate(180deg);
+}
+
 .contact-border{
   border:.5px solid #dfdfdf;
   height: 400px;

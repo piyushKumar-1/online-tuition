@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link, Redirect } from 'react-router-dom';
 
 export class Footer extends Component {
 	render() {
@@ -33,13 +34,13 @@ export class Footer extends Component {
 								<table cellPadding="5" style={{width: "100%", color: "#dfdfdf"}}>
 									<thead>
 										<tr>
-											<th><a className="no" href="#">Privacy Policy</a></th>
+											<th><Link className="no" to="/privacy-policy">Privacy Policy</Link></th>
 										</tr>
 										<tr>
-											<th><a className="no" href="#">FAQs</a></th>
+											<th><Link className="no" to="">FAQs</Link></th>
 										</tr>
 										<tr>
-											<th><a className="no" href="#">Terms And Conditions</a></th>
+											<th><Link className="no" to="#">Terms And Conditions</Link></th>
 										</tr>
 									</thead>
 								</table>

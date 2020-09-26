@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_ENR_COURSES, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from './types.js';
+import { GOT_ENR_COURSES, RESET_FEEDS, RESET_CHAT, GOT_FEED, POST_FEED, RESET_FEED, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -83,6 +83,16 @@ export const addCourse = (CourseId, subId) => (dispatch, getState) => {
         })
         .catch(err => console.log(err));
     window.location="/student/courses"
+}
+
+
+export const resetChat = () => (dispatch) => {
+    dispatch({type: RESET_CHAT})
+}
+
+
+export const resetFeeds = () => (dispatch) => {
+    dispatch({type: RESET_FEEDS})
 }
 
 
@@ -261,3 +271,66 @@ export const getSyllabus = (FD) => (dispatch, getState) => {
 
 
 
+
+
+
+export const postFeed = (department_id, conceptClearity, aboutSession, aboutInstructor) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    let data = {'course_enrolled':department_id, 'concept':conceptClearity, 'about_session': aboutSession, 'about_instructor':aboutInstructor}
+    axios
+        .post(`/api/auth/student/feedback`, data, config)
+        .then(res => {
+            dispatch({
+                type: POST_FEED,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+export const refresh = () => (dispatch) => {
+
+    dispatch({type: RESET_FEED});
+
+}
+
+
+
+export const getFeed = (c_id) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    axios
+        .get(`/api/auth/student/feedback/${c_id}`, config)
+        .then(res => {
+            dispatch({
+                type: GOT_FEED,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}

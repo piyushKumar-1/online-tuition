@@ -1,4 +1,4 @@
-import { GOT_EVENTS, GOT_ENR_COURSES,ADDED_EVENTS, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from '../actions/types.js';
+import { POST_FEED, RESET_FEEDS, RESET_CHAT, GOT_FEED, RESET_FEED, GOT_EVENTS, GOT_ENR_COURSES,ADDED_EVENTS, ADDED_MYCOURSE, ADDED_COURSE, SET_DEFAULT_COURSES, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from '../actions/types.js';
 
 
 const initialState = {
@@ -12,7 +12,10 @@ const initialState = {
 	chat: [],
 	isChatLoading: true,
 	isSylabusLoading:true,
+	isFeedLoading: true,
+	status:null,
 	syllabus:[],
+	feeds: null
 }
 
 
@@ -21,6 +24,36 @@ const initialState = {
 
 export default function(state = initialState, action){
 	switch(action.type){
+		case RESET_FEEDS:
+			return {
+				...state,
+				feeds: [],
+				isFeedLoading: true,
+
+			}
+		case RESET_CHAT:
+			return {
+				...state,
+				chat: [],
+				isChatLoading: false
+			}
+		case GOT_FEED:
+			return {
+				...state,
+				feeds: action.payload,
+				isFeedLoading: false,
+			}
+		case RESET_FEED:
+			return{
+				...state,
+				status: null
+			}
+		case POST_FEED:
+			return {
+				...state,
+				status: "success",
+				feeds: action.payload
+			}
 		case SYLLABUS_UPLOAD:
 			return {
 				...state,

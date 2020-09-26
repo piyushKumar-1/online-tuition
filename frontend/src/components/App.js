@@ -10,10 +10,13 @@ import Courses from './common/Courses.js';
 import ContactUs from './common/ContactUs.js';
 import Enquire from './common/Enquire.js';
 import BecomeTeacher from './common/BecomeTeacher.js';
+import PrivacyPolicy from './common/PrivacyPolicy.js';
 import Dashboard from './student/Dashboard.js';
 import TimeTable from './student/TimeTable.js';
+import Feedback from './student/Feedback.js';
 import AddCourse from './student/AddCourse.js';
 import MyCourse from './student/MyCourse.js';
+import Pay from './student/Pay.js';
 import UploadSyllabus from './student/UploadSyllabus.js';
 import TDashboard from './teacher/TDashboard.js';
 import TMyCourse from './teacher/TMyCourse.js';
@@ -56,14 +59,23 @@ export class App extends React.Component {
                             <Route exact path="/courses" component={Courses} />
                             <Route path="/courses/:courseId/:subCourseId" render={props => <Enquire  {...this.props} {...props}/>}/>
                             <Route exact path="/practices" component={Practice} />
+                            <Route exact path="/privacy-policy" component={PrivacyPolicy} />
                             <Route exact path="/login" component={LoginComp} />
                             <Route exact path="/register" component={RegisterComp} />
+
                             <PrivateRoute exact path="/student/timetable" component={TimeTable} />
                             <PrivateRoute exact path="/student/dashboard" component={Dashboard} />
                             <PrivateRoute exact path="/student/courses" component={Dashboard} />
                             <PrivateRoute exact path="/student/upload" component={UploadSyllabus} />
+                            <PrivateRoute exact path="/student/pay" component={Pay} />
                             <PrivateRoute exact path="/student/add-course" component={AddCourse} />
+                            <PrivateRoute exact path="/student/feedback" component={Feedback} />
                             <PrivateRoute exact path={'/student/courses/:myCourseId'} component={MyCourse} />
+
+
+
+
+
                             <PrivateRoute exact path="/teacher/timetable" component={TTimeTable} />
                             <TeacherRoute exact path="/teacher/dashboard" component={TDashboard}/>
                             <TeacherRoute exact path="/teacher/courses" component={TDashboard}/>
@@ -73,8 +85,8 @@ export class App extends React.Component {
                             <PrivateRoute exact path={'/teacher/courses/:myCourseId'} component={TMyCourse} />
                             <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
                         </Switch>
+                        <Footer />
                     </Router>
-                    <Footer />
 
 			</Provider>
 		)

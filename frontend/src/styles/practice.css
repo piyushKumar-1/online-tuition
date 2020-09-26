@@ -1,5 +1,7 @@
 .prac{
-	background: #0f3b66 !important;width: 100%;color: white;
+	width: 100%;
+	color: #0f3b66;
+	font-weight: 800;
 }
 
 .b{
@@ -10,6 +12,12 @@
 	font-size:20px;
 }
 
+.bor{
+	background: #0f3b66eb;
+	color: white;
+	padding: 20px;
+	border-radius: 20px;
+}
 
 @media(max-width: 900px){
 	.p-prac{

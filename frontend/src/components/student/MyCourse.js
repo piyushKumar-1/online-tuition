@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import './css.css'
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar.js';
-import { myCourse, getChat, postChat, getEnrCourses } from '../../actions/studentActions.js'
+import { myCourse, getChat, resetChat, postChat, getEnrCourses } from '../../actions/studentActions.js'
 import ProgressBar from "../common/ProgressBar.js"
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 
@@ -41,7 +41,11 @@ class MyCourse extends React.Component {
 					}
 				}
 			}
-			this.props.getChat(teacher_id);
+			if(teacher_id!==null){
+				this.props.getChat(teacher_id);
+			} else {
+				this.props.resetChat();
+			}
 			this.state.teacher_id=teacher_id;
 			this.setState({
 				no_more: false
@@ -76,6 +80,11 @@ class MyCourse extends React.Component {
 					<h6 className="from-other">{chat[i].msg}</h6>
 				)
 			}
+		}
+		if(this.state.teacher_id===null && chat.length===0){
+			ele.push(
+					<h6 className="from-admin">Teacher for this course is not Assigned Yet</h6>
+			)
 		}
 		return ele;
 	}
@@ -194,7 +203,9 @@ class MyCourse extends React.Component {
 
 								<div id="show-selected-area">
 									<div>
-										<h5 className="m-auto">Select Subject to see the content Uploaded by your teacher</h5>
+										<h5 className="m-auto card p-3 red">Select "Subject" from the list at the left to see the content Uploaded by your teacher</h5>
+										<h5 className="text-center" style={{margin:"auto"}}>or</h5>
+										<h5 className="m-auto card p-3 red">Add "Subjects" for this particular course by using the add course button from the dashboard/courses page</h5>
 									</div>
 								</div>
 								
@@ -218,4 +229,4 @@ const mapStateToProps= state => ({
 
 
 
-export default connect(mapStateToProps, { myCourse, getChat, postChat, getEnrCourses })(MyCourse);
+export default connect(mapStateToProps, { myCourse, getChat, postChat, getEnrCourses, resetChat })(MyCourse);

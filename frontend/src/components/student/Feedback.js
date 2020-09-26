@@ -1,5 +1,5 @@
 import React from 'react'
-import { getEnrCourses, getFeed, postFeed } from '../../actions/studentActions.js'
+import { getEnrCourses, getFeed, postFeed, refresh, resetFeeds } from '../../actions/studentActions.js'
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar.js';
 
@@ -8,15 +8,22 @@ export class Feedback extends React.Component {
 
 	componentDidMount(){
 		this.props.getEnrCourses();
-		this.props.getFeed();
 	}
 	state = {
 		top: false,
-		u: true,
+		abs: false,
+		cc: false,
+		abi: false,
 		st: false,
+		askFeed: true,
 		department_id: "",
-		file:false,
-		topic:""
+		conceptClearity: "",
+		aboutSession: "",
+		aboutInstructor: ""
+	}
+
+	componentWillUnmount(){
+		this.props.resetFeeds()
 	}
 
 	makeForm(){
@@ -31,45 +38,49 @@ export class Feedback extends React.Component {
 	}
 
 	makePrev(){
-		const { uploads } = this.props;
+		const { feeds } = this.props;
 		var ele = [];
-		for(let i=0;i<uploads.length;i++){
-			var k = uploads[i].syllabus.split("/")
-			var filename = k[k.length-1]
-			var filepath = uploads[i].syllabus
-			filepath = '/api/auth/teacher/download/'+filepath.replace("http://127.0.0.1:8000/","")
+		for(let i=0;i<feeds.length;i++){
 			ele.push(
-				<div className='uploadedSyll'>
-                    <h3 style={{float:"left"}}>{filename}</h3>
-                    <div className='p-1'>
-                    	<a target='_blank' className='btn btn-primary uploded-link' href={filepath}>Download</a>
-                	</div>
-                </div>
+				<>
+					<div className="card shadow rounded">
+						<div className="card-body">
+							<h6>About Session:{feeds[i].about_session}</h6>
+							<h6>About Instructor:{feeds[i].about_instructor}</h6>
+						</div>
+					</div>
+					<br/>
+				</>
 			)
 		}
-		return ele;
+
+		return ele
 	}
+
 
 	onChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
 		});
+	
+		if(e.target.name=="department_id"){
+			this.setState({
+				askFeed: true
+			});
+		}
 	}
 
-	onFileUpload = (e) => {
-    	console.log(e.target.files)
-    	if(e.target.files[0].size/1024/1024<=1){
-	    	this.setState({
-		      [e.target.name]: e.target.files[0], 'u': false
-		    })
-		} else {
-			this.setState({'u':true})
-		}
+
+    getF(){
+    	this.props.getFeed(this.state.department_id)
+    	this.setState({
+    		askFeed: false
+    	});
     }
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		const { department_id, topic, u, st, top,file } = this.state;
+		const { department_id, conceptClearity, aboutSession, aboutInstructor, top, st, abs, abi, cc } = this.state;
 		if(department_id===""){
 			this.setState({
 				st: true
@@ -80,42 +91,38 @@ export class Feedback extends React.Component {
 				st: false
 			});
 		} 
-		if(topic===""){
-			console.log("sdfsdfsd", topic)
+		if(aboutSession===""){
 			this.setState({
-				top: true
+				abs: true
 			});
 			return 0
 		} else {
 			this.setState({
-				top: false
+				abs: false
 			});
 		}
-		if(!file){
+		if(aboutInstructor===""){
 			this.setState({
-				u: true
+				abi: true
 			});
 			return 0
 		} else {
 			this.setState({
-				u: false
+				abi: false
 			});
 		}
-		if(!u && !st && !top){
-			let form_data = new FormData();
-		    form_data.append('syllabus', file, file.name);
-		    form_data.append('department', department_id);
-		    form_data.append('text', topic);
-		    var t_id;
-		    const { enCrs } = this.props;
-
-		    for(let i=0;i<enCrs.length;i++){
-		    	if(enCrs[i].id==department_id){
-		    		t_id = enCrs[i].teacher
-		    	}
-		    }
-		    form_data.append('teacher', t_id );
-			this.props.postFeed(form_data);
+		if(conceptClearity===""){
+			this.setState({
+				cc: true
+			});
+			return 0
+		} else {
+			this.setState({
+				cc: false
+			});
+		}
+		if(!st && !top && !abs && !abi && !top){
+			this.props.postFeed(department_id, conceptClearity, aboutSession, aboutInstructor);
 		}
 	}
 
@@ -128,6 +135,8 @@ export class Feedback extends React.Component {
 					<div className="p-5 pt-0">
 						<div className="row">
 							<div className="col-md-6">
+							{this.props.student.status===null
+								?
 								<form onSubmit={this.onSubmit}>
 									<div className="form-group">
 						                  <label>Department</label>
@@ -139,26 +148,37 @@ export class Feedback extends React.Component {
 						                  { this.state.st ? <small className="form-help red">Please Select a Department</small> : <></>}
 						            </div>
 						            <div className="form-group">
-						            	<label>Any Information</label>
+						            	<label>About Session</label>
 						            	<input
 							                type="text"
 							                className="form-control"
-							                name="topic"
+							                name="aboutSession"
 							                onChange={this.onChange}
-							                value={this.state.topic}
+							                value={this.state.aboutSession}
 							            />
-						                { this.state.top ? <small className="form-help red">Please Enter something so that teacher knows what to do...</small> : <></>}
+						                { this.state.abs ? <small className="form-help red">Please Enter something about the session...</small> : <></>}
 						            </div>
-
 						            <div className="form-group">
-						            	<label>Upload File(max 1 mb)</label>
+						            	<label>About Instructor</label>
 						            	<input
-							                type="file"
+							                type="text"
 							                className="form-control"
-							                name="file"
-							                onChange={this.onFileUpload}
+							                name="aboutInstructor"
+							                onChange={this.onChange}
+							                value={this.state.aboutInstructor}
 							            />
-						                { this.state.u ? <small className="form-help red">Please Select a file Size less than 1 mb</small> : <></>}
+						                { this.state.abi ? <small className="form-help red">Please Enter something about the teacher...</small> : <></>}
+						            </div>
+						            <div className="form-group">
+						            	<label>Understandability of Concept</label>
+						            	<input
+							                type="text"
+							                className="form-control"
+							                name="conceptClearity"
+							                onChange={this.onChange}
+							                value={this.state.conceptClearity}
+							            />
+						                { this.state.cc ? <small className="form-help red">Please rate the level of concept clearity...</small> : <></>}
 						            </div>
 							        <div className="form-group">
 						              <button type="submit" id="ssbtn" disabled={this.state.disabled} className="btn btn-primary">
@@ -166,10 +186,27 @@ export class Feedback extends React.Component {
 						              </button>
 						            </div>
 						        </form>
+						        :
+						        <div className="container">
+						        	{
+						        		this.props.student.status=="success"
+						        		?
+							        		<div>
+								        		<h3><i className="fa fa-check"></i>Feedback Recieved</h3>
+								        	</div>
+							        	:
+							        		<div>
+								        		<h3><i className="fa fa-times"></i>Failed to Upload Feedback</h3>
+								        	</div>
+						        	}
+						        		<button onClick={() => this.props.refresh()} className="btn btn-primary">Okay</button>
+						        </div>
+						    }
 							</div>
 							<div className="col-md-6">
-								<h3>Previous Uploads</h3>
-		                        {this.makePrev()}
+								<h3>Previous Feedbacks</h3>
+		                        {this.state.askFeed ? this.getF() : ''}
+		                        {this.props.isLoading ? <h6 style={{fontWeight:"600"}}>You can only give feedback to courses whose teacher is assigned</h6> : this.makePrev()}
 							</div>
 						</div>
 					</div>
@@ -184,9 +221,10 @@ const mapStateToProps= state => ({
 	student: state.student,
 	enCrs: state.student.couresEnrolled,
 	feeds: state.student.feeds, 
-	isLoaded: state.student.isFeedLoading
+	isLoading: state.student.isFeedLoading,
+	feeds: state.student.feeds
 })
 
 
 
-export default connect(mapStateToProps, { getEnrCourses, getFeed, postFeed })(Feedback);
+export default connect(mapStateToProps, { getEnrCourses, getFeed, postFeed, refresh, resetFeeds })(Feedback);

@@ -57,3 +57,10 @@ class StudentUpload(models.Model):
 	syllabus = models.FileField(upload_to="student/syllabus_assignemnts")
 	text = models.CharField(max_length=200, default=None, null=True)
 
+
+
+class Feedback(models.Model):
+	course_enrolled = models.ForeignKey(CoursesEnrolled, on_delete=models.CASCADE)
+	about_instructor = models.CharField(max_length=200)
+	concept = models.CharField(max_length=200)
+	about_session = models.CharField(max_length=200)

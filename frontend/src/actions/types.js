@@ -18,6 +18,11 @@ export const ADDED_MYCOURSE = 'ADDED_MYCOURSE';
 export const ADDED_EVENTS = 'ADDED_EVENTS';
 export const PROFILE = 'PROFILE';
 export const TSYLLABUS_UPLOAD = 'TSYLLABUS_UPLOAD';
+export const POST_FEED = 'POST_FEED';
+export const RESET_FEED = 'RESET_FEED';
+export const RESET_CHAT= 'RESET_CHAT';
+export const RESET_FEEDS= 'RESET_FEEDS';
+export const GOT_FEED = 'GOT_FEED';
 
 export const MATERIAL_UPLOAD_SUCCESS = 'MATERIAL_UPLOAD_SUCCESS';
 export const JOB_POST_SUCCESS = 'JOB_POST_SUCCESS';

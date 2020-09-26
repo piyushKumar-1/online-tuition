@@ -12,6 +12,7 @@ class TeacherMessage(models.Model):
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE)
 	def __str__(self):
 		return self.message
+	
 
 
 class Enquiry(models.Model):
