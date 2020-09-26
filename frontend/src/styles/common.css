@@ -10,6 +10,19 @@
 	margin-bottom: 20%;
 }
 
+.special-admin{
+	position: fixed;
+	bottom: -247px;
+	right: -285px;
+	z-index: 10;
+	transition: all .3s;
+}
+
+.special-admin:hover{
+	bottom: 0px;
+	right: 0px;
+}
+
 .black{
 	color:black !important;
 }
@@ -111,5 +124,16 @@
 	}
 	.mtlbkiw{
 		width: auto;
+	}
+	.special-admin{
+		position: fixed;
+		bottom: -177px;
+		right: -285px;
+		z-index: 10;
+		transition: all .3s;
+	}
+	.special-admin:hover{
+		bottom: 70px;
+		right: 0px;
 	}
 }

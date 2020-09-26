@@ -93,7 +93,7 @@ class TDashboard extends React.Component {
 				<div className="col-sm-8"></div>
 				<div className="col-sm-4">
 					<div className="p-5">
-						<div className="p-5" style={this.state.bor}>
+						<div className="p-5 special-admin" style={this.state.bor}>
 				            <h2 className="text-center">Contact Admin</h2>
 				        	<form onSubmit={this.onAdminSubmit}>
 				            	<div className="form-group">
