@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_COURSES, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from './types.js';
+import { GOT_COURSES, CON_POST_RESET, CON_POST_SUCCESS, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from './types.js';
 
 
 
@@ -42,6 +42,32 @@ export const getSubjects = () => dispatch => {
         .catch(err => console.log(err));
 }
 
+export const resetPost = () => dispatch => {
+    dispatch({
+                type: CON_POST_RESET
+            })
+}
+
+
+export const contactPost = (name, subject, email, message) => dispatch => {
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+    const body = JSON.stringify({name, subject, email, message})
+
+    axios
+        .post('/api/post/contactus', body, config)
+        .then(res => {
+            dispatch({
+                type: CON_POST_SUCCESS,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
 
 
 export const enqPost = (FD) => dispatch => {

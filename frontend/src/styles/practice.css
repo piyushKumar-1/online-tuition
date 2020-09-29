@@ -1,11 +1,31 @@
 .prac{
 	width: 100%;
-	color: #0f3b66;
+	color: white;
 	font-weight: 800;
+	border-radius: 10px 10px 0px 0px;
+	background: #79ca67;
 }
 
 .b{
 	min-height: 330px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px #abf4a9;
+}
+
+.prac2{
+	width: 100%;
+	color: white;
+	font-weight: 800;
+	border-radius: 10px 10px 0px 0px;
+	background: #5f80d0;
+}
+
+.b2{
+	min-height: 330px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px #aba9f4;
 }
 
 .p-prac{

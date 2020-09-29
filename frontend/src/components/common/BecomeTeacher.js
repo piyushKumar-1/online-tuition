@@ -45,6 +45,20 @@ export class BecomeTeacher extends React.Component {
 		document.getElementById('join').classList.add('active');
 		document.title = "Become Teacher | Learnerz Corner"
 		window.scrollTo(0, 0)
+		const txt = "Become Teacher | "
+	var i = 0;
+	var speed = 25;
+		function typeWriterBC() {
+	  if (i < txt.length) {
+	    document.getElementById("msgPr").innerHTML += txt.charAt(i);
+	    i++;
+	    setTimeout(typeWriterBC, speed);
+	  	if(i==txt.length){
+		    j=txt.length;
+	  	}
+	  }
+	}
+	typeWriterBC();
 	}
 
 	subject_option(){
@@ -158,7 +172,7 @@ export class BecomeTeacher extends React.Component {
 
 
 
-			<div className="container"  data-aos="fade-up" data-aos-duration="600" >
+			<div className="bg-white">
 				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 
 			{ this.props.values.joinMsg['success']
@@ -173,151 +187,163 @@ export class BecomeTeacher extends React.Component {
 
 
 				: 
-
-				<div className="mt-5 mb-5 container">
-					<form onSubmit={this.onSubmit} className="mt-5 mb-5" encType="multipart/form-data">
-						<div className="form-row">
-							<div className="col-md-6">
-								<div className="form-group m-auto p-2 md-form w-75">
-					                <label for="name">Name</label>
-					                <input
-					                  required
-					                  id="name"
-					                  type="text"
-					                  className="form-control"
-					                  name="name"
-					                  onChange={this.onChange}
-					                  value={name}
-					                />
-					            </div>
-					        </div>
-							<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label for="email">Email</label>
-					                <input
-					                  required
-					                  id="email"
-					                  type="email"
-					                  className="form-control"
-					                  name="email"
-					                  onChange={this.onEmailChange}
-					                  value={email}
-					                />
-					                <div className="help"><small>{this.state.em_help}</small></div>
-					            </div>
-					        </div>
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label for="phone">Contact Number</label>
-					                <input
-					                  id="phone"
-					                  type="number"
-					                  className="form-control"
-					                  name="phone"
-					                  onChange={this.onPhoneChange}
-					                  value={phone}
-					                />
-						            <div className="help"><small>{this.state.ph_help}</small></div>  
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row mt-3">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Department</label>
-					                <select class="form-control" onChange={this.onChange} name="department" value={department}>
-						                <option>Choose Department</option>
-						                { this.checkhshouldi() ? this.department_option() : ''}
-						            </select>
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row mt-3">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Subject 1</label>
-					                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub0" value={sub0}>
-						                <option>Choose Subject</option>
-						                { this.props.values.isSLoading ? this.subject_option() : ''}
-						            </select>
-					            </div>
-					        </div>
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Subject 2</label>
-					                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub1" value={sub1}>
-						                <option>Choose Subject</option>
-						                { this.props.values.isSLoading ? this.subject_option() : ''}
-						            </select>
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row mt-3">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Subject 3</label>
-					                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub2" value={sub2}>
-						                <option>Choose Subject</option>
-						                { this.props.values.isSLoading ? this.subject_option() : ''}
-						            </select>
-					            </div>
-					        </div>
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Subject 4</label>
-					                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub3" value={sub3}>
-						                <option>Choose Subject</option>
-						                { this.props.values.isSLoading ? this.subject_option() : ''}
-						            </select>
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Experience</label>
-					                <input
-					                  type="text-box"
-					                  className="form-control"
-					                  name="experience"
-					                  onChange={this.onChange}
-					                  value={experience}
-					                />
-					            </div>
-					        </div>
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Qualification</label>
-					                <input
-					               	  required
-					                  type="text"
-					                  className="form-control"
-					                  name="qualification"
-					                  onChange={this.onChange}
-					                  value={qualification}
-					                />
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row">
-					        <div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Upload(if any)</label>
-					                <input
-					                  type="file"
-					                  className="form-control-file"
-					                  name="upload"
-					                  onChange={this.onFileUpload}
-					                />
-					                <div className="help"><small>{this.state.fi_help}</small></div>
-					            </div>
-					        </div>
-					    </div>
-					    <div className="text-center p-5 mt-2">
-					    	<button type="submit" className="btn m-auto btn-primary">Submit</button>
+				<>
+					<div className="w-100 h-300px">
+						<div className="text-center wid-max">
+							<h3 id="msgPr" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
+							<h3 className="ab" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 						</div>
-					</form>
-				</div>		
+					</div>
+					<div className="mt-5 mb-5 container">
+						<div className="down">
+							<div className="text-center">
+								<i className="fa fa-angle-down black p-2"/>
+							</div>
+						</div>
+						<form onSubmit={this.onSubmit}  data-aos="fade-up" data-aos-duration="600" className="mt-5 mb-5" encType="multipart/form-data">
+							<div className="form-row">
+								<div className="col-md-6">
+									<div className="form-group m-auto p-2 md-form w-75">
+						                <label for="name">Name</label>
+						                <input
+						                  required
+						                  id="name"
+						                  type="text"
+						                  className="form-control"
+						                  name="name"
+						                  onChange={this.onChange}
+						                  value={name}
+						                />
+						            </div>
+						        </div>
+								<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label for="email">Email</label>
+						                <input
+						                  required
+						                  id="email"
+						                  type="email"
+						                  className="form-control"
+						                  name="email"
+						                  onChange={this.onEmailChange}
+						                  value={email}
+						                />
+						                <div className="help"><small>{this.state.em_help}</small></div>
+						            </div>
+						        </div>
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label for="phone">Contact Number</label>
+						                <input
+						                  id="phone"
+						                  type="number"
+						                  className="form-control"
+						                  name="phone"
+						                  onChange={this.onPhoneChange}
+						                  value={phone}
+						                />
+							            <div className="help"><small>{this.state.ph_help}</small></div>  
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row mt-3">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Department</label>
+						                <select class="form-control" onChange={this.onChange} name="department" value={department}>
+							                <option>Choose Department</option>
+							                { this.checkhshouldi() ? this.department_option() : ''}
+							            </select>
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row mt-3">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Subject 1</label>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub0" value={sub0}>
+							                <option>Choose Subject</option>
+							                { this.props.values.isSLoading ? this.subject_option() : ''}
+							            </select>
+						            </div>
+						        </div>
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Subject 2</label>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub1" value={sub1}>
+							                <option>Choose Subject</option>
+							                { this.props.values.isSLoading ? this.subject_option() : ''}
+							            </select>
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row mt-3">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Subject 3</label>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub2" value={sub2}>
+							                <option>Choose Subject</option>
+							                { this.props.values.isSLoading ? this.subject_option() : ''}
+							            </select>
+						            </div>
+						        </div>
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Subject 4</label>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub3" value={sub3}>
+							                <option>Choose Subject</option>
+							                { this.props.values.isSLoading ? this.subject_option() : ''}
+							            </select>
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Experience</label>
+						                <input
+						                  type="text-box"
+						                  className="form-control"
+						                  name="experience"
+						                  onChange={this.onChange}
+						                  value={experience}
+						                />
+						            </div>
+						        </div>
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Qualification</label>
+						                <input
+						               	  required
+						                  type="text"
+						                  className="form-control"
+						                  name="qualification"
+						                  onChange={this.onChange}
+						                  value={qualification}
+						                />
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row">
+						        <div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Upload(if any)</label>
+						                <input
+						                  type="file"
+						                  className="form-control-file"
+						                  name="upload"
+						                  onChange={this.onFileUpload}
+						                />
+						                <div className="help"><small>{this.state.fi_help}</small></div>
+						            </div>
+						        </div>
+						    </div>
+						    <div className="text-center p-5 mt-2">
+						    	<button type="submit" className="btn m-auto btn-primary">Submit</button>
+							</div>
+						</form>
+					</div>	
+				</>	
 				}	
 			</div>
 		)

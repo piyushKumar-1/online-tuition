@@ -37,3 +37,14 @@ class Enquiry(models.Model):
 
 	def __str__(self):
 		return str(self.client_ip)+" id:"+str(self.pk)
+
+
+class ContactUsMessage(models.Model):
+	client_ip = models.GenericIPAddressField()
+	name = models.CharField(max_length=100)
+	subject = models.CharField(max_length=200)
+	email = models.EmailField(max_length=254)
+	message = models.CharField(max_length=600)
+
+	def __str__(self):
+		return str(self.email)

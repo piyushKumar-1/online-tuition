@@ -5,7 +5,7 @@ from rest_framework.parsers import FormParser,MultiPartParser
 from .models import Enquiry, TeacherMessage
 from teacher.models import BecomeTeacher
 from users.models import CustomUser
-from .serializers import EnquirySerializer, EnquiryCreateSerializer
+from .serializers import EnquirySerializer, EnquiryCreateSerializer, ContactUsSerializer
 
 def get_client_ip(request):
 	    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -14,6 +14,22 @@ def get_client_ip(request):
 	    else:
 	        ip = request.META.get('REMOTE_ADDR')
 	    return ip
+
+
+
+
+class CreateContactUsMessage(generics.GenericAPIView):
+	serializer_class = ContactUsSerializer
+	@csrf_exempt
+	def post(self, request, *args, **kwargs):
+		data = request.data
+		data['client_ip'] = get_client_ip(request)
+		serializer = self.get_serializer(data=data)
+		serializer.is_valid(raise_exception=True)
+		serializer.save()
+		return Response({'success':'Created Successfully'})
+
+
 
 
 class CreateEnquiryView(generics.CreateAPIView):
@@ -33,8 +49,6 @@ class CreateEnquiryView(generics.CreateAPIView):
 
 class GetEnquieryView(generics.GenericAPIView):
 	serializer_class = EnquirySerializer
-
-
 	def get(self, request):
 		try:
 			client_IP = get_client_ip(request)

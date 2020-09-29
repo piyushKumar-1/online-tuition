@@ -3,6 +3,8 @@ import '../../styles/about.css'
 import '../../styles/bubble.css'
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { contactPost, resetPost } from '../../actions/commonActions.js';
+
 
 
 class AboutUs extends React.Component {
@@ -13,91 +15,191 @@ componentDidMount() {
   	window.scrollTo(0, 0)
 }
 
+state = {
+	name:'',
+	subject: '',
+	query: '',
+	email: '',
+	spin: false,
+}
+
+onChange = (e) => {
+	this.setState({
+		[e.target.name]: e.target.value
+	});
+	this.setState({
+		spin:false
+	})
+	this.props.resetPost();
+
+}
+
+onSubmit = (e) => {
+	e.preventDefault();
+	const {name, subject, query, email} = this.state;
+	this.setState({
+		spin: true
+	});
+	console.log("djskhfksdhfksdkk")
+	this.props.contactPost(name, subject, email, query);
+}
+
 componentWillUnmount(){
 	document.getElementById('contact').classList.remove('active');
    
 }
+
+renderPic = () => {
+	var k;
+	k = (
+		<div id="background-wrap" data-aos="fade-in" data-aos-once="true">
+			<img src="static/frontend/contactUs.jpg" />			
+		</div>
+	)
+	return [k]
+}
 	render() {
+		const {name, subject, query, email} = this.state;
 		return (
+				<>
 
-			<>
+					{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 
-				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
-
-
-				<div id="background-wrap" data-aos="fade-in" data-aos-once="true">
-					<img src="static/frontend/contactUs.jpg" />			
-				</div>
-
-
-
+					{   this.props.isAuthenticated
+						? 
+						''
+						:
+						this.renderPic()
+					}
 
 
-				
-			<br/><br/>
-				<div className="container" data-aos="slide-up" data-aos-once="true" data-aos-delay="300">
-					<div className="row">
-						<div className="col-sm-8">
-							<div className="title">
-								<h3 style={{fontWeight:600}}>LearnerZ Corner</h3>
+
+
+					
+				<br/><br/>
+					<div className="container" data-aos="slide-up" data-aos-once="true" data-aos-delay="300">
+						<div className="row">
+							<div className="col-sm-4">
+								<div className="about-lernerz">
+									<h4 className="touch">Get In Touch</h4>
+									<div className="border-blue">
+									</div>
+									<table className="table border bg-white shadow siz-f rounded">
+										<tr>
+											<th>Phone No.</th>
+											<td>: +91-8667613658</td>
+										</tr>
+										<tr>
+											<th>Email</th>
+											<td>: support@learnerzcorner.com</td>
+										</tr>
+									</table>
+								</div>
 							</div>
-							<div className="about-lernerz">
-								<p>LearnerZ Corner is an online platform for engineering students to interact with expert faculty or peer subject matter experts
-								in online for learning different subjects of engineering, getting help for assignment and homework and to get project
-								guidance. The students from different streams of engineering can get subject revised in an one-to-one interactive manner 
-								pertaining to the examination.</p>
-								<p>The platform provides a way to earn anybody who aspire to teach to student community from different parts of the world.</p>
+							<div className="col-sm-8">
+								<h4 className="touch">Submit your Query</h4>
+								<div className="border-blue">
+								</div>
+								<form onSubmit={this.onSubmit} className="">
+									<div className="form-row">
+										<div className="col-md-12">
+											<div className="form-group">
+								                <input
+								                  required
+								                  id="name"
+								                  type="text"
+								                  className="form-control"
+								                  placeholder="Your Name"
+								                  name="name"
+								                  onChange={this.onChange}
+								                  value={name}
+								                />
+								            </div>
+								        </div>
+								    </div>
+									<div className="form-row">
+										<div className="col-md-12">
+											<div className="form-group">
+								                <input
+								                  required
+								                  id="subject"
+								                  type="text"
+								                  className="form-control"
+								                  placeholder="Subject"
+								                  name="subject"
+								                  onChange={this.onChange}
+								                  value={subject}
+								                />
+								            </div>
+								        </div>
+								    </div>
+									<div className="form-row">
+										<div className="col-md-12">
+											<div className="form-group">
+								                <input
+								                  required
+								                  id="emailaddress"
+								                  type="email"
+								                  className="form-control"
+								                  placeholder="Email Address"
+								                  name="email"
+								                  onChange={this.onChange}
+								                  value={email}
+								                />
+								            </div>
+								        </div>
+								    </div>
+									<div className="form-row">
+										<div className="col-md-12">
+											<div className="form-group">
+								                <textarea
+								                  required
+								                  id="query"
+								                  className="form-control"
+								                  placeholder="Your Question/suggestion"
+								                  name="query"
+								                  onChange={this.onChange}
+								                  value={query}
+								                />
+								            </div>
+								        </div>
+								    </div>
+									<button type="submit" className="btn btn-dark">Submit</button>
+								</form>
 							</div>
 						</div>
-						<div className="col-sm-4">
-							<div className="im anima">
-								<img className="shadow back" src="/static/frontend/logo_tit.png" />
-							</div>
-						</div>
-					</div>
-					<br/><br/>
-					<br/>
-					<div>
-						<div className="vission">
-							<h4 className="f-600">Vission Statement</h4>
-						</div>
-						<div className="statement">
-							<p>To make students knowledgeable and outstanding in their studies by providing them excellent online training based on their needs, anywhere anytime.</p>
-						</div>
-					</div>
+					</div>		
+					<br/><br/>	
+					<br/><br/>	
 
-					<br/><br/>
-					<br/>
-					<div className="values">
-						<h3 style={{fontWeight:'600'}}>Our Core Values:</h3><br/>
-						<ul>
-							<li>
-								<h4 style={{fontWeight:'600'}}>1. Integrity</h4>
-								<p>LearnerZ Corner is committed to provide quality education with high standards.</p>
-							</li>
-							<li>
-								<h4 style={{fontWeight:'600'}}>2. Respect</h4>
-								<p>LearnerZ Corner maintain professionalism in delivering the content and with customer interaction. We listen to customers to express
-their views to have a better working model which benefits both the company and customers..</p>
-							</li>
-							<li>
-								<h4 style={{fontWeight:'600'}}>3. Passion</h4>
-								<p>LearnerZ Corner is passionate about education, and looks way to promote the content delivery model in a conducive manner.</p>
-							</li>
-							<li>
-								<h4 style={{fontWeight:'600'}}>4. Responsibility</h4>
-								<p> LearnerZ Corner takes accountability for the results. We  strive towards betterment by finding solutions for the gaps.</p>
-							</li>
-							<li>
-								<h4 style={{fontWeight:'600'}}>5. Innovation</h4>
-								<p>LearnerZ Corner provide better solutions to customer requirements through innovative solutions which we implement at every stage of process</p>
-							</li>
-						</ul>
-					</div>
-				</div>		
-				<br/><br/>	
-				<br/><br/>	
-			</>
+				{
+					this.props.conPost 
+					?
+					<>
+	            		<div className="m-auto w-maxc p-5">
+		            		<h3>
+		            			Submitted Successfully<i className='fa fa-check-circle green'></i>
+		            		</h3>
+	            		</div>
+					</>
+					:
+					<>
+						{
+							this.state.spin
+							?
+							<div className="container">
+								<div className="row">
+									<div className="m-auto">
+										<i className="fas fa-spinner fa-spin fa-2x"></i>
+									</div>
+								</div>
+							</div>
+							:
+							''
+						}
+					</>
+				}
+				</>
 		);
 	}
 }
@@ -106,8 +208,9 @@ their views to have a better working model which benefits both the company and c
 
 const mapStateToProps= state => ({
 	isAuthenticated: state.auth.isAuthenticated,
- 	user: state.auth.user
+ 	user: state.auth.user,
+ 	conPost: state.common.postCon,
 })
 
 
-export default connect(mapStateToProps)(AboutUs)
+export default connect(mapStateToProps, {contactPost, resetPost})(AboutUs)

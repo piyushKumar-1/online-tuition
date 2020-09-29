@@ -101,16 +101,22 @@ export class Courses extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="bg-white">
 				<div className="w-100 h-300px">
 					<div className="text-center wid-max">
 						<h3 id="msgCr" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
 						<h3 className="ab" data-aos="fade-in" data-aos-delay="800" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 					</div>
+					
 				</div>
-
-				<div className="p-5" data-aos="slide-up" data-aos-once="true" data-aos-delay="600">
-					<div className="container">
+				
+				<div className="p-5">
+					<div className="down">
+						<div className="text-center">
+							<i className="fa fa-angle-down black p-2"/>
+						</div>
+					</div>
+					<div className="container"  data-aos="slide-up" data-aos-once="true" data-aos-delay="600">
 						{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
 					</div>
 				</div>	

@@ -23,6 +23,8 @@ export const RESET_FEED = 'RESET_FEED';
 export const RESET_CHAT= 'RESET_CHAT';
 export const RESET_FEEDS= 'RESET_FEEDS';
 export const GOT_FEED = 'GOT_FEED';
+export const CON_POST_SUCCESS = 'CON_POST_SUCCESS';
+export const CON_POST_RESET = 'CON_POST_RESET';
 
 export const MATERIAL_UPLOAD_SUCCESS = 'MATERIAL_UPLOAD_SUCCESS';
 export const JOB_POST_SUCCESS = 'JOB_POST_SUCCESS';

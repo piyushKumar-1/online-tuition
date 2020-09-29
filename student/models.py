@@ -5,10 +5,6 @@ from courses.models import Courses, Subjects, SubCourses
 from teacher.models import BecomeTeacher
 
 
-
-
-
-
 class Events(models.Model):
 	topic = models.CharField(max_length=400)
 	student = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -16,6 +12,9 @@ class Events(models.Model):
 	event_date = models.DateField()
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE)
 	live_link = models.URLField(null=True)
+
+	def __str__(self):
+		return "Topic: "+self.topic+", Student: "+self.student.first_name+", teacher: "+self.teacher.name
 
 
 class CoursesEnrolled(models.Model):

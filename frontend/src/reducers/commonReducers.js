@@ -1,4 +1,4 @@
-import { GOT_COURSES, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from '../actions/types.js';
+import { GOT_COURSES, CON_POST_RESET, CON_POST_SUCCESS, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from '../actions/types.js';
 
 
 
@@ -12,6 +12,7 @@ const initialState = {
 	subjects:null,
 	enqMsg: false,
 	joinMsg: false,
+	postCon: false,
 }
 
 
@@ -20,6 +21,16 @@ const initialState = {
 
 export default function(state = initialState, action){
 	switch(action.type){
+		case CON_POST_RESET:
+			return {
+				...state,
+				postCon: false
+			}
+		case CON_POST_SUCCESS:
+			return {
+				...state,
+				postCon: true
+			}
 		case GOT_COURSES:
 			return {
 				...state,
