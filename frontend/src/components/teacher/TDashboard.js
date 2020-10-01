@@ -98,7 +98,7 @@ class TDashboard extends React.Component {
 				        	<form onSubmit={this.onAdminSubmit}>
 				            	<div className="form-group">
 					                <label>Message</label>
-					                <input
+					                <textarea
 						                type="text"
 						                className="form-control"
 						                name="message"

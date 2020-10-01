@@ -1,4 +1,4 @@
-import { GOT_COURSES, CON_POST_RESET, CON_POST_SUCCESS, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from '../actions/types.js';
+import { GOT_COURSES, A_POST_CHAT, CON_POST_RESET, CON_POST_SUCCESS, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from '../actions/types.js';
 
 
 
@@ -13,6 +13,8 @@ const initialState = {
 	enqMsg: false,
 	joinMsg: false,
 	postCon: false,
+	isAdminReplied: false,
+	adminMessages:null,
 }
 
 
@@ -21,6 +23,12 @@ const initialState = {
 
 export default function(state = initialState, action){
 	switch(action.type){
+		case A_POST_CHAT:
+			return {
+				...state,
+				isAdminReplied: true,
+				adminMessages:action.payload
+			}
 		case CON_POST_RESET:
 			return {
 				...state,

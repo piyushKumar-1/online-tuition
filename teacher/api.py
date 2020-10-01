@@ -21,7 +21,6 @@ class EventAPI(generics.GenericAPIView):
 		ret = self.get_serializer(data=Events.objects.filter(teacher_id = self.request.user.teacher_id), many=True)
 		ret.is_valid()
 		print(ret.data)
-
 		return Response(ret.data)
 
 	def post(self, request):

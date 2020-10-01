@@ -43,6 +43,7 @@ export const MATERIAL_UPLOAD_FAIL = 'MATERIAL_UPLOAD_FAIL';
 export const GOT_CHAT = 'GOT_CHAT';
 export const T_GOT_CHAT = 'T_GOT_CHAT';
 export const T_POST_CHAT = 'T_POST_CHAT';
+export const A_POST_CHAT = 'A_POST_CHAT';
 
 export const RESET_ERROR = "RESET_ERROR";
 export const CHANGED_ERROR = "CHANGED_ERROR";

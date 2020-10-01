@@ -10,8 +10,10 @@ from teacher.models import BecomeTeacher
 class TeacherMessage(models.Model):
 	message = models.CharField(max_length=200)
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE)
+	reply = models.CharField(max_length=300, blank=True, null=True)
+	seen = models.BooleanField(default=False)
 	def __str__(self):
-		return self.message
+		return "Message: "+self.message+", from Teacher: "+self.teacher.name
 	
 
 

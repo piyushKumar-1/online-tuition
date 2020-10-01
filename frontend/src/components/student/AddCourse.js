@@ -39,8 +39,6 @@ class AddCourse extends React.Component {
         	for(let i=0;i<k.length;i++){
         		k[i].classList.remove('selected')
         	}
-
-
     	} catch {
     		console.log('hahahaha')
     	}

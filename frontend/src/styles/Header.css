@@ -8,6 +8,16 @@ body{
     overflow-x: hidden;
 }
 
+.badge { 
+    position: relative;
+    top: -16px;
+    left: 13px;
+    border: 1px solid #3b8e2f;
+    border-radius: 50%;
+    background: #3b8e2f;
+    color: white;
+} 
+
 
 .ar{
 

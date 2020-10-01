@@ -5,7 +5,7 @@ from rest_framework.parsers import FormParser,MultiPartParser
 from .models import Enquiry, TeacherMessage
 from teacher.models import BecomeTeacher
 from users.models import CustomUser
-from .serializers import EnquirySerializer, EnquiryCreateSerializer, ContactUsSerializer
+from .serializers import EnquirySerializer, EnquiryCreateSerializer, ContactUsSerializer, TeacherMessageSerializer
 
 def get_client_ip(request):
 	    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -62,12 +62,35 @@ class GetEnquieryView(generics.GenericAPIView):
 				})
 
 
-class PostTeacherMessage(generics.GenericAPIView):
+
+class PostAdminSeen(generics.GenericAPIView):
 	permission_classes = [
 		permissions.IsAuthenticated
 	]
-	def post(Self, request):
-		TeacherMessage.objects.create(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), message=request.data['message'])
+	def post(self, request):
+		data = TeacherMessage.objects.filter(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id),seen=False)
+		for i in data:
+			i.seen = True
+			i.save()
+		return Response({'seen':True})
+
+class PostTeacherMessage(generics.GenericAPIView):
+	serializer_class = TeacherMessageSerializer
+	permission_classes = [
+		permissions.IsAuthenticated
+	]
+	def post(self, request):
+		TeacherMessage.objects.create(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), seen=True, message=request.data['message'])
 		return Response({
 				'sent':"Sent"
 			})
+	def get(self, request):
+		data = TeacherMessage.objects.filter(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id))
+		serializer = self.get_serializer(data = data, many=True)
+		serializer.is_valid()
+		res = {}
+		res["ml"] = serializer.data
+		res['new'] = len(TeacherMessage.objects.filter(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), seen=False))
+
+
+		return Response(res)

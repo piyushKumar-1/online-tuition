@@ -1,10 +1,13 @@
 from rest_framework import serializers
-from .models import Enquiry, ContactUsMessage
+from .models import Enquiry, ContactUsMessage, TeacherMessage
 
 
 
 
-
+class TeacherMessageSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = TeacherMessage
+		fields = ('message', 'reply', 'seen')
 
 class ContactUsSerializer(serializers.ModelSerializer):
 	class Meta:

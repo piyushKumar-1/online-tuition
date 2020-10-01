@@ -5,8 +5,9 @@ import Register from './users/Register.js'
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';	
 import PropTypes from 'prop-types';
-import { logoutUser } from '../actions/authAction.js';
+import { logoutUser, loadUser } from '../actions/authAction.js';
 import { getCourses, getSubCourses } from '../actions/commonActions.js';
+import { postAdmin, getAdmin, postAdminSeen } from '../actions/teacherActions.js'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 
@@ -14,10 +15,22 @@ export class Header extends Component {
 
     
 	static propTypes= {
+		loadUser: PropTypes.func.isRequired,
 		auth: PropTypes.object.isRequired,
 		logoutUser: PropTypes.func.isRequired,
 
 	};
+
+	componentDidMount() {
+		this.props.loadUser();
+		this.props.getAdmin();
+
+ 	}
+
+ 	makeSeen = () => {
+ 		this.props.postAdminSeen();
+		this.props.getAdmin();
+ 	}
 
 	componentWillMount(){
 	}
@@ -68,6 +81,37 @@ export class Header extends Component {
 		</li>
 
 */
+
+			adminMessage = () => {
+				var k = [];
+				if(this.props.values.isAdminReplied){
+					var msg = this.props.values.adminMessages['ml'];
+					console.log(msg)
+					for(var i=0;i<msg.length;i++){
+						if(msg[i]['reply']){
+							k.push(
+								<div className="card p-3 mb-3" style={{transform:'rotate(180deg)'}}>
+									<div className="from-other mb-1">Reply: {msg[i]['reply']}
+									</div>
+									<div className="from-me">Query: {msg[i]['message']}
+									</div>
+								</div>
+							)
+						} else {
+							k.push(
+								<div className="card p-3 mb-3" style={{transform:'rotate(180deg)'}}>
+									<div className="from-admin mb-1">Not Seen Yet
+									</div>
+									<div className="from-me">Query: {msg[i]['message']}
+									</div>
+								</div>
+							)
+						}
+					}
+				}
+				console.log(k)
+				return k
+			}
 
 
 	render() {
@@ -207,14 +251,54 @@ const working = (
 				</>
 			)
 
+
 		return (
 			<Fragment>
 
 				<div className="navbar navbar-light bg-light">
 					<div className="cus_container">
 						<div className="right ml-auto">
-
 							{ isAuthenticated ? authLinks() : guestLinks() }
+							{ isAuthenticated 
+								?
+								<>
+									&nbsp;&nbsp;|&nbsp;
+									<span id="group"> 
+										<span class="badge badge-light">
+										{	
+											this.props.values.isAdminReplied 
+											? 
+												this.props.values.adminMessages.new
+												?
+												this.props.values.adminMessages.new
+												:
+												''
+											:
+											''
+										}
+										</span>
+										<button onClick={this.makeSeen} data-toggle="modal" data-target="#admin" className="btn border btn-ouline-dark"><i className="fa fa-user black"></i>&nbsp;{this.props.auth.user.first_name} {this.props.auth.user.last_name}</button>
+										<div>
+										    <div className="modal fade m-auto" id="admin" role="dialog">
+										        <div className="modal-dialog">
+										            <div className="modal-content m-auto">
+									                    <button type="button" className="close mt-2 mr-3 text-right" data-dismiss="modal">&times;</button>
+										                <div className="model-body p-3">
+										                	<h3>Admin Message</h3>
+										                  	{this.adminMessage()}
+										                </div>
+										                <div className="modal-footer">
+										                  	<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+									              	    </div>
+									              	</div>
+									          	</div>
+									        </div>
+									    </div>
+									</span>
+								</>
+								:
+								''
+							}
 						</div>
 					</div>
 				</div>
@@ -240,7 +324,7 @@ const mapStateToProps= state => ({
 })
 
 
-export default connect(mapStateToProps, { logoutUser, getCourses, getSubCourses })(Header);
+export default connect(mapStateToProps, { logoutUser, loadUser, getCourses, getSubCourses, postAdminSeen, getAdmin })(Header);
 
 
 
