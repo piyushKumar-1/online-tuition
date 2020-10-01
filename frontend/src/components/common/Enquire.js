@@ -30,6 +30,7 @@ export class Enquire extends React.Component {
 		fi_help:'(max. 1MB pdf, jpg)',
 		fi:true,
 		disabled:true,
+		spe_in_l:100
 	}
 
 	static propTypes = {
@@ -118,8 +119,14 @@ export class Enquire extends React.Component {
 		document.getElementById('courses').classList.remove('active');
 	}
 	onChange = (e) => {
-    	this.setState({ [e.target.name]: e.target.value });
     	console.log(this.state)
+    	if(e.target.name==='instruction'){
+    		if(100-e.target.value.length>=0){
+	    		this.setState({ [e.target.name]: e.target.value, spe_in_l: 100-e.target.value.length });		
+    		}
+    	} else {
+    		this.setState({ [e.target.name]: e.target.value });
+    	}
     }
     onEmailChange = (e) => {
     	if(e.target.value.length>30){
@@ -458,7 +465,7 @@ export class Enquire extends React.Component {
 					    <div className="form-row">
 					    	<div className="col-md-6">
 					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Special instruction</label>
+					                <label>Special instruction<small>(max. length {this.state.spe_in_l})</small></label>
 					                <input
 					                  type="text-box"
 					                  className="form-control"

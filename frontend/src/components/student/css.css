@@ -10,6 +10,30 @@
   z-index: 2;
 }
 
+.values h4{
+  color: #c65b5b;
+}
+
+.about-lernerz p{
+  font-size:18px;
+}
+
+.values p{
+  font-size:18px;
+}
+
+.top--0{
+  margin-top:-45px;
+}
+
+.adm{
+  background: #39c439;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px black;
+
+}
+
 .del-course{
   right: 25px;
   position: absolute;
@@ -376,6 +400,14 @@ html {
     position: unset;
     top:unset;
   }
+
+  .top--0{
+  margin-top:-10px;
+}
+.bg-image{
+  max-height: 960px;
+}
+
 
 .lg{
   width: 16.667%;

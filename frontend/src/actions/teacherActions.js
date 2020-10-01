@@ -227,29 +227,6 @@ export const postAdminSeen = () => (dispatch, getState) => {
 }
 
 
-export const postAdmin = (msg) => (dispatch, getState) => {
-
-    const token = getState().auth.token;
-
-
-    const config = {
-        headers: {
-            'Content-type': 'application/json'
-        }
-    }
-
-    if (token) {
-        config.headers['Authorization'] = `Token ${token}`;
-    }
-    let data = {'message':msg}
-    axios
-        .post(`/api/auth/admin/message`, data, config)
-        .then(res => {
-            window.alert("Message Sent!")
-        })
-        .catch(err => console.log(err));
-}
-
 
 export const getAdmin = () => (dispatch, getState) => {
 
@@ -272,6 +249,30 @@ export const getAdmin = () => (dispatch, getState) => {
                 type: A_POST_CHAT,
                 payload: res.data
             })
+        })
+        .catch(err => console.log(err));
+}
+
+
+export const postAdmin = (msg) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+    let data = {'message':msg}
+    axios
+        .post(`/api/auth/admin/message`, data, config)
+        .then(res => {
+            getAdmin()
         })
         .catch(err => console.log(err));
 }

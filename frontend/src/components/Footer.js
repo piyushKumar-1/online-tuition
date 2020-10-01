@@ -8,8 +8,8 @@ export class Footer extends Component {
 			
 				<div className="navbar navbar-dark bg-navy2">
 					<div className="cus_container p-5">
-						<div className="row">
-							<div className="col-md-6">
+						<div className="row w-100 m-auto">
+							<div className="col-md-8">
 								<table cellPadding="5" style={{width: "100%", color: "#dfdfdf"}}>
 									<thead>
 										<tr>
@@ -20,24 +20,21 @@ export class Footer extends Component {
 										<tr>
 											<th>Phone Number</th>
 											<th>:</th>
-											<td>+91-9899078966</td>
+											<td>+91-8667613658</td>
 										</tr>
 										<tr>
 											<th>Email</th>
 											<th>:</th>
-											<td>sample@domain.in</td>
+											<td>support@learnerzcorner.com</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
-							<div className="col-md-6">
+							<div className="col-md-4">
 								<table cellPadding="5" style={{width: "100%", color: "#dfdfdf"}}>
 									<thead>
 										<tr>
 											<th><Link className="no" to="/privacy-policy">Privacy Policy</Link></th>
-										</tr>
-										<tr>
-											<th><Link className="no" to="">FAQs</Link></th>
 										</tr>
 										<tr>
 											<th><Link className="no" to="#">Terms And Conditions</Link></th>

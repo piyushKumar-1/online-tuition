@@ -188,9 +188,9 @@ export class BecomeTeacher extends React.Component {
 
 				: 
 				<>
-					<div className="w-100 h-300px">
+					<div className="w-100 h-300px" data-aos="fade-in" data-aos-once="true">
 						<div className="text-center wid-max">
-							<h3 id="msgPr" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
+							<h3 id="msgPr" data-aos="fade-in" data-aos-duration="300" className="ab"></h3>
 							<h3 className="ab" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 						</div>
 					</div>

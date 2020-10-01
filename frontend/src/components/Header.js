@@ -21,6 +21,27 @@ export class Header extends Component {
 
 	};
 
+	state = {
+		message: null
+	}
+
+	onChange = (e) => {
+		this.setState({
+			[e.target.name]:e.target.value 
+		});
+	}
+
+	onAdminSubmit = (e) => {
+		e.preventDefault();
+		const { message } = this.state;
+		this.props.postAdmin(message);
+		this.setState({
+			message:'' 
+		})
+
+	}
+
+
 	componentDidMount() {
 		this.props.loadUser();
 		this.props.getAdmin();
@@ -91,9 +112,9 @@ export class Header extends Component {
 						if(msg[i]['reply']){
 							k.push(
 								<div className="card p-3 mb-3" style={{transform:'rotate(180deg)'}}>
-									<div className="from-other mb-1">Reply: {msg[i]['reply']}
+									<div className="from-other mb-1">{msg[i]['reply']}
 									</div>
-									<div className="from-me">Query: {msg[i]['message']}
+									<div className="from-me">{msg[i]['message']}
 									</div>
 								</div>
 							)
@@ -102,7 +123,7 @@ export class Header extends Component {
 								<div className="card p-3 mb-3" style={{transform:'rotate(180deg)'}}>
 									<div className="from-admin mb-1">Not Seen Yet
 									</div>
-									<div className="from-me">Query: {msg[i]['message']}
+									<div className="from-me">{msg[i]['message']}
 									</div>
 								</div>
 							)
@@ -130,6 +151,7 @@ export class Header extends Component {
 					<Link to='/student/dashboard' className="btn logbtn btn-ouline-dark"><i className="fa fa-user-circle black"></i>&nbsp;Dashboard</Link>
 				</Fragment>
 		)
+
 		const authLinks = () => { 
 			if(user.teacher!=null){
 				return (teacherL)
@@ -138,6 +160,72 @@ export class Header extends Component {
 			}
 			
 		}
+
+		const teacherAdmin = () => { 
+			if(user.teacher!=null){
+				return (
+					<>
+									&nbsp;&nbsp;|&nbsp;
+									<span id="group"> 
+										<span class="badge badge-light">
+										{	
+											this.props.values.isAdminReplied 
+											? 
+												this.props.values.adminMessages.new
+												?
+												this.props.values.adminMessages.new
+												:
+												''
+											:
+											''
+										}
+										</span>
+										<button onClick={this.makeSeen} data-toggle="modal" data-target="#admin" className="btn border btn-ouline-dark"><i className="fa fa-user black"></i>&nbsp;{this.props.auth.user.first_name} {this.props.auth.user.last_name}</button>
+										<div>
+										    <div className="modal fade m-auto" id="admin" role="dialog">
+										        <div className="modal-dialog">
+										            <div className="modal-content m-auto">
+									                    <button type="button" className="close mt-2 mr-3 text-right" data-dismiss="modal">&times;</button>
+										                <div className="model-body p-3">
+										                	<h3>Admin Message</h3>
+										                  	{this.adminMessage()}
+										                </div>
+										                <div className="modal-footer">
+										                  	<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+									              	    </div>
+									              	</div>
+									          	</div>
+									        </div>
+									    </div>
+									</span>
+								</>
+				)
+			} else {
+				return (
+					<>
+						&nbsp;&nbsp;|&nbsp;
+						<span id="group"> 
+							<span class="badge badge-light">
+							{	
+								this.props.values.isAdminReplied 
+								? 
+									this.props.values.adminMessages.new
+									?
+									this.props.values.adminMessages.new
+									:
+									''
+								:
+								''
+							}
+							</span>
+							<button onClick={this.makeSeen} className="btn border btn-ouline-dark"><i className="fa fa-user black"></i>&nbsp;{this.props.auth.user.first_name} {this.props.auth.user.last_name}</button>
+						</span>				
+					</>
+				)	
+			}
+			
+		}
+
 		const modal = (
 		    <Fragment>
 
@@ -261,41 +349,7 @@ const working = (
 							{ isAuthenticated ? authLinks() : guestLinks() }
 							{ isAuthenticated 
 								?
-								<>
-									&nbsp;&nbsp;|&nbsp;
-									<span id="group"> 
-										<span class="badge badge-light">
-										{	
-											this.props.values.isAdminReplied 
-											? 
-												this.props.values.adminMessages.new
-												?
-												this.props.values.adminMessages.new
-												:
-												''
-											:
-											''
-										}
-										</span>
-										<button onClick={this.makeSeen} data-toggle="modal" data-target="#admin" className="btn border btn-ouline-dark"><i className="fa fa-user black"></i>&nbsp;{this.props.auth.user.first_name} {this.props.auth.user.last_name}</button>
-										<div>
-										    <div className="modal fade m-auto" id="admin" role="dialog">
-										        <div className="modal-dialog">
-										            <div className="modal-content m-auto">
-									                    <button type="button" className="close mt-2 mr-3 text-right" data-dismiss="modal">&times;</button>
-										                <div className="model-body p-3">
-										                	<h3>Admin Message</h3>
-										                  	{this.adminMessage()}
-										                </div>
-										                <div className="modal-footer">
-										                  	<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-									              	    </div>
-									              	</div>
-									          	</div>
-									        </div>
-									    </div>
-									</span>
-								</>
+								teacherAdmin()
 								:
 								''
 							}
@@ -324,7 +378,7 @@ const mapStateToProps= state => ({
 })
 
 
-export default connect(mapStateToProps, { logoutUser, loadUser, getCourses, getSubCourses, postAdminSeen, getAdmin })(Header);
+export default connect(mapStateToProps, { logoutUser, loadUser, getCourses, getSubCourses, postAdmin, postAdminSeen, getAdmin })(Header);
 
 
 

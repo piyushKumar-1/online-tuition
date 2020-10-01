@@ -61,7 +61,7 @@ renderPic = () => {
 	render() {
 		const {name, subject, query, email} = this.state;
 		return (
-				<>
+				<div className="bg-white">
 
 					{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 
@@ -77,8 +77,13 @@ renderPic = () => {
 
 					
 				<br/><br/>
-					<div className="container" data-aos="slide-up" data-aos-once="true" data-aos-delay="300">
-						<div className="row">
+					<div className="container">
+						<div className="down">
+							<div className="text-center">
+								<i className="fa fa-angle-down black p-2"/>
+							</div>
+						</div>
+						<div className="row"  data-aos="slide-up" data-aos-once="true" data-aos-delay="300">
 							<div className="col-sm-4">
 								<div className="about-lernerz">
 									<h4 className="touch">Get In Touch</h4>
@@ -199,7 +204,7 @@ renderPic = () => {
 						}
 					</>
 				}
-				</>
+				</div>
 		);
 	}
 }

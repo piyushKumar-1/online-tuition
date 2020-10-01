@@ -35,8 +35,8 @@ componentWillUnmount(){
 				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 
 				<div className="w-100 h-300px">
-					<div className="text-center wid-max">
-						<h3 id="msgPr" data-aos="fade-in" data-aos-duration="30" className="ab"></h3>
+					<div className="text-center wid-max" data-aos="fade-in" data-aos-once="true">
+						<h3 id="msgPr" data-aos="fade-in" data-aos-duration="300" className="ab"></h3>
 						<h3 className="ab" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 					</div>
 				</div>

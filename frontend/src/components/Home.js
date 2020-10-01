@@ -55,7 +55,7 @@ componentWillUnmount(){
 
 componentDidMount() {
 	document.getElementById('home').classList.add('active');
-    document.title = "Home Page | Learnerz Corner"
+    document.title = "Home Page | LearnerZ Corner"
     window.scrollTo(0, 0)
     window.addEventListener('scroll', this.listenToScroll)
 }
@@ -108,12 +108,12 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
         
 
 							<div className="cus_container mt content">
-								<div className="mr-auto ml-auto mt-auto mb-0 wid" data-aos="fade-down" data-aos-duration="600">
+								<div className="mr-auto ml-auto mt-5 mb-0 wid" data-aos="fade-down" data-aos-duration="600">
 									
-									<p className="tag-line2">Online Platform for Engineering Students to Learn From Expert Faculty and Peer Instructors</p>
+									<p className="tag-line2 mt-5">Online Platform for Engineering Students to Learn From Expert Faculty and Peer Instructors</p>
 									
 									<div className="row laga">											
-										<div className="col-sm-8">
+										<div className="col-sm-8 top--1">
 										<br/>
 										<div className="p-2">
 											<a className="btn expert btn-outline-white">
@@ -138,7 +138,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 										</div><br/><br/>
 											<Link to="/register" className="btn btn-start">Get Started</Link>
 										</div>
-										<div className="col-sm-4">
+										<div className="col-sm-4 top--0">
 											<div className="img-fluid scene">
 												<article className="clock shadow">
 												  <div className="hours-container">
@@ -225,7 +225,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<div className="steps-icon">03.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Faculty Indentification</h5>
-												<p className="step-content">Learnerz Corner will suggest you the best faculty based on your requirements.</p>
+												<p className="step-content">LearnerZ Corner will suggest you the best faculty based on your requirements.</p>
 											</div>
 											</div>
 								</div>
@@ -246,7 +246,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											<div className="steps-icon">05.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Feedback  Collection</h5>
-												<p className="step-content">Collection of feedback about the demo session. It helps to decide the expectations are met. If student/parent satisfied with the faculty, the corresponding faculty will be allocated. Else, learnerz corner suggests a new faculty as per the gaps identified.</p>
+												<p className="step-content">Collection of feedback about the demo session. It helps to decide the expectations are met. If student/parent satisfied with the faculty, the corresponding faculty will be allocated. Else, LearnerZ Corner suggests a new faculty as per the gaps identified.</p>
 											</div>
 										</div>
 								</div>

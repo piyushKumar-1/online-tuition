@@ -32,7 +32,7 @@ class Enquiry(models.Model):
 	sub_code = models.CharField(null=True, max_length=50)
 	project = models.CharField(max_length=150, null=True)
 	other = models.CharField(max_length=150, null=True)
-	instruction = models.CharField(max_length=50, null=True, blank=True)
+	instruction = models.CharField(max_length=100, null=True, blank=True)
 	time = models.TimeField()
 	day = models.DateField(auto_now=False, auto_now_add=False)
 	file = models.FileField(null=True, blank=True)

@@ -141,15 +141,17 @@ font-space: 10px;
 	box-shadow: -3px 10px 6px #000;
 	transition: all ease-in-out .5s !important;
 	min-height: 54px;
+  width:370px;
 }
 
 .btn-start{
-    background-color: #0f3b66 !important;
+    background-color: #000 !important;
     color: white;
     font-weight: 600;
     font-size: 22px;
     animation-name: getStarted;
     animation-duration: 2s;
+    box-shadow: 2px 2px 3px #3dcefb;
 }
 
 .btn-start:hover{
@@ -493,6 +495,9 @@ display: flex;
   .arrow-up{
   font-size: 14px !important;
   }
+  .tag-line2{
+    font-size: 32px;
+  }
   .tag-line{
 
   font-weight:600;
@@ -535,6 +540,7 @@ box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
 padding: 0px 10px 40px 10px;
 min-height: 235px;  
 font-family: "Open Sans", sans-serif;
+height:360px;
 }
 
 .pp-5 .row{
@@ -543,7 +549,7 @@ font-family: "Open Sans", sans-serif;
 
 .step-content{
   width: 100%;
-font-size: 13px;
+font-size: 17px;
 line-height: 22px;
 color: #666666;
 padding: 0px;
@@ -553,7 +559,7 @@ margin: 0px;
 .step-h4{
   padding: 50px 0px 20px 0px;
 margin: 0px 0px 0px 0px;
-font-size: 17px;
+font-size: 21px;
 color: #4e4e4e;
 font-weight: 600;
 }
@@ -565,6 +571,10 @@ font-weight: 600;
 }
 .section2{
     padding:0px !important;
+}
+
+.tag-line2{
+  font-size: 28px;
 }
 
 .testi .p-5{
@@ -635,7 +645,14 @@ padding: 8px;
   font-family: 'Special Elite', sans-serif;
   color:white;
   }
+.tag-line2{
+  font-size:25px;
+}
+  
+.top--1{
+  margin-top:-100px;
 
+}
 
 }
 
@@ -781,9 +798,9 @@ position: absolute;
 .steps-explanation{
 float: none;
 width: auto;
+padding: 30px;
 border-bottom: 1px solid rgba(102,102,102,0.1);
 overflow: hidden;
-padding-bottom: 10px;
 
 }
 
