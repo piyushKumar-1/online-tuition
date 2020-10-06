@@ -8,16 +8,20 @@ from teacher.models import BecomeTeacher
 
 
 class TeacherMessage(models.Model):
+	class Meta:
+		verbose_name_plural = "Teacher Messages"
 	message = models.CharField(max_length=200)
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE)
 	reply = models.CharField(max_length=300, blank=True, null=True)
 	seen = models.BooleanField(default=False)
 	def __str__(self):
-		return "Message: "+self.message+", from Teacher: "+self.teacher.name
+		return self.teacher.name
 	
 
 
 class Enquiry(models.Model):
+	class Meta:
+		verbose_name_plural = "Courses Enquiry"
 	client_ip = models.GenericIPAddressField()
 	name = models.CharField(max_length=100)
 	email = models.EmailField(max_length=254)
@@ -42,6 +46,8 @@ class Enquiry(models.Model):
 
 
 class ContactUsMessage(models.Model):
+	class Meta:
+		verbose_name_plural = "General ContactUs Messages(Can be seen in your email also)"
 	client_ip = models.GenericIPAddressField()
 	name = models.CharField(max_length=100)
 	subject = models.CharField(max_length=200)

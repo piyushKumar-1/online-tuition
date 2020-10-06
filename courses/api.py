@@ -6,15 +6,15 @@ from .serializers import CourseListSerializer,SubCourseListSerializer, SubjectLi
 
 class CoursesAPI(generics.ListCreateAPIView):
 	serializer_class = CourseListSerializer
-	queryset = Courses.objects.all()
+	queryset = Courses.objects.filter(active_field=True).order_by('course_name')
 
 
 
 class SubCoursesAPI(generics.ListCreateAPIView):
 	serializer_class = SubCourseListSerializer
-	queryset = SubCourses.objects.all()
+	queryset = SubCourses.objects.filter(active_field=True).order_by('sub_course_name')
 
 
 class SubjectAPI(generics.ListCreateAPIView):
 	serializer_class = SubjectListSerializer
-	queryset = Subjects.objects.all()
+	queryset = Subjects.objects.filter(active_field=True).order_by('subject_name')

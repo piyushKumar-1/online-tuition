@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 export class Practice extends React.Component {
 componentDidMount() {
 	document.getElementById('practices').classList.add('active');
- document.title = "Our Practices | Learnerz Corner"
+ document.title = "Our Practices | LearnerZ Corner"
   window.scrollTo(0, 0)
   const txt = "OUR PRACTICES | "
 	var i = 0;
@@ -31,9 +31,7 @@ componentWillUnmount(){
 	
 	render() {
 		return (
-			<div className="bg-white">
-				{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
-
+			<div className="bg-white practices-page">
 				<div className="w-100 h-300px">
 					<div className="text-center wid-max" data-aos="fade-in" data-aos-once="true">
 						<h3 id="msgPr" data-aos="fade-in" data-aos-duration="300" className="ab"></h3>
@@ -48,7 +46,7 @@ componentWillUnmount(){
 					</div>
 					<div className="container-fluid" data-aos="slide-up" data-aos-once="true" data-aos-delay="300">
 						<div className="row ">
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto">
@@ -69,7 +67,7 @@ componentWillUnmount(){
 									</div>
 								</section>
 							</div>
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b2 mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto ">
@@ -92,7 +90,7 @@ componentWillUnmount(){
 							</div>
 						</div>
 						<div className="row ">
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b2 mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto">
@@ -113,7 +111,7 @@ componentWillUnmount(){
 									</div>
 								</section>
 							</div>
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto ">
@@ -136,7 +134,7 @@ componentWillUnmount(){
 							</div>
 						</div>
 						<div className="row ">
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto">
@@ -157,7 +155,7 @@ componentWillUnmount(){
 									</div>
 								</section>
 							</div>
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b2 mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto ">
@@ -180,7 +178,7 @@ componentWillUnmount(){
 							</div>
 						</div>
 						<div className="row ">
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b2 mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto">
@@ -193,7 +191,7 @@ componentWillUnmount(){
 											<div className="col-sm-8 m-auto">
 												<div className="rounded">
 													<div className="p-0 m-auto" data-aos="fade-up" data-aos-duration="2000">
-														<p className="p-prac">Monitoring the performance of the students in the assessment both at the learnerzcorner and the college. Determination of the gap in performing well and corrective measures will be incorporated.</p>
+														<p className="p-prac">Monitoring the performance of the students in the assessment both at the learnerZ Corner and the college. Determination of the gap in performing well and corrective measures will be incorporated.</p>
 													</div>
 												</div>	
 											</div>
@@ -201,7 +199,7 @@ componentWillUnmount(){
 									</div>
 								</section>
 							</div>
-							<div className="m-auto col-md-5 sti col-sm-6 p-5">
+							<div className="m-auto col-md-5 sti col-sm-6">
 								<section className="pt-5 pb-5" data-aos="slide-up" data-aos-duration="600">
 									<div className=" b mt-5 mb-5">
 										<div className="row w-100 mr-auto ml-auto ">

@@ -15,7 +15,7 @@ export class Courses extends React.Component {
 		this.props.getSubCourses();
 		
     	document.getElementById('courses').classList.add('active');
-		document.title = "Courses Offered | Learnerz Corner"
+		document.title = "Courses Offered | LearnerZ Corner"
 		window.scrollTo(0, 0)
 		const txt = "COURSES | "
 		var i = 0;

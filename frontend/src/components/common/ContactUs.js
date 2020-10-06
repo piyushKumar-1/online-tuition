@@ -11,7 +11,7 @@ class AboutUs extends React.Component {
 componentDidMount() {
 	
  	document.getElementById('contact').classList.add('active');
- 	document.title = "Contact Us | Learnerz Corner"
+ 	document.title = "Contact Us | LearnerZ Corner"
   	window.scrollTo(0, 0)
 }
 
@@ -62,9 +62,6 @@ renderPic = () => {
 		const {name, subject, query, email} = this.state;
 		return (
 				<div className="bg-white">
-
-					{ this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
-
 					{   this.props.isAuthenticated
 						? 
 						''

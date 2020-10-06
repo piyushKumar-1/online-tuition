@@ -60,9 +60,11 @@ export class TimeTable extends React.Component {
 					<>
 						<div className="card">
 							<div className="card-body">
-								<h4 className="card-title float-left w-50">{events[i].topic}</h4>
+								<h4 className="card-title">{events[i].topic}</h4>
 								<h6 style={{fontWeight:"600"}}>Time: {(events[i].event_time)}</h6>
-								<a target="_blank" className="btn btn-dark card-link" href={events[i].live_link}>Meeting link</a>	
+							</div>
+							<div className="p-3">
+								<small style={{fontWeight:"600"}}>MeetingLink:</small><a target="blank" href={events[i].live_link}>{events[i].live_link}</a>
 							</div>
 						</div>
 						<br/>

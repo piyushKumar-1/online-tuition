@@ -13,6 +13,12 @@
 	box-shadow: 5px 5px 10px #abf4a9;
 }
 
+.practices-page h3{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+}
+
+
 .prac2{
 	width: 100%;
 	color: white;
@@ -30,6 +36,7 @@
 
 .p-prac{
 	font-size:20px;
+	font-family:  'Raleway', sans-serif;
 }
 
 .bor{
@@ -44,7 +51,6 @@
 		font-size:16px !important;
 	}
 }
-
 @media(max-width: 667px){
 	.p-prac{
 		padding: 10px;
@@ -55,6 +61,12 @@
 	.sti{
 		position: sticky;
 		top:0;
+	}
+	.hide-insmall{
+		display: none;
+	}
+	.height-insmall{
+		height: 90px;
 	}
 
 }

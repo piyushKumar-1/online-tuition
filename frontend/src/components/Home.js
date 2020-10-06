@@ -9,31 +9,22 @@ import SimpleForm from './chatbot/enquiryBot';
 class ScrollButton extends React.Component {
   constructor() {
     super();
-
-
-    this.state = {
-        intervalId: 0,
-        theposition: false
-    };
   }
 
   
   scrollStep() {
-    if (window.pageYOffset === 0) {
-        clearInterval(this.state.intervalId);
-    }
-    window.scroll(0, window.pageYOffset - this.props.scrollStepInPx);
+    console.log(window.pageYOffset ,this.props.scrollStepInPx, "kalakl")
+    window.scroll(0, 0);
   }
   
   scrollToTop() {
-    let intervalId = setInterval(this.scrollStep.bind(this), this.props.delayInMs);
-    this.setState({ intervalId: intervalId });
+    this.scrollStep();
   }
   
   render () {
       return <div title='Back to top' className='scroll' 
                onClick={ () => { this.scrollToTop(); }}>
-                <small className='arrow-up glyphicon-chevron-up'>Move to Top <i className="fa fa-long-arrow-right" aria-hidden="true"></i></small>
+                <small className='glyphicon-chevron-up'><i className="fa fa-long-arrow-right" aria-hidden="true"></i></small>
               </div>;
    }
 }
@@ -199,8 +190,8 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 					<div className="cus_container  p-3">
 					<div className="cus_container text-left pp-5 p-5">
 						<h3 className="tt f-600">steps to start</h3><br/><br/><br/><br/><br/><br/>
-							<div className="row">
-								<div className="col-sm-4 w-100ic text-left m-auto">
+							<div className="row st1">
+								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
 									<div className="card" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">01.</div>
 											<div className="steps-explanation">
@@ -211,7 +202,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 									</div>
 								</div>
 
-								<div className="col-sm-4 w-100ic text-left m-auto">
+								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
 								<div className="card" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">02.</div>
 											<div className="steps-explanation">
@@ -220,18 +211,18 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											</div>
 											</div>
 								</div>
-								<div className="col-sm-4 w-100ic text-left m-auto">
+								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
 								<div className="card" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">03.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Faculty Indentification</h5>
-												<p className="step-content">LearnerZ Corner will suggest you the best faculty based on your requirements.</p>
+												<p className="step-content">LearnerZ Corner will suggest you the best faculty based on your requirements.</p><br/>
 											</div>
 											</div>
 								</div>
 							</div>
-							<div className="row">
-								<div className="col-sm-4 w-100ic text-left m-auto">
+							<div className="row st2">
+								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
 
 								<div className="card" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">04.</div>
@@ -241,7 +232,7 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											</div>
 											</div>
 								</div>
-								<div className="col-sm-4 w-100ic text-left m-auto">
+								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
 										<div className="card" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">05.</div>
 											<div className="steps-explanation">
@@ -250,12 +241,12 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											</div>
 										</div>
 								</div>
-								<div className="col-sm-4 w-100ic text-left m-auto">
+								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
 										<div className="card" data-aos="fade-up" data-aos-duration="1000" style={{paddingBottom:'64'}}>
 											<div className="steps-icon">06.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Payment of fees</h5>
-												<p className="step-content">Online fee payment, it is for per hour basis or the task based payment. The amount has to be deposited to  Leanerz Corner  account.</p>
+												<p className="step-content">Online fee payment, it is for per hour basis or the task based payment. The amount has to be deposited to  Leanerz Corner  account.</p><br/><br/>
 											</div>
 <small>*Refer terms and conditions for the cancellation policy.</small>
 

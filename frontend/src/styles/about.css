@@ -3,6 +3,11 @@
     font-family: 'Katibeh', cursive;
 }
 
+.about-page p{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+}
+
 .anima{
 	width: max-content;
 	animation-name: logo;
@@ -21,12 +26,31 @@
 	color: white;
 }
 
+.title h3{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+}
+
+.vission h3{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+}
+.values h3{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+}
+
+.values h4{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+}
+
 .ab{
 	width: max-content;
 	margin: 0px;
 	float: left;
 	font-size: 45px;
-	font-weight: 600;
+	font-weight: 800;
 }
 
 
@@ -79,7 +103,7 @@ ul{
 
 
 
-@media(max-width: 560px){
+@media(max-width: 576px){
 
 
 	.wid-max{
@@ -95,4 +119,26 @@ ul{
 		font-size: 25px;
 	}
 
+
+	.title h3{
+		font-size: 23px;
+	}
+
+	.vission h3{
+		font-size: 23px;
+	}
+	.values h3{
+		font-size: 23px;
+	}
+
+	.values h4{
+		font-size: 20px;
+	}
+	.values {
+		font-size: 15px;
+	}
+
+	.about-page p{
+		font-size: 15px;
+	}
 }

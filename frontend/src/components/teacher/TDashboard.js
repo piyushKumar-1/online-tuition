@@ -51,13 +51,15 @@ class TDashboard extends React.Component {
 		const { enrCourses } = this.props;
 		let ele = []
 		for(let i=0;i<enrCourses.length;i++){
+			var date = new Date(Date.parse(enrCourses[i].enrolled_date));
+
 			ele.push(<div className="col-md-4 p-3">
 						<div className="bg-white p-4 shadow">
 							<h4>{enrCourses[i].course_enrolled}</h4>
 							<Link to={"/teacher/courses/"+enrCourses[i].id}>
 								<h2 className="card-title">{enrCourses[i].department}</h2>
 							</Link>
-							<small className="card-title">Enrolled At: {enrCourses[i].enrolled_date}</small><br/>
+							<small className="card-title">Enrolled At: {date.toString()}</small><br/>
 							<small className="card-title">Student Name: {enrCourses[i].student_name}</small><br/>
 							<small className="card-title">Student Email: {enrCourses[i].student_email}</small>
 							<ProgressBar key="1" bgcolor="green" completed={enrCourses[i].completed}/>

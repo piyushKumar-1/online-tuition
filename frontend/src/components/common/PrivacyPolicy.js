@@ -5,7 +5,7 @@ class PrivacyPolicy extends React.Component {
 
 	componentDidMount() {
 		 window.scrollTo(0, 0)
-	 	document.title = "Privacy Policy | Learnerz Corner";
+	 	document.title = "Privacy Policy | LearnerZ Corner";
 	 
 	}
 
@@ -27,7 +27,7 @@ class PrivacyPolicy extends React.Component {
 						</div>
 						<div className="col-sm-8">
 							<div className="about-lernerz">
-								<p><i style={{fontWeight:'600'}}>Company</i> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Learnerz Corner.
+								<p><i style={{fontWeight:'600'}}>Company</i> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to LearnerZ Corner.
 We use your Data to provide better Service. By using the Service, you agree to use the information in accordance with this policy.</p>
 								<p>The platform provides a way to earn anybody who aspire to teach to student community from different parts of the world.</p>
 							</div>

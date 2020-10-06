@@ -141,7 +141,7 @@ class TMyCourse extends React.Component {
 
                     for(let j=0;j<info[i].uploads.length;j++){
                     	filepath = info[i].uploads[j].uploaded_material
-				        filepath = filepath.replace("http://127.0.0.1:8000/","")
+				        filepath = filepath.replace("https://piyush01.pythonanywhere.com/","")
 				        filename = filepath.split("/")
 				        filename = filename[filename.length-1]
 				        var date = new Date(info[i].uploads[j].upload_date)

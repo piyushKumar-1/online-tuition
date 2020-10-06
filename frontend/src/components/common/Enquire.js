@@ -99,7 +99,7 @@ export class Enquire extends React.Component {
         this.props.getCourses();
 		this.props.getSubCourses();
 		document.getElementById('courses').classList.add('active');
-		document.title = "Course Enquiry | Learnerz Corner"
+		document.title = "Course Enquiry | LearnerZ Corner"
 		window.scrollTo(0, 0)
 	}
 

@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
     is_parent = models.BooleanField(default=False)
-    teacher = models.ForeignKey(BecomeTeacher,verbose_name='Make teacher From Applications', null=True ,default=None, on_delete=models.SET_NULL)
+    teacher = models.ForeignKey(BecomeTeacher,verbose_name='Make teacher From Applications', blank=True, null=True ,default=None, on_delete=models.SET_NULL)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 

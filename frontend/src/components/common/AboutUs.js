@@ -9,7 +9,21 @@ class AboutUs extends React.Component {
 componentDidMount() {
 	document.getElementById('about').classList.add('active');
  	document.title = "About Us | Learnerz Corner"
-  	window.scrollTo(0, 0)
+  	window.scrollTo(0, 0);
+  	const txt = "ABOUT US | "
+		var i = 0;
+		var speed = 25;
+	  	function typeWriterAbus() {
+		  if (i < txt.length) {
+		    document.getElementById("msgCr").innerHTML += txt.charAt(i);
+		    i++;
+		    setTimeout(typeWriterAbus, speed);
+		  	if(i==txt.length){
+			    j=txt.length;
+		  	}
+		  }
+		}
+		typeWriterAbus();
 }
 
 componentWillUnmount(){
@@ -19,11 +33,14 @@ componentWillUnmount(){
 	render() {
 		return (
 
-			<div className="bg-white">
+			<div className="bg-white about-page">
 
-
-				<div id="background-wrap" data-aos="fade-in" data-aos-once="true">
-					<img src="static/frontend/aboutUs.jpg" />			
+				<div className="w-100 h-300px">
+					<div className="text-center wid-max" data-aos="fade-in" data-aos-once="true">
+						<h3 id="msgCr" data-aos="fade-in" data-aos-duration="300" className="ab"></h3>
+						<h3 className="ab" data-aos="fade-in" data-aos-delay="800" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
+					</div>
+					
 				</div>
 
 
@@ -97,6 +114,9 @@ componentWillUnmount(){
 								</li>
 							</ul>
 						</div>
+					</div>
+					<div className="container">
+						<h5>Read <Link className="" to="/privacy-policy">Privacy Policy</Link></h5>
 					</div>
 				</div>		
 				<br/><br/>	

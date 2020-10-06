@@ -2,6 +2,10 @@
 	font-family: 'Grenze Gotisch', cursive;
 }
 
+.section3{
+	height: max-content;
+}
+
 .mt-20{
 	margin-top: 20%;
 }
@@ -136,7 +140,9 @@
 	width: max-content;
 }
 
-
+.m-auto_cus{
+	margin: auto;
+}
 
 
 
@@ -159,5 +165,13 @@
 	.special-admin:hover{
 		bottom: 70px;
 		right: 0px;
+	}
+
+	.wid-max{
+		width:auto;
+		padding-top: 30px; 
+	}
+	.m-auto_cus{
+		margin: none;
 	}
 }

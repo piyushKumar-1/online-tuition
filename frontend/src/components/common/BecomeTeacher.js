@@ -43,9 +43,9 @@ export class BecomeTeacher extends React.Component {
         this.props.getCourses();
 		this.props.getSubCourses();
 		document.getElementById('join').classList.add('active');
-		document.title = "Become Teacher | Learnerz Corner"
+		document.title = "Become Instructor | LearnerZ Corner"
 		window.scrollTo(0, 0)
-		const txt = "Become Teacher | "
+		const txt = "Become Instructor | "
 	var i = 0;
 	var speed = 25;
 		function typeWriterBC() {
@@ -112,11 +112,11 @@ export class BecomeTeacher extends React.Component {
     	console.log(this.state)
     } 
     onPhoneChange = (e) => {
-    	if(e.target.value.length<11){
-    		this.setState({ [e.target.name]: e.target.value, ph_help:[<p style={{color:"red"}}>Require 10 digits</p>], ph: false })
+    	if(e.target.value.length<=9){
+    		this.setState({ [e.target.name]: e.target.value, ph_help:[<p style={{color:"red"}}>Write correct Phone number</p>], ph: false })
     	} 
-    	if(e.target.value.length==10) {
-    		this.setState({ ph_help: 'Good', ph:true })
+    	if(e.target.value.length>9 && e.target.value.length<15) {
+    		this.setState({ ph_help: 'Good', ph:true, [e.target.name]: e.target.value })
     	}
     }
     onTypeChange = (e) => {
@@ -200,6 +200,24 @@ export class BecomeTeacher extends React.Component {
 								<i className="fa fa-angle-down black p-2"/>
 							</div>
 						</div>
+						<div className="container">
+							<div className="p-4">
+								<h4>Why Join LearnerZ Corner?</h4><br/>
+								<p>Anybody has the zeal of teaching engineering subjects,
+and computer languages are suitable to be part of Learnerz Corner. If you feel happy to share and teach others in an
+easy and interesting manner, you are in the right
+place to kickstart your part-time/ full-time
+online teaching job at Learnerz Corner.The instructors will be benefitted by hourly payment or task based payment. If working professionals, students want to earn part-time and qualified women want to kickstart their online teaching career,
+register yourself as instructor at Learnerz Corner. Fill your details and upload your resume, our team will contact you and found suitable you will be enrolled as instructors in Learnerz Corner.
+All the best, we look forward you to work together and make
+learning easy and interesting. </p>
+							</div>
+						</div>
+						<div className="container">
+							<div className="p-4">
+								<h4>Join Now! It's super easy</h4>
+							</div>
+						</div>
 						<form onSubmit={this.onSubmit}  data-aos="fade-up" data-aos-duration="600" className="mt-5 mb-5" encType="multipart/form-data">
 							<div className="form-row">
 								<div className="col-md-6">
@@ -235,6 +253,7 @@ export class BecomeTeacher extends React.Component {
 						            <div className="form-group m-auto p-2 md-form w-75">
 						                <label for="phone">Contact Number</label>
 						                <input
+						                  required
 						                  id="phone"
 						                  type="number"
 						                  className="form-control"
@@ -250,8 +269,8 @@ export class BecomeTeacher extends React.Component {
 						    	<div className="col-md-6">
 						            <div className="form-group m-auto p-2 md-form w-75">
 						                <label>Department</label>
-						                <select class="form-control" onChange={this.onChange} name="department" value={department}>
-							                <option>Choose Department</option>
+						                <select class="form-control" onChange={this.onChange} name="department" value={department} required>
+							                <option value="">Choose Department</option>
 							                { this.checkhshouldi() ? this.department_option() : ''}
 							            </select>
 						            </div>
@@ -261,8 +280,8 @@ export class BecomeTeacher extends React.Component {
 						    	<div className="col-md-6">
 						            <div className="form-group m-auto p-2 md-form w-75">
 						                <label>Subject 1</label>
-						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub0" value={sub0}>
-							                <option>Choose Subject</option>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub0" value={sub0} required>
+							                <option value="">Choose Subject</option>
 							                { this.props.values.isSLoading ? this.subject_option() : ''}
 							            </select>
 						            </div>
@@ -270,8 +289,8 @@ export class BecomeTeacher extends React.Component {
 						    	<div className="col-md-6">
 						            <div className="form-group m-auto p-2 md-form w-75">
 						                <label>Subject 2</label>
-						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub1" value={sub1}>
-							                <option>Choose Subject</option>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub1" value={sub1} required>
+							                <option value="">Choose Subject</option>
 							                { this.props.values.isSLoading ? this.subject_option() : ''}
 							            </select>
 						            </div>
@@ -281,8 +300,8 @@ export class BecomeTeacher extends React.Component {
 						    	<div className="col-md-6">
 						            <div className="form-group m-auto p-2 md-form w-75">
 						                <label>Subject 3</label>
-						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub2" value={sub2}>
-							                <option>Choose Subject</option>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub2" value={sub2} required>
+							                <option value="">Choose Subject</option>
 							                { this.props.values.isSLoading ? this.subject_option() : ''}
 							            </select>
 						            </div>
@@ -290,8 +309,8 @@ export class BecomeTeacher extends React.Component {
 						    	<div className="col-md-6">
 						            <div className="form-group m-auto p-2 md-form w-75">
 						                <label>Subject 4</label>
-						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub3" value={sub3}>
-							                <option>Choose Subject</option>
+						                <select class="form-control" id="subjectOptions" onChange={this.onChange} name="sub3" value={sub3} required>
+							                <option value="">Choose Subject</option>
 							                { this.props.values.isSLoading ? this.subject_option() : ''}
 							            </select>
 						            </div>
@@ -302,6 +321,7 @@ export class BecomeTeacher extends React.Component {
 						            <div className="form-group m-auto p-2 md-form w-75">
 						                <label>Experience</label>
 						                <input
+						                  required
 						                  type="text-box"
 						                  className="form-control"
 						                  name="experience"
@@ -327,8 +347,9 @@ export class BecomeTeacher extends React.Component {
 						    <div className="form-row">
 						        <div className="col-md-6">
 						            <div className="form-group m-auto p-2 md-form w-75">
-						                <label>Upload(if any)</label>
+						                <label>Upload Resume*</label>
 						                <input
+						                  required
 						                  type="file"
 						                  className="form-control-file"
 						                  name="upload"

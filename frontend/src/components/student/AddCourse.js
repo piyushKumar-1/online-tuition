@@ -137,7 +137,7 @@ class AddCourse extends React.Component {
 				        					<img className="pr-2 img-spin float-right" height="50" src={"/static/frontend/"+subCourses[j].id+".svg"} />
 		        						</div>
         							</div>
-	        						<ScrollLink to="selSub" activeClass="active" smooth={true} offset={-80} duration={100} onClick={this.makeSelected} className="overlay m-auto text-center p-4" id={j}>
+	        						<ScrollLink to="selSub" activeClass="active" smooth={true} offset={-80} duration={100} onClick={this.makeSelected} className="overlay m-auto text-center p-4" id={subCourses[j].id-1}>
 									</ScrollLink>
 
         						</div>

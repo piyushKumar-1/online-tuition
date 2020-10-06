@@ -132,7 +132,7 @@ export class Feedback extends React.Component {
 				<Sidebar /> 
 
 				<div className="container top-300">
-					<div className="p-5 pt-0">
+					<div className="p-5 pt-0 mb-5">
 						<div className="row">
 							<div className="col-md-6">
 							{this.props.student.status===null

@@ -30,6 +30,7 @@ class Dashboard extends React.Component {
 		const { enrCourses } = this.props;
 		let ele = [];
 		for(let i=0;i<enrCourses.length;i++){
+			var date = new Date(Date.parse(enrCourses[i].enrolled_date));
 			ele.push(
 					<div className="col-md-4 p-3">
 						<div className="bg-white p-4 shadow">
@@ -38,7 +39,7 @@ class Dashboard extends React.Component {
 							<Link to={"/student/courses/"+enrCourses[i].id}>
 								<h2 className="card-title">{enrCourses[i].department}</h2>
 							</Link>
-							<small className="card-title">Enrolled At: {enrCourses[i].enrolled_date}</small>
+							<small className="card-title">Enrolled At: {date.toString()}</small>
 							<ProgressBar key="1" bgcolor="green" completed={enrCourses[i].completed}/>
 						</div>
 					</div>
