@@ -1,4 +1,5 @@
-import React from 'react'
+import { Link, Redirect } from 'react-router-dom';
+import React from 'react';
 import { getEnrCourses, getSyllabus, postSyllabus } from '../../actions/studentActions.js'
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar.js';
@@ -10,6 +11,8 @@ export class Pay extends React.Component {
 	render() {
 		return (
 			<>
+			   { this.props.user.show_payment_option ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
+
 				<Sidebar /> 
 
 				<div className="container top-300">
@@ -30,6 +33,9 @@ export class Pay extends React.Component {
 
 
 
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+});
 
-
-export default Pay;
+export default connect(mapStateToProps)(Pay)

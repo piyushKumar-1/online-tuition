@@ -62,6 +62,7 @@ export class App extends React.Component {
                             <Route exact path="/privacy-policy" component={PrivacyPolicy} />
                             <Route exact path="/login" component={LoginComp} />
                             <Route exact path="/register" component={RegisterComp} />
+                            <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
 
                             <PrivateRoute exact path="/student/timetable" component={TimeTable} />
                             <PrivateRoute exact path="/student/dashboard" component={Dashboard} />
@@ -72,18 +73,13 @@ export class App extends React.Component {
                             <PrivateRoute exact path="/student/feedback" component={Feedback} />
                             <PrivateRoute exact path={'/student/courses/:myCourseId'} component={MyCourse} />
 
-
-
-
-
-                            <PrivateRoute exact path="/teacher/timetable" component={TTimeTable} />
+                            <TeacherRoute exact path="/teacher/timetable" component={TTimeTable} />
                             <TeacherRoute exact path="/teacher/dashboard" component={TDashboard}/>
                             <TeacherRoute exact path="/teacher/courses" component={TDashboard}/>
                             <TeacherRoute exact path="/teacher/uploads" component={TUploads}/>
                             <TeacherRoute exact path="/teacher/profile" component={TProfile}/>
                             <TeacherRoute exact path="/teacher/delete/:id/:cur_id" component={TDelete}/>
-                            <PrivateRoute exact path={'/teacher/courses/:myCourseId'} component={TMyCourse} />
-                            <Route exact path={'/reset/confirmation/:uidb64/:token/'} component={ResetPassword} />
+                            <TeacherRoute exact path={'/teacher/courses/:myCourseId'} component={TMyCourse} />
                         </Switch>
                         <Footer />
                     </Router>

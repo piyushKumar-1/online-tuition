@@ -62,3 +62,4 @@ class Feedback(models.Model):
 	about_instructor = models.CharField(max_length=200)
 	concept = models.CharField(max_length=200)
 	about_session = models.CharField(max_length=200)
+	star_c = models.IntegerField()

@@ -16,10 +16,12 @@ export class Feedback extends React.Component {
 		abi: false,
 		st: false,
 		askFeed: true,
+		sc: false,
 		department_id: "",
 		conceptClearity: "",
 		aboutSession: "",
-		aboutInstructor: ""
+		aboutInstructor: "",
+		star_c:'',
 	}
 
 	componentWillUnmount(){
@@ -40,13 +42,21 @@ export class Feedback extends React.Component {
 	makePrev(){
 		const { feeds } = this.props;
 		var ele = [];
+		var stars = [];
 		for(let i=0;i<feeds.length;i++){
+			stars = [];
+			const ls = feeds[i].star_c;
+			for(let k=0;k<ls;k++){
+				stars.push(<img src="https://i.pinimg.com/originals/7e/28/89/7e288947c2c179f39398a72fdad19e0c.png" width="20" className="float-left" />);
+			}
+			console.log(stars)
 			ele.push(
 				<>
 					<div className="card shadow rounded">
 						<div className="card-body">
-							<h6>About Session:{feeds[i].about_session}</h6>
-							<h6>About Instructor:{feeds[i].about_instructor}</h6>
+							<h6>About Session: {feeds[i].about_session}</h6>
+							<h6>About Instructor: {feeds[i].about_instructor}</h6>
+							<div><h6 className="float-left">Stars:</h6> {stars}</div>
 						</div>
 					</div>
 					<br/>
@@ -72,6 +82,7 @@ export class Feedback extends React.Component {
 
 
     getF(){
+    	console.log(this.state.department_id)
     	this.props.getFeed(this.state.department_id)
     	this.setState({
     		askFeed: false
@@ -80,7 +91,8 @@ export class Feedback extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		const { department_id, conceptClearity, aboutSession, aboutInstructor, top, st, abs, abi, cc } = this.state;
+		const { department_id, conceptClearity, aboutSession, aboutInstructor, top, st, abs, abi, cc, star_c, sc } = this.state;
+		console.log(department_id)
 		if(department_id===""){
 			this.setState({
 				st: true
@@ -121,8 +133,18 @@ export class Feedback extends React.Component {
 				cc: false
 			});
 		}
-		if(!st && !top && !abs && !abi && !top){
-			this.props.postFeed(department_id, conceptClearity, aboutSession, aboutInstructor);
+		if(star_c===""){
+			this.setState({
+				sc: true
+			});
+			return 0
+		} else {
+			this.setState({
+				sc: false
+			});
+		}
+		if(!st && !top && !abs && !abi && !top && !sc){
+			this.props.postFeed(department_id, conceptClearity, aboutSession, aboutInstructor, star_c);
 		}
 	}
 
@@ -179,6 +201,16 @@ export class Feedback extends React.Component {
 							                value={this.state.conceptClearity}
 							            />
 						                { this.state.cc ? <small className="form-help red">Please rate the level of concept clearity...</small> : <></>}
+						            </div>
+						            <div className="form-group" onChange={this.onChange}>
+						            <label>Stars: &nbsp;&nbsp;</label>
+						            	<input type="radio" id="stars0" name="star_c" value="0" />0&nbsp;&nbsp;
+						            	<input type="radio" id="stars1" name="star_c" value="1" />1&nbsp;&nbsp;
+						            	<input type="radio" id="stars2" name="star_c" value="2" />2&nbsp;&nbsp;
+						            	<input type="radio" id="stars3" name="star_c" value="3" />3&nbsp;&nbsp;
+						            	<input type="radio" id="stars4" name="star_c" value="4" />4&nbsp;&nbsp;
+						            	<input type="radio" id="stars5" name="star_c" value="5" />5&nbsp;&nbsp;
+						                { this.state.sc ? <small className="form-help red">Please rate a level</small> : <></>}
 						            </div>
 							        <div className="form-group">
 						              <button type="submit" id="ssbtn" disabled={this.state.disabled} className="btn btn-primary">

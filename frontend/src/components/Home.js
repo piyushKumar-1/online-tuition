@@ -191,8 +191,8 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 					<div className="cus_container text-left pp-5 p-5">
 						<h3 className="tt f-600">steps to start</h3><br/><br/><br/><br/><br/><br/>
 							<div className="row st1">
-								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
-									<div className="card" data-aos="fade-up" data-aos-duration="1000">
+								<div className="card  text-left">
+									<div className="" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">01.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Create Account</h5>
@@ -202,8 +202,8 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 									</div>
 								</div>
 
-								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
-								<div className="card" data-aos="fade-up" data-aos-duration="1000">
+								<div className="card  text-left">
+								<div className="" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">02.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Course Enquiry</h5>
@@ -211,29 +211,28 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											</div>
 											</div>
 								</div>
-								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
-								<div className="card" data-aos="fade-up" data-aos-duration="1000">
-											<div className="steps-icon">03.</div>
+								<div className="card  text-left">
+								<div className="" data-aos="fade-up" data-aos-duration="1000">
+										<div className="steps-icon">03.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Faculty Indentification</h5>
 												<p className="step-content">LearnerZ Corner will suggest you the best faculty based on your requirements.</p><br/>
 											</div>
-											</div>
+										</div>
 								</div>
 							</div>
-							<div className="row st2">
-								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
-
-								<div className="card" data-aos="fade-up" data-aos-duration="1000">
+							<div className="row st1">
+								<div className="card text-left">
+									<div className="" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">04.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Free demo Session</h5>
 												<p className="step-content">A free demo session for 30 minutes is arranged based on the comfort time to assess the suggested faculty is satisfying your expectations. To have the demo session successful it is advised to have a strong internet connection, earphone and a working phone or laptop.</p>
 											</div>
-											</div>
+										</div>
 								</div>
-								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
-										<div className="card" data-aos="fade-up" data-aos-duration="1000">
+								<div className="card  text-left">
+										<div className="" data-aos="fade-up" data-aos-duration="1000">
 											<div className="steps-icon">05.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Feedback  Collection</h5>
@@ -241,8 +240,8 @@ $('.carosel-control-left').parent().find('.carosel-item').last().insertBefore($(
 											</div>
 										</div>
 								</div>
-								<div className="col-md-6 col-lg-4 w-100ic text-left m-auto">
-										<div className="card" data-aos="fade-up" data-aos-duration="1000" style={{paddingBottom:'64'}}>
+								<div className="card  text-left">
+										<div className="" data-aos="fade-up" data-aos-duration="1000" style={{paddingBottom:'64'}}>
 											<div className="steps-icon">06.</div>
 											<div className="steps-explanation">
 												<h5 className="step-h4">Payment of fees</h5>

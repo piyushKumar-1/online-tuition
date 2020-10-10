@@ -10,9 +10,11 @@ class CustomUser(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
     is_parent = models.BooleanField(default=False)
     teacher = models.ForeignKey(BecomeTeacher,verbose_name='Make teacher From Applications', blank=True, null=True ,default=None, on_delete=models.SET_NULL)
+    show_payment_option = models.BooleanField(default=False)
+    is_teacher = models.BooleanField(default=False)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-
     objects = CustomUserManager()
     
     def __str__(self):

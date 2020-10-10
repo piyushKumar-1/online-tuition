@@ -41,13 +41,19 @@ class Sidebar extends React.Component {
 							</div>
 						</li>
 					</Link>
-					<Link to="/student/pay">	
-						<li className="border" id="pay">
-							<div className="side-item">
-								<h4>Pay Fees</h4>
-							</div>
-						</li>
-					</Link>
+					{ 
+						this.props.user.show_payment_option 
+						?
+						<Link to="/student/pay">	
+							<li className="border" id="pay">
+								<div className="side-item">
+									<h4>Pay Fees</h4>
+								</div>
+							</li>
+						</Link>
+						: 
+						''
+					}
 					<div onClick={() => {this.props.logoutUser()}} className="lg">
 						<li className="border" id="lgout">
 							<div className="side-item">
