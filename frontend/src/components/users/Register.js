@@ -22,8 +22,6 @@ export class Register extends Component {
     misMatch:false,
     passerr: '',
     bor: {
-      border: "3px solid black",
-      borderRadius: "20px",
       background: "white"
     }
   };
@@ -41,7 +39,21 @@ checkhshouldi(){
     this.props.getSubjects();
         this.props.getCourses();
     this.props.getSubCourses();
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+    if(window.location.href.match(/login+/) || window.location.href.match(/register+/)){
+      this.setState({bor:{
+          border: "0px solid black",
+          borderRadius: "20px",
+          background: "white",
+          boxShadow: "0px 0px 10px black"
+        }
+      })
+    } else { 
+      this.setState({bor:{
+          background: "white"
+      }})
+    }
+
   }
 
   department_option(x){
@@ -103,10 +115,16 @@ checkhshouldi(){
 
 showPass() {
   var x = document.getElementById("pass");
+  var y = document.getElementById("pass2");
   if (x.type === "password") {
     x.type = "text";
   } else {
     x.type = "password";
+  }
+  if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
   }
 } 
     validate = () => {
@@ -119,15 +137,17 @@ showPass() {
               } 
               if(this.state.password.length>8){
                 this.setState({ disabled: true, misMatch: true , passerr: "Password Should be less than 8 in size"});
+                return 0;
               }
               if(this.state.password == this.state.password.toUpperCase()){
                 this.setState({ disabled: true, misMatch: true , passerr: "Password Should have atleast one lowercase letter(a-z)"});
+                return 0;
               }
               if(this.state.password == this.state.password.toLowerCase()){
                 this.setState({ disabled: true, misMatch: true , passerr: "Password Should have atleast one uppercase letter(A-Z)"});
+                return 0;
               } else {
                 this.setState({ disabled: false });
-
               }
 
             }
@@ -142,7 +162,8 @@ showPass() {
         } else if(this.state.course=='' && this.state.occupation==''){
           this.setState({ disabled: true });
         }
-
+        
+        return 0;
     }
 
 
@@ -248,7 +269,7 @@ showPass() {
 
       <div className="m-auto p-1">
         <div className="p-5 mt-2"  style={this.state.bor}>
-          <h2 className="text-center">Register</h2>
+          <h2 className="text-center f-reg">Register</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>First Name</label>
@@ -311,6 +332,7 @@ showPass() {
             <div className="form-group">
               <label>Confirm Password</label>
               <input
+                id="pass2"
                 type="password"
                 className="form-control"
                 name="password2"

@@ -13,6 +13,21 @@ componentDidMount() {
  	document.getElementById('contact').classList.add('active');
  	document.title = "Contact Us | LearnerZ Corner"
   	window.scrollTo(0, 0)
+  	const txt = "Contact Us | "
+	var i = 0;
+	var speed = 25;
+		function typeWriterC() {
+	  if (i < txt.length) {
+	    document.getElementById("msgC").innerHTML += txt.charAt(i);
+	    i++;
+	    setTimeout(typeWriterC, speed);
+	  	if(i==txt.length){
+		    j=txt.length;
+	  	}
+	  }
+	}
+	typeWriterC();
+	
 }
 
 state = {
@@ -49,25 +64,17 @@ componentWillUnmount(){
    
 }
 
-renderPic = () => {
-	var k;
-	k = (
-		<div id="background-wrap" data-aos="fade-in" data-aos-once="true">
-			<img src="static/frontend/contactUs.jpg" />			
-		</div>
-	)
-	return [k]
-}
 	render() {
 		const {name, subject, query, email} = this.state;
 		return (
 				<div className="bg-white">
-					{   this.props.isAuthenticated
-						? 
-						''
-						:
-						this.renderPic()
-					}
+					<div className="w-100 h-300px">
+					<div className="text-center wid-max" data-aos="fade-in" data-aos-once="true">
+						<h3 id="msgC" data-aos="fade-in" data-aos-duration="300" className="ab"></h3>
+						<h3 className="ab" data-aos="fade-in" data-aos-delay="800" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
+					</div>
+					
+				</div>
 
 
 

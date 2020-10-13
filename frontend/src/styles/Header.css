@@ -585,6 +585,12 @@ max-width: 30%;
 }
 
 
+.model-body{
+  color: #0f3b66 !important;
+  font-weight: 700;
+}
+
+
 .pp-5 .row{
   padding-top: 60px;
 }
@@ -593,16 +599,17 @@ max-width: 30%;
   width: 100%;
 font-size: 17px;
 line-height: 22px;
-color: #666666;
+color: black;
 padding: 0px;
 margin: 0px;
+font-family: cursive;
 }
 
 .step-h4{
   padding: 50px 0px 20px 0px;
 margin: 0px 0px 0px 0px;
 font-size: 21px;
-color: #4e4e4e;
+color: #9d2a2ab8;
 font-weight: 600;
 }
 

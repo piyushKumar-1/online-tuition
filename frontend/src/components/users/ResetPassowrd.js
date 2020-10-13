@@ -12,6 +12,7 @@ export class ResetPassword extends Component {
     password2: '',
     token: '',
     uidb64: '',
+    err:'',
     disabled: true,
     misMatch:false,
     show:true,
@@ -66,13 +67,21 @@ export class ResetPassword extends Component {
   onPass2Change = (e) => {
     this.setState({ [e.target.name]: e.target.value }, () =>{
         if(this.state.password!=this.state.password2){
-          this.setState({ misMatch: true, disabled: true });
+          this.setState({ misMatch: true, disabled: true, err: "Password Didn't match" });
+          return 0;
         } else {
           this.setState({ misMatch: false });
           if(this.state.password.length>=4 && this.state.password2.length>=4){
               this.setState({ disabled: false });
           } else {
-            this.setState({ disabled: true });
+            this.setState({ misMatch: true, disabled: true, err: "Minimum length 4 is Required" });
+            return 0;
+          }
+          if(this.state.password.length>8){
+              this.setState({ misMatch: true, disabled: true, err: "Maximum Length is 8" });
+              return 0;
+          } else {
+            this.setState({ disabled: false });
           }
         }
     });
@@ -80,7 +89,7 @@ export class ResetPassword extends Component {
 
   render() {
 
-    const { password, password2,  token, uidb64 } = this.state;
+    const { password, password2,  token, uidb64, err } = this.state;
     const passwordChangeBody = (
         <form onSubmit={this.onSubmit}>
                 <div className="form-group">
@@ -102,7 +111,7 @@ export class ResetPassword extends Component {
                     onChange={this.onPass2Change}
                     value={password2}
                   />
-                  {this.state.misMatch ? <span style={{color: "red"}}>Password Didn't match</span> : ""}
+                  {this.state.misMatch ? <span style={{color: "red"}}>{err}</span> : ""}
 
                 </div>
 
@@ -134,8 +143,8 @@ export class ResetPassword extends Component {
             <div className="p-5 mt-2">
               <h2 className="text-center">Reset Password</h2>
 
-              {this.props.reset.chk ? loading() : <div className="m-auto w-maxc p-5"><i className="fas fa-spinner fa-5x fa-spin"></i></div> }
-
+              { this.props.reset.chk ? loading() : <div className="m-auto w-maxc p-5"><i className="fas fa-spinner fa-5x fa-spin"></i></div> }
+              { this.props.isAuthenticated ? this.props.user.teacher!=null ? <Redirect to="/teacher/dashboard"/> : <Redirect to="/student/dashboard"/> : '' }
 
             </div>
           </div>
@@ -146,6 +155,8 @@ export class ResetPassword extends Component {
 
 const mapStateToProps = (state) => ({
   reset: state.reset,
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps, { resetPassword, checkToken })(ResetPassword);

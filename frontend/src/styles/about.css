@@ -8,6 +8,9 @@
 	font-weight: 300;
 }
 
+
+
+
 .anima{
 	width: max-content;
 	animation-name: logo;
@@ -45,12 +48,23 @@
 	font-weight: 600;
 }
 
+.f-reg{
+	color: white;
+    background: black;
+    margin: auto;
+    width: max-content;
+    padding: 10px;
+    font-size: 26px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 9px #151212;
+}
+
 .ab{
 	width: max-content;
 	margin: 0px;
 	float: left;
 	font-size: 45px;
-	font-weight: 800;
+	font-weight: 600;
 }
 
 

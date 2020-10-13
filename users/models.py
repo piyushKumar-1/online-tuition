@@ -6,6 +6,8 @@ from .managers import CustomUserManager
 
 
 class CustomUser(AbstractUser):
+    class Meta:
+        verbose_name_plural = "Teachers"
     username = None
     email = models.EmailField(_('email address'), unique=True)
     is_parent = models.BooleanField(default=False)

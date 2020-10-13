@@ -6,6 +6,8 @@ from teacher.models import BecomeTeacher
 
 
 class Events(models.Model):
+	class Meta:
+		verbose_name = "Live Classes"
 	topic = models.CharField(max_length=400)
 	student = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 	event_time = models.TimeField()

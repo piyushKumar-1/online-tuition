@@ -17,9 +17,13 @@ class CourseEnrolledAdmin(admin.ModelAdmin):
     
 
 class ChatAdmin(admin.ModelAdmin):
-    list_display = ('student', 'teacher', 'msg', 'msg_time', 'approval')
+    list_display = ('student', 'teacher', 'msg', 'msg_time', 'msg_from', 'approval')
     exclude = ('msg_side',)
     ordering = ('student', 'approval', 'msg_time')
+    def msg_from(self, obj):
+        if obj.msg_side:
+            return "Student"
+        return "Teacher"
 
 
 class EventsAdmin(admin.ModelAdmin):

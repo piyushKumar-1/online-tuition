@@ -14,7 +14,27 @@ export class Login extends Component {
     password: '',
     reset: false,
     disabled: true,
+    bor: {
+      background: "white"
+    }
   };
+
+  componentDidMount(){
+    if(window.location.href.match(/login+/) || window.location.href.match(/register+/)){
+      this.setState({bor:{
+          border: "0px solid black",
+          borderRadius: "20px",
+          background: "white",
+          boxShadow: "0px 0px 10px black"
+        }
+      })
+    } else { 
+      this.setState({bor:{
+          background: "white"
+      }})
+    }
+
+  }
 
   static propTypes = {
     setDefaultReset: PropTypes.func.isRequired,
@@ -120,9 +140,9 @@ export class Login extends Component {
             )
 
      const loginBody = (
-            <div className="m-auto mb-0">
-          <div className="p-5 mt-2" id="form-ahead">
-            <h2 className="text-center">Login</h2>
+            <div className="m-auto p-1" style={this.state.bor}>
+          <div className="p-5 mt-2 mb-4" id="form-ahead">
+            <h2 className="text-center f-reg">Login</h2>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label>Email</label>

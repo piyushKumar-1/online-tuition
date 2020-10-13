@@ -42,14 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'query',
+    'knox',
     'frontend',
     'users',
-    'knox',
     'courses',
     'enquiry',
     'teacher',
     'student'
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)

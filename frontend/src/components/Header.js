@@ -229,8 +229,8 @@ export class Header extends Component {
 		const modal = (
 		    <Fragment>
 
-				    <button type="button" className="btn logbtn btn-ouline-dark" data-toggle="modal" data-target="#loginModal"><i className="fa fa-sign-in black"></i>&nbsp;Login</button>
-                    <button type="button" className="btn logbtn btn-ouline-dark" data-toggle="modal" data-target="#registerModal"><i className="fa fa-user-plus black"></i>&nbsp;Register</button>
+				    <button type="button" className="btn logbtn btn-ouline-dark" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#loginModal"><i className="fa fa-sign-in black"></i>&nbsp;Login</button>
+                    <button type="button" className="btn logbtn btn-ouline-dark" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#registerModal"><i className="fa fa-user-plus black"></i>&nbsp;Register</button>
 
                     <div>
 					    <div className="modal fade m-auto" id="loginModal" role="dialog">
