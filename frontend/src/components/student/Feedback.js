@@ -17,6 +17,10 @@ export class Feedback extends React.Component {
 		st: false,
 		askFeed: true,
 		sc: false,
+		tl:false,
+		ac:false,
+		anyCom:'',
+		techLevel: '',
 		department_id: "",
 		conceptClearity: "",
 		aboutSession: "",
@@ -69,13 +73,24 @@ export class Feedback extends React.Component {
 
 
 	onChange = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value
-		});
-	
 		if(e.target.name=="department_id"){
 			this.setState({
 				askFeed: true
+			});
+		}
+		if(e.target.name=="anyCom"){
+			if(e.target.value.length<=50){
+				this.setState({
+					[e.target.name]: e.target.value
+				});
+			} else {
+				this.setState({
+					ac: true
+				});
+			}
+		} else {
+			this.setState({
+				[e.target.name]: e.target.value
 			});
 		}
 	}
@@ -91,7 +106,7 @@ export class Feedback extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		const { department_id, conceptClearity, aboutSession, aboutInstructor, top, st, abs, abi, cc, star_c, sc } = this.state;
+		const { department_id, conceptClearity, aboutSession, aboutInstructor, techLevel,anyCom, ac, top, tl, st, abs, abi, cc, star_c, sc } = this.state;
 		console.log(department_id)
 		if(department_id===""){
 			this.setState({
@@ -133,6 +148,16 @@ export class Feedback extends React.Component {
 				cc: false
 			});
 		}
+		if(techLevel===""){
+			this.setState({
+				tl: true
+			});
+			return 0
+		} else {
+			this.setState({
+				tl: false
+			});
+		}
 		if(star_c===""){
 			this.setState({
 				sc: true
@@ -143,8 +168,17 @@ export class Feedback extends React.Component {
 				sc: false
 			});
 		}
-		if(!st && !top && !abs && !abi && !top && !sc){
-			this.props.postFeed(department_id, conceptClearity, aboutSession, aboutInstructor, star_c);
+		if(anyCom.length<=50){
+			this.setState({
+				ac:false
+			})
+		} else {
+			this.setState({
+				ac: true
+			});
+		}
+		if(!st && !top && !abs && !abi && !top && !sc && !tl){
+			this.props.postFeed(department_id, conceptClearity, aboutSession, aboutInstructor, star_c, techLevel, anyCom);
 		}
 	}
 
@@ -201,6 +235,28 @@ export class Feedback extends React.Component {
 							                value={this.state.conceptClearity}
 							            />
 						                { this.state.cc ? <small className="form-help red">Please rate the level of concept clearity...</small> : <></>}
+						            </div>
+						            <div className="form-group">
+						            	<label>Technology level used in online class</label>
+						            	<input
+							                type="text"
+							                className="form-control"
+							                name="techLevel"
+							                onChange={this.onChange}
+							                value={this.state.techLevel}
+							            />
+						                { this.state.tl ? <small className="form-help red">Please write Something</small> : <></>}
+						            </div>
+						            <div className="form-group">
+						            	<label>Any Comments</label>
+						            	<input
+							                type="text"
+							                className="form-control"
+							                name="anyCom"
+							                onChange={this.onChange}
+							                value={this.state.anyCom}
+							            />
+						                { this.state.ac ? <small className="form-help red">Max 50 words...</small> : <></>}
 						            </div>
 						            <div className="form-group" onChange={this.onChange}>
 						            <label>Stars: &nbsp;&nbsp;</label>

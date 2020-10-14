@@ -27,6 +27,9 @@ class CoursesEnrolled(models.Model):
 	completed = models.IntegerField(default=0)
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.SET_DEFAULT, null=True, blank=True, default=None)
 
+	def __str__(self):
+		return "Course: "+self.course_enrolled.course_name+", Department: "+self.department.sub_course_name 
+
 class SubjectEnrolled(models.Model):
 	enrollment = models.ForeignKey(CoursesEnrolled, on_delete=models.CASCADE)
 	enrolled_sub = models.ForeignKey(Subjects, on_delete=models.SET_NULL, null=True, default="Check Uploads", blank=True)
@@ -65,3 +68,8 @@ class Feedback(models.Model):
 	concept = models.CharField(max_length=200)
 	about_session = models.CharField(max_length=200)
 	star_c = models.IntegerField()
+	techLevel = models.CharField(max_length=100, verbose_name="Technology level used in online class")
+	anyCom = models.CharField(max_length=51, verbose_name="Any Comment")
+
+	def __str__(self):
+		return "By "+self.course_enrolled.student.first_name+" for "+self.course_enrolled.course_enrolled.course_name+" course"

@@ -274,7 +274,7 @@ export const getSyllabus = (FD) => (dispatch, getState) => {
 
 
 
-export const postFeed = (department_id, conceptClearity, aboutSession, aboutInstructor, star_c) => (dispatch, getState) => {
+export const postFeed = (department_id, conceptClearity, aboutSession, aboutInstructor, star_c, techLevel, anyCom) => (dispatch, getState) => {
 
     const token = getState().auth.token;
 
@@ -288,7 +288,7 @@ export const postFeed = (department_id, conceptClearity, aboutSession, aboutInst
     if (token) {
         config.headers['Authorization'] = `Token ${token}`;
     }
-    let data = {'star_c':star_c, 'course_enrolled':department_id, 'concept':conceptClearity, 'about_session': aboutSession, 'about_instructor':aboutInstructor}
+    let data = {'anyCom':anyCom, 'techLevel':techLevel, 'star_c':star_c, 'course_enrolled':department_id, 'concept':conceptClearity, 'about_session': aboutSession, 'about_instructor':aboutInstructor}
     axios
         .post(`/api/auth/student/feedback`, data, config)
         .then(res => {

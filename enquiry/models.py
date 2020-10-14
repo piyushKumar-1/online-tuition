@@ -10,7 +10,7 @@ from teacher.models import BecomeTeacher
 class TeacherMessage(models.Model):
 	class Meta:
 		verbose_name_plural = "Teacher Messages"
-	message = models.CharField(max_length=200)
+	message = models.CharField(max_length=200, blank=True, null=True)
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.CASCADE)
 	reply = models.CharField(max_length=300, blank=True, null=True)
 	seen = models.BooleanField(default=False)

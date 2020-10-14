@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Events, CoursesEnrolled, ChatModel
+from .models import Events, CoursesEnrolled, ChatModel, Feedback
 from courses.models import Courses, Subjects, Subjects
 
 
@@ -24,6 +24,10 @@ class ChatAdmin(admin.ModelAdmin):
         if obj.msg_side:
             return "Student"
         return "Teacher"
+    def save_model(self, request, obj, form, change):
+        obj.msg_side = False
+        super().save_model(request, obj, form, change)
+
 
 
 class EventsAdmin(admin.ModelAdmin):
@@ -36,6 +40,7 @@ class EventsAdmin(admin.ModelAdmin):
 admin.site.register(Events, EventsAdmin)
 admin.site.register(ChatModel, ChatAdmin)
 admin.site.register(CoursesEnrolled, CourseEnrolledAdmin)
+admin.site.register(Feedback)
 
 
 # Register your models here.
