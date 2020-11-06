@@ -20,6 +20,7 @@ import Pay from './student/Pay.js';
 import UploadSyllabus from './student/UploadSyllabus.js';
 import TDashboard from './teacher/TDashboard.js';
 import TMyCourse from './teacher/TMyCourse.js';
+import TAvailable from './teacher/TAvailable.js';
 import TUploads from './teacher/TUploads.js';
 import TTimeTable from './teacher/TTimeTable.js';
 import TProfile from './teacher/TProfile.js';
@@ -73,6 +74,7 @@ export class App extends React.Component {
                             <PrivateRoute exact path="/student/feedback" component={Feedback} />
                             <PrivateRoute exact path={'/student/courses/:myCourseId'} component={MyCourse} />
 
+                            <TeacherRoute exact path="/teacher/available" component={TAvailable} />
                             <TeacherRoute exact path="/teacher/timetable" component={TTimeTable} />
                             <TeacherRoute exact path="/teacher/dashboard" component={TDashboard}/>
                             <TeacherRoute exact path="/teacher/courses" component={TDashboard}/>

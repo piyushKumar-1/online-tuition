@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCourses, getSubCourses } from '../../actions/commonActions.js';
 import ReactHtmlParser from 'react-html-parser';
+import { HOST } from '../../actions/types';
 
 
 
@@ -13,7 +14,7 @@ export class Courses extends React.Component {
 		console.log(window.location.href, window.location.href.match(/login+/))
 		this.props.getCourses();
 		this.props.getSubCourses();
-		
+
     	document.getElementById('courses').classList.add('active');
 		document.title = "Courses Offered | LearnerZ Corner"
 		window.scrollTo(0, 0)
@@ -33,7 +34,7 @@ export class Courses extends React.Component {
 		typeWriterAb();
 	}
 	componentWillUnmount(){
-		document.getElementById('courses').classList.remove('active');	   
+		document.getElementById('courses').classList.remove('active');
 	}
 
 	static propTypes = {
@@ -74,7 +75,7 @@ export class Courses extends React.Component {
 				        					<h4 className='a p-4 float-left mtlbkiw black'>{subCourses[j].sub_course_name}</h4>
 				        				</div>
 		        						<div className="col-md-4 jic m-auto">
-				        					<img className="pr-2 img-spin float-right" height="50" src={"/static/frontend/"+subCourses[j].id+".svg"} />
+				        					<img className="pr-2 img-spin float-right" height="50" src={HOST+"/static/frontend/"+subCourses[j].id+".svg"} />
 		        						</div>
         							</div>
         						</div>
@@ -107,9 +108,9 @@ export class Courses extends React.Component {
 						<h3 id="msgCr" data-aos="fade-in" data-aos-duration="300" className="ab"></h3>
 						<h3 className="ab" data-aos="fade-in" data-aos-delay="800" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 					</div>
-					
+
 				</div>
-				
+
 				<div className="p-5">
 					<div className="down">
 						<div className="text-center">
@@ -119,7 +120,7 @@ export class Courses extends React.Component {
 					<div className="container"  data-aos="slide-up" data-aos-once="true" data-aos-delay="600">
 						{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
 					</div>
-				</div>	
+				</div>
 			</div>
 		)
 	}

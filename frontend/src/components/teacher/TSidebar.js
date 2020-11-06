@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import '../student/css.css'	
+import '../student/css.css'
 import { logoutUser } from '../../actions/authAction.js';
 import { connect } from 'react-redux';
 
@@ -15,6 +15,13 @@ class TSidebar extends React.Component {
 						<li className="border" id="crc">
 							<div className="side-item">
 								<h4>Courses</h4>
+							</div>
+						</li>
+					</Link>
+					<Link className="te" to="/teacher/available">
+						<li className="border" id="tt">
+							<div className="side-item">
+								<h4>Available Courses</h4>
 							</div>
 						</li>
 					</Link>

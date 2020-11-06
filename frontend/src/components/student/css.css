@@ -10,6 +10,13 @@
   z-index: 2;
 }
 
+.avail-hid{
+  display: none;
+}
+.avail-dis{
+  display: block;
+}
+
 .values h4{
   color: #c65b5b;
 }
@@ -54,7 +61,7 @@
   width: 100%;
 display: flex;
 padding: 0px;
-margin: auto; 
+margin: auto;
 }
 
 .from-other{
@@ -69,14 +76,34 @@ margin: auto;
 
 }
 
+
+.extra{
+  display: none;
+}
+
+.done{
+  background-color: green;
+}
+.done .apply-btn{
+  display:none;
+  height:100%;
+}
+.done .extra{
+  display: block;
+}
+
+.done .isko-hata{
+  display: none !important;
+}
+
 .uploaded-link{
   width:45%; margin:10px; float:right
 }
 
 .uploadedSyll{
-  padding:5px; 
+  padding:5px;
   display:grid;
-  width:100%; 
+  width:100%;
   border-bottom:1px solid black;
 }
 
@@ -201,19 +228,19 @@ html {
   width:max-content;
   margin: 0px;
   padding-left: 0;
-  font-size: 16px; 
+  font-size: 16px;
 }
 
 
-.sidebar li{ 
+.sidebar li{
   list-style: none;
   background-repeat: no-repeat;
   background-position: left center;
   padding: 19px;
-} 
+}
 
 #crc{
-  background:white url('/static/frontend/online-learning.svg') no-repeat;
+  background:white url('https://learnerzcorner.pythonanywhere.com/static/frontend/online-learning.svg') no-repeat;
   background-position: center;
   background-position-x: 10px;
   background-size: 40px;
@@ -235,10 +262,10 @@ html {
       display: none;
     }
 .scrollxy::-webkit-scrollbar-track-piece {
-      background:rgba(255,0,0,0.1) !important; 
+      background:rgba(255,0,0,0.1) !important;
     }
 .scrollxy::-webkit-scrollbar-thumb-proportional:vertical {
-      background:rgba(255,0,0,0.1) !important; 
+      background:rgba(255,0,0,0.1) !important;
     }
 
 .td-none{
@@ -274,14 +301,14 @@ html {
 }
 
 #pay{
-  background:white url('/static/frontend/money.svg') no-repeat;
+  background:white url('https://learnerzcorner.pythonanywhere.com/static/frontend/money.svg') no-repeat;
   background-position: center;
   background-position-x: 10px;
   background-size: 40px;
 }
 
 #tt{
-  background:white url('/static/frontend/microsoft-excel.svg') no-repeat;
+  background:white url('https://learnerzcorner.pythonanywhere.com/static/frontend/microsoft-excel.svg') no-repeat;
   background-position: center;
   background-position-x: 5px;
   background-size: 50px;
@@ -289,31 +316,31 @@ html {
 
 
 #uplod{
-  background:white url('/static/frontend/files-and-folders.svg') no-repeat;
+  background:white url('https://learnerzcorner.pythonanywhere.com/static/frontend/files-and-folders.svg') no-repeat;
   background-position: center;
   background-position-x: 10px;
   background-size: 40px;
-}         
+}
 
 
 #profile{
-  background:white url('/static/frontend/user.svg') no-repeat;
+  background:white url('https://learnerzcorner.pythonanywhere.com/static/frontend/user.svg') no-repeat;
   background-position: center;
   background-position-x: 10px;
   background-size: 40px;
-}         
+}
 
 
 
 #fedbk{
-  background: white url('/static/frontend/quality.svg') no-repeat;
+  background: white url('https://learnerzcorner.pythonanywhere.com/static/frontend/quality.svg') no-repeat;
   background-position: center;
   background-size: 40px;
   background-position-x: 10px;
 }
 
 #lgout{
-  background: white url('/static/frontend/logout.svg') no-repeat;
+  background: white url('https://learnerzcorner.pythonanywhere.com/static/frontend/logout.svg') no-repeat;
   background-position: center;
   background-position-x: 13px;
   background-size: 36px;
@@ -365,7 +392,7 @@ html {
 
 .top-300{
   position: relative;
-  top: -360px;
+  top: -320px;
 }
 
 .top-230{
@@ -410,7 +437,7 @@ html {
 
 
 .lg{
-  width: 16.667%;
+  width: 16.66%;
   float:left;
 }
   .sidebar {
@@ -428,7 +455,7 @@ html {
     margin-top: 50px;
   }
 
-  
+
   .sidebar a{
     float: left;
     width: 16.667%;
@@ -455,14 +482,14 @@ html {
   }
 
   .te{
-    width: 20% !important;
+    width: 16.66% !important;
   }
 
   .side-item{
     display: none;
   }
 
-  .sidebar li{ 
+  .sidebar li{
     padding: 30px;
     padding-left: 10%;
     padding-right: 10%;

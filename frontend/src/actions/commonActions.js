@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import { GOT_COURSES, CON_POST_RESET, CON_POST_SUCCESS, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from './types.js';
+import { HOST, GOT_COURSES, CON_POST_RESET, CON_POST_SUCCESS, GOT_SUB_COURSES, GOT_SUBJECTS, ENQ_POST_SUCCESS, JOB_POST_SUCCESS } from './types.js';
 
 
 
 export const getCourses = () => dispatch => {
     axios
-        .get('/api/get/courses')
+        .get(HOST+'/api/get/courses')
         .then(res => {
             dispatch({
                 type: GOT_COURSES,
@@ -19,7 +19,7 @@ export const getCourses = () => dispatch => {
 
 export const getSubCourses = () => dispatch => {
     axios
-        .get('/api/get/sub_courses')
+        .get(HOST+'/api/get/sub_courses')
         .then(res => {
             dispatch({
                 type: GOT_SUB_COURSES,
@@ -32,7 +32,7 @@ export const getSubCourses = () => dispatch => {
 
 export const getSubjects = () => dispatch => {
     axios
-        .get('/api/get/subjects')
+        .get(HOST+'/api/get/subjects')
         .then(res => {
             dispatch({
                 type: GOT_SUBJECTS,
@@ -59,7 +59,7 @@ export const contactPost = (name, subject, email, message) => dispatch => {
     const body = JSON.stringify({name, subject, email, message})
 
     axios
-        .post('/api/post/contactus', body, config)
+        .post(HOST+'/api/post/contactus', body, config)
         .then(res => {
             dispatch({
                 type: CON_POST_SUCCESS,
@@ -79,7 +79,7 @@ export const enqPost = (FD) => dispatch => {
     }
     console.log(FD)
     axios
-        .post('/api/post/enquiry', FD, config)
+        .post(HOST+'/api/post/enquiry', FD, config)
         .then(res => {
             dispatch({
                 type: ENQ_POST_SUCCESS,
@@ -98,7 +98,7 @@ export const jobPost = (FD) => dispatch => {
     }
     console.log(FD)
     axios
-        .post('/api/post/join', FD, config)
+        .post(HOST+'/api/post/join', FD, config)
         .then(res => {
             dispatch({
                 type: JOB_POST_SUCCESS,
@@ -107,4 +107,3 @@ export const jobPost = (FD) => dispatch => {
         })
         .catch(err => console.log(err));
 }
-

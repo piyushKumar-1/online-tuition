@@ -36,9 +36,12 @@ export class Footer extends Component {
 											<tr>
 												<th><Link className="no" to="/privacy-policy">Privacy Policy</Link></th>
 											</tr>
+										{/*
 											<tr>
 												<th><Link className="no" to="#">Terms And Conditions</Link></th>
 											</tr>
+										*/}
+											
 										</thead>
 									</table>
 

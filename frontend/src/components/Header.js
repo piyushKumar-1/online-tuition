@@ -3,17 +3,17 @@ import '../styles/Header.css'
 import Login from './users/Login.js'
 import Register from './users/Register.js'
 import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';	
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logoutUser, loadUser } from '../actions/authAction.js';
 import { getCourses, getSubCourses } from '../actions/commonActions.js';
 import { postAdmin, getAdmin, postAdminSeen } from '../actions/teacherActions.js'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-
+import { HOST } from '../actions/types';
 
 export class Header extends Component {
 
-    
+
 	static propTypes= {
 		loadUser: PropTypes.func.isRequired,
 		auth: PropTypes.object.isRequired,
@@ -27,7 +27,7 @@ export class Header extends Component {
 
 	onChange = (e) => {
 		this.setState({
-			[e.target.name]:e.target.value 
+			[e.target.name]:e.target.value
 		});
 	}
 
@@ -36,7 +36,7 @@ export class Header extends Component {
 		const { message } = this.state;
 		this.props.postAdmin(message);
 		this.setState({
-			message:'' 
+			message:''
 		})
 
 	}
@@ -61,15 +61,15 @@ export class Header extends Component {
             console.log(courses[0], subCourses)
             let j = 0;
             var ele = [];
-    
-    
+
+
             var str = '';
-    
+
             for(i=0;i<courses.length;i++){
             	var k =(<><Link to="/about" className="btn-group" >{courses[i]['course_name']}</Link>
             			<button className="ar btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button></>
             		)
-    
+
     		    var links = [];
             	for(j=0;j<subCourses.length;j++){
             		if(courses[i]['id']==subCourses[j]['course_id']){
@@ -77,16 +77,16 @@ export class Header extends Component {
             			links.push(jk)
             		}
             	}
-    
+
             	var content = React.createElement("div", {className:'dropdown-menu'},  links)
-    
+
             	var final = (<div className="dropright btn-group">{k}{content}</div>)
-    
+
             	ele.push(final)
             }
             return ele;
 	    }
-  
+
 
 		#THIS GOES IN THE LINKS //ALSO REMEMBER TO ADD THE COMPONENET DID MOUNT FUNCTION AND CALL THE IMPORTED getCourses()/getSubCourses() function;
 		AND COPT THE CHECKSHOULDI() FUNCTION FROM COURSES.JS PAGE.
@@ -152,25 +152,25 @@ export class Header extends Component {
 				</Fragment>
 		)
 
-		const authLinks = () => { 
+		const authLinks = () => {
 			if(user.teacher!=null){
 				return (teacherL)
 			} else {
 				return (studentL)
 			}
-			
+
 		}
 
-		const teacherAdmin = () => { 
+		const teacherAdmin = () => {
 			if(user.teacher!=null){
 				return (
 					<>
 									&nbsp;&nbsp;|&nbsp;
-									<span id="group"> 
+									<span id="group">
 										<span class="badge badge-light">
-										{	
-											this.props.values.isAdminReplied 
-											? 
+										{
+											this.props.values.isAdminReplied
+											?
 												this.props.values.adminMessages.new
 												?
 												this.props.values.adminMessages.new
@@ -204,11 +204,11 @@ export class Header extends Component {
 				return (
 					<>
 						&nbsp;&nbsp;|&nbsp;
-						<span id="group"> 
+						<span id="group">
 							<span class="badge badge-light">
-							{	
-								this.props.values.isAdminReplied 
-								? 
+							{
+								this.props.values.isAdminReplied
+								?
 									this.props.values.adminMessages.new
 									?
 									this.props.values.adminMessages.new
@@ -219,11 +219,11 @@ export class Header extends Component {
 							}
 							</span>
 							<button onClick={this.makeSeen} className="btn border btn-ouline-dark"><i className="fa fa-user black"></i>&nbsp;{this.props.auth.user.first_name} {this.props.auth.user.last_name}</button>
-						</span>				
+						</span>
 					</>
-				)	
+				)
 			}
-			
+
 		}
 
 		const modal = (
@@ -282,7 +282,7 @@ const working = (
 
 			const authNavLinks = (
 				<>
-					<Link to="/" className="navbar-brand"><img className="logo" src={"/static/frontend/logo.png"} alt="Learnerz Corner" width="180"/></Link>
+					<Link to="/" className="navbar-brand"><img className="logo" src={HOST+"/static/frontend/logo.png"} alt="Learnerz Corner" width="180"/></Link>
 
 					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
@@ -308,7 +308,7 @@ const working = (
 
 			const guestNavLinks = (
 				<>
-					<Link to="/" className="navbar-brand"><img className="logo" src={"/static/frontend/logo.png"} alt="Learnerz Corner" width="180"/></Link>
+					<Link to="/" className="navbar-brand"><img className="logo" src={HOST+"/static/frontend/logo.png"} alt="Learnerz Corner" width="180"/></Link>
 
 					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
@@ -347,7 +347,7 @@ const working = (
 					<div className="cus_container">
 						<div className="right ml-auto">
 							{ isAuthenticated ? authLinks() : guestLinks() }
-							{ isAuthenticated 
+							{ isAuthenticated
 								?
 								teacherAdmin()
 								:
@@ -361,7 +361,7 @@ const working = (
 						<button id="back" onClick={() => window.history.back()} className="dis-sm btn"><i className="fa fa-arrow-left"></i></button>
 						{ isAuthenticated ? authNavLinks: guestNavLinks }
 
-							
+
 					</div>
 				</nav>
 
@@ -379,9 +379,3 @@ const mapStateToProps= state => ({
 
 
 export default connect(mapStateToProps, { logoutUser, loadUser, getCourses, getSubCourses, postAdmin, postAdminSeen, getAdmin })(Header);
-
-
-
-
-
-

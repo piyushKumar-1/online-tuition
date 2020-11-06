@@ -26,15 +26,35 @@ class CoursesEnrolled(models.Model):
 	enrolled_date = models.DateTimeField(default=timezone.now)
 	completed = models.IntegerField(default=0)
 	teacher = models.ForeignKey(BecomeTeacher, on_delete=models.SET_DEFAULT, null=True, blank=True, default=None)
+	select_teachers = models.ManyToManyField(BecomeTeacher, related_name="teacher_selected", null=True, blank=True, default=None)
+	applied = models.BooleanField(default=False)
 
 	def __str__(self):
-		return "Course: "+self.course_enrolled.course_name+", Department: "+self.department.sub_course_name 
+		return "Course: "+self.course_enrolled.course_name+", Department: "+self.department.sub_course_name
+
+
+
+
+
+class selectedTeachers(models.Model):
+	teacher_replied = models.ForeignKey(BecomeTeacher, related_name="teacher_replied", on_delete=models.CASCADE)
+	course = models.ForeignKey(CoursesEnrolled, on_delete=models.CASCADE)
+	message = models.CharField(max_length=300)
+	is_selected = models.BooleanField(default=False)
+
+
 
 class SubjectEnrolled(models.Model):
 	enrollment = models.ForeignKey(CoursesEnrolled, on_delete=models.CASCADE)
 	enrolled_sub = models.ForeignKey(Subjects, on_delete=models.SET_NULL, null=True, default="Check Uploads", blank=True)
 	sub_enrolled_date = models.DateTimeField(default=timezone.now)
 
+
+	def __str__(self):
+		try:
+			return "Subject: "+self.enrolled_sub.subject_name
+		except:
+			return "No subject Selected"
 
 class UploadedMaterial(models.Model):
 	student_enrolled_subject = models.ForeignKey(SubjectEnrolled, on_delete=models.SET_NULL, null=True, default=True)
@@ -51,8 +71,9 @@ class ChatModel(models.Model):
 	msg_time = models.DateTimeField(auto_now_add=True)
 	approval = models.BooleanField(default=False)
 	msg_side = models.BooleanField(default=True) #true for student and false for teacher
+	from_admin = models.BooleanField(default=False)
 
-	
+
 class StudentUpload(models.Model):
 	department = models.ForeignKey(CoursesEnrolled, on_delete=models.CASCADE)
 	student = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

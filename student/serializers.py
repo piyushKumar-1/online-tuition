@@ -32,7 +32,7 @@ class UploadSerializer(serializers.ModelSerializer):
 class ChatSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ChatModel
-		fields = ("msg", "msg_time", "msg_side", "approval")
+		fields = ("msg", "msg_time", "msg_side", "approval", "from_admin")
 
 
 class StudentUploadSerializer(serializers.ModelSerializer):

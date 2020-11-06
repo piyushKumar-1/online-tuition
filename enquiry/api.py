@@ -80,17 +80,24 @@ class PostTeacherMessage(generics.GenericAPIView):
 		permissions.IsAuthenticated
 	]
 	def post(self, request):
-		TeacherMessage.objects.create(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), seen=True, message=request.data['message'])
+		try:
+			TeacherMessage.objects.create(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), seen=True, message=request.data['message'])
+		except:
+			pass
+
 		return Response({
 				'sent':"Sent"
 			})
 	def get(self, request):
-		data = TeacherMessage.objects.filter(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id))
-		serializer = self.get_serializer(data = data, many=True)
-		serializer.is_valid()
-		res = {}
-		res["ml"] = serializer.data
-		res['new'] = len(TeacherMessage.objects.filter(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), seen=False))
+		try:
+			data = TeacherMessage.objects.filter(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id))
+			serializer = self.get_serializer(data = data, many=True)
+			serializer.is_valid()
+			res = {}
+			res["ml"] = serializer.data
+			res['new'] = len(TeacherMessage.objects.filter(teacher=BecomeTeacher.objects.get(id=request.user.teacher_id), seen=False))
 
 
-		return Response(res)
+			return Response(res)
+		except:
+			return Response({'fail':'fail'})

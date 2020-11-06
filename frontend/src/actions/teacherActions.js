@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { TSYLLABUS_UPLOAD, A_POST_CHAT, PROFILE, GOT_ENR_COURSES, GOT_EVENTS, ADDED_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES, T_GOT_CHAT, T_POST_CHAT } from './types.js';
+import { HOST, ADDED_REQUEST, GOT_AVAILABLE, TSYLLABUS_UPLOAD, A_POST_CHAT, PROFILE, GOT_ENR_COURSES, GOT_EVENTS, ADDED_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, MATERIAL_UPLOAD_SUCCESS, MATERIAL_UPLOAD_FAIL, SET_UPLOAD_DEFAULT, SET_DEFAULT_COURSES, T_GOT_CHAT, T_POST_CHAT } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -17,10 +17,66 @@ export const getEvents = () => (dispatch, getState) => {
     }
 
     axios
-        .get('/api/auth/teacher/events', config)
+        .get(HOST+'/api/auth/teacher/events', config)
         .then(res => {
             dispatch({
                 type: GOT_EVENTS,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+export const getAvailable = () => (dispatch, getState) => {
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+
+    axios
+        .get(HOST+'/api/auth/teacher/available', config)
+        .then(res => {
+          console.log(res)
+            dispatch({
+                type: GOT_AVAILABLE,
+                payload: res.data
+            })
+        })
+        .catch((err) => console.log(err));
+}
+
+
+export const postAvailable = (teacherId, courseId, msg) => (dispatch, getState) => {
+
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+
+    let data = {'teacherId': teacherId, 'courseId': courseId, 'msg': msg}
+    axios
+        .post(`${HOST}/api/auth/teacher/available`, data, config)
+        .then(res => {
+            dispatch({
+                type: GOT_AVAILABLE,
                 payload: res.data
             })
         })
@@ -46,7 +102,7 @@ export const postEvents = (event_time, date, student_id, url, topic) => (dispatc
 
     let data = {'event_time':event_time, 'event_date':date, 'student_id':student_id, 'live_link':url, 'topic': topic}
     axios
-        .post(`/api/auth/teacher/events`, data, config)
+        .post(`${HOST}/api/auth/teacher/events`, data, config)
         .then(res => {
             dispatch({
                 type: ADDED_EVENTS,
@@ -74,7 +130,7 @@ export const getEnrCourses = () => (dispatch, getState) => {
     }
 
     axios
-        .get('/api/auth/teacher/courses', config)
+        .get(HOST+'/api/auth/teacher/courses', config)
         .then(res => {
         console.log(res);
             dispatch({
@@ -103,7 +159,7 @@ export const myCourse = (EnrCourseId) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .get(`/api/auth/teacher/mycourses/${EnrCourseId}`, config)
+        .get(`${HOST}/api/auth/teacher/mycourses/${EnrCourseId}`, config)
         .then(res => {
             dispatch({
                 type: ADDED_MYCOURSE,
@@ -133,7 +189,7 @@ export const uploadMaterial = (FD) => dispatch => {
     }
     console.log(FD)
     axios
-        .post('/api/auth/teacher/upload', FD, config)
+        .post(HOST+'/api/auth/teacher/upload', FD, config)
         .then(res => {
             dispatch({
                 type: MATERIAL_UPLOAD_SUCCESS,
@@ -165,7 +221,7 @@ export const getChat = (student_id) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .get(`/api/auth/teacher/chat/${student_id}`, config)
+        .get(`${HOST}/api/auth/teacher/chat/${student_id}`, config)
         .then(res => {
             dispatch({
                 type: T_GOT_CHAT,
@@ -192,7 +248,7 @@ export const postChat = (student_id, msg) => (dispatch, getState) => {
     }
     let data = {'msg':msg, 'student_id':student_id}
     axios
-        .post(`/api/auth/teacher/chat`, data, config)
+        .post(`${HOST}/api/auth/teacher/chat`, data, config)
         .then(res => {
             dispatch({
                 type: T_POST_CHAT,
@@ -219,7 +275,7 @@ export const postAdminSeen = () => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .post(`/api/auth/admin/message/seen`,{}, config)
+        .post(`${HOST}/api/auth/admin/message/seen`,{}, config)
         .then(res => {
             console.log("seen", res.data)
         })
@@ -243,7 +299,7 @@ export const getAdmin = () => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .get(`/api/auth/admin/message`, config)
+        .get(`${HOST}/api/auth/admin/message`, config)
         .then(res => {
             dispatch({
                 type: A_POST_CHAT,
@@ -270,7 +326,7 @@ export const postAdmin = (msg) => (dispatch, getState) => {
     }
     let data = {'message':msg}
     axios
-        .post(`/api/auth/admin/message`, data, config)
+        .post(`${HOST}/api/auth/admin/message`, data, config)
         .then(res => {
             getAdmin()
         })
@@ -294,7 +350,7 @@ export const myProfile = () => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .get(`/api/auth/teacher/profile`, config)
+        .get(`${HOST}/api/auth/teacher/profile`, config)
         .then(res => {
             dispatch({
                 type: PROFILE,
@@ -322,7 +378,7 @@ export const getSyllabus = (FD) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .get('/api/auth/teacher/suploads', config)
+        .get(HOST+'/api/auth/teacher/suploads', config)
         .then(res => {
             dispatch({
                 type: TSYLLABUS_UPLOAD,
@@ -348,10 +404,9 @@ export const del = (up_id, cur_id) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .delete(`/api/auth/teacher/delete/${up_id}`, config)
+        .delete(`${HOST}/api/auth/teacher/delete/${up_id}`, config)
         .then(()=>{
                 window.location=`/teacher/courses/${cur_id}`
             })
         .catch(err => console.log(err))
 }
-

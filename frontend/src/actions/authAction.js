@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOADED, USER_LOADING, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGOUT_SUCCESS, AUTH_ERROR, RESET_SUCCESS, RESET_ERROR, SET_DEFAULT, CHANGED_ERROR, CHANGED_SUCCESS, CHECK_SUCCESS, CHECK_ERROR } from './types.js';
+import { HOST, USER_LOADED, USER_LOADING, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGOUT_SUCCESS, AUTH_ERROR, RESET_SUCCESS, RESET_ERROR, SET_DEFAULT, CHANGED_ERROR, CHANGED_SUCCESS, CHECK_SUCCESS, CHECK_ERROR } from './types.js';
 
 
 
@@ -21,7 +21,7 @@ export const loadUser = () => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
 
-	axios.get('/api/auth/user', config)
+	axios.get(HOST+'/api/auth/user', config)
 	.then(res => {
 		console.log(res)
 		dispatch({
@@ -46,7 +46,7 @@ export const login = (email, password) => (dispatch) => {
 	const body = JSON.stringify({email, password})
 
 	axios
-	.post('/api/auth/login', body, config)
+	.post(HOST+'/api/auth/login', body, config)
     .then((res) => {
       dispatch({
         type: LOGIN_SUCCESS,
@@ -71,7 +71,7 @@ export const register = ({email, password, first_name, last_name, is_parent, edu
 	console.log(resp, 'yhi gand hai');
 	const body = JSON.stringify(resp);
 	console.log(body)
-	axios.post('/api/auth/register', body, config)
+	axios.post(HOST+'/api/auth/register', body, config)
 	.then(res => {
 		dispatch({
 			type: REGISTER_SUCCESS,
@@ -103,7 +103,7 @@ export const logoutUser = () => (dispatch, getState) => {
 		config.headers['Authorization'] = `Token ${token}`;
 	}
 
-	axios.post('/api/auth/logout/', null, config)
+	axios.post(HOST+'/api/auth/logout/', null, config)
 	.then(res => {
 		dispatch({
 			type: LOGOUT_SUCCESS,
@@ -127,7 +127,7 @@ export const resetPass = (email) => (dispatch) => {
 	const body = JSON.stringify({email})
 
 	axios
-	.post('/api/auth/reset', body, config)
+	.post(HOST+'/api/auth/reset', body, config)
     .then((res) => {
       dispatch({
         type: RESET_SUCCESS,
@@ -158,7 +158,7 @@ export const resetPassword = ({password, token, uidb64 }) => dispatch => {
 	}
 	const body = JSON.stringify({password, token, uidb64})
 
-	axios.patch('/api/auth/reset/final', body, config)
+	axios.patch(HOST+'/api/auth/reset/final', body, config)
 	.then(res => {
 		dispatch({
 			type: CHANGED_SUCCESS,
@@ -183,7 +183,7 @@ export const checkToken = ( token, uidb64 ) => dispatch => {
 
     console.log(token, uidb64)
 
-	axios.get('/api/auth/reset/'+uidb64+'/'+token, config)
+	axios.get(HOST+'/api/auth/reset/'+uidb64+'/'+token, config)
 	.then(res => {
 		dispatch({
 			type: CHECK_SUCCESS,
@@ -195,5 +195,3 @@ export const checkToken = ( token, uidb64 ) => dispatch => {
 		});
 	})
 }
-
-

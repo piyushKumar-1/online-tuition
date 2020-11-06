@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import { GET_QUERIES, DELETE_QUERY } from './types.js';
+import {HOST,  GET_QUERIES, DELETE_QUERY } from './types.js';
 
 export const getQueries = () => dispatch => {
     axios
-        .get('/api/query')
+        .get(HOST+'/api/query')
         .then(res => {
             dispatch({
                 type: GET_QUERIES,
@@ -17,7 +17,7 @@ export const getQueries = () => dispatch => {
 
 export const deleteQuery = (id) => {
     axios
-        .delete(`/api/query/${id}/`)
+        .delete(HOST+`/api/query/${id}/`)
         .then(res => {
             dispatch({
                 type: DELETE_QUERY,

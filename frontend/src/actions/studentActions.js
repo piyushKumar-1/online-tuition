@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GOT_ENR_COURSES, RESET_FEEDS, RESET_CHAT, GOT_FEED, POST_FEED, RESET_FEED, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from './types.js';
+import { HOST, GOT_ENR_COURSES, RESET_FEEDS, RESET_CHAT, GOT_FEED, POST_FEED, RESET_FEED, GOT_EVENTS, ADDED_COURSE, ADDED_MYCOURSE, GOT_CHAT, POST_CHAT, SYLLABUS_UPLOAD } from './types.js';
 
 export const getEvents = () => (dispatch, getState) => {
     const token = getState().auth.token;
@@ -17,7 +17,7 @@ export const getEvents = () => (dispatch, getState) => {
     }
 
     axios
-        .get('/api/auth/student/events', config)
+        .get(HOST+'/api/auth/student/events', config)
         .then(res => {
             dispatch({
                 type: GOT_EVENTS,
@@ -45,7 +45,7 @@ export const getEnrCourses = () => (dispatch, getState) => {
     }
 
     axios
-        .get('/api/auth/student/courses', config)
+        .get(HOST+'/api/auth/student/courses', config)
         .then(res => {
             dispatch({
                 type: GOT_ENR_COURSES,
@@ -74,15 +74,16 @@ export const addCourse = (CourseId, subId) => (dispatch, getState) => {
     }
     let data = {'CourseId': CourseId, 'subId': subId}
     axios
-        .post('/api/auth/student/courses',data, config)
+        .post(HOST+'/api/auth/student/courses',data, config)
         .then(res => {
             dispatch({
                 type: ADDED_COURSE,
                 payload: res.data
             })
+            window.location=HOST+"/student/courses"
         })
         .catch(err => console.log(err));
-    window.location="/student/courses"
+
 }
 
 
@@ -114,7 +115,7 @@ export const myCourse = (EnrCourseId) => (dispatch, getState) => {
     }
     let data = {'EnrCourseId': EnrCourseId}
     axios
-        .post('/api/auth/student/mycourses',data, config)
+        .post(HOST+'/api/auth/student/mycourses',data, config)
         .then(res => {
             dispatch({
                 type: ADDED_MYCOURSE,
@@ -141,10 +142,10 @@ export const delCourse = (EnrCourseId) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .delete(`/api/auth/student/mycourses/${EnrCourseId}`, config)
+        .delete(`${HOST}/api/auth/student/mycourses/${EnrCourseId}`, config)
         .then(()=>{
             axios
-                .get('/api/auth/student/courses', config)
+                .get(HOST+'/api/auth/student/courses', config)
                 .then(res => {
                     dispatch({
                         type: GOT_ENR_COURSES,
@@ -173,7 +174,7 @@ export const getChat = (teacher_id) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .get(`/api/auth/student/chat/${teacher_id}`, config)
+        .get(`${HOST}/api/auth/student/chat/${teacher_id}`, config)
         .then(res => {
             dispatch({
                 type: GOT_CHAT,
@@ -200,7 +201,7 @@ export const postChat = (teacher_id, msg) => (dispatch, getState) => {
     }
     let data = {'msg':msg, 'teacher_id':teacher_id}
     axios
-        .post(`/api/auth/student/chat`, data, config)
+        .post(`${HOST}/api/auth/student/chat`, data, config)
         .then(res => {
             dispatch({
                 type: POST_CHAT,
@@ -229,7 +230,7 @@ export const postSyllabus = (FD) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .post('/api/auth/student/upload', FD, config)
+        .post(HOST+'/api/auth/student/upload', FD, config)
         .then(res => {
             dispatch({
                 type: SYLLABUS_UPLOAD,
@@ -257,7 +258,7 @@ export const getSyllabus = (FD) => (dispatch, getState) => {
         config.headers['Authorization'] = `Token ${token}`;
     }
     axios
-        .get('/api/auth/student/upload', config)
+        .get(HOST+'/api/auth/student/upload', config)
         .then(res => {
             dispatch({
                 type: SYLLABUS_UPLOAD,
@@ -290,7 +291,7 @@ export const postFeed = (department_id, conceptClearity, aboutSession, aboutInst
     }
     let data = {'anyCom':anyCom, 'techLevel':techLevel, 'star_c':star_c, 'course_enrolled':department_id, 'concept':conceptClearity, 'about_session': aboutSession, 'about_instructor':aboutInstructor}
     axios
-        .post(`/api/auth/student/feedback`, data, config)
+        .post(`${HOST}/api/auth/student/feedback`, data, config)
         .then(res => {
             dispatch({
                 type: POST_FEED,
@@ -323,10 +324,10 @@ export const getFeed = (c_id) => (dispatch, getState) => {
 
     if (token) {
         config.headers['Authorization'] = `Token ${token}`;
-    }   
+    }
     console.log(c_id, "in axioas")
     axios
-        .get(`/api/auth/student/feedback/${c_id}`, config)
+        .get(`${HOST}/api/auth/student/feedback/${c_id}`, config)
         .then(res => {
             dispatch({
                 type: GOT_FEED,

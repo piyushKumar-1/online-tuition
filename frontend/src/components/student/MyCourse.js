@@ -59,7 +59,11 @@ class MyCourse extends React.Component {
 		const ele = [];
 		var app_req;
 		for(let i=0;i<chat.length;i++){
-			if(chat[i].msg_side){
+			if(chat[i].from_admin){
+				ele.push(
+					<h6 className="from-admin">{chat[i].msg}</h6>
+				)
+			} else if(chat[i].msg_side){
 				if(!chat[i].approval){
 					app_req = {
 						backgroundColor: "#e1e1e1",
@@ -120,7 +124,7 @@ class MyCourse extends React.Component {
 
                     for(let j=0;j<info[i].uploads.length;j++){
                     	filepath = info[i].uploads[j].uploaded_material
-				        filepath = filepath.replace("https://piyush01.pythonanywhere.com/","")
+				        filepath = filepath.replace("https://learnerzcorner.pythonanywhere.com/","")
 				        filename = filepath.split("/")
 				        filename = filename[filename.length-1]
 				        var date = new Date(info[i].uploads[j].upload_date)

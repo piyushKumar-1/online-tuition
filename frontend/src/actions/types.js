@@ -35,10 +35,12 @@ export const GOT_ENR_COURSES = "GOT_ENR_COURSES";
 export const SET_DEFAULT_COURSES = "SET_DEFAULT_COURSES";
 export const POST_CHAT = "POST_CHAT";
 export const SYLLABUS_UPLOAD = "SYLLABUS_UPLOAD";
+export const GOT_AVAILABLE = "GOT_AVAILABLE";
 
 
 
 
+export const ADDED_REQUEST = 'ADDED_REQUEST';
 export const MATERIAL_UPLOAD_FAIL = 'MATERIAL_UPLOAD_FAIL';
 export const GOT_CHAT = 'GOT_CHAT';
 export const T_GOT_CHAT = 'T_GOT_CHAT';
@@ -50,5 +52,4 @@ export const CHANGED_ERROR = "CHANGED_ERROR";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const CHECK_ERROR = "CHECK_ERROR";
 
-
-
+export const HOST = "http://learnerzcorner.pythonanywhere.com"

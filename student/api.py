@@ -10,10 +10,61 @@ from django.core import serializers
 from users.serializers import UserSerializer, CustomUser
 from courses.serializers import SubjectListSerializer
 from .serializers import EventsSerializer, FeedbackSerializer, CoursesEnrolledSerializer, UploadSerializer, ChatSerializer, StudentUploadSerializer
-from .models import CoursesEnrolled, Events, Courses, Feedback, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial, ChatModel, StudentUpload
+from .models import selectedTeachers, CoursesEnrolled, Events, Courses, Feedback, SubCourses, Subjects, SubjectEnrolled, UploadedMaterial, ChatModel, StudentUpload
 from teacher.models import BecomeTeacher
 from re import sub
 
+
+
+class CourseAvailableAPI(generics.GenericAPIView):
+    serializer_class = CoursesEnrolledSerializer
+    permissions_class = [
+        permissions.IsAuthenticated
+    ]
+
+    def post(self, request):
+        print("teacher id", request.data['teacherId'], request.data['msg'], request.data['courseId'] )
+
+        k = selectedTeachers.objects.create(
+            teacher_replied=BecomeTeacher.objects.get(id=self.request.user.teacher_id),
+            course=CoursesEnrolled.objects.get(id=int(request.data['courseId'])),
+            message=request.data['msg'],
+            replied=True
+        )
+        k.save()
+        k = CoursesEnrolled.objects.filter(select_teachers=self.request.user.teacher_id)
+        for i in k:
+            if i.id==request.data['courseId']:
+                i.applied=True
+                i.save()
+        serializer = self.get_serializer(data = CoursesEnrolled.objects.filter(select_teachers=self.request.user.teacher_id), many=True)
+        serializer.is_valid()
+        for data in serializer.data:
+            print(request.data['courseId'] ,data['id'] )
+            if request.data['courseId'] == data['id']:
+                data['course_enrolled'] = [Courses.objects.get(id=data['course_enrolled']).course_name, True]
+                print("turu ")
+            else:
+                data['course_enrolled'] = [Courses.objects.get(id=data['course_enrolled']).course_name, False]
+            data['department'] = SubCourses.objects.get(id=data['department']).sub_course_name
+        return Response(serializer.data)
+
+    def get(self, request):
+        serializer = self.get_serializer(data = CoursesEnrolled.objects.filter(select_teachers=self.request.user.teacher_id), many=True)
+        print(serializer)
+        serializer.is_valid()
+        try:
+            teacher = selectedTeachers.objects.get(teacher_replied=self.request.user.teacher_id)
+            replied_on = teacher.course.id
+        except:
+            replied_on = None
+        for data in serializer.data:
+            if replied_on == data['id']:
+                data['course_enrolled'] = [Courses.objects.get(id=data['course_enrolled']).course_name, True]
+            else:
+                data['course_enrolled'] = [Courses.objects.get(id=data['course_enrolled']).course_name, False]
+            data['department'] = SubCourses.objects.get(id=data['department']).sub_course_name
+        return Response(serializer.data)
 
 
 class CoursesEnrolledViewAPI(generics.GenericAPIView):
@@ -26,31 +77,31 @@ class CoursesEnrolledViewAPI(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         department = SubCourses.objects.get(id=int(request.data['CourseId'])+1)
         subIds = [int(i)+1 for i in request.data['subId']]
-        if(len(subIds)==0): 
+        if(len(subIds)==0):
             subIds = None
         course = department.course
         try:
             try:
                 k = CoursesEnrolled.objects.get(student=self.request.user, department=department)
             except:
-                k = CoursesEnrolled.objects.create(student=self.request.user, course_enrolled=course, department=department, subject_ids=subIds)
-            
-            if(subIds==None): 
+                k = CoursesEnrolled.objects.create(student=self.request.user, course_enrolled=course, department=department)
+
+            if(subIds==None):
                 if not len(Subjects.objects.filter(sub_course_id=int(request.data['CourseId'])+1)):
                     try:
                         SubjectEnrolled.objects.get(enrollment=k, enrolled_sub=Subjects.objects.get(id=104))
                     except:
                         SubjectEnrolled.objects.create(enrollment=k, enrolled_sub=Subjects.objects.get(id=104))
-    
+
             for i in subIds:
                 try:
                     SubjectEnrolled.objects.get(enrollment=k, enrolled_sub=Subjects.objects.get(id=i))
                 except:
                     SubjectEnrolled.objects.create(enrollment=k, enrolled_sub=Subjects.objects.get(id=i))
         except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)   
+            return Response(status=status.HTTP_400_BAD_REQUEST)
         return Response({'success':'Created Successfully'})
-        
+
     def get(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = CoursesEnrolled.objects.all().filter(student=self.request.user), many=True)
         serializer.is_valid()
@@ -72,7 +123,7 @@ class MyCoursesAPI(generics.GenericAPIView):
         try:
             return CoursesEnrolled.objects.get(id=pk)
         except:
-            raise Http404 
+            raise Http404
 
     def post(self, request):
         enrCourseId = request.data['EnrCourseId']
@@ -103,7 +154,7 @@ class MyCoursesAPI(generics.GenericAPIView):
         k.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-        
+
 
 
 
@@ -186,7 +237,7 @@ class StudentFilesAPI(generics.GenericAPIView):
         permissions.IsAuthenticated,
     ]
     parser_classes = (MultiPartParser, FormParser,)
-    
+
     def post(self, request):
         print(request.data)
         request.data['student'] = request.user.id

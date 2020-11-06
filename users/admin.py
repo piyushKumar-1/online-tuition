@@ -15,11 +15,11 @@ class CoursesEnrolledAdminInline(admin.TabularInline):
 
 
 class CustomUserAdmin(UserAdmin):
-    
+
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ('email', 'is_active', 'teacher', 'is_teacher', 'courses_count')
+    list_display = ('id','email', 'is_active', 'teacher', 'is_teacher', 'courses_count')
     list_filter = ('email', 'is_active', 'teacher', 'is_teacher')
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
@@ -36,7 +36,7 @@ class CustomUserAdmin(UserAdmin):
 
     def courses_count(self, obj):
         return len(CoursesEnrolled.objects.all().filter(teacher=obj.teacher))
-    
+
 
     def save_model(self, request, obj, form, change):
         if obj.teacher!=None:
@@ -45,13 +45,13 @@ class CustomUserAdmin(UserAdmin):
         else:
             obj.is_teacher = False
         super().save_model(request, obj, form, change)
-        
+
     def get_queryset(self, request):
         return self.model.objects.exclude(teacher=None)
 
 
 class Student(CustomUser):
-    class Meta: 
+    class Meta:
         proxy = True
 
 

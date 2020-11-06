@@ -191,7 +191,7 @@ componentWillUnmount(){
 											<div className="col-sm-8 m-auto">
 												<div className="rounded">
 													<div className="p-0 m-auto" data-aos="fade-up" data-aos-duration="2000">
-														<p className="p-prac">Monitoring the performance of the students in the assessment both at the learnerZ Corner and the college. Determination of the gap in performing well and corrective measures will be incorporated.</p>
+														<p className="p-prac">Monitoring the performance of the students in the assessment both at the LearnerZ Corner and the college. Determination of the gap in performing well and corrective measures will be incorporated.</p>
 													</div>
 												</div>	
 											</div>

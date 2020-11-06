@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    
+
     #common routes
     path('', views.index ),
     path('login/', views.index ),
@@ -31,6 +31,7 @@ urlpatterns = [
     path('student/courses/<str:k>', views.index3),
 
     #routes for TEACHER
+    path('teacher/available', views.index ),
     path('teacher/dashboard', views.index ),
     path('teacher/courses', views.index ),
     path('teacher/timetable', views.index ),

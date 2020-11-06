@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Sidebar from './Sidebar.js';
 import { getCourses, getSubCourses, getSubjects } from '../../actions/commonActions.js';
 import { addCourse } from '../../actions/studentActions.js'
+import { HOST } from '../../actions/types';
 
 
 
@@ -19,7 +20,9 @@ class AddCourse extends React.Component {
 
 	state = {
 		selectedCourseId: null,
-		selectedSubId: []
+		selectedSubId: [],
+		disable:true,
+		disabled:0
 	}
 	componentDidMount(){
 		this.props.getCourses();
@@ -54,16 +57,32 @@ class AddCourse extends React.Component {
     }
 
     makeSelectedSub = (e) => {
-    	var k;
-    	k = this.state.selectedSubId;
-    	k.push(e.target.id)
-    	if(e.target.classList.contains('selected')){
+
+			var k;
+			k = this.state.selectedSubId;
+
+			if(e.target.classList.contains('selected')){
 	    	e.target.classList.remove('selected');
+				k = k.filter(z => z !== e.target.id)
+				this.setState({
+					selectedSubId:k
+				})
 	    } else {
 	    	e.target.classList.add('selected');
 	    	this.setState({'selectedSubId': k});
 	    	console.log(this.state.selectedSubId)
+				k.push(e.target.id)
 	    }
+
+			if(k.length==0){
+				this.setState({
+					disable: true
+				})
+		  } else {
+				this.setState({
+					disable: false
+				})
+			}
 
     }
 
@@ -83,7 +102,7 @@ class AddCourse extends React.Component {
 		       						<div className="col-md-12">
 			        					<h4 className='a p-4 float-left black'>{subjects[i].subject_name}</h4>
 			        				</div>
-	        						<ScrollLink to="post" smooth={true} duration={500} delay={6000} offset={-600} onClick={this.makeSelectedSub} className="overlay m-auto text-center p-4" id={i}>
+	        						<ScrollLink to="post" smooth={true} duration={500} delay={6000} offset={-600} onClick={this.makeSelectedSub} className="overlay m-auto text-center p-4" id={subjects[i].id-1}>
 									</ScrollLink>
 	    						</div>
 	    					</div>
@@ -92,13 +111,16 @@ class AddCourse extends React.Component {
 	    		)
 	    		sub.push(k)
 	    	}
-	    	
+
     	}
-    	if(sub.length==0){
+    	if(sub.length==0 && this.state.disabled<1){
+				this.setState({
+					disable:false, disabled:this.state.disabled+1
+				});
     		sub.push(<h3>No Subjects For selected Course</h3>)
     	}
     	var content = React.createElement("div", {className:'row p-2 pb-4 sub'},  sub)
-	    	var final = (<div className="p-3 shadow" id="selSub">{head}{content}<button id="post" className="btn btn-primary blink" onClick={this.postIt}>Add</button></div>)
+	    	var final = (<div className="p-3 shadow mb-70" id="selSub">{head}{content}<button id="post" className="btn btn-primary blink" disabled={this.state.disable} onClick={this.postIt}>Add</button></div>)
         	ele.push(final)
 
     	return ele;
@@ -134,7 +156,7 @@ class AddCourse extends React.Component {
 				        					<h4 className='a p-4 float-left mtlbkiw black'>{subCourses[j].sub_course_name}</h4>
 				        				</div>
 		        						<div className="col-md-4 jic m-auto">
-				        					<img className="pr-2 img-spin float-right" height="50" src={"/static/frontend/"+subCourses[j].id+".svg"} />
+				        					<img className="pr-2 img-spin float-right" height="50" src={HOST+"/static/frontend/"+subCourses[j].id+".svg"} />
 		        						</div>
         							</div>
 	        						<ScrollLink to="selSub" activeClass="active" smooth={true} offset={-80} duration={100} onClick={this.makeSelected} className="overlay m-auto text-center p-4" id={subCourses[j].id-1}>
@@ -163,19 +185,19 @@ class AddCourse extends React.Component {
 
 		return (
 			<div>
-			<Sidebar /> 
+			<Sidebar />
 				<div className="container top-300">
 					<div className="m-auto">
-				        <div className="p-5 mt-2">
+				        <div className="p-5 mt-2 p-5s">
 				            <h2 className="text-center">Add Course</h2>
-				            <div className="p-5" data-aos="slide-up" data-aos-once="true">
+				            <div className="p-5 p-5s" data-aos="slide-up" data-aos-once="true">
 								<div className="container">
 									{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
 									<br/><br/>
 									{ this.state.selectedCourseId ? this.makeSub(): <div id="selSub" className="container m-auto"><h3>Select a Course</h3></div>}
 								</div>
-							</div>	
-				  		</div>    
+							</div>
+				  		</div>
 				    </div>
 			    </div>
 			</div>

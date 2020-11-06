@@ -35,21 +35,21 @@ class TProfile extends React.Component {
 
 		return (
 			<div>
-			<TSidebar /> 
-			{	
+			<TSidebar />
+			{
 				this.props.teacher.isProfileLoading ?
 					<div className="row top-230">
 						<div className="m-auto p-5">
 							<i className="fa fa-spinner fa-5x fa-spin" />
 						</div>
 					</div>
-				
+
 				:
-				
+
 					<div className="container mt-5 mb-5 top-230">
 						<div className="row">
 							<div className="col-md-6 rounded p-4 card m-auto">
-								<h4 className="text-center">Your Profiel Info</h4>
+								<h4 className="text-center">Your Profile Info</h4>
 							</div>
 							<div className="col-md-6 mb-5">
 								<div className="m-auto">

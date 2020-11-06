@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .api import CoursesEnrolledViewAPI, EventsAPI, MyCoursesAPI, StudentChatAPI, StudentFilesAPI, FeedbackAPI
+from .api import CoursesEnrolledViewAPI, EventsAPI, MyCoursesAPI, StudentChatAPI, StudentFilesAPI, FeedbackAPI, CourseAvailableAPI
 
 
 
@@ -14,4 +14,8 @@ urlpatterns = [
     path('api/auth/student/upload', StudentFilesAPI.as_view(), name="student-upload"),
     path('api/auth/student/feedback', FeedbackAPI.as_view(), name="student-feedback"),
     path('api/auth/student/feedback/<int:c_id>', FeedbackAPI.as_view(), name="student-feedback"),
+
+
+
+    path('api/auth/teacher/available', CourseAvailableAPI.as_view(), name="teacher-available"),
 ]

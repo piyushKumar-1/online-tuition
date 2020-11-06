@@ -2,8 +2,8 @@ import React from 'react';
 import '../../styles/about.css'
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import '../../styles/bubble.css'	
-
+import '../../styles/bubble.css';
+import { HOST } from '../../actions/types';
 
 class AboutUs extends React.Component {
 componentDidMount() {
@@ -28,9 +28,10 @@ componentDidMount() {
 
 componentWillUnmount(){
 	document.getElementById('about').classList.remove('active');
-   
+
 }
 	render() {
+		var logo = `${HOST}/static/frontend/logo_tit.png`;
 		return (
 
 			<div className="bg-white about-page">
@@ -40,14 +41,14 @@ componentWillUnmount(){
 						<h3 id="msgCr" data-aos="fade-in" data-aos-duration="300" className="ab"></h3>
 						<h3 className="ab" data-aos="fade-in" data-aos-delay="800" data-aos-duration="1500">&nbsp;LearnerZ Corner</h3>
 					</div>
-					
+
 				</div>
 
 
 
 
 
-				
+
 			<br/><br/>
 				<div className="container">
 					<div className="down">
@@ -64,14 +65,14 @@ componentWillUnmount(){
 								<div className="about-lernerz">
 									<p>LearnerZ Corner is an online platform for engineering students to interact with expert faculty or peer subject matter experts
 									in online for learning different subjects of engineering, getting help for assignment and homework and to get project
-									guidance. The students from different streams of engineering can get subject revised in an one-to-one interactive manner 
+									guidance. The students from different streams of engineering can get subject revised in an one-to-one interactive manner
 									pertaining to the examination.</p>
 									<p>The platform provides a way to earn anybody who aspire to teach to student community from different parts of the world.</p>
 								</div>
 							</div>
 							<div className="col-sm-4">
 								<div className="im anima">
-									<img className="shadow back" src="/static/frontend/logo_tit.png" />
+									<img className="shadow back" src={`${HOST}/static/frontend/logo_tit.png`} />
 								</div>
 							</div>
 						</div>
@@ -118,9 +119,9 @@ componentWillUnmount(){
 					<div className="container">
 						<h5>Read <Link className="" to="/privacy-policy">Privacy Policy</Link></h5>
 					</div>
-				</div>		
-				<br/><br/>	
-				<br/><br/>	
+				</div>
+				<br/><br/>
+				<br/><br/>
 			</div>
 		);
 	}
