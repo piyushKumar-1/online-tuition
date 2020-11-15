@@ -29,6 +29,8 @@ urlpatterns = [
     path('student/upload', views.index ),
     path('student/pay', views.index ),
     path('student/courses/<str:k>', views.index3),
+    path('student/courses/<str:k>/<str:j>', views.index2 ),
+
 
     #routes for TEACHER
     path('teacher/available', views.index ),

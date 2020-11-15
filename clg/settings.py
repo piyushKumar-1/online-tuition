@@ -26,7 +26,7 @@ os.environ['SENDGRID_API_KEY'] = 'SG.ujYZhEefQXGKkClczo2XzQ.8Il5nj9iNa8Sm2VVrN4D
 SECRET_KEY = '9qrt=ldlajlv(30^un1tuu6=z2k+hs50@kteiicna1q8ph8xol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -57,7 +57,7 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.CustomUser'
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'https://learnerzcorner.netlify.app',
     'http://learnerzcorner.com',

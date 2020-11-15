@@ -983,12 +983,23 @@ overflow: hidden;
 
 .inverted{
 
-    color:grey;
+    color:#1a1b58;
     font-size:26px;
     font-family: 'Katibeh', cursive;
     max-height: max-content;
   white-space: normal;
   line-height: 1;
+}
+
+
+.ab{
+	font-family: 'Open Sans',sans-serif !important;	
+}
+button{
+	outline: none !important;
+}
+.name-font{
+	color:#1a1b58;
 }
 
 .testi{

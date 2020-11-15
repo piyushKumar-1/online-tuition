@@ -99,7 +99,7 @@ componentWillUnmount(){
 								<li>
 									<h4 style={{fontWeight:'600'}}>2. Respect</h4>
 									<p>LearnerZ Corner maintain professionalism in delivering the content and with customer interaction. We listen to customers to express
-	their views to have a better working model which benefits both the company and customers..</p>
+	their views to have a better working model which benefits both the company and customers.</p>
 								</li>
 								<li>
 									<h4 style={{fontWeight:'600'}}>3. Passion</h4>
@@ -111,7 +111,7 @@ componentWillUnmount(){
 								</li>
 								<li>
 									<h4 style={{fontWeight:'600'}}>5. Innovation</h4>
-									<p>LearnerZ Corner provide better solutions to customer requirements through innovative solutions which we implement at every stage of process</p>
+									<p>LearnerZ Corner provide better solutions to customer requirements through innovative solutions which we implement at every stage of process.</p>
 								</li>
 							</ul>
 						</div>

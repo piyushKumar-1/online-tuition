@@ -9,6 +9,7 @@ import Practice from './common/Practice.js';
 import Courses from './common/Courses.js';
 import ContactUs from './common/ContactUs.js';
 import Enquire from './common/Enquire.js';
+import EnquireAdd from './common/EnquireAdd.js';
 import BecomeTeacher from './common/BecomeTeacher.js';
 import PrivacyPolicy from './common/PrivacyPolicy.js';
 import Dashboard from './student/Dashboard.js';
@@ -73,6 +74,7 @@ export class App extends React.Component {
                             <PrivateRoute exact path="/student/add-course" component={AddCourse} />
                             <PrivateRoute exact path="/student/feedback" component={Feedback} />
                             <PrivateRoute exact path={'/student/courses/:myCourseId'} component={MyCourse} />
+                            <PrivateRoute path={'/student/courses/:courseId/:subCourseId'} component={EnquireAdd}/>}/>
 
                             <TeacherRoute exact path="/teacher/available" component={TAvailable} />
                             <TeacherRoute exact path="/teacher/timetable" component={TTimeTable} />

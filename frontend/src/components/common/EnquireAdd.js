@@ -1,11 +1,12 @@
 import React from 'react'
 import '../../styles/common.css'
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCourses, getSubCourses, getSubjects, enqPost } from '../../actions/commonActions.js';
 import { HOST } from '../../actions/types';
 
-export class Enquire extends React.Component {
+export class EnquireAdd extends React.Component {
 	state = {
 		name: null,
 		email: null,
@@ -31,7 +32,8 @@ export class Enquire extends React.Component {
 		fi_help:'(max. 1MB pdf, jpg)',
 		fi:true,
 		disabled:true,
-		spe_in_l:100
+		spe_in_l:100,
+		new_s:false
 	}
 
 	static propTypes = {
@@ -61,7 +63,7 @@ export class Enquire extends React.Component {
     	for(k=0;k<courses.length;k++){
     		console.log(courses[k]['id'], this.props.match.params.courseId )
         	if(courses[k]['id']==this.props.match.params.courseId){
-        		var kk =(<><h3 className="">Enquiry About {courses[k]['course_name']} Course: </h3><br/><br/></>)
+        		var kk =(<><h3 className="">Enquiery About {courses[k]['course_name']} Course: </h3><br/><br/></>)
         	}
         }
 	    var course = [];
@@ -96,12 +98,26 @@ export class Enquire extends React.Component {
         return ele;
 	}
 	componentDidMount() {
+		window.scrollTo(0, 0)
+
 		this.props.getSubjects();
         this.props.getCourses();
 		this.props.getSubCourses();
-		document.getElementById('courses').classList.add('active');
-		document.title = "Course Enquiry | LearnerZ Corner"
-		window.scrollTo(0, 0)
+		var selSub;
+		const { subjects } = this.props;
+		var ele = []
+  	for(var i=0;i<subjects.length;i++){
+  		if(this.props.match.params.subCourseId==subjects[i].sub_course_id && subjects[i].subject_name=="Other"){
+    		this.setState({
+					subject:subjects[i].id
+				})
+    	}
+  	}
+		this.setState({
+			name: this.props.user.first_name,
+			email: this.props.user.email,
+			em:true
+		})
 	}
 
 	subject_option(){
@@ -116,8 +132,14 @@ export class Enquire extends React.Component {
     	return ele;
 	}
 
-	componentWillUnmount(){
-		document.getElementById('courses').classList.remove('active');
+
+	onSubChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value });
+		if(e.target.value.length>=3){
+			this.setState({
+				new_s:true
+			})
+		}
 	}
 	onChange = (e) => {
     	console.log(this.state)
@@ -324,7 +346,7 @@ export class Enquire extends React.Component {
 		)
 		const k = () =>{
 			const { service } = this.state;
-			console.log(service, "yahi hai")
+			console.log(service, "yahi ha nahi i")
 			if(service=='project'){
 				return projectForm
 			} else if(service=='other'){
@@ -335,195 +357,209 @@ export class Enquire extends React.Component {
 		}
 		return (
 			<div className="container">
-				<div className="mt-5 mb-5">
-
-					{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
+			{
+				this.props.values.enqMsg
+				?
+				<div className="m-auto text-center w-maxc p-5 h-75">
+					<h3>
+						Submitted Successfully<i className='fa fa-check-circle green'></i>
+					</h3>
+					<Link className="btn btn-success m-auto" to="/student/dashboard">Go To dashboard</Link>
 				</div>
-				<div className="mt-5 mb-5 container">
-					<form onSubmit={this.onSubmit} className="mt-5 mb-5" encType="multipart/form-data">
-						<div className="form-row">
-							<div className="col-md-6">
-								<div className="form-group m-auto p-2 md-form w-75">
-					                <label for="name">Name</label>
-					                <input
-					                  required
-					                  id="name"
-					                  type="text"
-					                  className="form-control"
-					                  name="name"
-					                  onChange={this.onChange}
-					                  value={name}
-					                />
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row">
-							<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label for="email">Email</label>
-					                <input
-					                  required
-					                  id="email"
-					                  type="email"
-					                  className="form-control"
-					                  name="email"
-					                  onChange={this.onEmailChange}
-					                  value={email}
-					                />
-					                <div className="help"><small>{this.state.em_help}</small></div>
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label for="phone">Contact Number</label>
-					                <input
-					                  id="phone"
-					                  type="number"
-					                  className="form-control"
-					                  name="phone"
-					                  onChange={this.onPhoneChange}
-					                  value={phone}
-					                />
-						            <div className="help"><small>{this.state.ph_help}</small></div>
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label for="country">Country</label>
-					                <input
-					                  id="country"
-					                  type="text"
-					                  className="form-control"
-					                  name="country"
-					                  onChange={this.onChange}
-					                  value={country}
-					                />
-					            </div>
-					        </div>
-					        <div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label for="std">STD. Code</label>
-					                <input
-					                  required
-					                  id="std"
-					                  type="number"
-					                  className="form-control"
-					                  name="std"
-					                  onChange={this.onChange}
-					                  value={std}
-					                />
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row mb-3">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label for="year">Year</label>
-					                <input
-					                  required
-					                  id='year'
-					                  type="text"
-					                  className="form-control"
-					                  name="year"
-					                  onChange={this.onChange}
-					                  value={year}
-					                />
-					            </div>
-					        </div>
-					    </div>
-					    <div className="card form-row w-75 m-auto p-4 mt-5 mb-4">
-						    <div className="form-group w-100 m-auto p-2">
-						        <label>Service</label>
-					            <div onChange={this.onTypeChange} className="">
-					            	<div className="form-row">
-					            		<div className="col-md-2">
-							                <input type="radio" value="assignment" defaultChecked name="service"/> Assignment
-							            </div>
-					            		<div className="col-md-2">
-							                <input type="radio" value="syllabus" name="service"/> Full Syllabus
-							            </div>
-					            		<div className="col-md-2">
-							                <input type="radio" value="revision" name="service"/> Revision
-							            </div>
-							            <div className="col-md-2">
-							                <input type="radio" value="project" name="service"/> Project
-							            </div>
-					            		<div className="col-md-2">
-							                <input type="radio" value="other" name="service"/> Others
-							            </div>
-							        </div>
-					      		</div>
-					        </div>
-			            </div>
+				:
+				<>
+					<div className="mt-5 mb-5">
+
+						{ this.checkhshouldi() ? this.makeCourses() : <div className="container m-auto"><i className="fas fa-spinner fa-spin fa-2x"></i></div> }
+					</div>
+					<div className="mt-5 mb-5 container">
+						<form onSubmit={this.onSubmit} className="mt-5 mb-5" encType="multipart/form-data">
+							<div className="form-row">
+								<div className="col-md-6">
+									<div className="form-group m-auto p-2 md-form w-75">
+						                <label for="name">Name</label>
+						                <input
+						                  required
+						                  id="name"
+						                  type="text"
+						                  className="form-control"
+						                  name="name"
+						                  onChange={this.onChange}
+						                  value={name}
+						                />
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row">
+								<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label for="email">Email</label>
+						                <input
+						                  required
+						                  id="email"
+						                  type="email"
+						                  className="form-control"
+						                  name="email"
+						                  onChange={this.onEmailChange}
+						                  value={email}
+						                />
+						                <div className="help"><small>{this.state.em_help}</small></div>
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label for="phone">Contact Number</label>
+						                <input
+						                  id="phone"
+						                  type="number"
+						                  className="form-control"
+						                  name="phone"
+						                  onChange={this.onPhoneChange}
+						                  value={phone}
+						                />
+							            <div className="help"><small>{this.state.ph_help}</small></div>
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label for="country">Country</label>
+						                <input
+						                  id="country"
+						                  type="text"
+						                  className="form-control"
+						                  name="country"
+						                  onChange={this.onChange}
+						                  value={country}
+						                />
+						            </div>
+						        </div>
+						        <div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label for="std">STD. Code</label>
+						                <input
+						                  required
+						                  id="std"
+						                  type="number"
+						                  className="form-control"
+						                  name="std"
+						                  onChange={this.onChange}
+						                  value={std}
+						                />
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row mb-3">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label for="year">Year</label>
+						                <input
+						                  required
+						                  id='year'
+						                  type="text"
+						                  className="form-control"
+						                  name="year"
+						                  onChange={this.onChange}
+						                  value={year}
+						                />
+						            </div>
+						        </div>
+						    </div>
+						    <div className="card form-row w-75 m-auto p-4 mt-5 mb-4">
+							    <div className="form-group w-100 m-auto p-2">
+							        <label>Service</label>
+						            <div onChange={this.onTypeChange} className="">
+						            	<div className="form-row">
+						            		<div className="col-md-2">
+								                <input type="radio" value="assignment" defaultChecked name="service"/> Assignment
+								            </div>
+						            		<div className="col-md-2">
+								                <input type="radio" value="syllabus" name="service"/> Full Syllabus
+								            </div>
+						            		<div className="col-md-2">
+								                <input type="radio" value="revision" name="service"/> Revision
+								            </div>
+								            <div className="col-md-2">
+								                <input type="radio" value="project" name="service"/> Project
+								            </div>
+						            		<div className="col-md-2">
+								                <input type="radio" value="other" name="service"/> Others
+								            </div>
+								        </div>
+						      		</div>
+						        </div>
+				            </div>
 
 
-			            { k() }
+				            { k() }
 
-					    <div className="form-row">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Special instruction<small>(max. length {this.state.spe_in_l})</small></label>
-					                <input
-					                  type="text-box"
-					                  className="form-control"
-					                  name="instruction"
-					                  onChange={this.onChange}
-					                  value={instruction}
-					                />
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row">
-					    	<div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Time for training</label>
-					                <input
-					               	  required
-					                  type="time"
-					                  className="form-control datetimepicker3"
-					                  name="time"
-					                  onChange={this.onChange}
-					                  value={time}
-					                />
-					            </div>
-					        </div>
-					        <div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Day of training</label>
-					                <input
-					                  required
-					                  type="date"
-					                  className="form-control datepicker"
-					                  name="day"
-					                  onChange={this.onChange}
-					                  value={day}
-					                />
-					            </div>
-					        </div>
-					    </div>
-					    <div className="form-row">
-					        <div className="col-md-6">
-					            <div className="form-group m-auto p-2 md-form w-75">
-					                <label>Upload(if any)</label>
-					                <input
-					                  type="file"
-					                  className="form-control-file"
-					                  name="upload"
-					                  onChange={this.onFileUpload}
-					                />
-					                <div className="help"><small>{this.state.fi_help}</small></div>
-					            </div>
-					        </div>
-					    </div>
-					    <div className="text-center p-5 mt-2">
-					    	<button type="submit" disabled={this.state.ph && this.state.em && this.state.fi ? false : true} className="btn m-auto btn-primary">Submit</button>
-						</div>
-					</form>
-				</div>
+						    <div className="form-row">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Subject Name/Instruction<small>(max. length {this.state.spe_in_l})</small></label>
+						                <input
+						                  type="text-box"
+						                  className="form-control"
+						                  name="instruction"
+						                  onChange={this.onSubChange}
+						                  value={instruction}
+						                />
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row">
+						    	<div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Time for training</label>
+						                <input
+						               	  required
+						                  type="time"
+						                  className="form-control datetimepicker3"
+						                  name="time"
+						                  onChange={this.onChange}
+						                  value={time}
+						                />
+						            </div>
+						        </div>
+						        <div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Day of training</label>
+						                <input
+						                  required
+						                  type="date"
+						                  className="form-control datepicker"
+						                  name="day"
+						                  onChange={this.onChange}
+						                  value={day}
+						                />
+						            </div>
+						        </div>
+						    </div>
+						    <div className="form-row">
+						        <div className="col-md-6">
+						            <div className="form-group m-auto p-2 md-form w-75">
+						                <label>Upload(if any)</label>
+						                <input
+						                  type="file"
+						                  className="form-control-file"
+						                  name="upload"
+						                  onChange={this.onFileUpload}
+															required
+						                />
+						                <div className="help"><small>{this.state.fi_help}</small></div>
+						            </div>
+						        </div>
+						    </div>
+						    <div className="text-center p-5 mt-2">
+						    	<button type="submit" disabled={this.state.ph && this.state.em && this.state.new_s ? false : true} className="btn m-auto btn-primary">Submit</button>
+							</div>
+						</form>
+					</div>
+				</>
+			}
 			</div>
 		)
 	}
@@ -535,7 +571,8 @@ const mapStateToProps= state => ({
 	subCourses : state.common.subCourses,
 	subjects : state.common.subjects,
 	values: state.common,
+	user: state.auth.user,
 })
 
 
-export default connect(mapStateToProps, { enqPost, getSubCourses, getCourses, getSubjects })(Enquire)
+export default connect(mapStateToProps, { enqPost, getSubCourses, getCourses, getSubjects })(EnquireAdd)

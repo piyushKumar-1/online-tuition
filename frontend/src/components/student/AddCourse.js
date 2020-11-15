@@ -22,7 +22,8 @@ class AddCourse extends React.Component {
 		selectedCourseId: null,
 		selectedSubId: [],
 		disable:true,
-		disabled:0
+		disabled:0,
+		redirect:false
 	}
 	componentDidMount(){
 		this.props.getCourses();
@@ -73,7 +74,12 @@ class AddCourse extends React.Component {
 	    	console.log(this.state.selectedSubId)
 				k.push(e.target.id)
 	    }
-
+			const sub = this.props.subjects;
+			for(let i=0;i<sub.length;i++){
+				if(sub[i].id==this.state.selectedSubId[0] && sub[i].subject_name=="Other"){
+					console.log("yes....");
+				}
+			}
 			if(k.length==0){
 				this.setState({
 					disable: true
@@ -127,8 +133,18 @@ class AddCourse extends React.Component {
     }
 
     postIt(){
-    	this.props.addCourse(this.state.selectedCourseId, this.state.selectedSubId);
-    }
+			const sub = this.props.subjects;
+			for(let i=0;i<sub.length;i++){
+				if(sub[i].id==this.state.selectedSubId[0] && sub[i].subject_name=="Other"){
+					console.log("");
+					this.setState({
+						redirect:true
+					})
+				} else if(sub[i].id==this.state.selectedSubId[0] && sub[i].subject_name!="Other") {
+		    	this.props.addCourse(this.state.selectedCourseId, this.state.selectedSubId);
+		    }
+			}
+		}
 
 	makeCourses = () => {
         const { courses, subCourses } = this.props;
@@ -182,9 +198,11 @@ class AddCourse extends React.Component {
 
 
 	render() {
+		const selCourse = parseInt(this.state.selectedCourseId)+1;
 
 		return (
 			<div>
+			{ this.state.redirect ? <Redirect to={`/student/courses/1/${selCourse}`}/> : '' }
 			<Sidebar />
 				<div className="container top-300">
 					<div className="m-auto">

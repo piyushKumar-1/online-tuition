@@ -80,7 +80,7 @@ export const addCourse = (CourseId, subId) => (dispatch, getState) => {
                 type: ADDED_COURSE,
                 payload: res.data
             })
-            window.location=HOST+"/student/courses"
+            window.location="/student/courses"
         })
         .catch(err => console.log(err));
 
