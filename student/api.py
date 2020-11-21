@@ -77,8 +77,6 @@ class CoursesEnrolledViewAPI(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         department = SubCourses.objects.get(id=int(request.data['CourseId'])+1)
         subIds = [int(i)+1 for i in request.data['subId']]
-        if(len(subIds)==0):
-            subIds = None
         course = department.course
         try:
             try:
@@ -86,7 +84,7 @@ class CoursesEnrolledViewAPI(generics.GenericAPIView):
             except:
                 k = CoursesEnrolled.objects.create(student=self.request.user, course_enrolled=course, department=department)
 
-            if(subIds==None):
+            if(len(subIds)==0):
                 if not len(Subjects.objects.filter(sub_course_id=int(request.data['CourseId'])+1)):
                     try:
                         SubjectEnrolled.objects.get(enrollment=k, enrolled_sub=Subjects.objects.get(id=104))

@@ -16,7 +16,7 @@ class TeacherMessage(models.Model):
 	seen = models.BooleanField(default=False)
 	def __str__(self):
 		return self.teacher.name
-	
+
 
 
 class Enquiry(models.Model):

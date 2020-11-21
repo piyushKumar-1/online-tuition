@@ -33,17 +33,23 @@ class CreateContactUsMessage(generics.GenericAPIView):
 
 
 class CreateEnquiryView(generics.CreateAPIView):
-    serializer_class = EnquiryCreateSerializer
-    parser_classes = (MultiPartParser,FormParser,)
-    @csrf_exempt
-    def post(self, request, *args, **kwargs):
-    	data = request.data
-    	data['client_ip'] = get_client_ip(request)
-    	print(data)
-    	serializer = self.get_serializer(data=data)
-    	serializer.is_valid(raise_exception=True)
-    	serializer.save()
-    	return Response({'success':'Created Successfully'})
+	serializer_class = EnquiryCreateSerializer
+	parser_classes = (MultiPartParser,FormParser,)
+	@csrf_exempt
+	def post(self, request, *args, **kwargs):
+		data = request.data
+		k = {}
+		for key in data:
+			k[key] = data[key]
+
+		k['client_ip'] = get_client_ip(request)
+		print(k)
+		if k['file'] == "":
+			k['file'] = None
+		serializer = self.get_serializer(data=k)
+		serializer.is_valid(raise_exception=True)
+		serializer.save()
+		return Response({'success':'Created Successfully'})
 
 
 

@@ -35,7 +35,7 @@ checkhshouldi(){
         console.log(kl)
         return kl;
     }
-  componentDidMount() {  
+  componentDidMount() {
     this.props.getSubjects();
         this.props.getCourses();
     this.props.getSubCourses();
@@ -48,7 +48,7 @@ checkhshouldi(){
           boxShadow: "0px 0px 10px black"
         }
       })
-    } else { 
+    } else {
       this.setState({bor:{
           background: "white"
       }})
@@ -126,7 +126,7 @@ showPass() {
   } else {
     y.type = "password";
   }
-} 
+}
     validate = () => {
          if(this.state.password!=this.state.password2 && this.state.password.length){
               this.setState({ misMatch: true, disabled: true , passerr: "Password Didn't match" });
@@ -134,17 +134,17 @@ showPass() {
               this.setState({ misMatch: false });
               if(this.state.password.length>=4 && this.state.email.length>=4 && this.state.password2.length>=4){
                 this.setState({ disabled: false, misMatch: false });
-              } 
+              }
               if(this.state.password.length>8){
                 this.setState({ disabled: true, misMatch: true , passerr: "Password Should be less than 8 in size"});
                 return 0;
               }
-              if(this.state.password == this.state.password.toUpperCase()){
-                this.setState({ disabled: true, misMatch: true , passerr: "Password Should have atleast one lowercase letter(a-z)"});
-                return 0;
-              }
               if(this.state.password == this.state.password.toLowerCase()){
                 this.setState({ disabled: true, misMatch: true , passerr: "Password Should have atleast one uppercase letter(A-Z)"});
+                return 0;
+              }
+              if(this.state.password == this.state.password.toUpperCase()){
+                this.setState({ disabled: true, misMatch: true , passerr: "Password Should have atleast one lowercase letter(a-z)"});
                 return 0;
               } else {
                 this.setState({ disabled: false });
@@ -162,7 +162,7 @@ showPass() {
         } else if(this.state.course=='' && this.state.occupation==''){
           this.setState({ disabled: true });
         }
-        
+
         return 0;
     }
 
@@ -185,7 +185,7 @@ showPass() {
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
-    
+
     const { first_name, last_name, email, password, password2, is_parent, occupation,year, department, course } = this.state;
     const engineeringForm = (
         <div>

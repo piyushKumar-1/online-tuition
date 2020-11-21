@@ -26,9 +26,9 @@ os.environ['SENDGRID_API_KEY'] = 'SG.ujYZhEefQXGKkClczo2XzQ.8Il5nj9iNa8Sm2VVrN4D
 SECRET_KEY = '9qrt=ldlajlv(30^un1tuu6=z2k+hs50@kteiicna1q8ph8xol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['learnerzcorner.com', 'learnerzcorner.pythonanywhere.com', 'learnerzcorner.netlify.app']
 
 
 # Application definition
@@ -57,14 +57,15 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.CustomUser'
-CORS_ORIGIN_ALLOW_ALL = False
+
 CORS_ORIGIN_WHITELIST = (
     'https://learnerzcorner.netlify.app',
     'http://learnerzcorner.com',
-    'https://learnerzcorner.com'
+    'https://learnerzcorner.com',
 )
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

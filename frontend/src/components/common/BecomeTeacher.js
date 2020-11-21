@@ -38,7 +38,7 @@ export class BecomeTeacher extends React.Component {
         console.log(kl)
         return kl;
     }
-	componentDidMount() {  
+	componentDidMount() {
 		this.props.getSubjects();
         this.props.getCourses();
 		this.props.getSubCourses();
@@ -110,11 +110,11 @@ export class BecomeTeacher extends React.Component {
 	    	}
     	}
     	console.log(this.state)
-    } 
+    }
     onPhoneChange = (e) => {
     	if(e.target.value.length<=9){
     		this.setState({ [e.target.name]: e.target.value, ph_help:[<p style={{color:"red"}}>Write correct Phone number</p>], ph: false })
-    	} 
+    	}
     	if(e.target.value.length>9 && e.target.value.length<15) {
     		this.setState({ ph_help: 'Good', ph:true, [e.target.name]: e.target.value })
     	}
@@ -123,9 +123,9 @@ export class BecomeTeacher extends React.Component {
     	this.setState({'project':'', 'other':'', 'subject':null, 'sub_code':null});
     	this.setState({ [e.target.name]: e.target.value});
     	console.log(this.state)
-    	
 
-    } 
+
+    }
     onFileUpload = (e) => {
     	console.log(e.target.files)
     	if(e.target.files[0].size/1024/1024<=1){
@@ -157,12 +157,12 @@ export class BecomeTeacher extends React.Component {
 
 
     	setTimeout(() => {this.props.jobPost(form_data);}, 1000)
-    	
+
 
     }
 
 
-    
+
 
 
 
@@ -180,13 +180,13 @@ export class BecomeTeacher extends React.Component {
 				?
 
 				<div className="container mt-20 mb-20 text-center">
-					<div className="card p-5 mt-5 mb-5">	
-						<h3>Submit Successful&nbsp;&nbsp;<i class='fa fa-check-circle green'></i></h3>
-					</div> 
+					<div className="card p-5 mt-5 mb-5">
+						<h3>Details Submitted Successfully!&nbsp;&nbsp;<i class='fa fa-check-circle green'></i></h3>
+					</div>
 				</div>
 
 
-				: 
+				:
 				<>
 					<div className="w-100 h-300px" data-aos="fade-in" data-aos-once="true">
 						<div className="text-center wid-max">
@@ -261,7 +261,7 @@ learning easy and interesting. </p>
 						                  onChange={this.onPhoneChange}
 						                  value={phone}
 						                />
-							            <div className="help"><small>{this.state.ph_help}</small></div>  
+							            <div className="help"><small>{this.state.ph_help}</small></div>
 						            </div>
 						        </div>
 						    </div>
@@ -363,9 +363,9 @@ learning easy and interesting. </p>
 						    	<button type="submit" className="btn m-auto btn-primary">Submit</button>
 							</div>
 						</form>
-					</div>	
-				</>	
-				}	
+					</div>
+				</>
+				}
 			</div>
 		)
 	}

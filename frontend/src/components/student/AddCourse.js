@@ -58,7 +58,7 @@ class AddCourse extends React.Component {
     }
 
     makeSelectedSub = (e) => {
-
+			console.log(this.state);
 			var k;
 			k = this.state.selectedSubId;
 
@@ -133,7 +133,9 @@ class AddCourse extends React.Component {
     }
 
     postIt(){
+			console.log(this.state);
 			const sub = this.props.subjects;
+			var done = false;
 			for(let i=0;i<sub.length;i++){
 				if(sub[i].id==this.state.selectedSubId[0] && sub[i].subject_name=="Other"){
 					console.log("");
@@ -141,8 +143,13 @@ class AddCourse extends React.Component {
 						redirect:true
 					})
 				} else if(sub[i].id==this.state.selectedSubId[0] && sub[i].subject_name!="Other") {
+					done=True;
 		    	this.props.addCourse(this.state.selectedCourseId, this.state.selectedSubId);
+
 		    }
+			}
+			if(!done){
+				this.props.addCourse(this.state.selectedCourseId, this.state.selectedSubId);
 			}
 		}
 

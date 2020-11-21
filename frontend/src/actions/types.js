@@ -52,6 +52,5 @@ export const CHANGED_ERROR = "CHANGED_ERROR";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const CHECK_ERROR = "CHECK_ERROR";
 
-
 export const HOST = "https://learnerzcorner.pythonanywhere.com"
-// export const HOST = "https://127.0.0.1:8000"
+// export const HOST = "http://127.0.0.1:8000"
